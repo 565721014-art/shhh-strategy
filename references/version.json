@@ -1,0 +1,34 @@
+{
+  "skill": "shhh-strategy",
+  "engine_version": "v27.1_complexity_guarded",
+  "built_on": "2026-08-28",
+  "knowledge_root_default": "knowledge",
+  "coverage": {
+    "primary_training_problems": 23,
+    "paper_records": 58,
+    "paper_pages": 2876,
+    "statement_pages": 47,
+    "attachments": 97,
+    "visual_hint_pages": 1494,
+    "pilot_problems": 1,
+    "heldout_problems": 5,
+    "historical_isolated_problems": 5,
+    "historical_anti_overpruning_cases": 34,
+    "historical_anti_overpruning_pass": 34
+  },
+  "source_hashes": {
+    "v27_1_engine_manifest": "E9B7FCBE6778107B3387FFABFE9942A7F5A78A7B0C6E93114EE6B34F910F97D5",
+    "v27_1_complexity_gate": "704742E3CD6BDEE468DFD9F12852B6E7D08E518E5CD8B7312CD9CDEE78ECBC84",
+    "v27_1_historical_34_matrix": "95A98C698820F825B159BCA24DD3693934A5409A1641B733BF4D8F203EB3D50F",
+    "v26_engine_manifest": "121EF418ABFB0265337FD7D5B00AAAFD870500788DFC2C7C8C6EFE514B086562",
+    "textbook_manifest": "8970741347A94D9BF20F0E48C39E3ABDA0CDEC5BD61941B972402866305DB206",
+    "iteration_manifest": "AF5FCEE48E59DE0B6454BF00162FF4DBCA467DA78D0672AD45E58A0AFED42A69",
+    "corpus_manifest": "2FFD88126AFCEC1E17D54201148CD000B7F4F89103307A8A7DF45BEF315E5DA8"
+  },
+  "boundaries": {
+    "other_local_math_modeling_skills_allowed": false,
+    "award_guarantee": false,
+    "automatic_numerical_solution": false,
+    "historical_answers_as_templates": false
+  }
+}

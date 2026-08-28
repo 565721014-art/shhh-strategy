@@ -1,0 +1,81 @@
+{
+  "skill": "shhh-strategy",
+  "audit_date": "2026-08-28",
+  "status": "PASS",
+  "packaging": {
+    "skill_entry_files": 1,
+    "ui_metadata_files": 1,
+    "reference_files": 10,
+    "script_files": 3,
+    "progressive_disclosure": true,
+    "standalone_core_operational_without_external_archive": true,
+    "exact_historical_evidence_requires_mapped_archive": true
+  },
+  "knowledge_coverage": {
+    "primary_training_problems": 23,
+    "paper_records": 58,
+    "paper_pages": 2876,
+    "statement_pages": 47,
+    "attachments": 97,
+    "visual_hint_pages": 1494,
+    "pilot_problems": 1,
+    "heldout_problems": 5,
+    "historical_isolated_problems": 5,
+    "historical_transfer_cases_packaged": 34,
+    "historical_case_ids_missing": 0
+  },
+  "decision_coverage": [
+    "complete_input_and_visual_integrity",
+    "per_subquestion_deliverable_and_information_lock",
+    "object_lifecycle_and_multiple_clocks",
+    "alternative_interpretation_and_fatal_counterexample",
+    "minimum_and_objective_well_posedness",
+    "identifiability_and_inverse_factorization",
+    "hybrid_events_contact_and_trajectory_constraints",
+    "experimental_unit_feature_lineage_and_leakage",
+    "exposure_denominator_and_policy_generated_records",
+    "description_prediction_mechanism_and_causality",
+    "policy_feedback_and_structural_intervention",
+    "prediction_to_decision_and_action_controllability",
+    "global_objective_and_quantifier_preservation",
+    "feasibility_candidate_dominance_and_common_evaluator",
+    "uncertainty_robustness_and_evidence_closure",
+    "complexity_admission_fair_baseline_and_hard_stopping",
+    "quality_states_checkpoints_and_output_modes",
+    "pre_comparison_freeze_and_post_freeze_paper_audit"
+  ],
+  "tests": {
+    "system_quick_validate": "PASS",
+    "knowledge_manifest_and_hash_validation": "PASS",
+    "all_23_chapters_exist": true,
+    "all_58_paper_cards_and_galleries_exist": true,
+    "historical_34_case_index_exact_match": true,
+    "historical_34_source_matrix_row_count": 34,
+    "knowledge_query_smoke_test": "PASS",
+    "analysis_freeze_smoke_test": "PASS",
+    "python_syntax_check": "PASS"
+  },
+  "internal_sha256": {
+    "SKILL.md": "BB0D48BD613B1545C5682D4822EC282601622F1F2B72C930A952153DCC51CC8D",
+    "agents/openai.yaml": "EC36B615E704D0DF4EFF346E37AB373AAF0B9DA90D60E058FA71CC27D90866FE",
+    "references/core-protocol.md": "410CD9764BFDFE2F678C25D30948DDC3F3B0C4CB988B44A5AE4C6AC076CDD909",
+    "references/input-visual-integrity.md": "024F786B4EC16C62C4F24C679666C5E86D40B0D87DDB1092EFCA18C143B95CBD",
+    "references/structural-gates.md": "0914D0A365119217F985A30C713164FE46DAEA9DCD6831EC957C44932299E97C",
+    "references/complexity-stop-gates.md": "B4DECC073D2211D7C32B483F90288EBDF77EAE45BD04CEF48DF5DFF5C85FCBE7",
+    "references/historical-transfer-index.md": "5C7BD002AC8C6CD2F5D4403E183FFCD4216EC9AA62F45E61C02B768DE1B7AFC3",
+    "references/knowledge-source-map.md": "C7D8B51E4D41F8E31103DDC0FCAE6B05D7CB3E12D7BB0FE66AB37BCAF72886F7",
+    "references/output-modes.md": "C7FE8075EF8B81A59519109A4EE49ED936510B05354A1C3E1CA8D7BBD9E91EFD",
+    "references/paper-comparison.md": "5A8F5B78047E6A989AA8D8D7E2E4FA4D2AF3A46C27C20A0A05CAFB14CE4A6A09",
+    "references/version.json": "C715AA5C2412658D9D8EF7F34F1971BC32F110AE84C1A9CEE5D5315D67A23D3C",
+    "scripts/freeze_analysis.py": "D1278B614CAE44B8C926C6A3CEF3EDB97F3F84EDE67BFB0417EA4ACC22449138",
+    "scripts/query_knowledge.py": "BD1E16DCF4185CE48D37C04ABDFB81CED8EBC5695A60C20A78CA32087825BCEB",
+    "scripts/validate_skill.py": "F30CF595F4B1CD83318C3D9374C4C067B13FE5FB3F6EE444801AB869858F9FCE"
+  },
+  "boundaries": {
+    "other_local_mathematical_modeling_skills_used": false,
+    "model_weight_training_claimed": false,
+    "award_guarantee_claimed": false,
+    "full_papers_copied_into_skill": false,
+    "paper_logic_and_exact_source_routes_preserved": true
+  }
+}
