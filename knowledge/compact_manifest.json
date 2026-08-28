@@ -462,6 +462,7 @@
     "spreadsheets and CSV data attachments",
     "page-level PNG/JPG images and HTML galleries",
     "full OCR dumps and page_text directories",
+    "complete held-out solution/paper text files",
     "SQLite corpus binary index (JSON/Markdown indexes are retained)",
     "executables, caches and temporary rendering artifacts"
   ],
