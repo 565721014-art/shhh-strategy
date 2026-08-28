@@ -1,0 +1,509 @@
+{
+  "problem": "2023E",
+  "title": "黄河水沙监测数据分析",
+  "category": "识别、时序与风险",
+  "mother": "水沙通量的关系、突变、周期、预测与调水调沙解释",
+  "chain": "含沙量关系 -> 通量构造 -> 突变/季节/周期 -> 两年预测 -> 河床高程与调度效果解释",
+  "risks": [
+    "采样频率变化造成伪突变",
+    "通量单位与时间积分错误",
+    "预测精度与机制解释混为一体"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 1,
+  "questions": [
+    "问题 1 研究该水文站黄河水的含沙量与时间、水位、水流量的关系，并估算近 6 年该水 文站的年总水流量和年总排沙量。",
+    "问题 2 分析近 6 年该水文站水沙通量的突变性、季节性和周期性等特性，研究水沙通量 的变化规律。",
+    "问题 3 根据该水文站水沙通量的变化规律，预测分析该水文站未来两年水沙通量的变化 趋势，并为该水文站制订未来两年最优的采样监测方案（采样监测次数和具体时间等），使其 既能及时掌握水沙通量的动态变化情况，又能最大程度地减少监测成本资源。",
+    "问题 4 根据该水文站的水沙通量和河底高程的变化情况，分析每年 6-7 月小浪底水库进 行“调水调沙”的实际效果。如果不进行“调水调沙”，10 年以后该水文站的河底高程会如何？"
+  ],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件1.xlsx",
+      "size_bytes": 660315,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "2016",
+          "rows": 2381,
+          "cols": 12,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2016,
+              1,
+              1,
+              "0:00",
+              42.79,
+              357,
+              0.825,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.800000000000004,
+              363,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.800000000000004,
+              363,
+              0.796,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2017",
+          "rows": 2196,
+          "cols": 7,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) "
+            ],
+            [
+              2017,
+              1,
+              1,
+              "0:00",
+              42.18,
+              215,
+              0.461
+            ],
+            [
+              null,
+              null,
+              null,
+              "2:00",
+              42.18,
+              215,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.17,
+              212,
+              0.514
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "rows": 3184,
+          "cols": 11,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2018,
+              1,
+              1,
+              "0:00",
+              42.550000000000004,
+              342,
+              0.674,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.56,
+              342,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.56,
+              345,
+              0.593,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2019",
+          "rows": 3065,
+          "cols": 12,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2019,
+              1,
+              1,
+              "0:00",
+              42.480000000000004,
+              390,
+              0.882,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.480000000000004,
+              390,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.480000000000004,
+              390,
+              0.922,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2020",
+          "rows": 3014,
+          "cols": 7,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) "
+            ],
+            [
+              2020,
+              1,
+              1,
+              "0:00",
+              42.64,
+              507,
+              1.74
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.66,
+              524,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.63,
+              499,
+              1.53
+            ]
+          ]
+        },
+        {
+          "name": "2021",
+          "rows": 2906,
+          "cols": 13,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2021,
+              1,
+              1,
+              "0:00",
+              42.79,
+              497,
+              1.37,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "2:00",
+              43.03,
+              614,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              43.1,
+              650,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2023E\\attachments\\附件1.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件2.xlsx",
+      "size_bytes": 26402,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 218,
+          "cols": 18,
+          "preview": [
+            [
+              "2016-06-08 00:00:00",
+              null,
+              "2016-10-20 00:00:00",
+              null,
+              "2017-05-11 00:00:00",
+              null,
+              "2017-09-05 00:00:00",
+              null,
+              "2018-09-13 00:00:00",
+              null,
+              "2019-04-13 00:00:00",
+              null
+            ],
+            [
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)"
+            ],
+            [
+              0,
+              47.754999999999995,
+              0,
+              47.754999999999995,
+              0,
+              47.754999999999995,
+              0,
+              47.754999999999995,
+              0,
+              53.576,
+              0,
+              53.636
+            ],
+            [
+              14,
+              50.905,
+              16,
+              51.655,
+              23,
+              53.605,
+              23,
+              53.605,
+              15,
+              53.566,
+              8.7,
+              53.656000000000006
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2023E\\attachments\\附件2.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件3.xlsx",
+      "size_bytes": 38257,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 857,
+          "cols": 7,
+          "preview": [
+            [
+              "日期",
+              "起点距离(m)",
+              "水位(m)",
+              "水深(m)",
+              "测点水深(m)",
+              "测点水流速(m/s)",
+              "测点含沙量(kg/m3)"
+            ],
+            [
+              "2023-02-26 00:00:00",
+              2080,
+              42.1,
+              0,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              2065,
+              null,
+              3.5,
+              0.7,
+              0.3,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              null,
+              2.8,
+              0.16,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2023E\\attachments\\附件3.xlsx"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "33",
+      "problem": "2023E",
+      "title": "基于时间序列分析预测的黄河水沙监测模型",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛E题论文展示（E032）.pdf",
+      "pages": 53,
+      "card_path": "problems\\2023E\\papers\\33_E032\\paper_card.md",
+      "gallery_path": "problems\\2023E\\papers\\33_E032\\gallery.html",
+      "visual_pages": 38
+    },
+    {
+      "paper_id": "34",
+      "problem": "2023E",
+      "title": "若于小波变换和肖包模型的小浪底水库最优监测方案研究",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛E题论文展示（E176）.pdf",
+      "pages": 56,
+      "card_path": "problems\\2023E\\papers\\34_E176\\paper_card.md",
+      "gallery_path": "problems\\2023E\\papers\\34_E176\\gallery.html",
+      "visual_pages": 13
+    }
+  ]
+}

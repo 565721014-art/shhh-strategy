@@ -1,0 +1,567 @@
+[
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 1,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-01.png",
+    "image_name": "page-01.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 2,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-02.png",
+    "image_name": "page-02.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 3,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-03.png",
+    "image_name": "page-03.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 4,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-04.png",
+    "image_name": "page-04.png",
+    "captions": [
+      "表1 符号说明"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 5,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-05.png",
+    "image_name": "page-05.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 6,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-06.png",
+    "image_name": "page-06.png",
+    "captions": [
+      "图 > 相邻把手几何关系示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 7,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-07.png",
+    "image_name": "page-07.png",
+    "captions": [
+      "秒共身各节把手的位加标以及于度. 表 2各表3中是部分龙身反手的相放求名结果(保"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 8,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-08.png",
+    "image_name": "page-08.png",
+    "captions": [
+      "表3 部分把手违度随时间变化情况",
+      "图3 上= 至! = 300s 龙头前把手位置"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 9,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-09.png",
+    "image_name": "page-09.png",
+    "captions": [
+      "图4 不时刻下板移志把手的速度情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 10,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-10.png",
+    "image_name": "page-10.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 11,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-11.png",
+    "image_name": "page-11.png",
+    "captions": [
+      "图6 编号为;的板甘几何关系示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 12,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-12.png",
+    "image_name": "page-12.png",
+    "captions": [
+      "图 7 问题二求解流程图",
+      "表4 终止时刻各节龙身坐标和速度"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 13,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-13.png",
+    "image_name": "page-13.png",
+    "captions": [
+      "图8 停止盘人时刻板葡龙碰扩情况",
+      "图9 最内轿板觉的外钉硕点距其他板殴中心线的最短距腐与时间 : 的关系"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 14,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-14.png",
+    "image_name": "page-14.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 15,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-15.png",
+    "image_name": "page-15.png",
+    "captions": [
+      "图 10 问题三求解流程图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 16,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-16.png",
+    "image_name": "page-16.png",
+    "captions": [
+      "图 1 粒于人群 (PSO) 算法流程图",
+      "图11是粒子群算法的一般流程图. 在该问题中，我们设置初始参数设为: 粒子数量",
+      "图12 桥s(9 函数图像及最小值 图 13 ”粒子群算法收化过程"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 17,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-17.png",
+    "image_name": "page-17.png",
+    "captions": [
+      "图 44 靶小凋距下东头进入调头空间 图45 is的 最小值随曙距了变化图像",
+      "图14是在最小媒距 do 情况下，龙头前把手愉好进入调头空间时弄近的板巧状态"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 18,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-18.png",
+    "image_name": "page-18.png",
+    "captions": [
+      "图16 调头村示意"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 19,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-19.png",
+    "image_name": "page-19.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 20,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-20.png",
+    "image_name": "page-20.png",
+    "captions": [
+      "图 18极侈下调头路径示喜罗"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 21,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-21.png",
+    "image_name": "page-21.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 22,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-22.png",
+    "image_name": "page-22.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 23,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-23.png",
+    "image_name": "page-23.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 24,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-24.png",
+    "image_name": "page-24.png",
+    "captions": [
+      "图19 《= -100s大4= 100s之问龙头前把手的位置",
+      "表5 调头过程中各和节龙告坐标陪时间变化情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 25,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-25.png",
+    "image_name": "page-25.png",
+    "captions": [
+      "图20 再尖过程中不同时刻板觉龙示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 26,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-26.png",
+    "image_name": "page-26.png",
+    "captions": [
+      "标纹和的不同时刻怕区也状态示意图，可以发现板全了的招手均术时预定出线秘动，在"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 27,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-27.png",
+    "image_name": "page-27.png",
+    "captions": [
+      "图31三分搜索法示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 28,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-28.png",
+    "image_name": "page-28.png",
+    "captions": [
+      "通过将所有把手最大过度随时间的变化可视化 图22) 后，我们可以发现显拓在"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 29,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-29.png",
+    "image_name": "page-29.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 30,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-30.png",
+    "image_name": "page-30.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 31,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-31.png",
+    "image_name": "page-31.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 32,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-32.png",
+    "image_name": "page-32.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 33,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-33.png",
+    "image_name": "page-33.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 34,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-34.png",
+    "image_name": "page-34.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 35,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-35.png",
+    "image_name": "page-35.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 36,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-36.png",
+    "image_name": "page-36.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 37,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-37.png",
+    "image_name": "page-37.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 38,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-38.png",
+    "image_name": "page-38.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 39,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-39.png",
+    "image_name": "page-39.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 40,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-40.png",
+    "image_name": "page-40.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 41,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-41.png",
+    "image_name": "page-41.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 42,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-42.png",
+    "image_name": "page-42.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 43,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-43.png",
+    "image_name": "page-43.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 44,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-44.png",
+    "image_name": "page-44.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 45,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-45.png",
+    "image_name": "page-45.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 46,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-46.png",
+    "image_name": "page-46.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 47,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-47.png",
+    "image_name": "page-47.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 48,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-48.png",
+    "image_name": "page-48.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 49,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-49.png",
+    "image_name": "page-49.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 50,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-50.png",
+    "image_name": "page-50.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 51,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-51.png",
+    "image_name": "page-51.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 52,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-52.png",
+    "image_name": "page-52.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 53,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-53.png",
+    "image_name": "page-53.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 54,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-54.png",
+    "image_name": "page-54.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 55,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-55.png",
+    "image_name": "page-55.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 56,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-56.png",
+    "image_name": "page-56.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 57,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-57.png",
+    "image_name": "page-57.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "39",
+    "problem": "2024A",
+    "page": 58,
+    "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-58.png",
+    "image_name": "page-58.png",
+    "captions": [],
+    "visual_hint": 0
+  }
+]

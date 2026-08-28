@@ -3,6 +3,9 @@
   "engine_version": "v27.1_complexity_guarded",
   "built_on": "2026-08-28",
   "knowledge_root_default": "knowledge",
+  "knowledge_mode": "compact_with_optional_external_full_archive",
+  "compact_knowledge_included": true,
+  "raw_archive_external_by_default": true,
   "coverage": {
     "primary_training_problems": 23,
     "paper_records": 58,

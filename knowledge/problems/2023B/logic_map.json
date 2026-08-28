@@ -1,0 +1,767 @@
+{
+  "problem": "2023B",
+  "title": "多波束测线问题",
+  "category": "空间、动态与路径",
+  "mother_problem": "海底地形上的多波束覆盖几何与测线规划",
+  "question_chain": "二维斜坡覆盖 -> 任意方向三维几何 -> 矩形海域测线设计 -> 实测地形分区与全覆盖规划",
+  "misreading_risks": [
+    "水平宽度与坡面宽度混同",
+    "二维公式未经验证直接推广三维",
+    "平均重叠率掩盖局部漏测"
+  ],
+  "questions": [
+    "问题 1 与测线方向垂直的平面和海底坡面的交线构成一条与水平面夹角为 𝛼 的斜线（图 7），称 𝛼 为坡度。请建立多波束测深的覆盖宽度及相邻条带之间重叠率的数学模型。 图 7 问题 1 的示意图 若多波束换能器的开角为 120∘，坡度为 1.5∘，海域中心点处的海水深度为 70 m，利用上 述模型计算表 1 中所列位置的指标值，将结果以表 1 的格式放在正文中，同时保存到 result1.xlsx 文件中。 表 1 问题 1 的计算结果 测线距中心点 −800 −600 −400 −200 0 200 400 600 800 处的距离/m 海水深度/m 70 覆盖宽度/m 与前一条测线 — 的重叠率/%",
+    "问题 2 考虑一个矩形待测海域（图 8），测线方向与海底坡面的法向在水平面上投影的夹 角为 𝛽，请建立多波束测深覆盖宽度的数学模型。 图 8 问题 2 的示意图 若多波束换能器的开角为 120∘，坡度为 1.5∘，海域中心点处的海水深度为 120 m，利用上 述模型计算表 2 中所列位置多波束测深的覆盖宽度，将结果以表 2 的格式放在正文中，同时保 存到 result2.xlsx 文件中。 表2 问题 2 的计算结果 测量船距海域中心点处的距离/海里 覆盖宽度/m 0 0.3 0.6 0.9 1.2 1.5 1.8 2.1 0 45 测线 90 方向 135 夹角 180 /° 225 270 315",
+    "问题 3 考虑一个南北长 2 海里、东西宽 4 海里的矩形海域内，海域中心点处的海水深度 为 110 m，西深东浅，坡度为 1.5∘ ，多波束换能器的开角为 120∘ 。请设计一组测量长度最短、 可完全覆盖整个待测海域的测线，且相邻条带之间的重叠率满足 10%~20% 的要求。",
+    "问题 4 海水深度数据（附件.xlsx）是若干年前某海域（南北长 5 海里、东西宽 4 海里） 单波束测量的测深数据，现希望利用这组数据为多波束测量船的测量布线提供帮助。在设计测 线时，有如下要求：(1) 沿测线扫描形成的条带尽可能地覆盖整个待测海域；(2) 相邻条带之间 的重叠率尽量控制在 20% 以下；(3) 测线的总长度尽可能短。在设计出具体的测线后，请计算 如下指标：(1) 测线的总长度；(2) 漏测海区占总待测海域面积的百分比；(3) 在重叠区域中， 重叠率超过 20% 部分的总长度。 注 在附件中，横、纵坐标的单位是海里，海水深度的单位是米。1 海里=1852 米。 附件 海水深度数据"
+  ],
+  "attachments": [
+    {
+      "name": "result1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023B\\attachments\\result1.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 4,
+          "cols": 10,
+          "preview": [
+            [
+              "测线距中心点处的距离/m",
+              -800,
+              -600,
+              -400,
+              -200,
+              0,
+              200,
+              400,
+              600,
+              800
+            ],
+            [
+              "海水深度/m",
+              null,
+              null,
+              null,
+              null,
+              70,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "覆盖宽度/m",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "与前一条测线的重叠率/%",
+              "——",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023B\\attachments\\result2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 10,
+          "cols": 10,
+          "preview": [
+            [
+              "覆盖宽度/m",
+              null,
+              "测量船距海域中心点处的距离/海里",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              0,
+              0.3,
+              0.6,
+              0.9,
+              1.2,
+              1.5,
+              1.8,
+              2.1
+            ],
+            [
+              "测线方向夹角/°",
+              0,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              45,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023B\\attachments\\附件.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 253,
+          "cols": 203,
+          "preview": [
+            [
+              "海水深度/m",
+              null,
+              "横向坐标/NM（由西向东）",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              0,
+              0.020000000000000018,
+              0.03999999999999998,
+              0.06,
+              0.08000000000000002,
+              0.09999999999999998,
+              0.12,
+              0.14,
+              0.16000000000000003,
+              0.18
+            ],
+            [
+              "纵向坐标/NM\n（由南向北）",
+              0,
+              24.4,
+              24.12,
+              23.85,
+              23.59,
+              23.34,
+              23.1,
+              22.88,
+              22.67,
+              22.46,
+              22.27
+            ],
+            [
+              null,
+              0.020000000000000018,
+              24.32,
+              24.04,
+              23.77,
+              23.51,
+              23.27,
+              23.03,
+              22.81,
+              22.6,
+              22.39,
+              22.21
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "26",
+      "problem": "2023B",
+      "title": "多波来测线布设",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B226）.pdf",
+      "pages": 51,
+      "visual_pages": [
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图12 淹水这计算"
+          ],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "表 4 两种这的部"
+          ],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 1p， 开瑞儿并分折 图 20，夫度新"
+          ],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-22.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-23.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "图 26 证"
+          ],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-24.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "采用区域1的浊线和钊二作为沪区二的线。 区域[相比， 图 27，示让天这"
+          ],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-25.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-26.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p26"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-28.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-30.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-31.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-32.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p32"
+        },
+        {
+          "page": 34,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-34.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p34"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-36.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-37.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p37"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-40.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p40"
+        },
+        {
+          "page": 45,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-45.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p45"
+        },
+        {
+          "page": 46,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-46.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p46"
+        },
+        {
+          "page": 47,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-47.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p47"
+        },
+        {
+          "page": 48,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-48.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p48"
+        },
+        {
+          "page": 49,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-49.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p49"
+        },
+        {
+          "page": 51,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\26_B226\\pages\\page-51.png",
+          "gallery_anchor": "problems/2023B/papers/26_B226/gallery.html#p51"
+        }
+      ],
+      "abstract_extract": "多波索鲁深系统是由单波束测深发展而来的水深油量系统,研究多法东测蚂布设\n对于海洋测经具有重亚意义。 本文建立测线优化模型, 运用冬业几何方法、向量分析、\n最小二条法、负四法、焕刘火等方法交涉攻机共度、相名条之同\n的和各以及入线有设是\n\n针对问题一: 首先莘于介绍志波束测量仪的工作原型，以海域中心点为坐标原点\n建立合适的些标系。其次利用相似三角形原理计算海水深诬，并通过几何知识推导关\n键角的关系式，然后基于正络定理计算机训密度。按着利用几何知识推导重故率的计\n算公式并代入变量计算。最后得到特定位置处的指标，存的在 resuMl.xlsx 中。 同时进\n行结果分析，并利用控制变量法未充突盖宽度、重登率随各参歼的变化.\n\n针对问题二，以海域直面中心为坐标原点建立三维空间怪标系，参考问题一，首\n先利用向量分析, 根据商量叉生得到油线方向与其在水平面上的投影组成的平面和海\n感填面的交绕的点向式方程，代入相应坐标未得海水深度。 其次，利用问面角计算公\n式求得水平面与戏益富度所在直线的详角, 然后根据问题一建立的愤型求解得到特定\n人四的大半，丰让在veqlt2stw 中最后进行结果分折以及原因分析。\n\n针对问题三: 对于一个具体的生形注域首先利用数学证明得到平行等深绑走向\n过行负线有设是时方案 其次于立以生长最和为卡， 以儿线完全蔡海、\n 相部条带之间的重得京的取值将困为约束条件，奸立单目标优化模型，然后基于坑心\n算法的循环遍历法，欧定最优油线布设为34 条，得到测战总长度为125936m ，最后\n利用模拟退火对济二布设仿真检验，发现两种方法计算得到的误差恨小，由此监证了\n寞型的可区性，并对开角、坡讼进行灵级度分析，\n\n针对疝是四，示先利用单法和和允定并久发现其地起人大，太\n求解测线布设。其次参考问题三，利用等深线力对沪海域进行初步划分。基于最小二\n乘法将各划分区域拟合成全子孙解的坡面方考，通过粒子群算法求解得到撤而方得，\n并对氢合效果不佳的区域进行进一步划分。然后仍以泥线的总长度最小为优化目标，\n侯正问题三的约东条件, 建立单月标优化模型, 仍采用贫必算法求解各区域型线布设.\n得到测线的部长度、漏铀海区占总竺王海城面积的百分比、登率直过 20%e部分的总长\n度分别为622 海里、3.48%、30海里。最后进行结果分析和原因分析.\n\n文章前季后，对本文于立的横电二羡价，并在考虑检查红的情况对俩开进行一\n并的改刘。\n关键，多流露设、昌标全化模甫最小二条法，贫了算法、 2\n\n有 全放7oe29",
+      "chapter_navigation": "- 第 51 行：一、问题重述（问题重述）\n- 第 78 行：二、问题分析（问题分析）\n- 第 1040 行：七、参考文献（参考文献）",
+      "model_terms": "- 粒子群：4 次\n- 模拟退火：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 在问题一中，要下江城度为的情况下建立多法王深的相关宣应和相信条\n- 的角为『，要求我们建立要关寅度的数学模型，再代入只体参数甫不同伺置、不\n- 局昌上方向夹角提过度外问题一的模型，只要已水平机与要查宽席所在直线\n- 识奸立小学春弄得到这两个参数的计算公式，再利用问题一的次型，即可得到问题一\n- 距建立单目标优化模型, 在求解时, 首先考虑边界观盖情况, 确定东海岸第一条测线，\n- 热后基于侠心算法逐步优化求解第二、 第三条测线……从而得到最做烈经布设最后，\n- 在问题四中，基于其沽域的单波东测量数据，为多波东狂量混供测线布设方案，\n- 粮据已知海水深座数据基于最小二乘法确定坡而方程，将各海域地形转化为坡而，利",
+      "paths": {
+        "card": "problems/2023B/papers/26_B226/paper_card.md",
+        "gallery": "problems/2023B/papers/26_B226/gallery.html",
+        "visual_contact": "problems/2023B/papers/26_B226/visual_contact.html",
+        "source_pdf": "problems/2023B/papers/26_B226/source.pdf",
+        "full_ocr": "problems/2023B/papers/26_B226/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023B/papers/26_B226/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "27",
+      "problem": "2023B",
+      "title": "基于主要目标法的测线设计问题",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B311）.pdf",
+      "pages": 34,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p8"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "表5 表纺与城中心点的高"
+          ],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "以间东为正方向具册本文所设计的测线示意图",
+            "图6 中华标槛铀与红旬虚线所半成都分为待油海域，监线为测线，测线槛坐标的"
+          ],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p13"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图11 C 区域副痉设计图"
+          ],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p17"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-31.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-32.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\27_B311\\pages\\page-33.png",
+          "gallery_anchor": "problems/2023B/papers/27_B311/gallery.html#p33"
+        }
+      ],
+      "abstract_extract": "ss\n距离x的昔效关系式，以及条帮缆蔓宽度扩 的示数表达式，得到海水深度\n了-Drtamx，跨商帘度\n对于斜坟上重登率力计算, 本文依据两和重合率定义, 分别构建两种重登率模型。\n利用 Matlab 计算海水主度厂、跟蔓帘度下 和两种不同定义重登率四者的结果。\n利用 CAD 作加，直观比较两种重登率卉型的做邦，选择更贴合本是的模型二，\n会夫重熏牵并型一的续采，黄确斜坟重骆率的定义\n卦对问题 >，根据问题 2 的具体要求，对间题 1 的站蔓密底下 模型进行改进\n推广，其构建贴人问题 2 的模型。引入变量,型线在坡而上的投影与海平面的夷\n和 ，来计算任彰点的海水深府万: 用牙益宽度与水平面形成的综面角=代普问\n题 1 中外席型的赴底x ，使得问题 ” 的下 模型可以还用测线洛坡画任意方向延\n介的情况。 本文先对坡而上任意直找与水平面形成的线面多7与坡度 w 甘系式进\n行推导，再根据请将%e用舍有人.有的关系式表达出床，最后情入问题 1 中的表\n达式进行求解。\n针末间题 3，首先明确晋线延伸方向。对问题 进行结果分析，推煌平行济\n线应该洛等深线方向延伸。文献得料《海道测量规范》 (GB12327-2022)的规定为\n该判断提供入证和支撑。 核着计算测线分布位置. 先构建德测海域最西铀的测线\n位置的表达式，运用 Python 计算，得出结果。再控便条带重党率为最小临界人\n刀=10%，依靠 Matlab，用闻排法依次求出竺型海翅内的所有油线分布，经过栓\nci，有 Ma 0人\n该组型线方向均泪等深线延伸，共 34 条，总长度为68海里。\n针对问题 4+，本文将传测海域灸据等高线将海底地形划分为三块生区。 根据\n问题 3 将测线延售方应谍为等深线方向。对于感目中给出的多目标襄划, 本文采\n用主要目标法,选择漏测齐最少作为主要目标，将重用素作为约束条件，每个测\n区以一条等高线作为基准， 找出下一条登高线深度与上一条的地推苗臻关系, 利\n人\n5\n/        财-\n3",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）",
+      "model_terms": "- 多目标优化：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 针册问题1，对于浊苍记的录锁首先要求出海水深度关于基线更中心点\n- 富座序 。最后利用五修罗入况下的区关应玉 随x的变化进行分析，检验结\n- 甘双问题3，对于测线的设计主要时对两个方面，油线的延伸方向和相名洒\n- 对于测二的所人方向: 通过对问题2结果的分析。囊以发现当届续等深线\n- 到所设计完成后，利用Met sb 续名儿线设计区，直砚展示到线分有。 最后\n- 寺对问题 4。对于测线的设计在问题 3的基础上进行了推广，第一个方面是\n- 将凑寺由下规模成曲襄，第二个方面是村型线自直线拉面线。 根据问题3，我\n- 对于玫攻讼本首先了击深条和的共度人站学过东。李所\n- 针对重任事，本文建立了丙种不同的模型",
+      "paths": {
+        "card": "problems/2023B/papers/27_B311/paper_card.md",
+        "gallery": "problems/2023B/papers/27_B311/gallery.html",
+        "visual_contact": "problems/2023B/papers/27_B311/visual_contact.html",
+        "source_pdf": "problems/2023B/papers/27_B311/source.pdf",
+        "full_ocr": "problems/2023B/papers/27_B311/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023B/papers/27_B311/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "28",
+      "problem": "2023B",
+      "title": "多波束测深合理探测方案的设计及效果分析",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B477）.pdf",
+      "pages": 50,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图3 不同并的傅况"
+          ],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p10"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图15 尝这度三和图 (在) 与和地形图《在)"
+          ],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图17 曲而需取图锥的天耐图",
+            "图 18 不同张角和坡度下最大格宽变化图"
+          ],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图 19 入未明《在 引入向有昌示本 《)"
+          ],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p21"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-41.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p41"
+        },
+        {
+          "page": 48,
+          "captions": [],
+          "image_path": "problems\\2023B\\papers\\28_B477\\pages\\page-48.png",
+          "gallery_anchor": "problems/2023B/papers/28_B477/gallery.html#p48"
+        }
+      ],
+      "abstract_extract": "多法东江深系统比划法测深系统列重范国大、和精度高，活全大面积\n底地形的基振。在实际次中，海底地形起快大，不能信间地根据海区平均\n水深设计攻线同陋。本文基于对天站宽座、重全于等的分析，建立了适当的\n数学模型，设计了合理控油方突，对提高深交率和准确性有一定作用\n\n列于问题一本文建立了二扒平面上计算多波束测深的村瘟宽度及杀带\n下和率的数学模型。根所问题的变化，我们首先给出了过末情况下更香率的\n计算方法。利用三角下中存在的几和关系推导出了海水尝度、机起宽度、于|\n称的计算公式，关计算相关数住将其十入表 1，发现最浅两条天线出现了\n丙旺本旬、\n\n对于问题二，本文在第一问的基础上，在不同汪广向的情况下以这度\n与拓度角度完善了在三维傅况下元法素旬这下益闪度的学醒思。我们首先\n提取出了三个主要大数。当前坟座f、当半深得xs，当前开角9，并分析了它\n们之则存在的关系。扒导出了各参站在三内情况下的求解公式，以此公式计\n算出了是中也弄位置名流来油深的本，并将它们壤入表 2\n\n允手则题三，本文定了和于信心因下的如役计方案。我们首先分析|\n出项要全得wy在各点最寅以得到最短路径和最信条庙，以重条素为控制条件\n进行玉民计算。 每过贷化后，我们和到了平行的油线方向，共 34然。同时允\n不同昌委束下的由线区熏和平行方向上的条线密毁做了术向分析，\n\n对于问题四，本文首先采用各分思想，利导播估狼合和随机森林模开对\n数据进行现处理以及烛畦吉分析，深入探讨了不同曲贡以及开角情况下的\n测量浆去，基于第三问的研究改进了飞媳炎过第法，并给出具体的路和搜索\n污程，在对区域进行分所之后，以重生率为10%，在空间内近代搜索了各区\n城季侍吧径，给出各个分芭的区据，皮讨整合之后，得到了最从化的环线用\n机关素达99.96%，测线总长度为434662m\n\n统上记述，本文革于响人思想和全心思起沁立导层着过的计算与智能雪\n娄代型。我们首先建立二维平面上的凶波束测深的站六灾度及杀芝重大率的\n数学本型，然后扩展至三维裤间中，从简单地形开线的设计推进到复杂直实\n海底弄策区的优化，胡决了多沪束光深未续最人各线方案的设计问题，关|\n生淮出上休的图侧和精交玫据。对使用多法束测深系统过行实际庶志形\n控有一定参考价作-",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 45 行：关键词，空间几何 从让必要 维分 随机检林 飞儿算法 志波来出（关键词）\n- 第 312 行：5.3.1 问题分析（问题分析）",
+      "model_terms": "- 随机森林：2 次\n- 插值：1 次\n- 最短路：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 于问题二的解决，我们需要治用第一问的模型并对此做出相应扩展，参考问题一\n- 算形待测海域的相关计算，完善问题一中的多波束测深更益宽座的数学寞型，",
+      "paths": {
+        "card": "problems/2023B/papers/28_B477/paper_card.md",
+        "gallery": "problems/2023B/papers/28_B477/gallery.html",
+        "visual_contact": "problems/2023B/papers/28_B477/visual_contact.html",
+        "source_pdf": "problems/2023B/papers/28_B477/source.pdf",
+        "full_ocr": "problems/2023B/papers/28_B477/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023B/papers/28_B477/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

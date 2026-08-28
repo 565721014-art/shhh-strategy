@@ -1,0 +1,73 @@
+{
+  "version": "v27.1_complexity_guarded",
+  "status": "formal_operational_release",
+  "release_date": "2026-08-28",
+  "parent": "../v27_formal_problem_reader",
+  "parent_mutated": false,
+  "rollback": "../v27_formal_problem_reader",
+  "default_entry": "从这里开始_给Codex.md",
+  "purpose": "Remove only unsupported or non-contributory complexity while preserving all necessary multi-stage, branching, corroborative, and independently valuable routes.",
+  "local_math_modeling_skills": {
+    "allowed": false,
+    "policy": "Do not read, invoke, cite, or rely on any locally installed mathematical-modeling skill when training or revising this model."
+  },
+  "route_count_policy": {
+    "fixed_numeric_cap": false,
+    "retention_basis": "distinct_required_role_or_independently_verified_marginal_value",
+    "allowed_roles": [
+      "credible_baseline",
+      "distinct_deliverable",
+      "necessary_pipeline_component",
+      "structural_uncertainty_branch",
+      "independent_corroboration",
+      "robustness_diagnostic",
+      "validated_ensemble_gain"
+    ],
+    "removal_basis": "no trigger, duplicated function without corroboration value, insufficient data capacity, unfair comparison, no independent gain, or no effect on required conclusions"
+  },
+  "complexity_admission": [
+    "statement_or_attachment_trigger",
+    "material_baseline_defect",
+    "data_capacity_and_identifiability",
+    "fair_comparison",
+    "independent_practical_gain",
+    "decision_relevance_and_single_paper_line"
+  ],
+  "hard_stopping_gate_count": 8,
+  "solution_states": [
+    "understanding_locked",
+    "audit_complete",
+    "route_executable",
+    "solved_and_validated"
+  ],
+  "claim_classes": {
+    "D": "descriptive",
+    "P": "predictive",
+    "C": "causal"
+  },
+  "anti_peeking": "Pre-register candidate roles and primary comparison; keep model selection inside nested or blocked validation; final evaluation data is consumed after one use.",
+  "adversarial_tests": {
+    "user_risk_cases": 9,
+    "user_risk_pass": 9,
+    "anti_underfitting_cases": 5,
+    "anti_underfitting_pass": 5
+  },
+  "historical_anti_overpruning_training": {
+    "problems": 34,
+    "base_training_problems": 23,
+    "verified_national_first_papers_in_base_records": 58,
+    "pilot_problems": 1,
+    "heldout_problems": 5,
+    "historical_isolated_problems": 5,
+    "pass": 34,
+    "overpruning_fail": 0,
+    "validation_type": "rule_replay_on_existing_frozen_problem_and_paper-comparison_records_not_full_numerical_resolve"
+  },
+  "complexity_layers": [
+    "mechanism_and_representation",
+    "statistical_and_parameter",
+    "solver",
+    "paper_presentation"
+  ],
+  "claim": "Operational rule-engine revision only; does not represent weight training, completed numerical solving, or an award guarantee."
+}

@@ -23,13 +23,15 @@
 
 ## 历史资料（可选）
 
-核心策略不依赖外部历史资料。若用户明确请求往年题复盘，可将具有相同结构的知识库放在 `knowledge/`，或通过环境变量指定：
+核心策略不依赖外部历史资料。仓库附带一个约 8 MB 的文本优先 `knowledge/` 轻量层，包含 23 道题的结构化题目卡、逻辑图、58 篇论文卡、章节教材、迭代记录与检索索引，适合自动读取。原始 PDF、Excel/CSV、逐页图片、整篇 OCR 和其他大体积证据仍应留在本地外接档案中。
+
+若用户明确请求往年题复盘，或需要核对公式、表格、几何和原题附件，可将完整知识库放在 `knowledge/`，或通过环境变量指定：
 
 ```text
 SHHH_STRATEGY_KNOWLEDGE_ROOT=<archive-root>
 ```
 
-知识库不是本仓库的默认内容；本仓库不包含私人或受版权约束的整套论文档案。
+环境变量指定的路径优先于仓库内轻量层。原始知识库不会由本技能删除或覆盖，也不会随仓库自动公开上传。
 
 ## 使用边界
 
@@ -44,6 +46,11 @@ MIT License，详见 [`LICENSE`](LICENSE)。
 ```bash
 python scripts/validate_skill.py
 python <path-to-skill-creator>/scripts/quick_validate.py .
+python scripts/query_knowledge.py "你的机制词" --limit 5
 ```
 
-没有可选知识库时，`validate_skill.py` 会报告警告，但仍验证核心技能文件。
+`validate_skill.py` 会识别轻量模式和完整外接模式：轻量模式检查结构化层与卡片可用性，完整模式才检查逐页视觉证据和来源哈希。若要从新的完整档案重新生成轻量层：
+
+```bash
+python scripts/build_compact_knowledge.py --source <full-knowledge> --destination <new-knowledge>
+```

@@ -1,0 +1,138 @@
+{
+  "problem": "2024E",
+  "title": "交通流量管控",
+  "category": "数据预测与经营决策",
+  "mother": "交通状态识别、信号配时、巡游车辆估计与管控评价",
+  "chain": "流量时段划分 -> 单路口模型 -> 路网信号协同 -> 巡游车辆识别 -> 临时措施前后评价",
+  "risks": [
+    "按固定钟点机械分段",
+    "局部绿灯优化导致下游拥堵",
+    "措施前后差异直接当因果效果"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 1,
+  "questions": [
+    "问题 1 对经中路-纬中路交叉口，根据车流量的差异，可将一天分成若干个时段，估 计不同时段各个相位（包括四个方向直行、转弯）车流量。",
+    "问题 2 根据所给数据和上述模型，对经中路和纬中路上所有交叉口的信号灯进行优 化配置，在保证车辆通行的前提下，使得两条主路上的车流平均速度最大。",
+    "问题 3 对五一黄金周期间的数据进行分析，判定寻找停车位的巡游车辆，并估算假 期景区需要临时征用多少停车位才能满足需求？",
+    "问题 4 五一黄金周期间，该小镇对景区周边道路实行了临时性交通管理措施，具体 管控措施见"
+  ],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件1.xlsx",
+      "size_bytes": 10647,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "行驶方向",
+          "rows": 5,
+          "cols": 3,
+          "preview": [
+            [
+              "方向编号",
+              "方向",
+              "英文描述"
+            ],
+            [
+              1,
+              "由东向西",
+              "east-west"
+            ],
+            [
+              2,
+              "由西向东",
+              "west-east"
+            ],
+            [
+              3,
+              "由南向北",
+              "south-north"
+            ]
+          ]
+        },
+        {
+          "name": "交叉口之间距离",
+          "rows": 2,
+          "cols": 1,
+          "preview": [
+            [
+              "经中路：环北路—520 m—纬一路—510 m—纬中路—710 m—环南路"
+            ],
+            [
+              "纬中路：环西路—460 m—经一路—340 m—经二路—440 m—经三路—420 m—经中路—530 m—景区出入口—560 m—经四路—430 m—经五路—270 m—环东路"
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2024E\\attachments\\附件1.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件2.csv",
+      "size_bytes": 490590626,
+      "kind": "csv",
+      "encoding": "gb18030",
+      "rows": 8844997,
+      "cols": 4,
+      "preview": [
+        [
+          "方向",
+          "时间",
+          "车牌号",
+          "交叉口"
+        ],
+        [
+          "3",
+          "2024-04-03T14:39:08.632",
+          "AF5B7CEM",
+          "环西路-纬中路"
+        ],
+        [
+          "1",
+          "2024-04-03T17:45:32.316",
+          "BK2IA84",
+          "环西路-纬中路"
+        ],
+        [
+          "3",
+          "2024-04-03T15:09:04.087",
+          "AF4EC7FK",
+          "环西路-纬中路"
+        ]
+      ],
+      "linked_path": "problems\\2024E\\attachments\\附件2.csv"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "48",
+      "problem": "2024E",
+      "title": "交通流量管控",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E010）.pdf",
+      "pages": 39,
+      "card_path": "problems\\2024E\\papers\\48_E010\\paper_card.md",
+      "gallery_path": "problems\\2024E\\papers\\48_E010\\gallery.html",
+      "visual_pages": 26
+    },
+    {
+      "paper_id": "49",
+      "problem": "2024E",
+      "title": "基于多目标优化的交通管理评估分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E061）.pdf",
+      "pages": 32,
+      "card_path": "problems\\2024E\\papers\\49_E061\\paper_card.md",
+      "gallery_path": "problems\\2024E\\papers\\49_E061\\gallery.html",
+      "visual_pages": 21
+    },
+    {
+      "paper_id": "50",
+      "problem": "2024E",
+      "title": "基于 Python 语言的交通流量管控与预测分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E218）.pdf",
+      "pages": 62,
+      "card_path": "problems\\2024E\\papers\\50_E218\\paper_card.md",
+      "gallery_path": "problems\\2024E\\papers\\50_E218\\gallery.html",
+      "visual_pages": 32
+    }
+  ]
+}

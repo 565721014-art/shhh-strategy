@@ -1,0 +1,1025 @@
+{
+  "problem": "2025D",
+  "title": "矿井突水水流漫延模型与逃生方案",
+  "category": "空间、动态与路径",
+  "mother_problem": "时变水流网络中的淹没传播与安全逃生",
+  "question_chain": "巷道网络与水量守恒 -> 单突水点传播 -> 时变安全边权 -> 工人逃生路径 -> 第二突水点更新与实时改道",
+  "misreading_risks": [
+    "静态最短路替代时变可通行性",
+    "节点水位与巷道截面不一致",
+    "第二突水后未更新已走位置"
+  ],
+  "questions": [
+    "问题 1 若巷道的某一点发生突水，试分析水流过程，建立突水水流在巷道的流动漫延 模型。 对",
+    "问题 2 当矿井发生突水后，安全生产部门即刻监控到突水情况，并应尽快为每个工人 的制订出有效逃生方案。请根据问题 1 中所建水流漫延模型，协助安全生产部门为各矿工设 计最佳逃生路径。 假设工人在无突水水流巷道时，前进速度为 4 m/s；巷道内水面高度小于等于 0.3 m 时， 工人逆水行进速度为 1 m/s，顺水行进速度为 2 m/s；当巷道内水面高度为超过 0.3 m 时，不 建议涉水通行。 假设在突水 1 分钟时发布逃生通知，请对",
+    "问题 3 若矿井有两个突水点发生突水，分析水流过程，建立突水水流在巷道的流动漫 延模型。 对",
+    "问题 4 当矿井出现第二个突水点后，安全生产部门即刻监控到突水情况，并尽快调整 逃生方案。请协助安全生产部门调整最佳逃生路径。 在前面问题的基础上，假设在第二突水点突水 1 分钟后，安全生产部门发布调整后的逃 生方案。对"
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "端点",
+          "rows": 665,
+          "cols": 4,
+          "preview": [
+            [
+              "端点编号",
+              "端点坐标",
+              null,
+              null
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)"
+            ],
+            [
+              "P0000",
+              6060.79,
+              3715.33,
+              10
+            ],
+            [
+              "P0001",
+              6022.43,
+              3680.97,
+              10
+            ]
+          ]
+        },
+        {
+          "name": "巷道",
+          "rows": 978,
+          "cols": 3,
+          "preview": [
+            [
+              "巷道编号",
+              "巷道端点1",
+              "巷道端点2"
+            ],
+            [
+              "H0000",
+              "P0000",
+              "P0001"
+            ],
+            [
+              "H0001",
+              "P0002",
+              "P0003"
+            ],
+            [
+              "H0002",
+              "P0003",
+              "P0004"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "端点",
+          "rows": 665,
+          "cols": 4,
+          "preview": [
+            [
+              "端点编号",
+              "端点坐标",
+              null,
+              null
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)"
+            ],
+            [
+              "P0000",
+              3528.36,
+              5684.51,
+              1.31
+            ],
+            [
+              "P0001",
+              3566.71,
+              5718.87,
+              1.31
+            ]
+          ]
+        },
+        {
+          "name": "巷道",
+          "rows": 978,
+          "cols": 3,
+          "preview": [
+            [
+              "巷道编号",
+              "巷道端点1",
+              "巷道端点2"
+            ],
+            [
+              "H0000",
+              "P0000",
+              "P0001"
+            ],
+            [
+              "H0001",
+              "P0002",
+              "P0003"
+            ],
+            [
+              "H0002",
+              "P0003",
+              "P0004"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result1-1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result1-1.xlsx",
+      "sheets": [
+        {
+          "name": "端点水流到达时刻",
+          "rows": 664,
+          "cols": 2,
+          "preview": [
+            [
+              "端点编号",
+              "水流到达时刻（分钟）"
+            ],
+            [
+              "P0000",
+              null
+            ],
+            [
+              "P0001",
+              null
+            ],
+            [
+              "P0002",
+              null
+            ]
+          ]
+        },
+        {
+          "name": "巷道水流充满时刻",
+          "rows": 978,
+          "cols": 2,
+          "preview": [
+            [
+              "巷道编号",
+              "巷道充满水时刻（分钟）"
+            ],
+            [
+              "H0000",
+              null
+            ],
+            [
+              "H0001",
+              null
+            ],
+            [
+              "H0002",
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result1-2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result1-2.xlsx",
+      "sheets": [
+        {
+          "name": "端点水流到达时刻",
+          "rows": 664,
+          "cols": 2,
+          "preview": [
+            [
+              "端点编号",
+              "水流到达时刻（分钟）"
+            ],
+            [
+              "P0000",
+              null
+            ],
+            [
+              "P0001",
+              null
+            ],
+            [
+              "P0002",
+              null
+            ]
+          ]
+        },
+        {
+          "name": "巷道水流充满时刻",
+          "rows": 978,
+          "cols": 2,
+          "preview": [
+            [
+              "巷道编号",
+              "巷道充满水时刻（分钟）"
+            ],
+            [
+              "H0000",
+              null
+            ],
+            [
+              "H0001",
+              null
+            ],
+            [
+              "H0002",
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result2-1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result2-1.xlsx",
+      "sheets": [
+        {
+          "name": "工人1逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              5808.18,
+              5367.75,
+              10,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人2逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              5194,
+              4785.31,
+              10,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人3逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              6190.81,
+              3434.29,
+              10,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result2-2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result2-2.xlsx",
+      "sheets": [
+        {
+          "name": "工人1逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              4395.15,
+              4614.53,
+              6.59,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人2逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              3398.34,
+              5965.56,
+              1.31,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人3逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              3879.44,
+              4125.47,
+              6.22,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result3-1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result3-1.xlsx",
+      "sheets": [
+        {
+          "name": "端点水流到达时刻",
+          "rows": 664,
+          "cols": 2,
+          "preview": [
+            [
+              "端点编号",
+              "水流到达时刻（分钟）"
+            ],
+            [
+              "P0000",
+              null
+            ],
+            [
+              "P0001",
+              null
+            ],
+            [
+              "P0002",
+              null
+            ]
+          ]
+        },
+        {
+          "name": "巷道水流充满时刻",
+          "rows": 978,
+          "cols": 2,
+          "preview": [
+            [
+              "巷道编号",
+              "巷道充满水时刻（分钟）"
+            ],
+            [
+              "H0000",
+              null
+            ],
+            [
+              "H0001",
+              null
+            ],
+            [
+              "H0002",
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result3-2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result3-2.xlsx",
+      "sheets": [
+        {
+          "name": "端点水流到达时刻",
+          "rows": 664,
+          "cols": 2,
+          "preview": [
+            [
+              "端点编号",
+              "水流到达时刻（分钟）"
+            ],
+            [
+              "P0000",
+              null
+            ],
+            [
+              "P0001",
+              null
+            ],
+            [
+              "P0002",
+              null
+            ]
+          ]
+        },
+        {
+          "name": "巷道水流充满时刻",
+          "rows": 978,
+          "cols": 2,
+          "preview": [
+            [
+              "巷道编号",
+              "巷道充满水时刻（分钟）"
+            ],
+            [
+              "H0000",
+              null
+            ],
+            [
+              "H0001",
+              null
+            ],
+            [
+              "H0002",
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result4-1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result4-1.xlsx",
+      "sheets": [
+        {
+          "name": "工人1逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              5808.18,
+              5367.75,
+              10,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人2逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              5194,
+              4785.31,
+              10,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人3逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              6190.81,
+              3434.29,
+              10,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result4-2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025D\\attachments\\result4-2.xlsx",
+      "sheets": [
+        {
+          "name": "工人1逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              4395.15,
+              4614.53,
+              6.59,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人2逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              3398.34,
+              5965.56,
+              1.31,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "工人3逃生路径",
+          "rows": 9,
+          "cols": 6,
+          "preview": [
+            [
+              "序号",
+              "工人位置",
+              null,
+              null,
+              "到达时刻",
+              "巷道编号"
+            ],
+            [
+              null,
+              "x (m)",
+              "y (m)",
+              "z (m)",
+              "(分钟)",
+              null
+            ],
+            [
+              0,
+              3879.44,
+              4125.47,
+              6.22,
+              1,
+              null
+            ],
+            [
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "57",
+      "problem": "2025D",
+      "title": "矿井突水水流漫延模型与逃生方案问题",
+      "source_name": "2025_D037_官方论文展示.pdf",
+      "pages": 37,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-01.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-02.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-03.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-04.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-05.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-06.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-07.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-08.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-09.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-10.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-11.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-12.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p12"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-14.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p14"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-16.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-17.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p17"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-22.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-23.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p23"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-25.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-26.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-27.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p27"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-30.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-31.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p31"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-35.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p35"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\pages\\page-36.png",
+          "gallery_anchor": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html#p36"
+        }
+      ],
+      "abstract_extract": "茜草水灾是矿山安全开采生产*五大灾嘎*之首,吻造成重大人员伤记和财产要失。\n因为大水文地质条件复杂, 所以矿划水灾间故难以避免.为了降低水队员的庆队性,，\n减少反济损失, 本文外对突出水这温于过程,以夫道不同设于方式玉建立实时功态项型，\n研究制定科学技灾方案和最针选生路夭。\n\n针对间题一，由附件一和附件二，通过 Python 编程分别实现一维平而图和三维立\n体国，确定击实水点 ALA2 位置分则在二级平面开和三维立体图的“H0399” 村诞\n\n为研究内件一厅点水流首次到达时刻和息道水流请时刻，本问建立直道的流动温\n死柄型讨论“镑水”过悍中，根据若道三和罕水水流分配方案，分别为设有封闭，没|\n有也汪模型，封闭，没有断流碘型，没有封闭，断这模型。拘三种特殊的模型综合在一\n起形成平碳水水次下项型，通过花道长度和突水点的突水量求出经过六道的时间，\n经过比较求出水流到达交点的首次时间,并将釜一个最短时间厚道包含的所有端有看做\n一个顶点集,直至包含所有央点,起道突水先后到达 .tm 后,再同时滩步上天到03mm,\n直至上入到 3m 汉江整个道。通过上六硕型得到以下结论，(1) 铺江和省时间为\n1672.06mrin。《2) 所有厚道水位商度到达 13m 的时间为 Sb16 lmin，(3) 汉江所有关\n过的时间为 s016LS0min\n\n为研究附件二中点水流首次到达时刻和老道水流充消时刻，首先站先出等于和底于\n交水位置的峰点，并利用上述绩型，求出形成乎盏集合包合的所有深点，伴合中的只点\n已银清lm，以此苇出逢计出但未在集合中的点，采用 BES 广度优先本型搜索这些\n端对应车道的另一个尖点。 接着将模型简化为以形成的平面为基础，从低到高，突水\n以平行于平面方向向上没延，直至到达 3m，浴消整人老道。在整个过得中，刍江和稚\n满同时精竹，且洪江整个关进的时间就是到达最后一个喉点的时间，时间均为\nSeotmin\n\n针对间题二由条件可知，在突水分名后所有矿工天在无突水水流息着经分析\n可和当郑刘内林而高度考过 03m 时，矿工均过全成功。根据问题一得到所有器随时\n间水位变做情况，根据册占水流到达时刻的先后吧确定顺水和汉水方向。以到过信点\n所居要的最小时间为权置，采用实时动态网络的 Dijkstrn 算法，设计三位矿工最佳地生\n器猎，具体这生路生和时刻胡分别保存习列件 2、rewuh2-lNhsx 和 esult2.2.slsx中。\n\n针对问题三，为研究相间有两个突水点发生突水时，各并点水流首次到达时刻和苍\n进水稼充清时齐，本问采用实时动太的入动温直全型，因为当痫自不同帘水点的两个浊\n和路笃相互磋扩时，让会形成封闲，此时的归模型会持分给流直省的流量回到上一疾点\n更电分配。具体结果分别保存到文件 resul3-1 Nisx 和result32xkx中。\n\n针对间题四，每分析得向前3 分铂矿工造生路径与附件2 祖丫，S 分人后请各有机\n个次本口时的最佳生路径,具体结果分别保存到文件 ssid4-lsdsx 和resultL2xkx中\n半锰词，流动浊生并蜡BFS 广度优先病型 最信和生路径“实时动态网络的 Dikstr\n算法",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 55 行：一、问题重述（问题重述）\n- 第 112 行：二、问题分析（问题分析）\n- 第 147 行：三、模型假设（模型假设）\n- 第 159 行：四、符号说明（符号说明）\n- 第 167 行：五、模型建立与求解（模型建立）",
+      "model_terms": "- 最短路：14 次\n- Dijkstra：4 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 小时间为权重。 根据问题一可知突水水演到达每个端点的的最小时间，每个巷道突水水\n- 弃过不同道对应的时间，以最小时冲为权重，最后采用时动态网络的 Diatm 算法",
+      "paths": {
+        "card": "problems/2025D/papers/57_2025_D037_官方论文展示/paper_card.md",
+        "gallery": "problems/2025D/papers/57_2025_D037_官方论文展示/gallery.html",
+        "visual_contact": "problems/2025D/papers/57_2025_D037_官方论文展示/visual_contact.html",
+        "source_pdf": "problems/2025D/papers/57_2025_D037_官方论文展示/source.pdf",
+        "full_ocr": "problems/2025D/papers/57_2025_D037_官方论文展示/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2025D/papers/57_2025_D037_官方论文展示/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

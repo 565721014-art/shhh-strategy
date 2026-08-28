@@ -1,0 +1,786 @@
+{
+  "problem": "2023C",
+  "title": "蔬菜类商品的自动定价与补货决策",
+  "category": "数据预测与经营决策",
+  "mother_problem": "价格影响需求条件下的损耗补货与商品选择",
+  "question_chain": "流水与成本清洗 -> 销售规律/关联 -> 价格相关需求 -> 成本与需求预测 -> 品类决策 -> 单品混合多目标决策",
+  "misreading_risks": [
+    "销量等同真实需求",
+    "相关性当价格因果效应",
+    "先固定销量预测再优化价格",
+    "时间泄漏"
+  ],
+  "questions": [
+    "问题 1 蔬菜类商品不同品类或不同单品之间可能存在一定的关联关系，请分析蔬菜各 品类及单品销售量的分布规律及相互关系。",
+    "问题 2 考虑商超以品类为单位做补货计划，请分析各蔬菜品类的销售总量与成本加成 定价的关系，并给出各蔬菜品类未来一周(2023 年 7 月 1-7 日)的日补货总量和定价策略， 使得商超收益最大。",
+    "问题 3 因蔬菜类商品的销售空间有限，商超希望进一步制定单品的补货计划，要求可 售单品总数控制在 27-33 个，且各单品订购量满足最小陈列量 2.5 千克的要求。根据 2023 年 6 月 24-30 日的可售品种，给出 7 月 1 日的单品补货量和定价策略，在尽量满足市场对各 品类蔬菜商品需求的前提下，使得商超收益最大。",
+    "问题 4 为了更好地制定蔬菜商品的补货和定价决策，商超还需要采集哪些相关数据， 这些数据对解决上述问题有何帮助，请给出你们的意见和理由。"
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023C\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 252,
+          "cols": 4,
+          "preview": [
+            [
+              "单品编码",
+              "单品名称",
+              "分类编码",
+              "分类名称"
+            ],
+            [
+              "102900005115168",
+              "牛首生菜",
+              "1011010101",
+              "花叶类"
+            ],
+            [
+              "102900005115199",
+              "四川红香椿",
+              "1011010101",
+              "花叶类"
+            ],
+            [
+              "102900005115625",
+              "本地小毛白菜",
+              "1011010101",
+              "花叶类"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023C\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 878504,
+          "cols": 7,
+          "preview": [
+            [
+              "销售日期",
+              "扫码销售时间",
+              "单品编码",
+              "销量(千克)",
+              "销售单价(元/千克)",
+              "销售类型",
+              "是否打折销售"
+            ],
+            [
+              "2020-07-01 00:00:00",
+              "09:15:07.924",
+              "102900005117056",
+              0.396,
+              7.6,
+              "销售",
+              "否"
+            ],
+            [
+              "2020-07-01 00:00:00",
+              "09:17:27.295",
+              "102900005115960",
+              0.849,
+              3.2,
+              "销售",
+              "否"
+            ],
+            [
+              "2020-07-01 00:00:00",
+              "09:17:33.905",
+              "102900005117056",
+              0.409,
+              7.6,
+              "销售",
+              "否"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件3.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023C\\attachments\\附件3.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 55983,
+          "cols": 3,
+          "preview": [
+            [
+              "日期",
+              "单品编码",
+              "批发价格(元/千克)"
+            ],
+            [
+              "2020-07-01 00:00:00",
+              "102900005115762",
+              3.88
+            ],
+            [
+              "2020-07-01 00:00:00",
+              "102900005115779",
+              6.72
+            ],
+            [
+              "2020-07-01 00:00:00",
+              "102900005115786",
+              3.19
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件4.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023C\\attachments\\附件4.xlsx",
+      "sheets": [
+        {
+          "name": "平均损耗率(%)_小分类编码_不同值",
+          "rows": 7,
+          "cols": 3,
+          "preview": [
+            [
+              "小分类编码",
+              "小分类名称",
+              "平均损耗率(%)_小分类编码_不同值"
+            ],
+            [
+              "1011010201",
+              "花菜类",
+              15.51
+            ],
+            [
+              "1011010402",
+              "水生根茎类",
+              13.65
+            ],
+            [
+              "1011010101",
+              "花叶类",
+              12.83
+            ]
+          ]
+        },
+        {
+          "name": "Sheet1",
+          "rows": 252,
+          "cols": 3,
+          "preview": [
+            [
+              "单品编码",
+              "单品名称",
+              "损耗率(%)"
+            ],
+            [
+              "102900005115168",
+              "牛首生菜",
+              4.39
+            ],
+            [
+              "102900005115199",
+              "四川红香椿",
+              10.46
+            ],
+            [
+              "102900005115250",
+              "西峡花菇(1)",
+              10.8
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "29",
+      "problem": "2023C",
+      "title": "某商超芯菜类商品动态定价与补贷决策研究",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛C题论文展示（C050）.pdf",
+      "pages": 44,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-03.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表 7 Pearxom 相关系下"
+          ],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "表 11 各节来品类前三年日均销量"
+          ],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "表 二音品芍补侦最与定从和由"
+          ],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-22.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-23.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p23"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-25.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p25"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p27"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p29"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-32.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-33.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\29_C050\\pages\\page-34.png",
+          "gallery_anchor": "problems/2023C/papers/29_C050/gallery.html#p34"
+        }
+      ],
+      "abstract_extract": "他着生儿市场拓的持续信大。划荣字人行业的争也多如型，为部朵商直\n直人当全式，林六于是所共妆提信息，奸立迷人型生分析， 从而册定合理\n的基贡类商品杰作与补各和，提高好收闪-\n\n针对问题一，第一问首先计算出划欧品类的标准差、偏度系败、峰度系数等指述\n二计生，估后旭行可视化外理，分折公夫亲曲半、闪品末的销信重分而\n结果可得各单品和各着菜品关的日销售量都呈现出不同程度的季节性波动. 其中花叶\n类和阁个类蓝菜日情售量的波动性较大。第二问引入 Spearman 相关系数，以各蔬菜\n品类及单吕贡某的日销售和为指标，浊行人分李，家角生册了外，共蔬五和\n品类茂华之间帮呈现出亡著的正相甘关又。然后以单品的总销售姑、每日最大销售量\n和日均销售量为指标，通过 和-means++聚英算法将童品划分为热销、畅销、 平销和活\n销亚大类，进行相关性分析，结困可得热销单易较其他单囊昌现出高总销售量，高每\n日最大销售最和高日均销售最特点。\n\n对对向是二,第一加站和计算和美和电本如成人从-然后过了uanom\n相关系数检验出各燕荣品类销售名量与成本加成定价呈负场性相关关系,于是于立经\n性置归模型，利用最小二乘法求出线性回归方悍。第二问首先针对不同品类获奖建立\n时间序列预测模型，考虑数据的时效性以前半年的日销舍量为原始数据预测出未来-\n周各着染品类的日销售量, 再根据预测结果确立决策变量, 以利润最大化为目标函效.\n以蓄葡的补货最，定价、损在为约束条件建立倪化模型，求解出未来一大最大收益为\nS10S 60 元，最后引入模拟退火模型孙出最贷的蔬菜品类的补货和定价策略。\n\n针对问题三，首先蒋选出可用数据范围，以最大化收益为目标机数，以单品种类\n数量、陈列量、补货量和定价为约束条忻建立优化模型求拥，簿近出 29 种可售单品\n蔬莱, 并估计 2023 年 7 月 1 日最大收益为 1282.2631 元，最后基于问题二的模拟退火\n寞型求解出最优的单品补货盆和定价策略，\n\n针对间题四，首先入选出可代表季度蔬菜丰富度、季度效应和节日因素的指标以\n及六大芒菜品类的季度平均销量，运用黄色关联分析模型，以季度各蔬菜品类的单品\n菠菜销售种至、节气期间特征单品获菜销最和节日期间特征单品兹菜销量作为子序列，\n遍历花叶类、皇根类等六大蔬区品类季度平均销量作为母序列，求解得出各指标与六\n大蔬菜品类答庶平均销售重的关联度均在 Q5 以上，具有很强的相关性。此外本文采\n同文雪法，综合引入了洛放量妆担当对手的价你和和下小提、清费反氏和\n评价数据等 10 种相关效据，以此来拓助商超钢定合理的兹菜补货和定价策歼，\n\n最后本文对所建立的模型进行了讨论和分析，综合评价了模型的优钻点。",
+      "chapter_navigation": "- 第 46 行：关键词: K-meanst+聚类 优化模型 模拟退火模型 灰色关联分析（关键词）\n- 第 55 行：一、问题重述（问题重述）\n- 第 737 行：8.1 数据预处理（数据预处理）\n- 第 1101 行：十一、参考文献（参考文献）",
+      "model_terms": "- 回归：5 次\n- 时间序列：5 次\n- 模拟退火：4 次\n- 聚类：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 中做出合理决策，获得更高利润，现圳结合实际情况与附近所给信息建立妆学模型，\n- 问题三，从附件 中提出2023 年6月 24.3 目的可入只.技师单吕订且旺(销\n- 针对问题一，第一小问，首先对附件 2 中的无效数据进行财除处理，然后引入均\n- 二是加首先在有数所中之上进行数(折基处理。缠过和度和关汪吕关",
+      "paths": {
+        "card": "problems/2023C/papers/29_C050/paper_card.md",
+        "gallery": "problems/2023C/papers/29_C050/gallery.html",
+        "visual_contact": "problems/2023C/papers/29_C050/visual_contact.html",
+        "source_pdf": "problems/2023C/papers/29_C050/source.pdf",
+        "full_ocr": "problems/2023C/papers/29_C050/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023C/papers/29_C050/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "30",
+      "problem": "2023C",
+      "title": "商超共菜销售数据的统计分析及建模",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛C题论文展示（C126）.pdf",
+      "pages": 74,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "表 1 符号询明〈该符号主要用于数学味道较重的优化模型"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-03.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "表 2 花时区 Bayesian 模型的参数伟计"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图 1alpha 的动态轨这图"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "表 5 丙兰花模型参数 Bayesain 估计汇总才"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图 6 种水生根革关基菜进贷量点线图"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p10"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "表 7 未来一周各天各个单品补货"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图 1 未来一周各天各个单补货对比因"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "表 8 成优化入型下的上本利润表"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图 8 29 种芯傈末来一同售交价格第略《只标出部分装菜品种的未来价格)"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p19"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p27"
+        },
+        {
+          "page": 51,
+          "captions": [
+            "333 IIR 724 0900 926 图4",
+            "3和3 1631 725 008 926 图40"
+          ],
+          "image_path": "problems\\2023C\\papers\\30_C126\\pages\\page-51.png",
+          "gallery_anchor": "problems/2023C/papers/30_C126/gallery.html#p51"
+        }
+      ],
+      "abstract_extract": "根据商契实革购物签销售数据, 将该数据以单品编玛为关键字，通过数据过\n也的和信和担保，印东信接，if 1084 个任本。二过避潮信和\n数痢进行相关分析, 发现同一品种的蔬菜峭量具有较强的相关性, 构造直观的评\n着话用玄“T5“EY 的和字任串，表示 “是”*宇”四闫，对悄\n进行 shapiro-wilks 正坊性检验,结果表册销量数据不服从正老分布，用传统的回\n人计生让几， 重量的0网和了有和所，革于\n开放了所二礁，同时降儿WipBLGS 涝行 CC 的过了有\n用同期平均法将三年数据进行转化，形成一年的数据，对该笋所建立 Bayesian\n销熏模型及补货量弄型，进行 30000 次鞍代计算，燃烧 3000 次后，用收笋于后\n人有的多半Mic 各，完上人失后全全权过有NMC 人\n型进行评价, 异型表现优良，客大表达了单品销售的分有规律及妆据间的相互关\n系，解决了问题 1，\n\n利用销售一、损耗率、销售次数等是时间序列的特点,按照荐人娄销售“当日\n来舍，卫日大部分无法再售”的原则，确定 VAR 模型的阶，建立 VAR (2) 模\n到 交遇了检天商 6202 和月上 日。宁人了开、负人小，办2\n及3 的求解键平道路，也完成了分类补货总量的地写。利用 VAR 模型的结果实\n风了昌和拓 2 个汪坚，辣时用师方法提交， 二\n者结果一致。在 VAR 预测站果华础上，建立收益最大化的目标孟数和消足问题\n2 及3的的宁人的人化上电完成所有有到的和- 红人和人际\n生生建议改天请人村和这从生的认。",
+      "chapter_navigation": "- 第 31 行：关键词，Bayesiam 模型，MC 链收效性，VAR 并型，优化模型，同期平均（关键词）\n- 第 40 行：一、问题重述（问题重述）\n- 第 71 行：三、符号说明（符号说明）\n- 第 96 行：四、模型建立与求解（模型建立）",
+      "model_terms": "- 时间序列：2 次\n- 回归：1 次\n- 相关分析：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 自一个正态总本，可建立 Bayesian 销量模型，下同。",
+      "paths": {
+        "card": "problems/2023C/papers/30_C126/paper_card.md",
+        "gallery": "problems/2023C/papers/30_C126/gallery.html",
+        "visual_contact": "problems/2023C/papers/30_C126/visual_contact.html",
+        "source_pdf": "problems/2023C/papers/30_C126/source.pdf",
+        "full_ocr": "problems/2023C/papers/30_C126/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023C/papers/30_C126/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "31",
+      "problem": "2023C",
+      "title": "基于价格弹性的蔬菜类商品自动定价与补货决策",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛C题论文展示（C228）.pdf",
+      "pages": 70,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p1"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表1 各类天区举例",
+            "图3 打折与人的关系 图3商品加大分有国人"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图4 三年问芯荣总销量时线驾 财5 月总销售量自相关两数色"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图 7 网站销售各周肌性分析"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图9 三年问意销最瘤势图",
+            "图 10 三年间各品类销量变化图"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图11 三年问各类音品总销量曲线图"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图 13各单品意销最与果计销量占比分析 图 14 单笔销最与日销售数妖富图"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "表2 FP-Grow由部分芭解结果",
+            "图16 问题二主体四路"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "表5 LSTML 对进从大小办"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图17 花叶类预测",
+            "表 7 品类需求强性参数"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p20"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图 48 生鲜商超每日收益折找图",
+            "表9 7月1日商超最优次策方案"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-23.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p23"
+        },
+        {
+          "page": 27,
+          "captions": [
+            "图19 NSGA2 也时结果",
+            "表 19 部分单品补货量及证价策只"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-28.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [
+            "图2 LSTM 模型定性这哈 相 0"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p29"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-31.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p31"
+        },
+        {
+          "page": 36,
+          "captions": [
+            "图2 花叶类 LSTM",
+            "图22 和花本类 LSTM"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-36.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [
+            "图26 DAE星-"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-37.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p37"
+        },
+        {
+          "page": 38,
+          "captions": [
+            "表19 ?月6日定价与补贷策略"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-38.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p38"
+        },
+        {
+          "page": 39,
+          "captions": [
+            "表29 ?月7日定价与补货第略",
+            "表24 每日总利润"
+          ],
+          "image_path": "problems\\2023C\\papers\\31_C228\\pages\\page-39.png",
+          "gallery_anchor": "problems/2023C/papers/31_C228/gallery.html#p39"
+        }
+      ],
+      "abstract_extract": "首先，基平雪所高维、虎杀的特征对其进行整合、分析与清洗。对多个防件自可\n接 (NJ). 对不同蛮量进行 nehot 编与时间序列处理、将进货请货信息按有/半月/年\n到全对此全光碟的数据近所更多信息，实现代应时间、同贷异源、折扣肖全的分析，\n并完威本单吕的常年性、地他性时令性分类.为保证后人求解的准确性，我们没定\n起史对利润异代信与洲霄闫无关单品进行消尝、\n\n对于间古一，为更好地分析，本文将问题芭信为近完销售量的时间分布规律销售\n分布规健以及相关关系，并从多个时间怠粒扒庶分析总体， 类别、个体的纺合信息,其\n\n我们使用 ACF 自相半数与时间订到分解，发现了各销缅在各时间蚌粒状度上的\n\n波动规律起劳，并结合生话与经济学理论完成了解和检验。其一，分析销售规律时，\n发现单虽傅量旺现长必分布。各曲靖最出以及各音唱在昌关中的古比关噶大，少部分\n单呈有多基少筷或少量多笔的销售特征 其三，采用偏相关性分析发刺夫册癌的赫代与\n1关系，采用 EP-Growt 关联诬分析发届部分间品的强相关性\n\n对于亲题二，为探究梢最与成本吉成定价的关系，本文选路经济学指标构建到对骨\n移未模双对便格弹性轩行估计，结果发现六种品关的销量与定价均呈现出或大或小的\n负相关性。为儿供定价与补贷的方案，我们先采用 LSTM 机开对未玉七天各蝇关的成\n本与销量过和天副，平均有广均过到 Q8 以上，并设定价格名性修下本数政入定价的影\n响。为求解续型人化问题，本使用 GBestPSO 算法并对攻改过引入先验知识，但\n到计策方案(呈体见附录 H) 后与平均情况对比，八项收益有明显提下，\n\n允于问题三本文对证的可售间员进行销过泪、并以单品销重与销售次数为依\n所采用 VIKOR 评价方法确定其未仁，初步克定了 40 个表选目标为解意合多目\n称非吉性规划问题，本文选用NSGA-IL 闫支配排这传算法，对其改进引入移验知识\n厅用 BG-RI 滋合纺到，建立多重CY 的课，确定双比化目标发: 最大化收益与最大化市\n场震求。 最终，在 Parele 节沿角距定了最优全 决策方案见聊录 D。同笠与一般钦产\n傅况进行对比，发现双族益所天\n\n对于间题站，本文参妥在与分析中出现的间古，实际疆验认知，经济学领直\n闫文献，从定价方法的角放提出三点部顾成本，竞争与需求的数据采集建议. 其一，和|\n集市场平均定价及主要更争对竹的定从数据以平和经济效益与训争优势; 其一，收集清\n要昔的预艇价格及价格二感避碎直观了解目标消费玫休的消音克 其三， 了解当地居\n民必入及人均消旨水平数据，了和居民的此休消旨能力与消费童吧-",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 45 行：关键词: ACF 自相关困数“FEP.Growt关联度分折 LSTM模型 VIKOR 评价 NSGS（关键词）\n- 第 960 行：参考文献（参考文献）",
+      "model_terms": "- 时间序列：23 次\n- LSTM：16 次\n- 回归：9 次\n- ARIMA：1 次\n- 粒子群：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题一: 分析炒据，苞出各芯茶品类及单品销售量的分布规律与相互关系;\n- 问题二: 分析各玩瘦品类的销售总量与成本协成定价的关系，并以南超利淹最大为\n- 问题四;分析可能影响蓝菜补沼与定价决策效果的其他因素，对上述问题进行改进\n- 分析古目中所给的信息以及附件数据，发现附件数据校为零散，因此首先需要对数\n- 所进行整合; 其次对信息进行韦步分析，对变量进行分类，仇于更直观的把握数据的特\n- 征; 最后大项的数据意味着数据押量可能难以保证，需要对异带俏与无关数据进行处理\n- 问题一主要要求我们分析数据，探究各个品类及单品销售量存在的规健与关系。但\n- 阅题二可以分为三步进行逐一求解,首先分析销售总量与成本加成定价的关系; 其\n- 次对芯革各品类未来一周的销售水平，龟发价格进行预测; 最后竹合销售总量与定价的\n- 注意的是，销量总量与成本加应定价可能受多种因素的影响，需要建立合适的模型列垩\n- 问题三是混合多目标规划问题. 尽管感中要求在镁中需求基的前提下进行最大收益",
+      "paths": {
+        "card": "problems/2023C/papers/31_C228/paper_card.md",
+        "gallery": "problems/2023C/papers/31_C228/gallery.html",
+        "visual_contact": "problems/2023C/papers/31_C228/visual_contact.html",
+        "source_pdf": "problems/2023C/papers/31_C228/source.pdf",
+        "full_ocr": "problems/2023C/papers/31_C228/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023C/papers/31_C228/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

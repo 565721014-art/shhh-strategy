@@ -1,0 +1,30 @@
+{
+  "protocol": "official_statement_and_attachments_only_before_unlock",
+  "freeze_sha256": "3DCF6E3BB6B017C2EE0B0814F32833814F27692B5F9B7044209A1CFD0D6F5612",
+  "cases": [
+    {
+      "id": "2017A",
+      "source_sha256": "3DBF898B71DFAB3C0D5E50F51ACF4A06C307ED33A6D954442CD7CFE4B69EADB6"
+    },
+    {
+      "id": "2017B",
+      "source_sha256": "68553799CAE9648A103B6802287D9612F942EDA5715A30A61C2D142D1616A9B0"
+    },
+    {
+      "id": "2017C",
+      "source_sha256": "F447D3AB2C5A9C70E21A52CF9FA7CCFDE4B243615CD1DBFC7D154E9415615ADF"
+    },
+    {
+      "id": "2016A",
+      "source_sha256": "95D6CA4F17B09E301FD492094F46B3C8B399FF879D45C80202DCB5FFDDD785EF"
+    },
+    {
+      "id": "2016B",
+      "source_sha256": "83EA01F425374F0A31AA717C76273AEA23A589DD213C160D5090146216A5CB18"
+    }
+  ],
+  "limitations": [
+    "Historical public problems may exist in model pretraining data.",
+    "No review, judging note, or solution text was intentionally consulted after case selection and before freeze generation."
+  ]
+}

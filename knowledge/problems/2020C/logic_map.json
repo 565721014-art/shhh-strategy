@@ -1,0 +1,729 @@
+{
+  "problem": "2020C",
+  "title": "中小微企业的信贷决策",
+  "category": "数据预测与经营决策",
+  "mother_problem": "交易特征驱动的信用风险识别与信贷配置",
+  "question_chain": "发票流水清洗 -> 企业经营与风险特征 -> 违约/信誉识别 -> 额度与利率联合决策 -> 突发因素情景调整",
+  "misreading_risks": [
+    "评价得分直接替代违约概率",
+    "风险识别与额度配置脱节",
+    "冲击因素只做文字修正"
+  ],
+  "questions": [],
+  "attachments": [
+    {
+      "name": "附件1：123家有信贷记录企业的相关数据.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2020C\\attachments\\附件1：123家有信贷记录企业的相关数据.xlsx",
+      "sheets": [
+        {
+          "name": "企业信息",
+          "rows": 124,
+          "cols": 4,
+          "preview": [
+            [
+              "企业代号",
+              "企业名称",
+              "信誉评级",
+              "是否违约"
+            ],
+            [
+              "E1",
+              "***电器销售有限公司",
+              "A",
+              "否"
+            ],
+            [
+              "E2",
+              "***技术有限责任公司",
+              "A",
+              "否"
+            ],
+            [
+              "E3",
+              "***电子(中国)有限公司***分公司",
+              "C",
+              "否"
+            ]
+          ]
+        },
+        {
+          "name": "进项发票信息",
+          "rows": 210948,
+          "cols": 8,
+          "preview": [
+            [
+              "企业代号",
+              "发票号码",
+              "开票日期",
+              "销方单位代号",
+              "金额",
+              "税额",
+              "价税合计",
+              "发票状态"
+            ],
+            [
+              "E1",
+              3390939,
+              "2017-07-18 00:00:00",
+              "A00297",
+              -943.4,
+              -56.6,
+              -1000,
+              "有效发票"
+            ],
+            [
+              "E1",
+              3390940,
+              "2017-07-18 00:00:00",
+              "A00297",
+              -4780.24,
+              -286.81,
+              -5067.05,
+              "有效发票"
+            ],
+            [
+              "E1",
+              3390941,
+              "2017-07-18 00:00:00",
+              "A00297",
+              943.4,
+              56.6,
+              1000,
+              "有效发票"
+            ]
+          ]
+        },
+        {
+          "name": "销项发票信息",
+          "rows": 162485,
+          "cols": 8,
+          "preview": [
+            [
+              "企业代号",
+              "发票号码",
+              "开票日期",
+              "购方单位代号",
+              "金额",
+              "税额",
+              "价税合计",
+              "发票状态"
+            ],
+            [
+              "E1",
+              11459356,
+              "2017-08-04 00:00:00",
+              "B03711",
+              9401.71,
+              1598.29,
+              11000,
+              "有效发票"
+            ],
+            [
+              "E1",
+              5076239,
+              "2017-08-09 00:00:00",
+              "B00844",
+              8170.94,
+              1389.06,
+              9560,
+              "有效发票"
+            ],
+            [
+              "E1",
+              5076240,
+              "2017-08-09 00:00:00",
+              "B00844",
+              8170.94,
+              1389.06,
+              9560,
+              "有效发票"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2：302家无信贷记录企业的相关数据.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2020C\\attachments\\附件2：302家无信贷记录企业的相关数据.xlsx",
+      "sheets": [
+        {
+          "name": "企业信息",
+          "rows": 303,
+          "cols": 2,
+          "preview": [
+            [
+              "企业代号",
+              "企业名称"
+            ],
+            [
+              "E124",
+              "个体经营E124 "
+            ],
+            [
+              "E125",
+              "个体经营E125 "
+            ],
+            [
+              "E126",
+              "个体经营E126 "
+            ]
+          ]
+        },
+        {
+          "name": "销项发票信息",
+          "rows": 330836,
+          "cols": 8,
+          "preview": [
+            [
+              "企业代号",
+              "发票号码",
+              "开票日期",
+              "购方单位代号",
+              "金额",
+              "税额",
+              "价税合计",
+              "发票状态"
+            ],
+            [
+              "E124",
+              "15212483",
+              "2017-09-01 11:58:43",
+              "D00585",
+              839350.55,
+              92328.56,
+              931679.11,
+              "有效发票"
+            ],
+            [
+              "E124",
+              "15212484",
+              "2017-09-01 11:59:20",
+              "D00585",
+              900900.9,
+              99099.1,
+              1000000,
+              "有效发票"
+            ],
+            [
+              "E124",
+              "15212485",
+              "2017-09-01 11:59:51",
+              "D00585",
+              900900.9,
+              99099.1,
+              1000000,
+              "有效发票"
+            ]
+          ]
+        },
+        {
+          "name": "进项发票信息",
+          "rows": 395176,
+          "cols": 11,
+          "preview": [
+            [
+              "企业代号",
+              "发票号码",
+              "开票日期",
+              "销方单位代号",
+              "金额",
+              "税额",
+              "价税合计",
+              "发票状态",
+              null,
+              null,
+              null
+            ],
+            [
+              "E124",
+              "18891676",
+              "2017-09-01 00:00:00",
+              "C00014",
+              338.46,
+              57.54,
+              396,
+              "有效发票",
+              null,
+              null,
+              null
+            ],
+            [
+              "E124",
+              "18691267",
+              "2017-09-01 00:00:00",
+              "C00480",
+              230.1,
+              6.9,
+              237,
+              "有效发票",
+              null,
+              null,
+              null
+            ],
+            [
+              "E124",
+              "12995412",
+              "2017-09-01 00:00:00",
+              "C23675",
+              223.3,
+              6.7,
+              230,
+              "有效发票",
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件3：银行贷款年利率与客户流失率关系的统计数据.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2020C\\attachments\\附件3：银行贷款年利率与客户流失率关系的统计数据.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 31,
+          "cols": 4,
+          "preview": [
+            [
+              "贷款年利率",
+              "客户流失率",
+              null,
+              null
+            ],
+            [
+              null,
+              "信誉评级A",
+              "信誉评级B",
+              "信誉评级C"
+            ],
+            [
+              0.04,
+              0,
+              0,
+              0
+            ],
+            [
+              0.0425,
+              0.0945741262057566,
+              0.0667995833242854,
+              0.0687253064883727
+            ]
+          ]
+        },
+        {
+          "name": "Sheet2",
+          "rows": 1,
+          "cols": 1,
+          "preview": []
+        },
+        {
+          "name": "Sheet3",
+          "rows": 1,
+          "cols": 1,
+          "preview": []
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "02",
+      "problem": "2020C",
+      "title": "针对中小微企业最优信贷决策研究",
+      "source_name": "2020_C170_官方论文展示.pdf",
+      "pages": 40,
+      "visual_pages": [
+        {
+          "page": 4,
+          "captions": [
+            "图 2.1 总体思路图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-04.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p4"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图 5.1 信用等级分布图 单位: 个)",
+            "图52 运营时长分布图 (单位 月)",
+            "图5.3 利润分布图 (单位: 个)"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-06.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图一=一国",
+            "图 5.4 销项价税总额分布图〈单位: 个)",
+            "图 5.5 进项金额变异系数分布图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-07.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图 5.6 联系上游企业分布图单位: 个)"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-08.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图 6.1 第一问思路图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-09.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-10.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-11.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-12.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表6.1 评级转化表",
+            "图 6.2 企业信贷风险指标体系图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-13.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表 6.2 指标权重表"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-14.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-15.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "表 63 各企业信贷风险表",
+            "图 6.3 信贷评级与总评序列图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-16.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "表6.4 剔除贷款企业表"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-17.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "表 6.5 贷款利率表"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-18.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-19.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "表 6.6 贷款额度表"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-20.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 6.4 问题二思路图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-21.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "表 6.7 Logit 回归准确度表",
+            "表 6.8 违约概率预测结果"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-22.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "局 图 6.S BP 神经网络传播图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-23.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "表 69 信用等级预测结果"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-24.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图 6.6 BP 神经网络精度检验",
+            "表 6.10 信贷风险量化结果"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-25.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-26.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [
+            "表6.12 贷款阁度计算结果"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-27.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "图 6.7 第三问思路图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-28.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [
+            "表 6.13 突发事件影响级别表",
+            "表 6.14 固定因子表"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-29.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-30.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [
+            "表 6.15 变量突发事件因子表"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-31.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [
+            "表6.12 基于新冠疫情的贷款利率结果",
+            "表 6.13 基于新冠疫情的贷款利率结果"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-32.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [
+            "图 6.8 第三问思路图"
+          ],
+          "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-33.png",
+          "gallery_anchor": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html#p33"
+        }
+      ],
+      "abstract_extract": "中小微企业由于其自身实力较弱和贷款担保不足，银行往往仅根据企业以往的信用记\n录以及企业的发票信息来判断企业的信贷风险，这就需要有一个合理、高效的信贷风险量\n化体系，并根据企业信贷风险构建最优信贷决策模型。研究银行对中小微企业的最优信贷\n决策一方面有利于银行的健康发展，维护金融市场的稳定; 另一方面有利于增加中小微企\n业获得贷款的几率，促进中小微企业的发展。\n\n针对问题一，主要解决两个问题: 一是需要量化各企业的信贷风险，二是需要给出银\n行的最优信贷决策。文章首先通过对数据进行分析和预处理，从中提炼了总利润、运营时\n长等 11 个指标，分别从实力、供求稳定性、偿还能力和信誉度四个方面对企业信贷风险进\n行综合评估，建立了企业信贷风险评价体系。最后使用箭权法和 TOPSIS 方法量化了企业\n的信贷风险。第二个问题属于规划类问题，要求给出银行对各企业的信贷决策。银行的信\n贷决策与企业的信贷风险密切相关，并遵循利润最大化和风险最小化的经营原则，本文依\n据RAROC 理论、违约金字塔理论以及上述原则构建了银行最优信贷模型，最终判断对\n123 家企业是否了予以放贷，并给出对于每个企业的最佳贷款利率和最佳贷款额度。\n\n针对问题二，需要预测出 302 家无信用记录企业的信用等级和违约记录，解决方法是\n利用有标记的附件 1 数据进行训练，再将附件 2 的数据代入进行预测。对于违约记录，本\n文使用 Logit 回归进行分析，其中回归的准确度为 84.6%，最终计算出各企业的违约概率。\n其次，本文使用 BP 神经网络模型对信用等级进行预测。将 302 家的违约概率和信用预测\n出来，结合自身已知数据就可以依据企业信贷风险评价指标体系量化各企业的信贷风险，\n最后结合总贷款额约束求解银行的最优信贷策略，得到针对 302 家企业的信贷策略。\n\n针对问题三，首先需要在原来模型的基础上考虑突发事件的影响，对原来的模型进行\n改进。本文创新性地引入突发事件因子来改进模型, 通过加入三种突发事件因子充分地识\n别突发事件带来的影响，从而对信贷决策进行调整。其次是分析新冠突发事件，通过国家\n统计局等渠道获得疫情对于各行业产值、利润等因素的影响数据，量化基于突发事件的最\n优信贷决策模型，求解发生突发事件时的信贷调整策略。最终获得基于新冠肺炎突发事件\n下的信贷调整政策。并将其与第二问的结果进行对比，文章发现新冠疫情的爆发导致银行\n的信贷策略更加倾向于高新技术产业，这可能和此类产业在疫情间的快速发展有关。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 40 行：关键词: 量化分析 信贷风险 信贷决策 违约金字塔理论 突发事件因子（关键词）\n- 第 45 行：一、问题重述（问题重述）\n- 第 184 行：三、模型假设（模型假设）\n- 第 1179 行：7.1 模型评价（模型评价）\n- 第 1219 行：八、参考文献（参考文献）",
+      "model_terms": "- 回归：13 次\n- 神经网络：13 次\n- TOPSIS：7 次\n- 时间序列：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 放贷、贷款利率和贷款金笑。首先根据第一个问题计算出的各企业信贷风险来判断是否进\n- 行放贷，然后根据信誉越高利率越低的原则将适宜放贷的企业进行分类，确定其贷款利\n- 率。最后，根据利润最大化和风险最小化的经营原则建立银行最优信贷决策模型，依据上\n- 问题二需要根据附件 2 给出的 302 家企业的信息计算各企业的信贷风险，并在年度信\n- 贷总额为 1 亿的条件下求解银行对于各企业的信贷决策。本文首先需要根据附件一的数据\n- 计出参数，然后代入附件二的相应数据求出附件二企业违约的概率。对于信用等级，由于\n- 练样本，然后用训练完成的神经网络来对附件二企业的信用等级进行预测。将附件二中的\n- 事件的决策进行对比，分析突发事件的影响程度。最后给出具体的新冠肺炎突发事件、中",
+      "paths": {
+        "card": "problems/2020C/papers/02_2020_C170_官方论文展示/paper_card.md",
+        "gallery": "problems/2020C/papers/02_2020_C170_官方论文展示/gallery.html",
+        "visual_contact": "problems/2020C/papers/02_2020_C170_官方论文展示/visual_contact.html",
+        "source_pdf": "problems/2020C/papers/02_2020_C170_官方论文展示/source.pdf",
+        "full_ocr": "problems/2020C/papers/02_2020_C170_官方论文展示/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2020C/papers/02_2020_C170_官方论文展示/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "03",
+      "problem": "2020C",
+      "title": "银行对中小微企业的信贷决策分析",
+      "source_name": "2020_C227_国一论文.pdf",
+      "pages": 35,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-01.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-02.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-03.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-04.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p4"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-06.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-07.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p7"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图 1 Voting 模型图解",
+            "表 1 基分类器分类效果",
+            "表2 软投票结果"
+          ],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-09.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图 2 Soft Voting 的 ROC 曲线图",
+            "表3 不同信誉评级下违约风险的描述性统计分析"
+          ],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-10.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "表 4 不同信誉等级下的贷款限制"
+          ],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-11.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p11"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-13.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-14.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-15.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-16.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图4 聚类系数折线图",
+            "表 5类别 1 企业特征描述性统计分析",
+            "表 6类别 2 企业特征描述性统计分析",
+            "表7了类别 3 企业特征描述性统计分析"
+          ],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-17.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-18.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "表8 银行信贷调整策略"
+          ],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-19.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-20.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p20"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\pages\\page-30.png",
+          "gallery_anchor": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html#p30"
+        }
+      ],
+      "abstract_extract": "本文研究银行如何根据中小微企业的实力、信誉对其信贷风险做出评估，然后依\n据信贷风险等因素来确定是否放贷及贷款额度、利率和期限等信贷策略。\n\n针对问题一，对附件 1 中的数据进行特征提取，综合考虑了企业实力、发展洪\n力、上下游供求关系、企业抗风险能力四类指标，共提取出 20 个特征来衡量企业的信\n贷风险。本文以 Logistic 回归、Adaboost、GBDT、SVM 和随机森林为基分类器，建立\nSoft Voting 集成学习算法，计算企业的违约风险。Soft Voting 在整个数据集上的综合准\n确率为 97.6%，ROC 曲线覆盖面积[AUC 值)达到 99.429%，接近完美模型，计算出的概\n率可信度高。根据附件 1 给出的信誉评级和得出的违约风险，根据银行的行为，建立\n一个利润最高，风险和潜在损失最小的多目标规划模型，求解得出本问的银行信贷策\n略。\n\n针对问题二，由于本问为无信贷记录企业，银行需要需要根据贷款企业的已知信\n息和有信贷记录的信息对贷款企业进行信誉评级和违约风险判断。对附件 2 的数据做\n与附件 1 一样的处理，根据提取特征，使用问题一训练的 Soft Voting 模型对附件 2 企\n业进行违约风险预测。将违约风险加入已有特征，用有信贷记录的企业相关数据训练\nXGBoost 模型，实现对信誉评级的多分类预测。XGBoost 在训练集上综合准确率为\n87.8%。完成信誉评级和违约风险判断后，就可以进行多目标规划模型求解，得出银行\n的信贷策略。\n\n针对问题三，本文以新冠疫情这个突发事件为例，综合考虑企业的信贷风险和疫\n情对不同企业的不同影响。从企业在疫情中面临的系统性风险和非系统性风险的角\n度，本文在附件 2 中提取行业风险、企业经营状况、利润同比增长率、废票占比变动\n将企业聚成 3类，不同类别的企业具有不同的风险乘数Q,，风险乘数描述了疫情对不\n同类别企业的违约风险的放大作用。将信誉评级与聚类结果综合考虑，银行将对企业\n建立新的评价分级体系，将风险乘数@,代入得到调整之后的多目标规划模型，求解可\n得出银行问题三情景下的信贷策略。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 37 行：关键词:特征工程，集成学习算法，多目标规划，XGBoost， 系统聚类（关键词）\n- 第 44 行：一、问题重述（问题重述）\n- 第 68 行：二、问题分析（问题分析）\n- 第 111 行：三、模型假设（模型假设）\n- 第 131 行：四、符号说明（符号说明）\n- 第 191 行：5.1 数据预处理（数据预处理）\n- 第 277 行：5.3.3 模型建立（模型建立）\n- 第 317 行：5.3.4 模型求解（模型求解）\n- 第 384 行：5.4.2 模型建立与求解（模型建立）\n- 第 443 行：6.2 模型建立（模型建立）\n- 第 689 行：八、模型评价（模型评价）\n- 第 706 行：九、参考文献（参考文献）",
+      "model_terms": "- 聚类：18 次\n- 回归：10 次\n- 决策树：5 次\n- 随机森林：5 次\n- 线性规划：2 次\n- 非线性规划：2 次\n- 因子分析：1 次\n- 神经网络：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 贷款额度、利率与是否放贷来制定策略。首先本文就企业实力、对上下游企业的影响\n- 表该等级企业的违约风险。最后建立以银行利润最高，银行风险最低，潜在流失客户\n- 银行通过附件 2 给出的数据进行自行判断。首先运用第一问训练出的的 Voting 集成学\n- 组成新的 21 个特征，运用 Xgboost 模型，用附件 1 所提取的特征训练模型，然后使用\n- 附件 2 数据对 302 家企业进行信誉评级，得出分类结果。最后求解多目标非线性规划\n- 析，配合问题二所做出的信誉评级，建立一个新的综合分类评级。不同类别的企业具",
+      "paths": {
+        "card": "problems/2020C/papers/03_2020_C227_国一论文/paper_card.md",
+        "gallery": "problems/2020C/papers/03_2020_C227_国一论文/gallery.html",
+        "visual_contact": "problems/2020C/papers/03_2020_C227_国一论文/visual_contact.html",
+        "source_pdf": "problems/2020C/papers/03_2020_C227_国一论文/source.pdf",
+        "full_ocr": "problems/2020C/papers/03_2020_C227_国一论文/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2020C/papers/03_2020_C227_国一论文/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

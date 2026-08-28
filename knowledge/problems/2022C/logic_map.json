@@ -1,0 +1,622 @@
+{
+  "problem": "2022C",
+  "title": "古代玻璃制品的成分分析与鉴别",
+  "category": "识别、时序与风险",
+  "mother_problem": "成分数据中的风化校正、分层分类和未知样本鉴别",
+  "question_chain": "成分闭合与零值处理 -> 风化关系 -> 风化前成分估计 -> 类型/亚类分类 -> 未知样本与关联比较",
+  "misreading_risks": [
+    "直接对百分比做普通相关",
+    "零值处理改变组成结构",
+    "分类后再用同一数据自证准确"
+  ],
+  "questions": [
+    "问题 1 对这些玻璃文物的表面风化与其玻璃类型、纹饰和颜色的关系进行分析；结合玻 璃的类型，分析文物样品表面有无风化化学成分含量的统计规律，并根据风化点检测数据，预 测其风化前的化学成分含量。",
+    "问题 2 依据附件数据分析高钾玻璃、铅钡玻璃的分类规律；对于每个类别选择合适的化 学成分对其进行亚类划分，给出具体的划分方法及划分结果，并对分类结果的合理性和敏感性 进行分析。",
+    "问题 3 对附件表单 3 中未知类别玻璃文物的化学成分进行分析，鉴别其所属类型，并对 分类结果的敏感性进行分析。",
+    "问题 4 针对不同类别的玻璃文物样品，分析其化学成分之间的关联关系，并比较不同类 别之间的化学成分关联关系的差异性。 附件 表单 1 玻璃文物的基本信息 表单 2 已分类玻璃文物的化学成分比例，其中 (1) 文物采样点为该编号文物表面某部位的随机采样，其风化属性与附件表单 1 中相应文 物一致。 (2) 部位 1 和部位 2 是文物造型上不同的两个部位，其成分与含量可能存在差异。 (3) 未风化点是风化文物表面未风化区域内的点。 (4) 严重风化点取自风化层。 表单 3 未分类玻璃文物的化学成分比例"
+  ],
+  "attachments": [
+    {
+      "name": "附件.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2022C\\attachments\\附件.xlsx",
+      "sheets": [
+        {
+          "name": "表单1",
+          "rows": 59,
+          "cols": 5,
+          "preview": [
+            [
+              "文物编号",
+              "纹饰",
+              "类型",
+              "颜色",
+              "表面风化"
+            ],
+            [
+              "01",
+              "C",
+              "高钾",
+              "蓝绿",
+              "无风化"
+            ],
+            [
+              "02",
+              "A",
+              "铅钡",
+              "浅蓝",
+              "风化"
+            ],
+            [
+              "03",
+              "A",
+              "高钾",
+              "蓝绿",
+              "无风化"
+            ]
+          ]
+        },
+        {
+          "name": "表单2",
+          "rows": 70,
+          "cols": 15,
+          "preview": [
+            [
+              "文物采样点",
+              "二氧化硅(SiO2)",
+              "氧化钠(Na2O)",
+              "氧化钾(K2O)",
+              "氧化钙(CaO)",
+              "氧化镁(MgO)",
+              "氧化铝(Al2O3)",
+              "氧化铁(Fe2O3)",
+              "氧化铜(CuO)",
+              "氧化铅(PbO)",
+              "氧化钡(BaO)",
+              "五氧化二磷(P2O5)"
+            ],
+            [
+              "01",
+              69.33,
+              null,
+              9.99,
+              6.32,
+              0.87,
+              3.93,
+              1.74,
+              3.87,
+              null,
+              null,
+              1.17
+            ],
+            [
+              "02",
+              36.28,
+              null,
+              1.05,
+              2.34,
+              1.18,
+              5.73,
+              1.86,
+              0.26,
+              47.43,
+              null,
+              3.57
+            ],
+            [
+              "03部位1",
+              87.05,
+              null,
+              5.19,
+              2.01,
+              null,
+              4.06,
+              null,
+              0.78,
+              0.25,
+              null,
+              0.66
+            ]
+          ]
+        },
+        {
+          "name": "表单3",
+          "rows": 9,
+          "cols": 16,
+          "preview": [
+            [
+              "文物编号",
+              "表面风化",
+              "二氧化硅(SiO2)",
+              "氧化钠(Na2O)",
+              "氧化钾(K2O)",
+              "氧化钙(CaO)",
+              "氧化镁(MgO)",
+              "氧化铝(Al2O3)",
+              "氧化铁(Fe2O3)",
+              "氧化铜(CuO)",
+              "氧化铅(PbO)",
+              "氧化钡(BaO)"
+            ],
+            [
+              "A1",
+              "无风化",
+              78.45,
+              null,
+              null,
+              6.08,
+              1.86,
+              7.23,
+              2.15,
+              2.11,
+              null,
+              null
+            ],
+            [
+              "A2",
+              "风化",
+              37.75,
+              null,
+              null,
+              7.63,
+              null,
+              2.33,
+              null,
+              null,
+              34.3,
+              null
+            ],
+            [
+              "A3",
+              "无风化",
+              31.95,
+              null,
+              1.36,
+              7.19,
+              0.81,
+              2.93,
+              7.06,
+              0.21,
+              39.58,
+              4.69
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "21",
+      "problem": "2022C",
+      "title": "基于成分数据的古代玻璃制品的成分分析与鉴别",
+      "source_name": "2022_2022高教社杯全国大学生数学建模竞赛C题论文展示（C155）.pdf",
+      "pages": 41,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-01.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-02.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-03.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-04.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "表1 呈化处理"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-05.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表 2 表而风化-纹估期望计数图",
+            "表3 _表而风化-颜色期望计数图",
+            "表4 表面风化-屁珊类弄期望计数图",
+            "出表2、表3 表 4可知, 去而风化-区璃类型\"组别的人部单元格知望计效大于1,并"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-06.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "表6 表面风化部色 Yates 校正卡放检验结果"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-07.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-08.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-09.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-10.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图1 四类箱线图"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-11.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图2 @弄权时",
+            "表9 高外玻璃风化点锋选"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-12.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表10销册下风化点引和",
+            "表9和胡 10中的甩化点四为胡卫项要进行估轴的玫所上",
+            "表 12 销训议员时"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-13.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表13 _商败晴中心元素",
+            "表 14 多钢攻哨中心元素"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-14.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-15.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-16.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "表18_销负下请风化点预测"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-17.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-18.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-19.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-20.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图6 四类相关系数矩阵"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-21.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "表21商儿玉风化只 草否类",
+            "表22角出术风化R 型来天"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-22.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图7 亚分类结果"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-23.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "表 25 代表性特征地拉动图"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-24.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-25.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-26.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [
+            "图8 商印类基色关联上"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-27.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-28.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-29.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [
+            "图 10 高钊乏类检验"
+          ],
+          "image_path": "problems\\2022C\\papers\\21_C155\\pages\\page-30.png",
+          "gallery_anchor": "problems/2022C/papers/21_C155/gallery.html#p30"
+        }
+      ],
+      "abstract_extract": "针对间题一,本文首先对数据进行餐处开，对表单 3中的无效数所采取时陈处理，\n莽将化学区分全员数据针化必完半成分数的 【定和为 0) ，再采计中心化对数比变换方\n法计万分娄拓进行钦用于消除完和限制计后续分析的影响，并导表只1 四类别进行避\n化，运由局化后网数据末分析相关性: 对于第一小癌。 古日要求分别帮究文物伞品表面\n风化与曾色，络瑞类电以及纹侯失的关系，本文对赵过 20%6 的比例期剖计数小于5的\n识晶建立 Pearsem 卡方术难法，并对不滑中卡方答监前提价纳别建立 vates 校正卡方检\n枚法。浊于第二小问，盘日要求典握玉类型，措术有无风化样品化学成从含呈的红计\n需律，本六引入均值、最大值、 最小估、 慰准天、变异系数、信了系数、几应系数措过统\n计层，并用烛线图反扶多组连续型数多分布的故布范网以及中心位置。对于第三小问，\n本文遂过到类全得数皂虽现时序美系，并其于绎过中心化计数比变换后的禾据，衣过问\n归方各建立化学成分站势变换模型以所测的化前化学分合呈。合上基于中心化对数出\n变换隐志分数据检测型，可以使问熙果保证各化学开分村片和为 0094-\n\n针对间题一 第一小辣要束分折钳铀玻以及商旬区的分类规律，本文引入监督\n学习进行分类，妥由决策和法对数据进行分藉, 求角红导发现该训型在痛确束，召月市、\n次确束以及FI 系歼上均为1，说了模型性能良好。第二小门于不同的疲玉基型和\n排适各网化学成外进行业关分类，本文逢册 有型于类法得到崔特征交晤为基础进行@\n型阳类，相比于直接使用 Q 开聂类法具有更吉的台开性，并才过在挑动范同内内高下\n霜以仿。拓动花网处于 |9.1.0.3|范辐内，册此说时模型级感性良好-\n\n针对间题三，蕊日要求和通过分析表哩3 中未知统珊关到的文物作曲的化学及分，吕\n草未知浓类风的文物纺切所喘关型。本文基于何题二风建模与水页，使用于门大二中\n训练好侈决策杠进行分关，并通过 Q 型当类法进行交叉检胜，分别对风化以及未风化\n起确进行生感三分析，引果表明本文人用方法在准确性和做珊性上尼有不希表再-\n\n针对间题四，戈日 要求分析不同交玉亲别的化学下分四的相关性，即分则研窒高评\n若确与名鲁复玉的化学成分指标的关联。 本文建立放旬关联分桥模型。出于经种六确\n奖别都有二四项化学碟分，于是角态估基成分，依次作为号序列| 其全十三如让分人为\n地序列,建立全关联分析模型，并对关联系数进行加权处理色可得到关联度仁，以关\n划度全移大小来衔呈相关性大小其次芭比狐不同到病史有的关联度使的郑异各席\n最后通过观测关联系数内发现, 高好疲了关联系蚊扑于集中分布，而相负六于关联系娄\n赵于分做，并要所关联谍信分析差只性。，\n关键字: 中心化对数空欣”卡方埠验。决儿法“双关分析 。 灰色关联分析\n\n1",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 82 行：三、符号说明（符号说明）\n- 第 802 行：6.3.2 敏感性分析（敏感性分析）\n- 第 861 行：7.2.1 敏感性分析（敏感性分析）\n- 第 1018 行：参考文献（参考文献）",
+      "model_terms": "- 聚类：12 次\n- 回归：3 次\n- 敏感性分析：2 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 针对问题四; 分别分析不同次确类王隐化学成分之和的关联性。 并分析不同坡现贡\n- 示， 首先对数据进行处王，对表哈2 无效雪招采取恒除处理，并对表单 四类别进行\n- 关，闪疾过中开机法进行交叉粒验。最后导结黑进和感性分析。\n- 针对问题四，要分析不同起璃英别的化学成分前的相关性，即分别研究高饼坡璃与\n- 大小和后相关手大小: 其次下比较不同泪于出和的交代内套异各让因此和过\n- 五、问题一模型的建立与求解",
+      "paths": {
+        "card": "problems/2022C/papers/21_C155/paper_card.md",
+        "gallery": "problems/2022C/papers/21_C155/gallery.html",
+        "visual_contact": "problems/2022C/papers/21_C155/visual_contact.html",
+        "source_pdf": "problems/2022C/papers/21_C155/source.pdf",
+        "full_ocr": "problems/2022C/papers/21_C155/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2022C/papers/21_C155/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "22",
+      "problem": "2022C",
+      "title": "基于成分数据分析的玻璃制品分析与分类",
+      "source_name": "2022_2022高教社杯全国大学生数学建模竞赛C题论文展示（C229）.pdf",
+      "pages": 26,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-01.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "图 1玻璃便作过程"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-02.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [
+            "表1 符生说上"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-03.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-04.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-05.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表 6虚拟变量处理"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-06.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图2。纹作",
+            "图3下珊关型"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-07.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "表 10， 卡方检验结果",
+            "图三分数据为几向结构，故可进行找动泛条类似实效空间上的如法运算。对于任|"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-08.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图5，高钾孩璃风化前后化学成分对比，外转为风化，内圈为无风化",
+            "图 6: 高铮琉璃风化前后化学对比〔未吉 StiO2》 ，外圈为风化，内图为无风化"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-09.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图 7; 外饥玻璃分化前后元素对比，外图为风化，内图为无风化"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-10.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图9。 决策机结时"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-11.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图10，仿最小划关副分析续取",
+            "图11，仿小二科别分析杰验证"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-12.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图12，高钾分类个数确定 加 13， 锁铝分类个数确定",
+            "图 14，高罗茧类情况 男 15。 上领对类情况"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-13.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表1， 亚分并"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-14.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图 17: 高钊玻现亚关偏最小二乘判别分析模型验证",
+            "图 18， 局饥玻璃焉关偏最小二判别分析结果"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-15.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图 19，饥负疏东亚类偏最小二条判别分析模型验证",
+            "表 16; 负钢怠璃到类信景小二冬判别分析的不同特征的 VIP 值"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-16.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图20，所有主成分下偏最小二地回归结果",
+            "图21: 偏最小二乘回归系数",
+            "表 17: 表单 了未知玻璃文物的类型预测"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-17.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图 22，高钾孩璃热力困",
+            "图 233，名饥六璃奏力图"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-18.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-19.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p19"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-21.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "全 表2， 了Rey (人) doax"
+          ],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-22.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p22"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2022C\\papers\\22_C229\\pages\\page-25.png",
+          "gallery_anchor": "problems/2022C/papers/22_C229/gallery.html#p25"
+        }
+      ],
+      "abstract_extract": "我璃是人类地时批发明的人过材料之一，古代各珊陈少数天然玻确外，其余均为人\n造到殉。虽外观相似，但化学上分不同。研究下现钙唱的化学成分及鉴则对古代下现文\n物的保护具有更要意义。本文从成分数据分析视角出发，对取现的化学成分进行分析，\n并对不同类型的玫瑞进行分类及预测。\n\n首先对阴件表单中数据进行预处理。表单 ! 数据技照众笋以及热卡填充进行负失什\n播补。由于玻现制品的化学成分属于成分数据，但因检测手段等原因本能纺到其记分比\n网的累加和莫 100%6。另外很多成分检测不到荆为0 值。假设这种情况是由于仪器精度\n首先或相合五入得到的。因此，过用乘法匠欣法对和表单 3 和 3 中空丰处及 0 值进行手\n补，最后每到的长瑞化学成分数所为成分致所\n\n对于问题 1, 首先基于 speamman 相关系效以及卡方检验分析到璃文物才而风化与类\n型、改饰、靖色的关系，洁条均表雳玛文物表面风化与区天天型有关，与改肇、而色\n无闫。 其次, 根据成分数据的 Aiiehison 几何结构,在单形空间分别计算每各区殉风化与\n无风化的化学成分均怕，站果表志高甸惧璃风化后二氧化硅占比增加较大，氧化甸显荐\n汰少，所化负、氧化铅、氧化钢、所化银占比均有所上升; 去负区璃风化后二氧化硅占\n比降低, 氧化外、 氧化镍天意，五所化二俩降低。最后,以下珊的化学成分为响应变量,\n玖饰、类型、棒色与表面风化为自变歌，构过 Dirichlet 回归惯型，进而根据该民型项源\n风化点风化前的化学成分含量，具体结果见支译村料,\n\n对于间题2，首先分析高本瑞与名外瑞的分类规律，基于问题1结果，选择表\n而风化、化学成分为分类特征，以区珊类型为类别。白于化学成分为成分数据，因此对\n化学顾分和对逢对致尼素(ci变换。采用雇策竺建立分贡李型，以氧化针为特征进行机\n类玖殉分类，荐氧化银值大于1.5 册为要银区丧，反之为高皇玻璃，回时妹立信最小二\n乘判别分析(PLS-DA)，通过不同特征的投影重要性,得到对分类有影响的特征分别为所\n化银、刀化乌、氧化饮和氧化甸。两种方法得到结时一致。共次，采用 kmcans 芭类分\n析分别对两种类型的入进行汪类，确定最优末类个数者为3，然后基于 PLS-DA 对每\n种到斑于择合适的化学成分，结果为高入斑以所化竹、二氧化硅、氧化匡、氧化锡和\n氧化钢为分类特征分为三闫，钳饮芍璃以五气化二厂、气化钢、氧化纳和氧化铁为分类\n特征分为三类\n\n对于间题 3，焦据间题 2 构建模虹对未类类别的玻璃进行划分。方法一是基于决策\n柑模型，韦择氧化银成分信对未知到殉进行划分。方法二是对表单 3 数据做 ckr 变摘，\n远择鼠化错、氧化但、氧化外和所化介成分为自变量，焉璃类型为因变量，建立信最小\n二乘回归[PLS)，通过交叉验证法选择主成分个数为 3，通过预泗人确定我璃类型，两和\n方法得到的结果一致，A1、A6、A7 为商旭到斑，A2、A3、A4、A5、A8 为组领我天\n进一步结合间题 2 中两类玻基的亚类划分特征，基于 PLS 得到 AI、A6、A7 部是高儿\n玻天的同一亚美, A2 和 A4 是名久攻防的同一亚类, A3 和 A8 是名针区璃的同一亚关，\n45 是铝急站天的另一亚关。\n\n对于问题 +，首先分别对每和类型下瑞的化学成分计算相关系数,，现次和分析相关\n性热力图。然后对两臣殉化学成分之同的相关系数进行配对 Wileoxon 检验，结果为\n枉类副殉化学威分之间的相关关系无显著差异。",
+      "chapter_navigation": "- 第 53 行：关键词，成分数据，决策佬，信最小二乘济别分析F 飞闫分析吕相关分伯（关键词）\n- 第 58 行：一、问题重述（问题重述）\n- 第 111 行：三、模型假设（模型假设）\n- 第 129 行：五、数据预处理（数据预处理）\n- 第 205 行：六、模型建立与求解（模型建立）\n- 第 576 行：七、模型检验及可靠性分析（模型检验）\n- 第 634 行：九、参考文献（参考文献）",
+      "model_terms": "- 主成分：8 次\n- 回归：8 次\n- 交叉验证：3 次\n- 决策树：2 次\n- 聚类：2 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 在回答问题之前首先对附件表单中数据进行预处理。才单 1 数据技照众教以及热卡\n- 化学成分数据转化为成分致据54。\n- 首先基于 speanman 相关系散以及卡方检验分析玻璃文物表面风化与类型, 纹饰, 上\n- 色的甘系。其次,根据成分数据的 Aitchison 几何结构,在单形空间分别计算每种玻璃风\n- 种类型的玻璃进行聚类分析，然后基于偏最小二乘判别分析对每种玻璃选择合适的化学\n- 快所问题2 风奸的疝型对未知类别的到玉文移进行类旬划分。 方法一是甘于决策相\n- 对于每和站请类型,我们首先采用 Pearsan 相关系妆分析化学成分之间的相关关系。",
+      "paths": {
+        "card": "problems/2022C/papers/22_C229/paper_card.md",
+        "gallery": "problems/2022C/papers/22_C229/gallery.html",
+        "visual_contact": "problems/2022C/papers/22_C229/visual_contact.html",
+        "source_pdf": "problems/2022C/papers/22_C229/source.pdf",
+        "full_ocr": "problems/2022C/papers/22_C229/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2022C/papers/22_C229/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

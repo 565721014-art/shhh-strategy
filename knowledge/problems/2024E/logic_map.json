@@ -1,0 +1,660 @@
+{
+  "problem": "2024E",
+  "title": "交通流量管控",
+  "category": "数据预测与经营决策",
+  "mother_problem": "交通状态识别、信号配时、巡游车辆估计与管控评价",
+  "question_chain": "流量时段划分 -> 单路口模型 -> 路网信号协同 -> 巡游车辆识别 -> 临时措施前后评价",
+  "misreading_risks": [
+    "按固定钟点机械分段",
+    "局部绿灯优化导致下游拥堵",
+    "措施前后差异直接当因果效果"
+  ],
+  "questions": [
+    "问题 1 对经中路-纬中路交叉口，根据车流量的差异，可将一天分成若干个时段，估 计不同时段各个相位（包括四个方向直行、转弯）车流量。",
+    "问题 2 根据所给数据和上述模型，对经中路和纬中路上所有交叉口的信号灯进行优 化配置，在保证车辆通行的前提下，使得两条主路上的车流平均速度最大。",
+    "问题 3 对五一黄金周期间的数据进行分析，判定寻找停车位的巡游车辆，并估算假 期景区需要临时征用多少停车位才能满足需求？",
+    "问题 4 五一黄金周期间，该小镇对景区周边道路实行了临时性交通管理措施，具体 管控措施见"
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024E\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "行驶方向",
+          "rows": 5,
+          "cols": 3,
+          "preview": [
+            [
+              "方向编号",
+              "方向",
+              "英文描述"
+            ],
+            [
+              1,
+              "由东向西",
+              "east-west"
+            ],
+            [
+              2,
+              "由西向东",
+              "west-east"
+            ],
+            [
+              3,
+              "由南向北",
+              "south-north"
+            ]
+          ]
+        },
+        {
+          "name": "交叉口之间距离",
+          "rows": 2,
+          "cols": 1,
+          "preview": [
+            [
+              "经中路：环北路—520 m—纬一路—510 m—纬中路—710 m—环南路"
+            ],
+            [
+              "纬中路：环西路—460 m—经一路—340 m—经二路—440 m—经三路—420 m—经中路—530 m—景区出入口—560 m—经四路—430 m—经五路—270 m—环东路"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.csv",
+      "kind": "csv",
+      "linked_path": "problems\\2024E\\attachments\\附件2.csv",
+      "sheets": []
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "48",
+      "problem": "2024E",
+      "title": "交通流量管控",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E010）.pdf",
+      "pages": 39,
+      "visual_pages": [
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p3"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表1 原风数据样刚(示傅)"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p8"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图2 交叉口流量时段划分罕红分析结果"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图3 交叉口各相位流基预测结果"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图4 交叉流量转和商训央坟计"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表5 世交又口最迄信号本时万"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "表6 续中路交叉口相位关"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图6 各交叉口时焉图"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图7 遗传算法选代过程",
+            "表9 各相位绿灯时长庆化结果"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图8 优化衣后竺泊下约和度对比",
+            "图9 五一交通管制图"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "表7 提取数据样风(示情)"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图10 停车位计算结果"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图12 长于策平均叶变图",
+            "图 13 信久车辆平均时|"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "图 14 过小村辆玖时变图"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p24"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图30 交游车辆到重随时间赤化"
+          ],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-28.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-29.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p29"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-37.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p37"
+        },
+        {
+          "page": 38,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-38.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p38"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\48_E010\\pages\\page-39.png",
+          "gallery_anchor": "problems/2024E/papers/48_E010/gallery.html#p39"
+        }
+      ],
+      "abstract_extract": "耻着统市道路交通拥堵间题目测严型,不仅影史了首路的通行效率，也成为地方经\n济发展和百姓幸福呈的一个*冯点\"。本文主要研究交通流量管控问题，给出了对应间是\n的具体朋决方法方案、\n\n针对问题一，下先进行雪据整理与清洗，根据附件 2中的数据，提取经中路-首中\n路交叉口的车流玫据。通过给击交叉口流明变化南线，解析了交叉口泊量的日变和时变\n特征，结合方关分析关类工作日竺工作日交通党关异性，发现工作日与全工作日浙\n生怕证没有显著莽异。候指交通这量变化规律，采用 Kmeams 芭闫、DBSCAN 到类和\n商斯扩合《GMNID 孙半三种不同算法对交叉口流量时脆进行划分，得到交叉口流重变\n化四个阶殿，其中7， 00 至 20。00 交通流量相对平稳并没有有显著训因其。员后，久和\n检测器正常工作划辣交又口各相位历史交手，基于极限樟庶提升桶算法 (XGBoost) 对\n和中中-关中路交叉口各个相亿的交通量进行估计，玉结果肖莽多小-\n\n针对问题二通过车由区配对经中路-第中路交叉口各相位污量进行转向识刚,获取\n交叉口车辆转直行和右转路径以工作日晚高轿期间为全,提取各交叉口流量妾据-\n方法一呆用书信斯特《Webster》 信号配时方法计算单点信号控制最优方案根据各交\n受吕中宛计算相位状， 选取会闪周其下限与上限，以 2x 为步长寻优于线协调短波控制\n方案, 广继二科设交杀车谊平均过度与保灯时长与周期时长的比值“成反比，设置约束\n条件，以经中路和顷中巾西条主归车辆平均速度最大为目标构建具划模型，适过电估算\n法求解各相位最使绿灯时长分配方案，得到局化后整体平均车速《最优适应度) 为\nSoaskmh\n\n针对间题三, 从附件 ?中间取五一期间所车辆的行对到,包括车辆的出现时间、\n位置、行驶方向和车生呈等信息。对这些数据进行预处再，针对重复出现的车辆使用时\n辣革的方式，设置断央值，币侈出至复运曙在该路网区域内的所游年。统计池洲车\n均修窗时间,，计算候期期间需要的修车位周转次数，利用近游车进行总停车需求时间的\n计算，后分配管车位，没置合理的停车时间，估算在该时段内县区需要增加的停车人数\n短，得到党游车在五一避风在路网停留的日均总时长，以计算得到的停留总时长作为这\n洲革的停车平均时，按隐每全车的停车个求计算平均每天短要增加的停车位数量\n\n针对问题四，从附作 2中混取五一其间和非管控期间的交通数据，对这些歼据进行\n对比分析，以最化管抱措施的效果。一方面，通过加取计算五一期站和刘五一工作日路\n自流量，管后措施有效的绎解了 18。00-19，00 红帘峰》 捐寺情况。另一方面，对多",
+      "chapter_navigation": "- 第 403 行：5.2.1 数据预处理（数据预处理）",
+      "model_terms": "- 聚类：4 次\n- 时间序列：3 次\n- 方差分析：2 次\n- 回归：1 次\n- 排队论：1 次\n- 稳健性：1 次\n- 蒙特卡洛：1 次\n- 遗传算法：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 事件《如节驾日) 的响，最后估计出不同时段各个相位《包括四个方向直行、转林》\n- 问题二解决的核心图基于纲有的交通流重数据，通过对经中路和时中路上的所\n- 辆在等各信号灯通过时的总等待时间。首先。起要从附件 2 中的车缚数据入竹，分\n- 针对间题4，在问题 3的基础上，该小全对杂区周边进路实行了临时性交通管理撞施，",
+      "paths": {
+        "card": "problems/2024E/papers/48_E010/paper_card.md",
+        "gallery": "problems/2024E/papers/48_E010/gallery.html",
+        "visual_contact": "problems/2024E/papers/48_E010/visual_contact.html",
+        "source_pdf": "problems/2024E/papers/48_E010/source.pdf",
+        "full_ocr": "problems/2024E/papers/48_E010/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024E/papers/48_E010/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "49",
+      "problem": "2024E",
+      "title": "基于多目标优化的交通管理评估分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E061）.pdf",
+      "pages": 32,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p1"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "图 1 经中拉续中交及口24 小时本入和朗化鸡执"
+          ],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "表 2 他]友和方疝来车灿"
+          ],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p10"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "表 3 有总计"
+          ],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p18"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p21"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p25"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-30.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\49_E061\\pages\\page-31.png",
+          "gallery_anchor": "problems/2024E/papers/49_E061/gallery.html#p31"
+        }
+      ],
+      "abstract_extract": "交通捐结问题已经日冀严重，竺别在旅济录区周围更加严重。基于该区域交通流量\n数据，分析该计主要道史的交通现状，交通优化方案己经成为相关事仆的急需。\n\n针对问题一，通过对交通监控玫据的肥合处理，统计了经中路-时中路交叉口不同\n时间的总车流量。利用 K-Means 于美算法分析总车流量变化起势， 依据肝印法得出聚\n半数为 3，将时段划分为高峰、中峰和任峰三类，用拉子群优化{PS0)” 算法分本皇个时\n县的车汶方向比例，全所比例算出各方宙直行、左持、右转] 的车沉墅，多次选代粒了\n群优化算法，最终得出期每个时段眼各个方训的平均车流量《质/时》，低峰时段所有\n数据的盘高情 30. 65，最抵值 9. 99，均值 20, 34; 中峰时段所有至据的最高值 46. 25，\n最低值 14, 取，均值 区. 45;高峰时段所有数据的最高位 371. 17，最低值 117. 30，均值\n69.08-\n\n甘对间题二，为了快化经中路和结中整交叉口的信号灯配置，使琴条主路的车流速\n度最大化，本文构建了革于马尔可夫决党过程 (MDP) 的量化交通状态和信号灯的配时\n生下模型*，采用深度8 学习〔DQN ) “算法案全化每个时有的信号灯绿灯持综时间。\n柄型通过奖局项重交通流的通生效素，并以最大化平均车速为优化目标。在多次放\n猎和选代中,,覃型得到了最佳的信号灯亿时方案,在信号杂周期固定为120秒的前浊下,\n分别为下个方向分本相位时间，并计算了不同方向的平均等竺时间。结果表明，方向 1\n和方向4 的相位时间在高峰时段内获得了更多的分权，达到了 34.38 秒，等持时间相应\n从 短. 63 秘纵类至 42. 80 秒，有效提高了高图期的通行效率.\n\n针对五一黄金周汉区停车位不是问题,查询文献建立以低车速、短时间更复出现为\n准惠的寻找停车位的多扩车辆判定模型，标记出这游的车辆。估撕标记的车印信息，结\n会泊检分布模型，信和外交游车旺的停车党求，查阅发改委文件显示泊位对应出行停车\n慌求为 0. 2 个, 以泪松分布的 95%置信区间，算出要临时增加的停车位数熏为 1287 个。\n车位增加后可减少道中车流 28%。\n\n针对间是四，弄评估五一黄金周景区网壹实行交通管理持施效果。分析车流量、等\n竺时间和车涉关键指标，采用对比管控前后各交叉口的交通方式。 车汪全管控后5 个交\n又口的车流量显著下降，在高和时段环东路-饰中呈的车流量减少了95. 91%，委明管控\n推放拥堵压力效果显著减小。等竺时间显示 4 个交叉口的等和时间大辐纺夫，以环东路\n-音中路路口为例，管控前后的平均等和时间从 7 分 37 秒降至 2 分 43 秒，等千时间缩\n短了 64. 18%。 有效提高了车辆通行效率。整体来看,五一黄金周的临时管控措施在经明\n主要道路交通压力，提升访动性方面取得了显著成效.\n\n关龟订 K-Means 素类; 特子群傅化;深度 4 学习: 巡游和辆判定模型;泊检分布",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 704 行：参考文献（参考文献）",
+      "model_terms": "- 神经网络：4 次\n- 聚类：2 次\n- 多目标优化：1 次\n- 差分进化：1 次\n- 粒子群：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题一，要据车光量的差异，将一天分成荐二时假，信计经中路-外中中交叉口在\n- 阅题二根据提供的数据和问题1中的模型，对经中中和引路上所有交叉口的信\n- 问题三，分析五一黄金周期间的到据，识别出在寻找修车位的多计生绩，并从算景\n- 问题一要求根据车流量的差异，将一天分成若干个时段，信计和中路-大中路交驻\n- 首先，使用续计学方法，如于类分析，找出车流量陛时间的变化退律，将一天划分为基\n- 化作法《PSO) 、差分进化和法等来实现这一目标。最后，信计各个相位在好个时自的\n- 问题二要孙对经中路和结中路上记有交叉口的信号杂进行优化配置，以在保证车辆\n- 问题三重点在于通过对五一黄金周基站的车数据进行深入分析, 判宇车铺因\n- 寻找个车位而在虹区周边过游，并舍算震要征用多作者时从车位来消足需求。首先，吉\n- 问题四要求汪价五黄金周期间对术区周边道中实行的临时性交通管理措施的儿\n- 黑。 首先，通过对比五一黄多周期间和日芝交通汪敌、车如等至指，可以定生分析交通\n- 管理后和是可有效缓解了交通所境。其次，通过对党谤车铺和信车机求的分析，可以和\n- .1 问题一村型的建立与求解\n- 圭对问题一，车出与指定交允口“经中路-结中路交叉口”相关的孝据，放于支\n- 择材种“问题一经中路-续中路交叉口数据,xlsx”",
+      "paths": {
+        "card": "problems/2024E/papers/49_E061/paper_card.md",
+        "gallery": "problems/2024E/papers/49_E061/gallery.html",
+        "visual_contact": "problems/2024E/papers/49_E061/visual_contact.html",
+        "source_pdf": "problems/2024E/papers/49_E061/source.pdf",
+        "full_ocr": "problems/2024E/papers/49_E061/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024E/papers/49_E061/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "50",
+      "problem": "2024E",
+      "title": "基于 Python 语言的交通流量管控与预测分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E218）.pdf",
+      "pages": 62,
+      "visual_pages": [
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p2"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图54 节假日不同时息的车流量"
+          ],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p7"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图59 工作月迁一步组分时段车流量汇总",
+            "图 5 节隐日进一上缉分时年流和总"
+          ],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p11"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表27 名中南 表28 地中腹旭中"
+          ],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p17"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图34 埠坟上路哆、交泛注"
+          ],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图43 五一期间绕行车辆数"
+          ],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p26"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-36.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-37.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p37"
+        },
+        {
+          "page": 38,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-38.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p38"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-39.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p39"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-40.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p40"
+        },
+        {
+          "page": 45,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-45.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p45"
+        },
+        {
+          "page": 47,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-47.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p47"
+        },
+        {
+          "page": 54,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-54.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p54"
+        },
+        {
+          "page": 56,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-56.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p56"
+        },
+        {
+          "page": 57,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-57.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p57"
+        },
+        {
+          "page": 58,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-58.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p58"
+        },
+        {
+          "page": 59,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-59.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p59"
+        },
+        {
+          "page": 62,
+          "captions": [],
+          "image_path": "problems\\2024E\\papers\\50_E218\\pages\\page-62.png",
+          "gallery_anchor": "problems/2024E/papers/50_E218/gallery.html#p62"
+        }
+      ],
+      "abstract_extract": "能着城市化进台的如及、交通入求不断增加城市道路交通流量管控与优化成为到\n起解决的重要问题\"。木文如立信号灯优化模型，运用-均值类算法遗传算法和仿\n真机报，从而制定合理的交通这关测分析方案，为全于交通流量管控间供了重要参考*\n\n针对问题一，为得到一天中各时段的相位车流显，首先对数据进行天处理，将未挂\n车佛的车辆当作措值处理，考虑到工作日、非工作日与节假日的晴响，分析各路口交\n通流量，并进行可视化，将不同时间段进一步曙分为划分为低峰期、高峰期和平笑期\n然后建立-均值村类算法价型且运用方向流量公式估算直行和千亚车霖比例，最后使\n用 Python 软件且结合公式重型计算出一天中三个时段的相们车流亚【单位。 rewjh) +\n工作日中的多固期时县， 由东向西方向直行。左转、右转的车汪量分别为6754，2251，\n2250 由西向东方向直行、左转、右转的车请量分别为 2412，804，804; 由南向北方应\n直行、左转、右转的车流虽分别为 4573，1524，1524; 由北疝南方向直行、左转、右转\n的车渍重分别为 8594，2865，2865。…… 《具体详见5.1.5 结果展示)》\n\n针对间题二，为得到两条主路上的车流最高平均速度，首先进行数据的预处理，利\n用 python 软件将各交叉路口的总车流量进行可视化分析,在问题一的基础上将各路口车\n的光量划分为攻降期、高峰期和平软期，构建所有交叉史口的车流量模型和信号灯优化\n模型，并设计绿波带进一步优化磺型，然后采用站传算法计算出每人路口的最优绿灯时\n长及周期,最后用仿真模报检验优化灌型, 其伐扎仿真网让为taiastalanraloaulpB\ngamma，推导出整体六路的最优平均寻度约为 90 4kmh，色 14.0ms。\n\n针对间题三，为和第出景区所怖的临时停车位数量，本间首先根据行训路径、车钵\n度以及出现颇褒来对巡游车铺进行识别，并设置较值，得到送洲车町，然后寻立排队\n论本型估计停车的需求司，最终交到景区所需的晶时信车位至量范围为[430. 450|岳-\n\n寺对间是四，为评估五一期间和非五一期间临时管控措施在再条主路上的效果，首\n先对数据进行玉处理，处理车辆通过方向时间、车牌号等信息，则除无关歼据，并综\n全分析对比各路段的三个指标，度化密度、行车寻和通行方向比较管近推施明后这\n些指标的变化，短到五一期间的临时管控措施在减少车该、优化车晴强行以及规范通行\n方向方面有着显著效益的成果.\n关键襄: 交通流量管控 K-均值守类算法 信号灯优化模钳 仿真模拟 排队论模型",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 45 行：一、问题重述（问题重述）\n- 第 104 行：三、模型假设（模型假设）\n- 第 146 行：13 数据预处理（数据预处理）\n- 第 764 行：42 数据预处理（数据预处理）\n- 第 920 行：七、参考文献（参考文献）",
+      "model_terms": "- 排队论：7 次\n- 聚类：3 次\n- 遗传算法：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题二; 在保证车辆通信的前提下,建立优化模型，对经中路和续中路上所\n- 问题三 分析玉一黄金周期间的数据，识别停车位的好洲车辆，并估算出\n- 问题四, 评价五一黄金周基间小镇对果区周边浊路实行的痢时交通管理措施\n- 要所有刘，首先对笋据进行祯处理，考虑到工作日、非工作日与节仍日的玉\n- 旗期、襄话关和平由期，然后建立数学村到估算直行和转车鱼比例，最后运用\n- 为得到两条主全的最高车第平均吉度，首先进行政据的预处理,在问题一的\n- 车流重模型和信号灯代化模型，并设计绿化名进一步全化模型， 然后采用过传算\n- 法计算出每个史口的最代绿灯时长及周期， 最后用仿真英拟检验忆化全型,推导\n- 根据题目要求，为个筑出景区所的由时个车位最，本问首先根据行对上\n- 然后建立排队论模型估计停车的需求履，最终每景区所起的临时停车位数迄\n- 代因意，首先对数据进行允处再，提取五一期间和站管控期间的交通数据\n- 切入问题二申黄灯对效个模型的用乱咯不计，\n- 了候疫问题二中平均人车时间汶2小时(每个停车位每小时有 0.5辆车密开);\n- 全假设问题三仿真模拟中无交通事故发生-\n- 本条的数据较和在志立提前首先对至据进行预处理，发现用件2中的数",
+      "paths": {
+        "card": "problems/2024E/papers/50_E218/paper_card.md",
+        "gallery": "problems/2024E/papers/50_E218/gallery.html",
+        "visual_contact": "problems/2024E/papers/50_E218/visual_contact.html",
+        "source_pdf": "problems/2024E/papers/50_E218/source.pdf",
+        "full_ocr": "problems/2024E/papers/50_E218/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024E/papers/50_E218/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

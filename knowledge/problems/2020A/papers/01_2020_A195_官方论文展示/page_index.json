@@ -1,0 +1,431 @@
+[
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 1,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-01.png",
+    "image_name": "page-01.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 2,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-02.png",
+    "image_name": "page-02.png",
+    "captions": [
+      "图 1: 回焊炉截面示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 3,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-03.png",
+    "image_name": "page-03.png",
+    "captions": [
+      "表 1: 制程界限",
+      "表2列出了本文需要的符号。"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 4,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-04.png",
+    "image_name": "page-04.png",
+    "captions": [
+      "表 2: 符号说明"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 5,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-05.png",
+    "image_name": "page-05.png",
+    "captions": [
+      "图 3: 所围面积 3 示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 6,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-06.png",
+    "image_name": "page-06.png",
+    "captions": [
+      "图4 模型示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 7,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-07.png",
+    "image_name": "page-07.png",
+    "captions": [
+      "图 5: 实验中的环境温度"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 8,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-08.png",
+    "image_name": "page-08.png",
+    "captions": [
+      "图6即为有限差分法解偏微分方程的示意图。如图所示，为减小误差, 我们根据网格相邻六个区域"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 9,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-09.png",
+    "image_name": "page-09.png",
+    "captions": [
+      "图 6: 有限差分法解偏微分方程示意图",
+      "图 7::欧方根误差变化曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 10,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-10.png",
+    "image_name": "page-10.png",
+    "captions": [
+      "图 8: 实验炉温曲线对比 图 9: 工件整体温度分布",
+      "图 10: 问题一炉温曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 11,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-11.png",
+    "image_name": "page-11.png",
+    "captions": [
+      "图 11: 温度分布伪彩图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 12,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-12.png",
+    "image_name": "page-12.png",
+    "captions": [
+      "速度在 80 cmy/min 左右，搜索过程可以绘制成如下示意图:",
+      "图 12: 温度升降任率与速度关系 图 13: 升温时 150?C~190?C 时间与速度关系",
+      "图 14: 温度大于 217?C 时间随速度变化曲线 图 15: 峰值温度随过炉速度变化曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 13,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-13.png",
+    "image_name": "page-13.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 14,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-14.png",
+    "image_name": "page-14.png",
+    "captions": [
+      "图 16: 问题三中的遗传算法图解"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 15,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-15.png",
+    "image_name": "page-15.png",
+    "captions": [
+      "图 17: 遗传算法运行过程示意图",
+      "图 18: 最优解炉温曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 16,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-16.png",
+    "image_name": "page-16.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 17,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-17.png",
+    "image_name": "page-17.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 18,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-18.png",
+    "image_name": "page-18.png",
+    "captions": [
+      "图 19: 进化结果分布散点图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 19,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-19.png",
+    "image_name": "page-19.png",
+    "captions": [
+      "图21是问题四最优解炉温曲线超过 217C 部分和实验数据所作比较。可以直观地看到峰值左侧面",
+      "图 20: 问题四炉温曲线 21: 对称性比较",
+      "图 22: 炉温曲线超过 217C 至峰值部分面积随 且(; = 1,2,3,4) 变化曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 20,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-20.png",
+    "image_name": "page-20.png",
+    "captions": [
+      "图 23: 炉温曲线超过 217\"C 至峰值部分面积随大 计算值变化曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 21,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-21.png",
+    "image_name": "page-21.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 22,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-22.png",
+    "image_name": "page-22.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 23,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-23.png",
+    "image_name": "page-23.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 24,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-24.png",
+    "image_name": "page-24.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 25,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-25.png",
+    "image_name": "page-25.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 26,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-26.png",
+    "image_name": "page-26.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 27,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-27.png",
+    "image_name": "page-27.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 28,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-28.png",
+    "image_name": "page-28.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 29,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-29.png",
+    "image_name": "page-29.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 30,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-30.png",
+    "image_name": "page-30.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 31,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-31.png",
+    "image_name": "page-31.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 32,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-32.png",
+    "image_name": "page-32.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 33,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-33.png",
+    "image_name": "page-33.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 34,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-34.png",
+    "image_name": "page-34.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 35,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-35.png",
+    "image_name": "page-35.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 36,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-36.png",
+    "image_name": "page-36.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 37,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-37.png",
+    "image_name": "page-37.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 38,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-38.png",
+    "image_name": "page-38.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 39,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-39.png",
+    "image_name": "page-39.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 40,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-40.png",
+    "image_name": "page-40.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 41,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-41.png",
+    "image_name": "page-41.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 42,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-42.png",
+    "image_name": "page-42.png",
+    "captions": [
+      "型示意图:png; 实验环境温度.png; 实验数据和模型数据炉温曲线对比.png;"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "01",
+    "problem": "2020A",
+    "page": 43,
+    "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-43.png",
+    "image_name": "page-43.png",
+    "captions": [],
+    "visual_hint": 0
+  }
+]

@@ -61,6 +61,8 @@ def main() -> int:
         "references/completeness-audit.json",
         "scripts/freeze_analysis.py",
         "scripts/query_knowledge.py",
+        "scripts/build_compact_knowledge.py",
+        "scripts/refresh_compact_manifest.py",
         "scripts/validate_skill.py",
     ]
     for relative in required_skill_files:
@@ -123,6 +125,8 @@ def main() -> int:
         extra = sorted(indexed_case_ids - expected_case_ids)
         errors.append(f"historical index mismatch; missing={missing}, extra={extra}")
 
+    compact_manifest_path = root / "compact_manifest.json"
+    compact_mode = compact_manifest_path.is_file()
     if not root.exists():
         warnings.append(
             f"optional knowledge root missing: {root}; core strategy files are still validated"
@@ -137,7 +141,10 @@ def main() -> int:
             / "v27_1_complexity_guarded"
             / "往届34题防误删训练.md"
         )
-        for path in [textbook_path, iteration_path, corpus_path, matrix_path]:
+        archive_required = [textbook_path, iteration_path, corpus_path]
+        if not compact_mode:
+            archive_required.append(matrix_path)
+        for path in archive_required:
             if not path.is_file():
                 errors.append(f"missing archive file: {path}")
 
@@ -175,38 +182,51 @@ def main() -> int:
                 if not path.is_file():
                     errors.append(f"missing chapter: {path}")
             for paper in corpus.get("papers", []):
-                for key in ["card_path", "gallery_path"]:
+                paper_keys = ["card_path"]
+                if not compact_mode:
+                    paper_keys.append("gallery_path")
+                for key in paper_keys:
                     path = root / paper[key]
                     if not path.exists():
                         errors.append(f"missing paper {key}: {path}")
 
-            matrix_text = matrix_path.read_text(encoding="utf-8")
-            rows = re.findall(r"^\| 20(?:16|17|18|20|21|22|23|24|25)[A-E] ", matrix_text, re.M)
-            if len(rows) != 34:
-                errors.append(f"historical matrix row count is {len(rows)}, expected 34")
+            if compact_mode:
+                compact = load_json(compact_manifest_path)
+                if compact.get("format") != "shhh-strategy-compact-knowledge":
+                    errors.append("compact manifest format mismatch")
+                if compact.get("knowledge_mode") != "compact":
+                    errors.append("compact manifest knowledge_mode mismatch")
+                warnings.append(
+                    "compact knowledge mode: raw PDFs, spreadsheets, images and full OCR remain external"
+                )
+            else:
+                matrix_text = matrix_path.read_text(encoding="utf-8")
+                rows = re.findall(r"^\| 20(?:16|17|18|20|21|22|23|24|25)[A-E] ", matrix_text, re.M)
+                if len(rows) != 34:
+                    errors.append(f"historical matrix row count is {len(rows)}, expected 34")
 
-            source_paths = {
-                "v27_1_engine_manifest": root
-                / "model_versions"
-                / "v27_1_complexity_guarded"
-                / "engine_manifest.json",
-                "v27_1_complexity_gate": root
-                / "model_versions"
-                / "v27_1_complexity_guarded"
-                / "复杂度_证据_停止门.md",
-                "v27_1_historical_34_matrix": matrix_path,
-                "v26_engine_manifest": root
-                / "model_versions"
-                / "v26_post_23_iteration_frozen"
-                / "engine_manifest.json",
-                "textbook_manifest": textbook_path,
-                "iteration_manifest": iteration_path,
-                "corpus_manifest": corpus_path,
-            }
-            for key, expected_hash in version["source_hashes"].items():
-                path = source_paths[key]
-                if sha256(path) != expected_hash:
-                    errors.append(f"source hash mismatch: {key}")
+                source_paths = {
+                    "v27_1_engine_manifest": root
+                    / "model_versions"
+                    / "v27_1_complexity_guarded"
+                    / "engine_manifest.json",
+                    "v27_1_complexity_gate": root
+                    / "model_versions"
+                    / "v27_1_complexity_guarded"
+                    / "复杂度_证据_停止门.md",
+                    "v27_1_historical_34_matrix": matrix_path,
+                    "v26_engine_manifest": root
+                    / "model_versions"
+                    / "v26_post_23_iteration_frozen"
+                    / "engine_manifest.json",
+                    "textbook_manifest": textbook_path,
+                    "iteration_manifest": iteration_path,
+                    "corpus_manifest": corpus_path,
+                }
+                for key, expected_hash in version["source_hashes"].items():
+                    path = source_paths[key]
+                    if sha256(path) != expected_hash:
+                        errors.append(f"source hash mismatch: {key}")
 
     if errors:
         status = "FAIL"

@@ -1,0 +1,70 @@
+{
+  "version": "v27_formal_problem_reader",
+  "status": "formal_operational_release",
+  "release_date": "2026-08-28",
+  "default_entry": "从这里开始_给Codex.md",
+  "parent": "../v26_post_23_iteration_frozen",
+  "parent_mutated": false,
+  "rollback": "../v26_post_23_iteration_frozen",
+  "inheritance": "full_v26_plus_v27_delta",
+  "scope": {
+    "primary": "new_problem_understanding_and_method_adjudication",
+    "deep_problem_types": [
+      "A",
+      "B",
+      "C"
+    ],
+    "coarse_problem_types": [
+      "D",
+      "E"
+    ],
+    "not_claimed": [
+      "automatic_numerical_solution",
+      "automatic_complete_paper",
+      "award_guarantee",
+      "proof_of_future_unseen_generalization"
+    ]
+  },
+  "evidence": {
+    "prior_training_problems": 23,
+    "verified_national_first_papers_in_base": 58,
+    "pilot_problem": "2018B",
+    "prior_heldout_tests": 5,
+    "official_source_census_problems": 29,
+    "official_single_problem_reviews_discovered": 24,
+    "new_historical_isolated_tests": [
+      "2017A",
+      "2017B",
+      "2017C",
+      "2016A",
+      "2016B"
+    ],
+    "new_test_P0": 0,
+    "new_test_P1": 0,
+    "old_problem_regression_pass": 29,
+    "old_problem_regression_warn": 0,
+    "old_problem_regression_fail": 0,
+    "additional_official_showcase_pdfs_used_in_new_comparison": 9,
+    "additional_showcase_pdfs_not_reclassified_as_verified_national_first": true
+  },
+  "v27_cross_problem_gates": [
+    "hybrid_event_state",
+    "objective_well_posedness_and_minimality",
+    "policy_behavior_feedback",
+    "trajectory_constraint",
+    "exposure_denominator",
+    "inverse_problem_factorization",
+    "policy_generated_labels",
+    "experimental_unit_and_derived_feature_lineage",
+    "contact_and_mode_switching",
+    "structural_intervention_decomposition"
+  ],
+  "validation_files": [
+    "../../AI时代读题训练/v27_blind_freeze_manifest.json",
+    "../../AI时代读题训练/v27_unlocked_comparison_2016_2017.md",
+    "../../AI时代读题训练/v27_regression_matrix_29.md",
+    "../../AI时代读题训练/promotion_decision.md"
+  ],
+  "promotion_basis": "Operational promotion after additive inheritance, five frozen-before-unlock historical tests with no P0/P1, and 29/29 regression pass. Historical public cases are explicitly not treated as proof of future secret-test generalization.",
+  "monitoring": "For every genuinely new problem, preserve a pre-search frozen analysis and record any P0/P1 failure for the next version."
+}

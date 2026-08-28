@@ -1,0 +1,51 @@
+{
+  "expected": {
+    "files": 11,
+    "axes": 8,
+    "components": 15,
+    "evidence_titles": 23,
+    "matrix_titles": 23,
+    "stress_tests": 3,
+    "adversarial_tests": 12
+  },
+  "actual": {
+    "files": 11,
+    "axes": 8,
+    "components": 15,
+    "unique_component_ids": 15,
+    "evidence_titles": 23,
+    "matrix_titles": 23,
+    "stress_tests": 3,
+    "adversarial_tests": 12,
+    "output_sections": 10,
+    "local_links_checked": 21
+  },
+  "missing_files": [],
+  "unknown_evidence_titles": [],
+  "uncovered_textbook_titles": [],
+  "matrix_missing_titles": [],
+  "broken_links": [],
+  "protocol_checks": {
+    "facts_before_analogy": true,
+    "multi_label": true,
+    "forbids_algorithm_first": true,
+    "requires_two_backgrounds": true,
+    "has_failure_gates": true,
+    "has_confidence_states": true,
+    "has_hard_stops": true,
+    "has_component_counterevidence": true,
+    "has_delete_evidence_test": true,
+    "has_quick_entry": true,
+    "has_same_background_trap": true,
+    "has_different_background_transfer": true,
+    "has_reading_certificate": true,
+    "has_alternative_interpretations": true,
+    "has_object_lifecycle": true,
+    "has_phase_boundary_map": true,
+    "has_information_ladder": true,
+    "has_objective_proxy_audit": true,
+    "has_same_problem_peer_audit": true,
+    "has_generalization_promotion_gate": true
+  },
+  "passed": true
+}

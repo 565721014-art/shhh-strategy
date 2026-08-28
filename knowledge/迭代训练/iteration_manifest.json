@@ -1,0 +1,195 @@
+{
+  "objective": "逐题隔离分析23道原题，再逐篇对照58篇国一论文；每题只将跨题通用机制写回引擎，完成后以5道未见题比较v3与最终版本。",
+  "status": "training_and_heldout_completed",
+  "pilot": {
+    "problem": "2018B 智能RGV的动态调度策略",
+    "papers_read": 4,
+    "result": "promoted_to_engine_v3"
+  },
+  "baseline_snapshot": "../model_versions/v3_pre_23_iteration/",
+  "current_engine_version": 26,
+  "current_iteration": 23,
+  "training_rules": {
+    "sequential_only": true,
+    "problem_papers_hidden_until_independent_analysis_frozen": true,
+    "separate_reading_and_method_comparison": true,
+    "national_first_is_reference_not_ground_truth": true,
+    "problem_specific_answers_never_promoted": true,
+    "regression_required_before_next_problem": true,
+    "no_user_facing_long_reports": true
+  },
+  "order": [
+    {
+      "n": 1,
+      "id": "2020A",
+      "title": "炉温曲线",
+      "papers": 1,
+      "status": "completed"
+    },
+    {
+      "n": 2,
+      "id": "2020C",
+      "title": "中小微企业的信贷决策",
+      "papers": 2,
+      "status": "completed"
+    },
+    {
+      "n": 3,
+      "id": "2023B",
+      "title": "多波束测线问题",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 4,
+      "id": "2021C",
+      "title": "生产企业原材料的订购与运输",
+      "papers": 4,
+      "status": "completed"
+    },
+    {
+      "n": 5,
+      "id": "2021B",
+      "title": "乙醇偶合制备C4烯烃",
+      "papers": 4,
+      "status": "completed"
+    },
+    {
+      "n": 6,
+      "id": "2025C",
+      "title": "NIPT的时点选择与胎儿异常判定",
+      "papers": 2,
+      "status": "completed"
+    },
+    {
+      "n": 7,
+      "id": "2021D",
+      "title": "连铸切割的在线优化",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 8,
+      "id": "2022C",
+      "title": "古代玻璃制品的成分分析与鉴别",
+      "papers": 2,
+      "status": "completed"
+    },
+    {
+      "n": 9,
+      "id": "2024B",
+      "title": "生产过程中的决策问题",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 10,
+      "id": "2025D",
+      "title": "矿井突水水流漫延模型与逃生方案",
+      "papers": 1,
+      "status": "completed"
+    },
+    {
+      "n": 11,
+      "id": "2021E",
+      "title": "中药材的鉴别",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 12,
+      "id": "2023A",
+      "title": "定日镜场的优化设计",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 13,
+      "id": "2023C",
+      "title": "蔬菜类商品的自动定价与补货决策",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 14,
+      "id": "2024A",
+      "title": "板凳龙闹元宵",
+      "papers": 5,
+      "status": "completed"
+    },
+    {
+      "n": 15,
+      "id": "2024C",
+      "title": "农作物的种植策略",
+      "papers": 4,
+      "status": "completed"
+    },
+    {
+      "n": 16,
+      "id": "2023E",
+      "title": "黄河水沙监测数据分析",
+      "papers": 2,
+      "status": "completed"
+    },
+    {
+      "n": 17,
+      "id": "2024D",
+      "title": "反潜航空深弹命中概率问题",
+      "papers": 1,
+      "status": "completed"
+    },
+    {
+      "n": 18,
+      "id": "2024E",
+      "title": "交通流量管控",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 19,
+      "id": "2021A",
+      "title": "FAST主动反射面的形状调节",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 20,
+      "id": "2023D",
+      "title": "圈养湖羊的空间利用率",
+      "papers": 1,
+      "status": "completed"
+    },
+    {
+      "n": 21,
+      "id": "2025A",
+      "title": "烟幕干扰弹的投放策略",
+      "papers": 1,
+      "status": "completed"
+    },
+    {
+      "n": 22,
+      "id": "2025B",
+      "title": "碳化硅外延层厚度的确定",
+      "papers": 3,
+      "status": "completed"
+    },
+    {
+      "n": 23,
+      "id": "2025E",
+      "title": "立定跳远动作技术分析与训练建议",
+      "papers": 1,
+      "status": "completed"
+    }
+  ],
+  "counts": {
+    "problems_total": 23,
+    "papers_total": 58,
+    "problems_completed": 23,
+    "papers_compared": 58,
+    "heldout_tests_planned": 5,
+    "heldout_tests_selected": 5,
+    "heldout_tests_completed": 5,
+    "heldout_blind_outputs_frozen": 5,
+    "heldout_result": "v26_overall_improved_vs_v3_with_one_material_minimality_miss_in_2022B"
+  }
+}

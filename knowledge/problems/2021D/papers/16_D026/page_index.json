@@ -1,0 +1,367 @@
+[
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 1,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-01.png",
+    "image_name": "page-01.png",
+    "captions": [
+      "表 2，在此基础上，将 0.8 米报废段附着于 4.8 米的最小损失段一起切除,给出具体切割"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 2,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-02.png",
+    "image_name": "page-02.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 3,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-03.png",
+    "image_name": "page-03.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 4,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-04.png",
+    "image_name": "page-04.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 5,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-05.png",
+    "image_name": "page-05.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 6,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-06.png",
+    "image_name": "page-06.png",
+    "captions": [
+      "表 1: 这 12 种长度的尾坏的最优切割方案和切割损失情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 7,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-07.png",
+    "image_name": "page-07.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 8,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-08.png",
+    "image_name": "page-08.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 9,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-09.png",
+    "image_name": "page-09.png",
+    "captions": [
+      "图1: 第2个时间窗口导致的方案调整",
+      "图2: 第8个时间窗口导致的方案调整",
+      "表2:，44.8 米长度钢坯的切割方案和切割损失情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 10,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-10.png",
+    "image_name": "page-10.png",
+    "captions": [
+      "表3:，45.6米长度钢坯的最优切割方案和切割损失情况",
+      "表 4: 105.6米和 109.6 米长度钢坯的最优切割方案和切割损失情况",
+      "表 5 所示。"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 11,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-11.png",
+    "image_name": "page-11.png",
+    "captions": [
+      "表4中每个时间单元的最优切制方案制定实时的最优切割方案,如表 6 所示《〔表中时间",
+      "表 6，钢坏的实时最优切审方案"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 12,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-12.png",
+    "image_name": "page-12.png",
+    "captions": [
+      "表7: 当前7个时间段钢坯的初始切割方案情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 13,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-13.png",
+    "image_name": "page-13.png",
+    "captions": [
+      "表 8: 当前7个时间段钢坯的调整后的切审方案情况",
+      "表 9: 方法二当前7个时间段钢坯的初始切割方案情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 14,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-14.png",
+    "image_name": "page-14.png",
+    "captions": [
+      "表 10: 当前7个时间段钢坯的初始切割方案、调整后的切割方案及切割损失情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 15,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-15.png",
+    "image_name": "page-15.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 16,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-16.png",
+    "image_name": "page-16.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 17,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-17.png",
+    "image_name": "page-17.png",
+    "captions": [
+      "表 11: 出现新的报废有时 8 个时间单元的最优切割方案和切割损失情况",
+      "表 14;， 当前7个时间段钢坯的初始切割方案、调整后的切割方案及切割损失情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 18,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-18.png",
+    "image_name": "page-18.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 19,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-19.png",
+    "image_name": "page-19.png",
+    "captions": [
+      "表 18: 当前7个时间段钢坯的初始切割方案、调整后的切割方案及切割损失情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 20,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-20.png",
+    "image_name": "page-20.png",
+    "captions": [
+      "表 19: 优化前和优化后的具体切审方案情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 21,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-21.png",
+    "image_name": "page-21.png",
+    "captions": [
+      "表 20: 优化前和优化后的切割损失情况对比",
+      "[1] 【连铸 国外党用和连铸结构工艺流程图_搜狐网】思"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 22,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-22.png",
+    "image_name": "page-22.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 23,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-23.png",
+    "image_name": "page-23.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 24,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-24.png",
+    "image_name": "page-24.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 25,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-25.png",
+    "image_name": "page-25.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 26,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-26.png",
+    "image_name": "page-26.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 27,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-27.png",
+    "image_name": "page-27.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 28,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-28.png",
+    "image_name": "page-28.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 29,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-29.png",
+    "image_name": "page-29.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 30,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-30.png",
+    "image_name": "page-30.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 31,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-31.png",
+    "image_name": "page-31.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 32,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-32.png",
+    "image_name": "page-32.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 33,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-33.png",
+    "image_name": "page-33.png",
+    "captions": [
+      "表 12: 7个时间段分别加上该时间段之前每个时间单元的切割方案"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 34,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-34.png",
+    "image_name": "page-34.png",
+    "captions": [
+      "表 13: 7个实口之前所有时间单元的切割方案之和"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 35,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-35.png",
+    "image_name": "page-35.png",
+    "captions": [
+      "表 15: 满足用卢目标信是 11.1 米条件的最优切割方案和切割损失情况",
+      "表 16: 满足用户目标值是 11.1 米条件的初始切割方案和切割损失情况"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "16",
+    "problem": "2021D",
+    "page": 36,
+    "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-36.png",
+    "image_name": "page-36.png",
+    "captions": [
+      "表 17: 满足用户目标值是 11.1 米条件的调整后的切割方案和切割损失情况"
+    ],
+    "visual_hint": 1
+  }
+]

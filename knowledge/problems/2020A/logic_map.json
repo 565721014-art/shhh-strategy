@@ -1,0 +1,313 @@
+{
+  "problem": "2020A",
+  "title": "炉温曲线",
+  "category": "机理、工程与反演",
+  "mother_problem": "一维传热过程、参数校准与工艺约束优化",
+  "question_chain": "炉温环境函数 -> 电路板中心温度动力学 -> 参数校准 -> 速度与温区约束 -> 工艺指标优化",
+  "misreading_risks": [
+    "环境温度与板温混同",
+    "参数校准和工艺优化未分开",
+    "只拟合不检查制程约束"
+  ],
+  "questions": [
+    "问题 1 请对焊接区域的温度变化规律建立数学模型。假设传送带过炉速度 为 78 cm/min，各温区温度的设定值分别为 173ºC（小温区 1~5）、198ºC（小 温区 6）、230ºC（小温区 7）和 257ºC（小温区 8~9），请给出焊接区域中心的 温度变化情况，列出小温区 3、6、7 中点及小温区 8 结束处焊接区域中心的温 度，画出相应的炉温曲线，并将每隔 0.5 s 焊接区域中心的温度存放在提供的 result.csv 中。",
+    "问题 2 假设各温区温度的设定值分别为 182ºC（小温区 1~5）、203ºC（小 温区 6）、237ºC（小温区 7）、254ºC（小温区 8~9），请确定允许的最大传送 带过炉速度。",
+    "问题 3 在焊接过程中，焊接区域中心的温度超过 217ºC 的时间不宜过长， 峰值温度也不宜过高。理想的炉温曲线应使超过 217ºC 到峰值温度所覆盖的面 积（图 2 中阴影部分）最小。请确定在此要求下的最优炉温曲线，以及各温区 的设定温度和传送带的过炉速度，并给出相应的面积。 图 2 炉温曲线示意图",
+    "问题 4 在焊接过程中，除满足制程界限外，还希望以峰值温度为中心线的 两侧超过 217ºC 的炉温曲线应尽量对称（参见图 2）。请结合问题 3，进一步给 出最优炉温曲线，以及各温区设定的温度及传送带过炉速度，并给出相应的指 标值。"
+  ],
+  "attachments": [
+    {
+      "name": "result.csv",
+      "kind": "csv",
+      "linked_path": "problems\\2020A\\attachments\\result.csv",
+      "sheets": []
+    },
+    {
+      "name": "附件.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2020A\\attachments\\附件.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 710,
+          "cols": 2,
+          "preview": [
+            [
+              "时间(s)",
+              "温度(ºC)"
+            ],
+            [
+              19,
+              30.03
+            ],
+            [
+              19.5,
+              30.48
+            ],
+            [
+              20,
+              30.95
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "01",
+      "problem": "2020A",
+      "title": "基于一维热传导方程的回焊炉炉温模型",
+      "source_name": "2020_A195_官方论文展示.pdf",
+      "pages": 43,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-01.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "图 1: 回焊炉截面示意图"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-02.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [
+            "表 1: 制程界限",
+            "表2列出了本文需要的符号。"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-03.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "表 2: 符号说明"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-04.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图 3: 所围面积 3 示意图"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-05.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图4 模型示意图"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-06.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图 5: 实验中的环境温度"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-07.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图6即为有限差分法解偏微分方程的示意图。如图所示，为减小误差, 我们根据网格相邻六个区域"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-08.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图 6: 有限差分法解偏微分方程示意图",
+            "图 7::欧方根误差变化曲线"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-09.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图 8: 实验炉温曲线对比 图 9: 工件整体温度分布",
+            "图 10: 问题一炉温曲线"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-10.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图 11: 温度分布伪彩图"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-11.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "速度在 80 cmy/min 左右，搜索过程可以绘制成如下示意图:",
+            "图 12: 温度升降任率与速度关系 图 13: 升温时 150?C~190?C 时间与速度关系",
+            "图 14: 温度大于 217?C 时间随速度变化曲线 图 15: 峰值温度随过炉速度变化曲线"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-12.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-13.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图 16: 问题三中的遗传算法图解"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-14.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图 17: 遗传算法运行过程示意图",
+            "图 18: 最优解炉温曲线"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-15.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-16.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-17.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图 19: 进化结果分布散点图"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-18.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图21是问题四最优解炉温曲线超过 217C 部分和实验数据所作比较。可以直观地看到峰值左侧面",
+            "图 20: 问题四炉温曲线 21: 对称性比较",
+            "图 22: 炉温曲线超过 217C 至峰值部分面积随 且(; = 1,2,3,4) 变化曲线"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-19.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图 23: 炉温曲线超过 217\"C 至峰值部分面积随大 计算值变化曲线"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-20.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-21.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p21"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-27.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p27"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-32.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-33.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-34.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p34"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-35.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p35"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-36.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-37.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p37"
+        },
+        {
+          "page": 38,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-38.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p38"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-39.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p39"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-41.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p41"
+        },
+        {
+          "page": 42,
+          "captions": [
+            "型示意图:png; 实验环境温度.png; 实验数据和模型数据炉温曲线对比.png;"
+          ],
+          "image_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\pages\\page-42.png",
+          "gallery_anchor": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html#p42"
+        }
+      ],
+      "abstract_extract": "如何建立温度变化模型准确描述回焊炉工作过程，保证电路板焊接过程顺利进行，是实际生产\n环节面临的一大问题。本文结合实际情况对回焊炉工作状态作出合理假设，建立炉内温度一维热传\n导模型。在满足制程界限约束条件下，利用启发式算法搜索各温区温度设定，确定最优过炉速度以\n使回焊炉工作效率最大化。引入炉温曲线特性衡量指标，运用分层序列法求解多目标多变量规划问\n\n针对问题一”由于炉内空气温度在启动后的短时间内达到稳定,根据一般热传导方程可推出小\n温区间辽温度分布具有 T(z) = mz 十 的线性形式。根据合理假设，使用一维均匀介质热传导方\n程组描述元件与炉腔热传导过程，得出元件温度分布函数 T = T(z,妨。利用有限差分法求得方程\n数值解，并根据附件提供的实际炉温曲线分段拟合方程中 a,j,姑 参数。为简化模型求解，假设各\n温区参数 ,局 相等，仅考虑参数 na 的不同，得出模型最优参数为: 户 = 14.458 Wy(m2 ,区)，\n大一 1.67x10-6 W/(m.K)，a 一 |4.437  5.621 7.449 4.997  2.401| x10-11m2/s .将参\n数代回原方程并结合问题一条件, 求出元件焊接过程中温度变化曲线, 计算出小温区 3、6、7 中点及\n小温区 8 结束处焊接区域中心温度分别为 129.1007*C ,166.8982oC,188.6547*C, 222.62525C。\n\n针对问题二 在大温区温度已知、制程界限给定的前提下确定元件最大过炉速度，实质上是非\n线性约束条件下的单目标单变量规划求解问题。使用问题一建立的元件温度变化模型，并将约束条\n件进行离散化处理，先在题设提供的速度区间中进行大致搜索，后反复减小步长和搜索区间，最终\n得到最大过炉速度为: 80.068 cm/min。\n\n针对问题三”根据问题三要求与制穆界限约束,将该问题转换为关于温区温度和过炉速度的单\n目标多变量最优化问题并使用遗传算法 (Genetic Algorithm) 求解。我们基于 MATLAB 的 GA 工\n有具箱进行算法的编程实现。考虑到算法具有一定的随机性;我们还进行了多次独立求解及算法参数\n调整，最终确定最优解为: 170.5518\"C (小温区工二5)、185.0331eC (小温区 6)、225.6946oC\n(小温区 7) 和265.0000?C (小温区 8 ~ 9) ，传送带过炉速度 86.1056 cmy/min，阴影部分面积为\n483.5632oC .s。\n\n针对问题四”该问题需同时考虑曲线的特定区域的面积最小及对称性偏差最小, 可将该问题转\n换为复杂约束条件下的多目标优化问题。本文采用分层序列法的思想，在问题三使用的传统遗传\n算法的基础上，提出接力进化的遗传算法来进行寻解，并设置指标对洪在解进行二次筛选，最终\n确定最优解为: 169.4106?C (小温区 1 ~ 5) 、185.0243?C (小温区 6) 、225.309225C (小温\n区 7) 和265.0000?C (小温区 8 ~ 9) ，传送带过炉速度 85.6735 cmy/min，对应的面积指标8 一\n483.5765oC . s, 对称程度指标轧 = 9.9904 。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 43 行：关键词 ”一维热传导方程 。 Genetic Algorithm ”多变量非线性规划 ”分层序列法（关键词）\n- 第 50 行：1 问题重述（问题重述）\n- 第 112 行：2 模型假设（模型假设）\n- 第 150 行：4 问题分析（问题分析）\n- 第 201 行：5 模型建立（模型建立）\n- 第 698 行：参考文献（参考文献）",
+      "model_terms": "- 遗传算法：17 次\n- 线性规划：4 次\n- 非线性规划：4 次\n- 微分方程：3 次\n- 有限元：2 次\n- 多目标优化：1 次\n- 差分方程：1 次\n- 曲线拟合：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- (小温区 6)、230?C (小温区 7) 和 257*C (小温区 8 ~ 9) ，要求建立数学模型并给出焊接区域中\n- 对称。要求在问题 3 的基础上，进一步给出最优炉温曲线，以及各温区设定的温度及传送带过炉\n- 问题一需要结合回焊炉工作参数, 建立一维热传导方程模型计算焊接区域中心点处温度变化-加 。\n- 3. 代入问题一所给的各温区温度和过炉速度, 计算炉温曲线。\n- 在问题二中，需在制程界限约束条件下确定出元件最大的过炉速度，以实现最优的经济效益。其\n- 变量规划求解问题, 根据问题一中建立的元件温度变化模型, 在速度区间的大致范围内利用 MATLAB\n- 问题三要求确定各个大温区的温度 瑟(i = 1,2,3,4) 以及元件过炉速度 v，使炉温曲线上温度高",
+      "paths": {
+        "card": "problems/2020A/papers/01_2020_A195_官方论文展示/paper_card.md",
+        "gallery": "problems/2020A/papers/01_2020_A195_官方论文展示/gallery.html",
+        "visual_contact": "problems/2020A/papers/01_2020_A195_官方论文展示/visual_contact.html",
+        "source_pdf": "problems/2020A/papers/01_2020_A195_官方论文展示/source.pdf",
+        "full_ocr": "problems/2020A/papers/01_2020_A195_官方论文展示/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2020A/papers/01_2020_A195_官方论文展示/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

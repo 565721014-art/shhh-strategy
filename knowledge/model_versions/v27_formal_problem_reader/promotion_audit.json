@@ -1,0 +1,29 @@
+{
+  "release": "v27_formal_problem_reader",
+  "audit_date": "2026-08-28",
+  "decision": "GO_operational",
+  "json_validation": "PASS",
+  "entry_targets_exist": true,
+  "regression": {
+    "cases": 29,
+    "pass": 29,
+    "warn": 0,
+    "fail": 0
+  },
+  "historical_isolated_validation": {
+    "cases": 5,
+    "P0": 0,
+    "P1": 0,
+    "freeze_sha256": "3DCF6E3BB6B017C2EE0B0814F32833814F27692B5F9B7044209A1CFD0D6F5612"
+  },
+  "sha256": {
+    "v26_parent_engine_manifest": "121EF418ABFB0265337FD7D5B00AAAFD870500788DFC2C7C8C6EFE514B086562",
+    "v27_engine_manifest": "400FEC32B6370508E72F1BCA4D20D0398C8149F8B40748CA31642F6FFAD1C381",
+    "v27_entry": "4F65C743F93D2062907EE7BBFE08141687D729F552EEB5A3029079F6716E0600",
+    "v27_rules": "0851A63E21D8323DEA60A07F70C02FE55E180F9E1CD271647469B850326F2073",
+    "regression_matrix": "15711D5E4C494BE08C352C988907C43C72FE201E394183EC3089F8DCA8640237",
+    "unlocked_comparison": "84F4DC0E753436394E9A815D2D15C78C124E06A1DA391166426F9076CF370226"
+  },
+  "integrity": "The frozen v26 engine manifest hash is unchanged from the recorded baseline.",
+  "limitation": "Historical public tests do not prove performance on future secret problems; preserve pre-search freezes for prospective monitoring."
+}

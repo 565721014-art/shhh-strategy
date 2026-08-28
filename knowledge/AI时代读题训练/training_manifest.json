@@ -1,0 +1,56 @@
+{
+  "objective": "以2024—2025组委会讲评、评阅反馈、可核验国一和赛题后续研究为上限，优化新赛题的题意锁定、方法裁决与错误审计能力。",
+  "status": "v27_formal_operational_release",
+  "baseline": "../model_versions/v26_post_23_iteration_frozen",
+  "baseline_mutated": false,
+  "scope": {
+    "all_problems_censused": 29,
+    "official_single_problem_reviews_discovered": 24,
+    "no_public_single_problem_review_found": 5,
+    "recent_problem_reviews": 10,
+    "yearly_review_reports": 2,
+    "additional_problem_review": "2024C评阅综述",
+    "ai_era_review": "2025竞赛中AI工具使用的基本情况与建议",
+    "cross_year_review": "2026近几年竞赛A题的综合分析与评述"
+  },
+  "training_order": [
+    "2024A",
+    "2024B",
+    "2024C",
+    "2024D",
+    "2024E",
+    "2025A",
+    "2025B",
+    "2025C",
+    "2025D",
+    "2025E"
+  ],
+  "comparison_priority": [
+    "official_problem_and_attachments",
+    "frozen_v26_analysis",
+    "official_problem_leader_review",
+    "official_review_feedback",
+    "verified_national_first_papers",
+    "official_followup_research"
+  ],
+  "promotion_rule": "只有在至少两个不同结构赛题中成立且通过旧题回归的机制，才能进入候选v27。",
+  "critical_failures": [
+    "核心任务理解错误",
+    "使用题面不可得信息",
+    "漏检更小可行候选",
+    "混淆观测、状态和决策",
+    "无依据指定概率、权重或唯一最优",
+    "主路线无法继续求解或无法验证"
+  ],
+  "next_step": "V27已作为默认新题入口；后续遇到真正新题时保留检索前冻结输出并监控P0/P1，V26继续作为回滚版本。",
+  "candidate": "../model_versions/v27_candidate_ai_era_problem_reader",
+  "formal_release": "../model_versions/v27_formal_problem_reader",
+  "new_historical_isolated_tests": 5,
+  "new_test_P0": 0,
+  "new_test_P1": 0,
+  "regression_pass": 29,
+  "regression_fail": 0,
+  "source_census": "source_census_all_29.md",
+  "baseline_mutated_after_census": false,
+  "promotion_decision": "GO_operational_with_future_prospective_monitoring"
+}

@@ -1,0 +1,94 @@
+{
+  "audit_date": "2026-08-27",
+  "status": "completed_and_verified",
+  "training": {
+    "problems": 23,
+    "papers": 58,
+    "final_engine": "../model_versions/v26_post_23_iteration_frozen",
+    "engine_manifest_sha256": "121EF418ABFB0265337FD7D5B00AAAFD870500788DFC2C7C8C6EFE514B086562",
+    "engine_hash_verified": true,
+    "engine_mutated_during_heldout": false
+  },
+  "heldout": {
+    "problems": [
+      "2022A 波浪能最大输出功率设计",
+      "2022B 无人机遂行编队飞行中的纯方位无源定位",
+      "2022D 气象报文信息卫星通信传输",
+      "2022E 小批量物料的生产安排",
+      "2020B 穿越沙漠"
+    ],
+    "blind_outputs_frozen": 5,
+    "comparisons_completed": 5,
+    "minimum_evidence_groups_per_problem": 3,
+    "result": "v26_improved_over_v3_on_all_five_preregistered_scores; four_strong_validations; one_material_minimality_miss_in_2022B",
+    "important_limitation": "同题高水平论文和权威研究用于查漏，不把获奖论文视为真理，也不虚报无法独立核验的国一等奖身份。"
+  },
+  "verified_pdf_set": [
+    {
+      "path": "2022A/papers_unlocked/yykspace_2022A.pdf",
+      "pages": 85,
+      "bytes": 3390872,
+      "text_extract": "2022A/papers_unlocked/yykspace_2022A.txt",
+      "text_bytes": 151252
+    },
+    {
+      "path": "2022B/papers_unlocked/aasdl1/Solutions-无人机编队飞行中的纯方位无源定位模型研究.pdf",
+      "pages": 39,
+      "bytes": 1600637,
+      "text_extract": "2022B/papers_unlocked/aasdl1/Solutions.txt",
+      "text_bytes": 64231
+    },
+    {
+      "path": "2022D/papers_unlocked/D034_complete.pdf",
+      "pages": 30,
+      "bytes": 2327525,
+      "text_extract": "2022D/papers_unlocked/D034_complete.txt",
+      "text_bytes": 63918
+    },
+    {
+      "path": "2022D/papers_unlocked/D999_complete.pdf",
+      "pages": 25,
+      "bytes": 1321051,
+      "text_extract": "2022D/papers_unlocked/D999_complete.txt",
+      "text_bytes": 51960
+    },
+    {
+      "path": "2022E/papers_unlocked/E014_material_production.pdf",
+      "pages": 24,
+      "bytes": 970807,
+      "text_extract": "2022E/papers_unlocked/E014_material_production.txt",
+      "text_bytes": 53974
+    },
+    {
+      "path": "2022E/papers_unlocked/E029_dynamic_production.pdf",
+      "pages": 22,
+      "bytes": 1341864,
+      "text_extract": "2022E/papers_unlocked/E029_dynamic_production.txt",
+      "text_bytes": 58998
+    },
+    {
+      "path": "2020B/papers_locked/statement.pdf",
+      "pages": 42,
+      "bytes": 1374450,
+      "text_extract": "2020B/papers_locked/national_first_solution.txt",
+      "text_bytes": 94741
+    }
+  ],
+  "frozen_hashes_verified": {
+    "BLIND_PROTOCOL.md": "4448A9905C9E6C7CBEC11F09DFBD77D13EE9F2FC863BF8F781CC6FB6F4F9B0A2",
+    "2022A/blind_outputs.md": "09F752EE1B763995AA6FB1AA76579706558863A6E04E9496DD445657C1BDE00E",
+    "2022B/blind_outputs.md": "20BA3E207BA39650F3CEC51FD94B6495186E1BFB1FD636265C77B97A01B95971",
+    "2022D/blind_outputs.md": "3FAA164F9C43DBCD2A80D0A67361CEE2C6F0C4E9479E2681FF4238284B45580C",
+    "2022E/blind_outputs.md": "6923A1B2EF1EC2313AFF34D583F57BD3FEFC19B58BF4C8F9FAFF52EB07DACCDD",
+    "2020B/blind_outputs.md": "3E5B5AA4D4F8722371328BF8AA25461D566B777232153F17043520B260F717E3"
+  },
+  "quarantine": {
+    "directory": "_invalid_downloads",
+    "excluded_from_future_reading": true,
+    "files": [
+      "A001.pdf",
+      "D034_shared_weather_reports.pdf",
+      "D999_weather_report_satellite.pdf"
+    ]
+  }
+}

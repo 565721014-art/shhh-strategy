@@ -1,0 +1,46 @@
+{
+  "version": "v27.1_complexity_guarded",
+  "audit_date": "2026-08-28",
+  "status": "PASS",
+  "user_correction": "Remove only inappropriate complexity; do not simplify every part or impose a model-count limit.",
+  "math_modeling_skills_used_after_prohibition": false,
+  "fixed_numeric_model_cap": false,
+  "model_count_is_stopping_reason": false,
+  "retained_when_justified": [
+    "necessary_multistage_components",
+    "distinct_subquestion_routes",
+    "structural_uncertainty_branches",
+    "independent_corroboration",
+    "robustness_diagnostics",
+    "independently_validated_ensembles"
+  ],
+  "removed_or_downgraded_when": [
+    "no_problem_evidence_trigger",
+    "no_material_baseline_defect_or_distinct_role",
+    "insufficient_effective_data_or_identifiability",
+    "unfair_or_leaky_comparison",
+    "no_independent_practical_gain",
+    "no_effect_on_required_output_or_conclusion",
+    "paper_complexity_without explanatory_or_evidential_value"
+  ],
+  "tests": {
+    "over_modeling_and_claim_risk_cases": 9,
+    "passed": 9,
+    "anti_over_simplification_cases": 5,
+    "anti_over_simplification_passed": 5,
+    "historical_problem_rule_replays": 34,
+    "historical_problem_passed": 34,
+    "historical_problem_overpruning_fail": 0,
+    "base_training_records_covered": 23,
+    "base_verified_paper_records_reused": 58
+  },
+  "sha256": {
+    "unchanged_v27_parent_manifest": "400FEC32B6370508E72F1BCA4D20D0398C8149F8B40748CA31642F6FFAD1C381",
+    "v27_1_manifest": "E9B7FCBE6778107B3387FFABFE9942A7F5A78A7B0C6E93114EE6B34F910F97D5",
+    "v27_1_entry": "E8EF873E58765575B7B03C25F26131E767FCBD60B4F78E8EE469B61848AA0895",
+    "complexity_evidence_stop_gate": "704742E3CD6BDEE468DFD9F12852B6E7D08E518E5CD8B7312CD9CDEE78ECBC84",
+    "historical_34_problem_matrix": "95A98C698820F825B159BCA24DD3693934A5409A1641B733BF4D8F203EB3D50F",
+    "adversarial_tests": "F130BAEA301B3234E0266EA1F76D95A4D1779C5209FC68DCD898160D05FFC0D2"
+  },
+  "decision": "V27.1 remains the current operational entry after 34 historical-problem rule replays confirmed that necessary complexity is retained and only non-contributory complexity is removed."
+}

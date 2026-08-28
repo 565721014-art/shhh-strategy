@@ -1,0 +1,855 @@
+{
+  "problem": "2023E",
+  "title": "黄河水沙监测数据分析",
+  "category": "识别、时序与风险",
+  "mother_problem": "水沙通量的关系、突变、周期、预测与调水调沙解释",
+  "question_chain": "含沙量关系 -> 通量构造 -> 突变/季节/周期 -> 两年预测 -> 河床高程与调度效果解释",
+  "misreading_risks": [
+    "采样频率变化造成伪突变",
+    "通量单位与时间积分错误",
+    "预测精度与机制解释混为一体"
+  ],
+  "questions": [
+    "问题 1 研究该水文站黄河水的含沙量与时间、水位、水流量的关系，并估算近 6 年该水 文站的年总水流量和年总排沙量。",
+    "问题 2 分析近 6 年该水文站水沙通量的突变性、季节性和周期性等特性，研究水沙通量 的变化规律。",
+    "问题 3 根据该水文站水沙通量的变化规律，预测分析该水文站未来两年水沙通量的变化 趋势，并为该水文站制订未来两年最优的采样监测方案（采样监测次数和具体时间等），使其 既能及时掌握水沙通量的动态变化情况，又能最大程度地减少监测成本资源。",
+    "问题 4 根据该水文站的水沙通量和河底高程的变化情况，分析每年 6-7 月小浪底水库进 行“调水调沙”的实际效果。如果不进行“调水调沙”，10 年以后该水文站的河底高程会如何？"
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023E\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "2016",
+          "rows": 2381,
+          "cols": 12,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2016,
+              1,
+              1,
+              "0:00",
+              42.79,
+              357,
+              0.825,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.800000000000004,
+              363,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.800000000000004,
+              363,
+              0.796,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2017",
+          "rows": 2196,
+          "cols": 7,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) "
+            ],
+            [
+              2017,
+              1,
+              1,
+              "0:00",
+              42.18,
+              215,
+              0.461
+            ],
+            [
+              null,
+              null,
+              null,
+              "2:00",
+              42.18,
+              215,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.17,
+              212,
+              0.514
+            ]
+          ]
+        },
+        {
+          "name": "2018",
+          "rows": 3184,
+          "cols": 11,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2018,
+              1,
+              1,
+              "0:00",
+              42.550000000000004,
+              342,
+              0.674,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.56,
+              342,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.56,
+              345,
+              0.593,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2019",
+          "rows": 3065,
+          "cols": 12,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2019,
+              1,
+              1,
+              "0:00",
+              42.480000000000004,
+              390,
+              0.882,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.480000000000004,
+              390,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.480000000000004,
+              390,
+              0.922,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2020",
+          "rows": 3014,
+          "cols": 7,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) "
+            ],
+            [
+              2020,
+              1,
+              1,
+              "0:00",
+              42.64,
+              507,
+              1.74
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              42.66,
+              524,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "8:00",
+              42.63,
+              499,
+              1.53
+            ]
+          ]
+        },
+        {
+          "name": "2021",
+          "rows": 2906,
+          "cols": 13,
+          "preview": [
+            [
+              "年",
+              "月",
+              "日",
+              "时间",
+              "水位(m)",
+              "流量(m3/s)",
+              "含沙量(kg/m3) ",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              2021,
+              1,
+              1,
+              "0:00",
+              42.79,
+              497,
+              1.37,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "2:00",
+              43.03,
+              614,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              "4:00",
+              43.1,
+              650,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023E\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 218,
+          "cols": 18,
+          "preview": [
+            [
+              "2016-06-08 00:00:00",
+              null,
+              "2016-10-20 00:00:00",
+              null,
+              "2017-05-11 00:00:00",
+              null,
+              "2017-09-05 00:00:00",
+              null,
+              "2018-09-13 00:00:00",
+              null,
+              "2019-04-13 00:00:00",
+              null
+            ],
+            [
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)",
+              "起点距离(m)",
+              "河底高程(m)"
+            ],
+            [
+              0,
+              47.754999999999995,
+              0,
+              47.754999999999995,
+              0,
+              47.754999999999995,
+              0,
+              47.754999999999995,
+              0,
+              53.576,
+              0,
+              53.636
+            ],
+            [
+              14,
+              50.905,
+              16,
+              51.655,
+              23,
+              53.605,
+              23,
+              53.605,
+              15,
+              53.566,
+              8.7,
+              53.656000000000006
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件3.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023E\\attachments\\附件3.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 857,
+          "cols": 7,
+          "preview": [
+            [
+              "日期",
+              "起点距离(m)",
+              "水位(m)",
+              "水深(m)",
+              "测点水深(m)",
+              "测点水流速(m/s)",
+              "测点含沙量(kg/m3)"
+            ],
+            [
+              "2023-02-26 00:00:00",
+              2080,
+              42.1,
+              0,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              2065,
+              null,
+              3.5,
+              0.7,
+              0.3,
+              null
+            ],
+            [
+              null,
+              null,
+              null,
+              null,
+              2.8,
+              0.16,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "33",
+      "problem": "2023E",
+      "title": "基于时间序列分析预测的黄河水沙监测模型",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛E题论文展示（E032）.pdf",
+      "pages": 53,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p1"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-03.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p3"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图1本文的研闪天和"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表 1 信用到示汇总表"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图2 信和5时间的关系图"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图4 “全沙显-水亿” 招数内续"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表4 2016 2021 年的和冰晶"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图 415 是 2016-2021 年每月排沙量小波系数实可等值线图，根据图中信息可"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-22.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图18 ARIMA 种"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-23.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-24.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图21、从图 22 中可以看出，二阶关分之后数据起势还源平和"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-25.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图24 二阶差分AOF、PAGF图"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-26.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-28.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-30.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-31.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-32.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-33.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [
+            "区域，示意图各 如下"
+          ],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-34.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p34"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-35.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p35"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-36.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-37.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p37"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-40.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p40"
+        },
+        {
+          "page": 45,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-45.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p45"
+        },
+        {
+          "page": 46,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\33_E032\\pages\\page-46.png",
+          "gallery_anchor": "problems/2023E/papers/33_E032/gallery.html#p46"
+        }
+      ],
+      "abstract_extract": "在于贡河进行水文研究加党通过兴水示关系分析水沙衣生的各种尾性和\n净化沁拓，从而指导水区源分和和语水语沙、防洪减大等措让本文在对各附件\n数提进行和趟理后，通过回归，分析、小注分析、时间序到分析方法建立水沙关系\n痪型和水沙通重使型，和和用时间序乌江型允水沙通重的变化煌势，代化水\n文让采尾监方案,分析谓水启沙状时。本文主要借助 thon'、 Exesl、 Mallab 等\n软作进行相关计算。\n\n对于问是一，用,均人苦补法\"补充二数据后，分别研究全沙量与时间、 水\n位，水放量的关系，并进行李型展示。针对含光重水他关系和合生:水汇量关\n和分别进行回归分新，运用最小二于法进行分区报合，利用 Malbb 中多项式报\n全得到分民效, 同时进行报合度从.最后立年总排洲熏.年总水址重生型，\n爸惠了还6年数接，又运用全化的娄人积分法对上述席开行了性允-\n\n年总撞沙最(也晤) | 182 | 0.191 | 2.918 | 了051 | 3.510 | 2.239\n\nET 72.625\n\n对于问题二，控月汇总用件 1 交错，将每有水沙志量的特性、变化上律通过\n月洒让的人和月排沙量均值可素失过 突亚性利用*积下法\"得到黑积开平\n间统，霜突变月从，利用“MK 突变检答”，齐电再相素灾时间; 季节性研究\n过过季忆分解永和贡要素的时间库员分解图。外此分析季节性变化规律 周贡\n性研究运用小被分析法得到法水文站 6年来仔月\"小方差分析畦^ 与“小小安\n按系迷人线图\"，获和两亚表芭自的从化让因。要和各特性进一步得到水\n访曾量的变化讽律。\n\n双手问题三,针对水沙盘地势的入入建立SARINIA 预负机型 符 2016\n3920 年月沪效所作为练全也型 2021 年月水沙通量要化趋势,2021 年月水\n酒量作为浊斌集，将蜗开预测结果与二效据进行报信观察结时，挡参数进\n生束，搜汉最优参效，建立淮确 SARIMA 预杀横型，以此项水来机年水沙\n通生变化起扫,根据未两全地势走向图，判盯出未洲两征水浪通量的周期性与\n奖交性，疝定最全采伴星放-\n\n对于问题轩，从水光通最变化、河底高变化,水情攻测各所变化三面分\n白水调汶实和效果结合问题二水浪通各变化，调调次直到一定作用: 结合\n水位、酒度商入与起点高的关系分析了水而度与水这的交比， 采用“断面\n测量法”计算了水道别各采用“流涉面各法\" 计放了水过平均这法，计算\n结果大示出面积增大、久速下拉失势，得出着不调调沙，河底训会高的\n外沦>                                        芭\n关久订，回有分析，数信可分法，革各和法MK 突变检验，小省人针开开\n\nSARIMR 虹型，斌迷耐各法         大和窃二\nsw聘",
+      "chapter_navigation": "- 第 98 行：二、模型假设（模型假设）\n- 第 114 行：三、符号说明（符号说明）\n- 第 1042 行：六、模型评价与推广（模型评价）\n- 第 1102 行：七、参考文献（参考文献）",
+      "model_terms": "- ARIMA：29 次\n- 时间序列：19 次\n- 回归：6 次\n- 方差分析：3 次\n- 曲线拟合：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n未稳定提取到逻辑句。",
+      "paths": {
+        "card": "problems/2023E/papers/33_E032/paper_card.md",
+        "gallery": "problems/2023E/papers/33_E032/gallery.html",
+        "visual_contact": "problems/2023E/papers/33_E032/visual_contact.html",
+        "source_pdf": "problems/2023E/papers/33_E032/source.pdf",
+        "full_ocr": "problems/2023E/papers/33_E032/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023E/papers/33_E032/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "34",
+      "problem": "2023E",
+      "title": "若于小波变换和肖包模型的小浪底水库最优监测方案研究",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛E题论文展示（E176）.pdf",
+      "pages": 56,
+      "visual_pages": [
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p5"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "表3 天人有"
+          ],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p8"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p13"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p16"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "表 1 和信和最人"
+          ],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p19"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-23.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p23"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2023E\\papers\\34_E176\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023E/papers/34_E176/gallery.html#p29"
+        }
+      ],
+      "abstract_extract": "次变性短问题的分新中。                          贬-\ni   mW鲁  ov\n次",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 16 行：一、问题重述（问题重述）\n- 第 17 行：二、问题分析（问题分析）\n- 第 41 行：四、模型假设（模型假设）\n- 第 48 行：五、模型建立与求解（模型建立）",
+      "model_terms": "- 回归：4 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n未稳定提取到逻辑句。",
+      "paths": {
+        "card": "problems/2023E/papers/34_E176/paper_card.md",
+        "gallery": "problems/2023E/papers/34_E176/gallery.html",
+        "visual_contact": "problems/2023E/papers/34_E176/visual_contact.html",
+        "source_pdf": "problems/2023E/papers/34_E176/source.pdf",
+        "full_ocr": "problems/2023E/papers/34_E176/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023E/papers/34_E176/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

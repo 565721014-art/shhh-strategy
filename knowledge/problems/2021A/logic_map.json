@@ -1,0 +1,528 @@
+{
+  "problem": "2021A",
+  "title": "FAST主动反射面的形状调节",
+  "category": "机理、工程与反演",
+  "mother_problem": "入射方向坐标系下的理想反射面拟合与执行器调整",
+  "question_chain": "坐标旋转 -> 工作抛物面确定 -> 节点目标位置 -> 促动器位移约束 -> 反射效果验证",
+  "misreading_risks": [
+    "球面坐标与工作坐标混用",
+    "只拟合抛物面不检查执行器可达性",
+    "几何误差与光学效果脱节"
+  ],
+  "questions": [],
+  "attachments": [
+    {
+      "name": "附件1.csv",
+      "kind": "csv",
+      "linked_path": "problems\\2021A\\attachments\\附件1.csv",
+      "sheets": []
+    },
+    {
+      "name": "附件2.csv",
+      "kind": "csv",
+      "linked_path": "problems\\2021A\\attachments\\附件2.csv",
+      "sheets": []
+    },
+    {
+      "name": "附件3.csv",
+      "kind": "csv",
+      "linked_path": "problems\\2021A\\attachments\\附件3.csv",
+      "sheets": []
+    },
+    {
+      "name": "附件4.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021A\\attachments\\附件4.xlsx",
+      "sheets": [
+        {
+          "name": "理想抛物面顶点坐标",
+          "rows": 1,
+          "cols": 6,
+          "preview": [
+            [
+              "X坐标（米）",
+              "Y坐标（米）",
+              "Z坐标（米）",
+              null,
+              null,
+              "注：至少保留3位小数"
+            ]
+          ]
+        },
+        {
+          "name": "调整后主索节点编号及坐标",
+          "rows": 1,
+          "cols": 7,
+          "preview": [
+            [
+              "节点编号",
+              "X坐标（米）",
+              "Y坐标（米）",
+              "Z坐标（米）",
+              null,
+              null,
+              "注：至少保留3位小数"
+            ]
+          ]
+        },
+        {
+          "name": "促动器顶端伸缩量",
+          "rows": 1,
+          "cols": 4,
+          "preview": [
+            [
+              "对应主索节点编号",
+              "伸缩量（米）",
+              null,
+              "注：至少保留3位小数"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "04",
+      "problem": "2021A",
+      "title": "“FAST”主动反射面调节模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A028）.pdf",
+      "pages": 38,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p1"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p4"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p6"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p10"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p12"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p15"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p17"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\04_A028\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021A/papers/04_A028/gallery.html#p23"
+        }
+      ],
+      "abstract_extract": "厅文从束角FST 主动反册面形和区调和是出发，双考昌有标的本要求生\n关插标， 求解和扫御而分析了国反旱析开关原因导致 工作和而香雪御面\n的全，夫提供了煌办法 最后外了词世变后允处收比、基准反时于的接伏比，折\n旭人此拉，人RE FST 的信和-\n\n革对月是| 我人所对下者而对站抽点的本将出了于好攻机中基\n雪人的关系. 条数的存在骨等信息。 再思考上促器守的衬人特年，发现名名接等\n分一定区志的法，设计了能所代动器分布，售计全过执导。 我们人\n江上蛛针耐是人动向人信和为- 60.6 来的更琢，并届人动乱人\n逢最的名最小作为评上村类光村的拍面，技了两个对的抽和面，芭过\n纪役，最玫得到理条方各为。\n\n玉 ，罗\n00 ro0017agy: -3008B4\n\n到问题 2。 首先，为来解观测天全位了方位币a -38 395，。和-入.169，时的要从\n移古，先于立上办件和图和变质天移兴导了寺转因写角度的方法，从而\n兰何一中凡权得了直面方各先线y 村由00”有》 再生 轴转g，提到且于\n现测天条的理外和奋方玫为:\n\nSay坟=016418r+91228y + 997876z 一00017797(9 59995x -80078D 一\naol77g7(a78377e + 958625y一60205033?十30988 一0.\n\n之后，为融和条约最佐人全本尽可能贴近理起折面，完介和家\n上到和移动到和和上,到二家上和反对所中吉作为统寺点计和得到\n放可为4. 2n。 设计直家节点的调玫一洒可二白身其周轨所有可中上与\n抽和的久症，计算油后的上方哥为 3 gr，上且其人在过代中保和下亿，衣\n时友向刘已。 符字上的名村与记晤最人标得条人后反和\n面300n 口季风衬过节志畏呈、位置和标、务促动和的介和保存在 *rewult_xlsy “中\n\n寺对问题3， 首先，为水解订人后针尖的人比，需对生个反时单元间给由理。 先室\n入间人反遇而导电下和号针尖台人的比人为亲元了人比,再汗和和个到出\n反时全最占各反入最的比人作为其单元优引比的到个工作下的绎履比为\n元要和此的加权覃其红时为BT. 4-\n\n之后， 为寻有了本约核。先平行电信避明示礁反遇呈相\n其区化为面上信呈多下向下入对的二维代处理，可解得更:外不风下过的反对信号\n与污范平的交。玫过点与秆和下让 部，该反时人生硬让。计第到\n基肥对下面上有此失区坟概攻到 XY 平渣 -7 is 的加 102.68984F08 129\n的杰环，计算有着可与 00 避和的之比，得到划闪反和面相比为 5 .27\n可见反面第放世于了明显的作用\n\n关键训，身电昌运策 主动反击对刘扒和卡洲法 球面人反时",
+      "chapter_navigation": "- 第 57 行：一、问题重述（问题重述）\n- 第 134 行：三、符号说明（符号说明）\n- 第 162 行：四、模型假设（模型假设）\n- 第 174 行：五、模型建立与求解（模型建立）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题3 析现天体位入e 3695Y, 人为 789, 过下",
+      "paths": {
+        "card": "problems/2021A/papers/04_A028/paper_card.md",
+        "gallery": "problems/2021A/papers/04_A028/gallery.html",
+        "visual_contact": "problems/2021A/papers/04_A028/visual_contact.html",
+        "source_pdf": "problems/2021A/papers/04_A028/source.pdf",
+        "full_ocr": "problems/2021A/papers/04_A028/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021A/papers/04_A028/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "05",
+      "problem": "2021A",
+      "title": "基于目标优化的“FAST”主动反射面形状调节研究",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A115）.pdf",
+      "pages": 35,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "男 1 FAST 主友和面相人图 图 3 RAST 二六位轩机图"
+          ],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [
+            "理想的抛物面。FAST 剖面示意图以及焦径比等参数见图 6"
+          ],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图 8 球玉杯系〔原皮为 EAST 系统的基闪球医球人》"
+          ],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p8"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p12"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 17 “工作抽物面在主动反射面上的位置"
+          ],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p21"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\05_A115\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021A/papers/05_A115/gallery.html#p23"
+        }
+      ],
+      "abstract_extract": "FAST 的创新技术之一是主动反射而，共工作执物面状态是否能够接近为一个理\n起抛物面是整个系统关键。本文通过建立基于月标名化的主动反射面调节模型,求解\n出了能够训足反射面板调节因素的理想抛物面，并对实际反射耐极的调节方式《伸缩\n最、变动位置等) 进行了研究-\n\n针对于问题一本文于立了渐于变步长搜索算法消解的单目标侃化楼型。本文将\n工作掀物面尽可能贴近理想拢物面的优化目标车化为工作和状志下主动反射面的主过\n节点就在求解得出的理想掀面上* 首先经过初步建立针对伸缩范围最小的单目标包\n化党型，短到题目中要求的促动器伸绾范围的条件可以拉所有主家节点全部问足，然\n而相名主过节点之则的主要伸纵苑围不超过 007%6是无法入完全消足的。因此，再地\n过调节前后相信鞍点之间的更高变化柱度最小为目标示数，建立单上标优化寞型，设\n计基于变步长策略的饥历搜索算法进行求解，最终得到理想扫物面的方程为\n开十有一562.3748(z 十300.716)，抽物线顶点相较于基准球面下降的本高为 4316\n米。并且本六给出了间硬一主索节点之间距离变化岂度符合要来与吾的情况存入\nExeel 表放入附件中。此时，所有促动器的最大介缩量为03499 米，相邻节点之间的\n距离变化柱度最大值为 0 01%6，可知实蒜情况下并不是所有节点部能达到理起抽物面\n旋香。 最后经过结果分析与生性分析，通过分折理怒盾面底吕位置参数变化后最\n大经问伸缩熏的变化的情况，得知建立的二型才写性好。\n\n针对于问题二，本文提出了两个模开。模型 工本质上是延续问题一的求解思路，\n调节前后相信节点之间的下高普化橱度最小为目标里数，建立单目标优化本型。首先\n通过几何关系,用二难方法建立rw与丰纳对应关系，然后计算促动回径庙坤缩屋,再\n计算出径向调节之后主守节点的这标与编号竺参数- 机型 JI 中基于旋转坐标科合放\n转抽物面物绕与天体的方应重合, 通过坐标旋转矩阵及其变的, 得到新的旋转从标系，\n在求解之后，再将其转执为球坐标系。本文仅对模型工进行了求解，基于章型[建立\n单目标优化绩型，在算法方面通过变步长和万进行求解，解得到起儿物测的项点坐标\n为(493719.36.9282, 294.3278), 其它参星技照视定格式存入附件村相”restltslss 中，\n\n针对于问题三，根据前文建立的模型以及分析可知，镇池共接收平面是一个直径\n为一米的加面，然再经过分析与斌算得知单个反射面板的西积与忆源能图租的面积卫\n者差异较大。息证所有的反射面板反诸的电亿于部把雪源检全部独益，则可以将馈源\n能接收比的问题转化为面积的比人问题。 求胡得调节后乙源般的接收比为 Q0153* 调\n节前《基准反射球面) 镇源般的接收比为 00053。因此，调节后显因提高了馈深能的\n电破波信号接收比。\n\n在文章的最后，示六客观地指出了模型的优钱点， 并且混出本文建立的模型可以\n到过修改后用到解优化太阳能洪焦热电站的歼率等其它工程领域",
+      "chapter_navigation": "- 第 47 行：关键词;目标优化”拓索算法 ”单目标贷化模型 “敏入性分本， 变步长般历（关键词）\n- 第 52 行：一、问题重述（问题重述）\n- 第 156 行：三、模型假设（模型假设）\n- 第 173 行：四、符号说明（符号说明）\n- 第 397 行：5.1.3 结果分析（结果分析）\n- 第 775 行：八、参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题二，该问题要求和观测无体不在基准球面正上方时，确定树想的抛物面- 若\n- 问题三: 在问题二建立的主动反射面调节方案的基础之上，计算调节后馅源能的\n- 在,本文将工作抛物面有可能贴近理想扩物而转化为主动反射而的主守节点袁在所求\n- 想狼物面，并且建立反射面板调节的模型，复出促动右的舍控量、理想抛物面的项点\n- 变化最，即扼物面的形状大小已经确定。在问题二中，当天坟不在正上方时，若要求\n- 再将调节后的点的球坐标转化为空间坐标。\n- 文建立的模型以及分析可知，饥源能接收平面是一个直径为一米的圆面，然而经过简\n- 的反射面板反射的电厂波者把锁源船全部恬瘟，则馈源双搂收比的问题转化为面积的\n- 寺对于问题一, 需要建立理杷掀面, 使得该理抱掀面能印江足反射面板的调",
+      "paths": {
+        "card": "problems/2021A/papers/05_A115/paper_card.md",
+        "gallery": "problems/2021A/papers/05_A115/gallery.html",
+        "visual_contact": "problems/2021A/papers/05_A115/visual_contact.html",
+        "source_pdf": "problems/2021A/papers/05_A115/source.pdf",
+        "full_ocr": "problems/2021A/papers/05_A115/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021A/papers/05_A115/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "06",
+      "problem": "2021A",
+      "title": "\"FAST\"工作抛物面的优化设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A217）.pdf",
+      "pages": 59,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p2"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p10"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图 9 反归板三角形区志示章"
+          ],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p20"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-27.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p27"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-29.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p29"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-31.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-32.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p32"
+        },
+        {
+          "page": 34,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-34.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p34"
+        },
+        {
+          "page": 35,
+          "captions": [
+            "metion iuadlLE asle300)*6 机向介面最人示意图"
+          ],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-35.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p35"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-39.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p39"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-40.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p40"
+        },
+        {
+          "page": 42,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-42.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p42"
+        },
+        {
+          "page": 43,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-43.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p43"
+        },
+        {
+          "page": 47,
+          "captions": [
+            "Tut.ms 剖面直负从示意图"
+          ],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-47.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p47"
+        },
+        {
+          "page": 50,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-50.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p50"
+        },
+        {
+          "page": 51,
+          "captions": [
+            "ivz mw 齐胡内标示意图",
+            "?6 创面示意图"
+          ],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-51.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p51"
+        },
+        {
+          "page": 52,
+          "captions": [
+            "sprint( 图片jobl 示意图2角些标下的nega 多与人面向训基平方积分7"
+          ],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-52.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p52"
+        },
+        {
+          "page": 53,
+          "captions": [],
+          "image_path": "problems\\2021A\\papers\\06_A217\\pages\\page-53.png",
+          "gallery_anchor": "problems/2021A/papers/06_A217/gallery.html#p53"
+        }
+      ],
+      "abstract_extract": "本文基于 FAST 的工作原理，通过机理分析、举标变捷、磊线性最小二乘优化等方\n法， 建立了反射面板请节优化席型，并利用 BFGS 算法、芭特卡洛积分算注等算法，对\n不同条件下反射光线吸收比率进行了研究-\n\n问题一中，首先基于国定的仰角及、观测目标$、图心C 和焦点己，利用几居失物\n而的中心对浆性，先取信更作为自由度控刺变量，松建在极些标系下开口时自向上的:\n维掀条线方程，竹到不同偏转角度下上点到地物绕的距离，进而导出三维下的才因所物\n画方童。其次，以焦距为决策变量，将口径 300 米的扫物面作为积分域，将理想失物面\n到原点的距离与基准球面叶低世人平方作为该积数进行积分作为最小化目标普贱 寻\n立了确证再起抽物而的优化硕型最后，共用二分法求得目标双数于数在定义区间上\n的零点，得到媒择折物面焦旺的精确全为 280.854，误差平方积分的最小值为 10 112、\n此时对应理起狗面的角析式汐z一(=十的31561-708 一300.841 -\n\n问题二中, 首先利用球举标下不同办线方南描物而的息转不变性，在原些标系和问\n题一的华标系之问建立了允向可间的变的关系, 得到了不同方位角下理克凶物而到原点\n的腺离。其次，以二过节点的工作举标种动器的伸缩长度为决策变量，以积分城观兰\n的主过节点到原点的中宫与理想折物面到原点的距离之差的平方和为最小化目标田娄，\n分别考虑下拉索长度国定、相信节点的下变化柱度不超过 407%、保动吕的伸名有国\n在十06n 为的东条件,建立反射面板调节代化项型.最后, 使用拉格归日权子法和 BFGS\n等法进行天解,得到误关平方在抛条面口委上的积分的最小信为5.1353X10.?,，理起负\n物线的项点坐标为(49.392, 一36.943, -294.450) ，调节后反射面 300 米口往志的二\n过节点往号、位置举标、各促动器的伸缩等结果见文件 rasultxksx\n\n问题三中，首先通过族转变换，将反射间原的他名入身光线转化为季直入册光线\n其次，通过求解二性方程组，依次确定出入射光线与三角形面板的相交判害式、交点从\n标、三角形面板的法线向恬，并利用光线大直入身的性质，全用法城应最简化计算和到\n出射光线的方南角。再次，通过联立射线方程与针尖能所在的目标宫度，得出射线方程\n的步长和出身交到达目标高庆时的华标，并与包源能的有效区域进行比对，作为入射\n线是否该有效接收的判定式。最后，将 300 米口树贞实际按收区域作为积分域，将入册\n光线有效接收拓别式作为各至数，休用芝铃卡洛算法进行积分，得到有效拉收的光深\n面积，莽计算出请前接收tc 081l%，计节后接收比 L.108%，提升了36%，请节工作\n二物而的过程使有效光源的光开可以尽量完整地出现在每个三角形而圾下 《图 11)，\n\n本文的特色在于将机理分析与非训性最小二乘从化相结合，并灵活采用二分法、\nBFGs 算法和芝特卡洛积分算法进行求解，在大规左、高维且攻有赣线性约束的求解中\n候轩以接近二阶的速庆收委至最货解，为 FAST 在不同情况下的请节与设计沽供了参考\n使据,。",
+      "chapter_navigation": "- 第 48 行：关键词，华标旋钱、非绩性最小二多、BFGS 算法、旬特卡洛积分（关键词）\n- 第 55 行：一、问题重述（问题重述）\n- 第 89 行：三、符号说明（符号说明）\n- 第 104 行：四、问题分析（问题分析）\n- 第 762 行：九、参考文献（参考文献）",
+      "model_terms": "- 蒙特卡洛：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 方得, 将其代入棚必生过行变换 导出交转掀面的方才最后对理生掀而到民点的\n- 作标系和问题一已建立的坐标系之间建立交所的转变拉关系,必得问题二中囊部分洽\n- 然后引入下拉索国定长度、节点之的介兴变动率、促动有的人给量等约束，再引入相\n- 问题三要下基于问题的反时面调节坟案计算请节后俱源能的接收尼，并与基准\n- 本文报采用与问题二相同的坐标和转方法, 将入射的光线从狸射变为垂直于水平面\n- 的指向。然后，可以利用方悍习立求得的反射光与接收平面的交点剂断该光玫是否被有\n- 五， 问题一模型的建立与求解\n- 和白二维抛物线旋转得来，因此本文首先基于及= mj/2 ，讨论在二维平面内，拓物线开口",
+      "paths": {
+        "card": "problems/2021A/papers/06_A217/paper_card.md",
+        "gallery": "problems/2021A/papers/06_A217/gallery.html",
+        "visual_contact": "problems/2021A/papers/06_A217/visual_contact.html",
+        "source_pdf": "problems/2021A/papers/06_A217/source.pdf",
+        "full_ocr": "problems/2021A/papers/06_A217/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021A/papers/06_A217/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

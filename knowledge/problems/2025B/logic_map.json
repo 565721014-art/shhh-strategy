@@ -1,0 +1,840 @@
+{
+  "problem": "2025B",
+  "title": "碳化硅外延层厚度的确定",
+  "category": "机理、工程与反演",
+  "mother_problem": "红外干涉机理驱动的厚度反演与多光束诊断",
+  "question_chain": "单次反射干涉关系 -> 光谱特征与厚度算法 -> 多角度一致性验证 -> 多光束条件识别 -> 修正反演",
+  "misreading_risks": [
+    "波数/波长单位混用",
+    "峰间距方法忽略折射率色散",
+    "多光束出现条件没有可检验判据"
+  ],
+  "questions": [
+    "问题 1 如果考虑外延层和衬底界面只有一次反射、透射所产生的干涉条纹的情形（图 1），建立确定外延层厚度的数学模型。",
+    "问题 2 请根据问题 1 的数学模型，设计确定外延层厚度的算法。对",
+    "问题 3 光波可以在外延层界面和衬底界面产生多次反射和透射（图 2），从而产生多光 束干涉。请推导产生多光束干涉的必要条件，以及多光束干涉对外延层厚度计算精度可能产 生的影响。 请根据多光束干涉的必要条件，分析"
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025B\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              31.29322924
+            ],
+            [
+              400.639,
+              30.60428036
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025B\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              36.33668088
+            ],
+            [
+              400.639,
+              35.75208839
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件3.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025B\\attachments\\附件3.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              79.8019744
+            ],
+            [
+              400.639,
+              79.41137847
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件4.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025B\\attachments\\附件4.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              91.48944351
+            ],
+            [
+              400.639,
+              91.23369158
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "52",
+      "problem": "2025B",
+      "title": "基于联合物理色散模型与先进信号处理方法测定碳化硅外延层厚度",
+      "source_name": "2025_B_国一论文.pdf",
+      "pages": 38,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-01.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-02.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-03.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-04.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图 1 双光束干涉光路图"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-05.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图 2 光在介质界面反射折射的基本物理图像"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-06.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-07.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "表2 4H-SiC 材料固定的本征光学参数",
+            "题二求解的算法流程图如图 (3)。",
+            "图 3 问题二求解算法流程图"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-08.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "表 3 全光谱范围 (400cm-: to 4000cm-:) 全局同步拟合参数"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-09.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图4附件 1 全光谱儿围的全局同步拟合结果 (R2=0.9967)。",
+            "图5 附件 2 全光谱儿围的全局回步拟合结果 (R2=0.9948)。"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-10.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图 6 根据最终拟合参数计算得到的外延层与衬底的复折射率谱-",
+            "图 7 全光谱拟合中附件 1 的残差分布图。",
+            "图 8 全光谱拟合中附件 2 的残差分布图。"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-11.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图 9 多光东干涉光路图"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-12.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-13.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图 10 双光束干涉反射率形貌图 图 11 多光束干涉反射率形貌图"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-14.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-15.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "表4生附件 3 与附件 4 光谱的精确极值点数据",
+            "图 12 干涉极值法得出的厚度一致性与最优干涉级数确定图"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-16.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 13 各级反射光相对光强随波数变化图像"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-17.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-18.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图 14 对于人射角 10\" 和 15? 的 FFT 频谱分析与厚度求解",
+            "图 15 问题二各级反射光相对强度图"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-19.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图 16 FFT 竺法的灵敏度与收敛性综合分析"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-20.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 17 FFT 算法在随机噪声下的稳定性检验 (蒙特卡洛模拟结果)",
+            "图 18 基于双光束千涉和洛伦兹-德鲁德模型计算外延层厚度方法在随机嗓声下的稳定性检验 (蒙特卡洛模拟结果)"
+          ],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-21.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-22.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-23.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-24.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-25.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p25"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-27.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p27"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-30.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-31.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-32.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-33.png",
+          "gallery_anchor": "problems/2025B/papers/52_2025_B_国一论文/gallery.html#p33"
+        }
+      ],
+      "abstract_extract": "本文针对红外干涉法测量半导体外延层厚度问题，建立了基于物理原理的双光束及多光束数学\n模型。我们为碳化硅和硅两种材料分别构建了针对性的折射率模型，并设计了相应的外延层厚度求\n解算法。通过对光谱数据进行分析，我们成功求解出其外延层厚度，并基于结果揭示了样品的物理\n性质及多光柬干涉效应的影响。\n针对问题一，为精确确定碳化硅外延层的厚度，我们建立了两个核心模型。一: 采用基于非涅尔方\n程的双光柬干涉理论来描述光波在“空气-外延层-衬底”三层结构中的干涉过程; 二: 针对碳化硅的\n色散特性，我们引入了能同时描述晶格振动与自由载流子影响的洛伦兹-德鲁德 (Lorentz-Drude)\n针对问题二,我们采用问题一建立的数学模型，通过拟合实验光谱来反演样品七个未知的物理参数。\n为此,我们设计了“差分进化全局搜索”与“L-BFGS-B 局部优化”相结合的算法，实现了对两组\n光谱数据的同步拟合。 模型取得了极佳的拟合优度，决定系数 R? 分别高达 0.9967 和 0.9948， 最\n终确定外延层厚度为 7.413 bm。基于拟合出的参数，我们发现外延层与衬底折射率高度匹配，从\n而证明了在该体系中多光束干涉效应可以忽略。最后，我们根据残差分析确认了结果的可靠性。\n针对问题三，我们首先推导了产生多光束干涉的必要条件: 相干性、界面反射率与材料吸收、以及\n几何均匀性, 并分析出多光束干涉将有效提高硅晶圆片外延层厚度计算精度。然后，我们再对附件\n3 和附件 4 的硅晶圆片光谱数据进行分析，通过干涉条纹的非对称性，先定性判断发生多光束干涉。\n针对硅的特性，我们采用塞尔迈耶方程描述折射率，并通过干涉极值点解析法，识别光谱极值点位\n置并反解出厚度，计算出硅晶圆片厚度为 3.751 hm。为了定量证明发生了多光束干涉，我们通过\n反射率、介质折射率反推出衬底折射率，利用菲涅尔公式，定量计算出了各级反射光振幅、光谱精\n细度 (忆闪2.7 > 2) 等数值，严谎证明了多光柬干涉效应的存在。 然而，我们发现干涉极值点法存\n在局限性: 在高波数区，由于信号衰减，极值点定位精度下降。为克服此问题并利用全谱信息，我\n们引入了基于色散矫正的傅里叶变换 (FFT) 频率分析法, 并创新性地引入坐标变换来解决硅的色\n散现象导致的干涉信号的非周期性，将信号转化为一个在新坐标域中周期性与厚度严格对应的信号，\n利用 FFT 从光谱数据中提取出基频，得到更准确的硅晶圆片厚度结果 d = 3.595 bm.。\n\n此外，为了判定多光束干涉对问题二碳化硅外延层计算精度的影响，我们运用问题三推导的多\n光永干涉判据进行分析，最终确认碳化硅无需考虑多光束干涉，因此问题二采用的双光束干涉模型\n是充分且精确的。\n\n综上所述，本文所建模型经过物理严格推导且针对性强，使用的算法精度高，准确计算了碳化\n硅和硅外延层的厚度测定，还通过灵敏度与稳定性检验证明了模型的稳健性，可为相关领域的精确\n测量提供科学依据。",
+      "chapter_navigation": "- 第 41 行：关键词: 外延层厚度; 红外干涉光谱; 洛伦兹-德鲁德模型; 差分进化; [BFGS-B; 塞尔迈耶模型;（关键词）\n- 第 56 行：2 问题重述（问题重述）\n- 第 73 行：3 问题分析（问题分析）\n- 第 111 行：4 模型假设（模型假设）\n- 第 122 行：5 符号说明（符号说明）\n- 第 788 行：11 模型评价（模型评价）\n- 第 832 行：参考文献（参考文献）",
+      "model_terms": "- 稳健性：7 次\n- 差分进化：6 次\n- 蒙特卡洛：3 次\n- 交叉验证：2 次\n- 插值：2 次\n- 贝叶斯：2 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 。 问题一: 红外光和人射到外延层后，一部分从外延层表面反射出来，另一部分从衬底表面反射回\n- 来，这两东光在一定条件下会产生干涉条纹。问题一限制了条件，只需考虑外延层和衬底界面\n- 只有一次反射、透射所产生的干涉条纹的情形，要求建立确定外延层厚度的数学模型。问题还\n- 。 问题二: 该问题要求根据问题一建立的数学模型，设计确定外延层厚度的算法，基于附件给定\n- 。 问题三: 问题增加了光波可以在外延层界面和衬底界面产生多次反射和透射的条件，需要推导\n- 建立计算外延层厚度的数学模型，设计确定外延层厚度的算法，并基于附件给定的实测数据，\n- 计算硅晶圆片外延层的厚度，最后分析多光束干涉对硅晶圆片外延层厚度计算精度可能产生的\n- 影响。同时，该问题要求考虑问题一、二中多光束干涉对测定结果的影响，设法消除可能的影\n- 问题一属于数学模型建立，为确定外延层厚度，我们需要建立两个物理模型来精确模拟红外光\n- 子。然后我们就可以得到复数折射率关于波数的函数表达，其实部是传统意义上的折射率。然后我\n- 问题二需要基于问题一建立的模型，通过设计拟合算法计算外延层厚度。我们采用双光束干涉\n- 问题三是问题一二的延伸，针对问题三，我们首先推导了产生多光东干涉的必要条件。通过将\n- 再次从两组数据中计算得到厚度。最后，我们需要通过对比干涉极值点法和傅里叶变换算法的结果，\n- 6 问题一: 数学模型的建立\n- 为了确定碳化硅外延层的厚度，我们首先构建一个能够精确描述红外光与“空气-外延层-衬底”\n- 建立数学模型, 仅考虑在空气-外延层界面直接反射光 1 和在外延层-衬底界面经过一次反射、透",
+      "paths": {
+        "card": "problems/2025B/papers/52_2025_B_国一论文/paper_card.md",
+        "gallery": "problems/2025B/papers/52_2025_B_国一论文/gallery.html",
+        "visual_contact": "problems/2025B/papers/52_2025_B_国一论文/visual_contact.html",
+        "source_pdf": "problems/2025B/papers/52_2025_B_国一论文/source.pdf",
+        "full_ocr": "problems/2025B/papers/52_2025_B_国一论文/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2025B/papers/52_2025_B_国一论文/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "53",
+      "problem": "2025B",
+      "title": "红外干涉法测量外延层厚度的建模分析",
+      "source_name": "2025_B060_官方论文展示.pdf",
+      "pages": 72,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-01.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-02.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-03.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-04.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p4"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-08.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-09.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p9"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-12.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-13.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图 6. 反光人数二与真实碳化夸 10 度入仙全反对曲线多本情况"
+          ],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-14.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-15.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-16.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-17.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-18.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-19.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-20.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 10 高斯-牛顿寺代涡关收项情况"
+          ],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-21.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p21"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-23.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-24.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-25.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p25"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-27.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-28.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-29.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-30.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-31.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p31"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-40.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p40"
+        },
+        {
+          "page": 43,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-43.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p43"
+        },
+        {
+          "page": 44,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-44.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p44"
+        },
+        {
+          "page": 45,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-45.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p45"
+        },
+        {
+          "page": 46,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-46.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p46"
+        },
+        {
+          "page": 48,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-48.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p48"
+        },
+        {
+          "page": 51,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-51.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p51"
+        },
+        {
+          "page": 59,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-59.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p59"
+        },
+        {
+          "page": 64,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-64.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p64"
+        },
+        {
+          "page": 69,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\pages\\page-69.png",
+          "gallery_anchor": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html#p69"
+        }
+      ],
+      "abstract_extract": "本文通过得究红外干涉法测外年层厚度问题，提出了一种基于个领边代反\n该反射素柳型参数、问基于波谷周央关系进行数值计算厚度交叉印证的解决\n由从\n\n对于问题一，读方案首先基于碘化娃娃的先验折射率物理模型和双光\n束于名将反出玫度公式，设计了一个基于 Drude 折册率导型、给出了直楼计\n算外延民原度的公式\n\n允于间题二， 在基于关射率和反射强度公式建立的从型上,设计了内个\n加路纤 (1) 周期波谷吉接计算法: 衣过反射率才夺式给出的理论乱落周期和厚\n度 的关系建立d 的显直和达趟,在限件 1、2 油得的反射事曲线上通过样条\n揪舍取出准确衣信点村标什，计算消组厚度 d 并用统计方法纵出最终厚度计\n算估为 7.544pum (2) 咎久选代反演法: 以已经建立的反射率表达式 Rs 作为依\n可了度 d 因数条线，直过用牛绷先代拟合 Ru 与实验测得的反射这员线，给\n出夯度 d 的史代解为; 7.295jom 作为直接计算值 7.544nm 的较好四证人\n\n对于间题三，解和路线是 (A) 先直立多交于小模型，分析多效束效应显\n车的物理几要条件，并给出判断多光束效应对原模型求解种度影响大小的评\n莉指标 G，(B) 基于前两亲的建模和给出的波谷言接计算泪和牛皮寺代反演\n法，代人夸晶片的折射事经验则续，什立确定奈外让导理度计算的数学模型和\n算法。给出附件 3, 二节据的太度计算值为 3.453ym (直接计算) 和 3.414uon\n《后依造代)，最终以 3.4326em 作为阴件 3、4 硅晶片的原度计算结笃 (C)\n过 G 值检验和机关学习检验，用 (B) 中初步计算铺果和参与计算的最考察多\n光束效应对用件 3，4 所油数值影响的又弱 {D) 对附件 1) 宇所油歼据评估多\n光束效应,并在淡谷直接计算法和牛顿代反资法上都进行本型禾E7 以尝试\n清除多光束效应的玉响，得出在修正模型下评莫得厚度和第二站中计算得到\n结果关古模小，国而判断险件 {、2 中过光来于涉效应较表{ 襄妆可信的函度\n值是 T.455pm",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 76 行：2 问题分析（问题分析）\n- 第 110 行：3 模型假设（模型假设）\n- 第 795 行：6 模型检验肥合理性分折 注（模型检验）\n- 第 899 行：参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 2.1 问题一: 双光来二水模型与厚度计算公式\n- 厅厅首先需要建立红外二尖法下药物至模里。在侵设仅在空气/外臣民和外东野/下两面的\n- 知灼朵卫隐旺式半生通过样条午值取本确强值点，理到对计算出多个4，最后用统计方\n- 2.3 问题三; 多光束二水效应与修正",
+      "paths": {
+        "card": "problems/2025B/papers/53_2025_B060_官方论文展示/paper_card.md",
+        "gallery": "problems/2025B/papers/53_2025_B060_官方论文展示/gallery.html",
+        "visual_contact": "problems/2025B/papers/53_2025_B060_官方论文展示/visual_contact.html",
+        "source_pdf": "problems/2025B/papers/53_2025_B060_官方论文展示/source.pdf",
+        "full_ocr": "problems/2025B/papers/53_2025_B060_官方论文展示/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2025B/papers/53_2025_B060_官方论文展示/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "54",
+      "problem": "2025B",
+      "title": "碳化硅外延层厚度的双光束和多光束干涉法测量研究",
+      "source_name": "2025_B157_官方论文展示.pdf",
+      "pages": 67,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-01.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-02.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-03.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "表1 符号说明"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-04.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "国 1 遇光来下模型的下示意图"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-05.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-06.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图 3 等问上重采样后数据图",
+            "图3 截蚂多波至区域后等问是重果样图"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-07.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图4去趋势化、去噬后数据图",
+            "图5给出了在 1000-4000 em 区间内，10 与 15\" 测量数据的带窗 FFT 分析结果，"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-08.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图5全各省窗 PPT车困图",
+            "图6 和有妆关让折"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-09.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图7 执行FET后的屯请结果"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-10.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-11.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-12.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图9 15度-SiC 拟侣结果",
+            "图19 10度-SiC 分段殷合结果"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-13.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图15度-SiC 分自投合结果"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-14.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图13 SiC 15\" 联合报合、联合回代、单角瓜合践益直方图",
+            "图 1 SC联合投人、联人同代、章全下尖QQ 国",
+            "图15 SiC 159 联合拟合、联合同代、单角报合残著QQ 疼"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-15.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图16 SiC 10 联合拟合，音角执合残差频谱疼",
+            "图17 SiC 1S* 腾合的合、音角瓜侣残关频谱图"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-16.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 19 ”不同子闻段中心下的理座估计结果 图 20 ”参数不确定度与相关性类图",
+            "图21 旋数秘度误益、人射角偏差对厚度的敏感性"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-17.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图32 合成数据加归检又结果"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-18.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-19.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图23 奈片反射率光溢: 原始获点 vs. 等问题重采样 {左: 1073 有: 15)",
+            "图25 与图 26 显示, 预处理后提取的 六(中更加平泊稳定,低频以峰显著下降，SNR."
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-20.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图24 轻量去基线后的硅片反射束光溢",
+            "图35 洲窗FFT: 去基线 vs 仅重采样的广与SNR 对比"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-21.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "图26 局部王频与 SNR 的短图比较",
+            "图27 基隆江窗FFT 的售器比与率定性选"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-22.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-23.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-24.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图30 10 应-Si 投侣结果",
+            "谱分析。 图 7缚果吕示琴角度下的主频 户 在 Q00405 左右，主峰形态单一，且三coxg"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-25.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图3 5度S扫人结轩"
+          ],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-26.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-27.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\pages\\page-28.png",
+          "gallery_anchor": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html#p28"
+        }
+      ],
+      "abstract_extract": "铭化夸是一种新兴的第三代乎导体材料，其外延层的厚度对其性能至关重要。 而红\n外干涉法是外廷层厚度的一种无损伤测基方法。 本文通过分析红外光束的干部效应，建\n立了和应的于视模型和原度测量模型，采用均种优化方法，在双光束和多光束干涉场景\n下获得了精确的的外共层厚度值.\n\n针对问题一: 构建双光来干涉模型。首先，依据 Snell 定律颖正入映角的彩响，渔\n导出外延层内光积着与相位着。 接着，利用 Fresnel 公式计算空气-外延层、 外延层-桂底\n加面的反射系数，引入 Cawehy 色散模型漠述折射这随波长的变化，建立外延层厚度与\n红外光谱反射率的伪型关系。 求解时肖过偶音时变所法获取干涉条纹夺期并提下振范交\n期，得到外延层厚度钥路的初始估计值，最后采用非线性最小一乘法拟合模型参数，为\n后娠原座反河提供计时的理论瑟办。\n\n针对问题二:基于问题一模型，对玻化奈章加片在人射角 10\" 和 15- 的实验娄据进\n行厚诬反广。首先对光谱致据进行等间归重采样，栽前 1000 cm+ 以下低波数二区，\n然后对光谱和用非对称最小二息法【As1.S) 去攻势与 Savitzky Golay 平滑去竣。 随后通\n过济窗传里叶谈换稍迁高信品比有效蜂及 500. 3700Iem- ，采用双角联合拟合策略共\n亨取度与色散参数，引入波数刻度和人射角数仿关校放量，和用随机梯度下降法进行全\n参拟合，最终得到 SiC 外延导厚席约 7.694hum，驮攻均方根误区低于 114x10-*。此外，\n本文从下类统计竺性，正态性格验、角度一致件，系统敏感性等多个维度对模型进行了\n可硅性检验，葡保了核型的准殴性与各傣性,\n\n针对问题三: 风建 Airy 多光来于涉+ Cauehy 色散模型。首先对西角度光谱进行等\n下重采样与轻量多贡式去基统，随后采用到窗 FET 提取主频 记 与信只比，并据丝选择\n 有状带帘 [1170. 2170] em 作为厚度反广的工作区间, 结合相王长度判据与界面反射率\n锐度系数 严的分析得到多光率相干条件，并据此证出硅晶图片存在显落多光率于访，\n而磁化硅虱品因 SiCSi 界面反射率仅约&016，高阶反射贡献可名路，沿用两光束模型\n即可， 基于此，我们对硅样品建立 Alry 型多光来后沙 + Cauehy 色仇模型，在阿角度数\n据上联合最小二租全参拟合，残差主峰位置复现实验条纹、报值粘体小于02，最终得\n到硅蝇因片厚度约 3SHpm\n关键字。 外延民厚度副量”情玫叶变换 多光来于涉 Cauchy 色仙模型 Airy 公式\n\n1",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 111 行：三、模型假设（模型假设）\n- 第 129 行：四、符号说明（符号说明）\n- 第 850 行：六、模型评价（模型评价）",
+      "model_terms": "- 稳健性：4 次\n- 交叉验证：1 次\n- 回归：1 次\n- 敏感性分析：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 失于上述消杂，本文建立才学模型解决下列间司\n- 各是-和用问题一所建立的模型，对开化味晶图片在人射角为 10 和 1e 时的实验数\n- 问题三“分析多光束于涉产生的条件和其对厚度贡定结果的影响, 知断天虽图片的实验\n- 数据是否存在儿光来于涉，并在必要时建立相应的模型与算法进行厚度求解同时，若\n- 问题一的核心是建立一个光学干模型，用于渗术外延导厚族与红外反射光谱之\n- 在已有阳光束于水模型的基础上,问题二的任务是利用实测数据对外延层厚度进行\n- 首先，需要对光谱数据进行预处理，包括去除呈声，归一化,选择合适的闫股，以\n- 确保用于拟全的数据的吓量。随后，根据问题一到立的村型，设计合适的算法对参数进\n- 角 10z 与 19\" 的南明数据，退过联合投全与结果对比来验证机型的适用性，最后，结合\n- 为此，对问题一的模钥进行一些收正，将其淮广到多光来情形，同时得到必要条件\n- 与精度影响.在推导获得多光率模型后，将光诺数据技问题一的流程进行大处再，于过\n- 法对质加进行优化，消除其他光束的影响，再利用问题二的计算法得到原度值。",
+      "paths": {
+        "card": "problems/2025B/papers/54_2025_B157_官方论文展示/paper_card.md",
+        "gallery": "problems/2025B/papers/54_2025_B157_官方论文展示/gallery.html",
+        "visual_contact": "problems/2025B/papers/54_2025_B157_官方论文展示/visual_contact.html",
+        "source_pdf": "problems/2025B/papers/54_2025_B157_官方论文展示/source.pdf",
+        "full_ocr": "problems/2025B/papers/54_2025_B157_官方论文展示/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2025B/papers/54_2025_B157_官方论文展示/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

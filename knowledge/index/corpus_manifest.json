@@ -1,0 +1,906 @@
+{
+  "version": 1,
+  "root": ".",
+  "problems": [
+    {
+      "problem": "2020A",
+      "title": "炉温曲线",
+      "category": "机理、工程与反演",
+      "mother": "一维传热过程、参数校准与工艺约束优化",
+      "chain": "炉温环境函数 -> 电路板中心温度动力学 -> 参数校准 -> 速度与温区约束 -> 工艺指标优化",
+      "risks": [
+        "环境温度与板温混同",
+        "参数校准和工艺优化未分开",
+        "只拟合不检查制程约束"
+      ],
+      "papers": 1
+    },
+    {
+      "problem": "2020C",
+      "title": "中小微企业的信贷决策",
+      "category": "数据预测与经营决策",
+      "mother": "交易特征驱动的信用风险识别与信贷配置",
+      "chain": "发票流水清洗 -> 企业经营与风险特征 -> 违约/信誉识别 -> 额度与利率联合决策 -> 突发因素情景调整",
+      "risks": [
+        "评价得分直接替代违约概率",
+        "风险识别与额度配置脱节",
+        "冲击因素只做文字修正"
+      ],
+      "papers": 2
+    },
+    {
+      "problem": "2021A",
+      "title": "FAST主动反射面的形状调节",
+      "category": "机理、工程与反演",
+      "mother": "入射方向坐标系下的理想反射面拟合与执行器调整",
+      "chain": "坐标旋转 -> 工作抛物面确定 -> 节点目标位置 -> 促动器位移约束 -> 反射效果验证",
+      "risks": [
+        "球面坐标与工作坐标混用",
+        "只拟合抛物面不检查执行器可达性",
+        "几何误差与光学效果脱节"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2021B",
+      "title": "乙醇偶合制备C4烯烃",
+      "category": "实验响应与实验设计",
+      "mother": "催化剂组合、温度与产率之间的响应关系及实验优化",
+      "chain": "实验结构审计 -> 因素与交互作用 -> 温度响应曲线 -> 收率优化 -> 新实验点设计",
+      "risks": [
+        "非正交实验直接做标准方差分析",
+        "选择性与收率混同",
+        "插值最优点缺少外推风险说明"
+      ],
+      "papers": 4
+    },
+    {
+      "problem": "2021C",
+      "title": "生产企业原材料的订购与运输",
+      "category": "多期资源配置与鲁棒规划",
+      "mother": "供应商、订货、运输和库存耦合的多阶段资源配置",
+      "chain": "供货能力评价 -> 最少供应商集合 -> 周度订货计划 -> 转运分配 -> 成本/损耗/库存改进",
+      "risks": [
+        "供应商评价与最终决策重复计权",
+        "以均值替代供货不确定性",
+        "跨期库存守恒遗漏"
+      ],
+      "papers": 4
+    },
+    {
+      "problem": "2021D",
+      "title": "连铸切割的在线优化",
+      "category": "空间、动态与路径",
+      "mother": "优先级和长度约束下的在线切割与异常重排",
+      "chain": "尾坯长度与订单组合 -> 字典序目标 -> 静态切割 -> 异常事件更新 -> 多流实时推广",
+      "risks": [
+        "多个目标简单加权破坏优先级",
+        "异常后沿用旧计划",
+        "实时性只停留在算法名称"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2021E",
+      "title": "中药材的鉴别",
+      "category": "识别、时序与风险",
+      "mother": "红外光谱预处理、特征提取与种类/产地识别",
+      "chain": "光谱校正与平滑 -> 特征/波段提取 -> 种类分类 -> 产地识别 -> 近红外与中红外融合",
+      "risks": [
+        "同一样本重复光谱跨训练测试集",
+        "预处理在全数据上拟合",
+        "降维图好看但分类验证不足"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2022C",
+      "title": "古代玻璃制品的成分分析与鉴别",
+      "category": "识别、时序与风险",
+      "mother": "成分数据中的风化校正、分层分类和未知样本鉴别",
+      "chain": "成分闭合与零值处理 -> 风化关系 -> 风化前成分估计 -> 类型/亚类分类 -> 未知样本与关联比较",
+      "risks": [
+        "直接对百分比做普通相关",
+        "零值处理改变组成结构",
+        "分类后再用同一数据自证准确"
+      ],
+      "papers": 2
+    },
+    {
+      "problem": "2023A",
+      "title": "定日镜场的优化设计",
+      "category": "机理、工程与反演",
+      "mother": "光学效率仿真驱动的定日镜场布局与参数设计",
+      "chain": "太阳位置 -> 单镜多层效率 -> 场级时空积分 -> 固定尺寸布局优化 -> 可变尺寸与高度优化",
+      "risks": [
+        "效率项重复相乘或遗漏",
+        "代表时刻代替全年积分无误差说明",
+        "优化变量不可施工"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2023B",
+      "title": "多波束测线问题",
+      "category": "空间、动态与路径",
+      "mother": "海底地形上的多波束覆盖几何与测线规划",
+      "chain": "二维斜坡覆盖 -> 任意方向三维几何 -> 矩形海域测线设计 -> 实测地形分区与全覆盖规划",
+      "risks": [
+        "水平宽度与坡面宽度混同",
+        "二维公式未经验证直接推广三维",
+        "平均重叠率掩盖局部漏测"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2023C",
+      "title": "蔬菜类商品的自动定价与补货决策",
+      "category": "数据预测与经营决策",
+      "mother": "价格影响需求条件下的损耗补货与商品选择",
+      "chain": "流水与成本清洗 -> 销售规律/关联 -> 价格相关需求 -> 成本与需求预测 -> 品类决策 -> 单品混合多目标决策",
+      "risks": [
+        "销量等同真实需求",
+        "相关性当价格因果效应",
+        "先固定销量预测再优化价格",
+        "时间泄漏"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2023D",
+      "title": "圈养湖羊的空间利用率",
+      "category": "空间、动态与路径",
+      "mother": "繁殖周期、羊群状态与羊栏占用耦合的生产计划",
+      "chain": "繁殖阶段时间轴 -> 各类羊栏占用 -> 最小栏数/最大产出 -> 112栏具体排程 -> 不确定性缓冲",
+      "risks": [
+        "只算平均占用忽略峰值",
+        "时间周期边界重复计数",
+        "不确定性只做比例放大"
+      ],
+      "papers": 1
+    },
+    {
+      "problem": "2023E",
+      "title": "黄河水沙监测数据分析",
+      "category": "识别、时序与风险",
+      "mother": "水沙通量的关系、突变、周期、预测与调水调沙解释",
+      "chain": "含沙量关系 -> 通量构造 -> 突变/季节/周期 -> 两年预测 -> 河床高程与调度效果解释",
+      "risks": [
+        "采样频率变化造成伪突变",
+        "通量单位与时间积分错误",
+        "预测精度与机制解释混为一体"
+      ],
+      "papers": 2
+    },
+    {
+      "problem": "2024A",
+      "title": "板凳龙闹元宵",
+      "category": "空间、动态与路径",
+      "mother": "路径约束刚性链的运动、碰撞、调头与速度控制",
+      "chain": "龙头路径参数化 -> 后续把手位置/速度递推 -> 首次碰撞 -> 螺距可行性 -> 分段调头路径 -> 速度比例缩放",
+      "risks": [
+        "把板凳当曲线弧段",
+        "板长与孔距混同",
+        "点距离替代矩形碰撞",
+        "整数秒检测漏掉首次事件"
+      ],
+      "papers": 5
+    },
+    {
+      "problem": "2024B",
+      "title": "生产过程中的决策问题",
+      "category": "数据预测与经营决策",
+      "mother": "抽样检测信息驱动的生产、检验、拆解和复检决策",
+      "chain": "接收抽样方案 -> 两零件生产决策树 -> 多工序多零件扩展 -> 估计次品率的不确定性传播",
+      "risks": [
+        "置信度方向读反",
+        "检测成本和返工回收重复计算",
+        "问题4仍代入点估计而未传播不确定性"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2024C",
+      "title": "农作物的种植策略",
+      "category": "多期资源配置与鲁棒规划",
+      "mother": "地块、作物和年份耦合的轮作与风险规划",
+      "chain": "确定参数多期种植 -> 滞销/降价情景 -> 产量成本价格不确定性 -> 作物替代互补与相关情景",
+      "risks": [
+        "轮作约束索引错误",
+        "销量、产量和可售量混同",
+        "独立抽样破坏题设相关性",
+        "情景结果没有风险指标"
+      ],
+      "papers": 4
+    },
+    {
+      "problem": "2024D",
+      "title": "反潜航空深弹命中概率问题",
+      "category": "空间、动态与路径",
+      "mother": "定位误差下的概率命中区域与投弹参数优化",
+      "chain": "二维定位误差命中概率 -> 加入深度误差与引信 -> 单弹参数优化 -> 多弹阵列联合覆盖",
+      "risks": [
+        "条件概率与联合概率混用",
+        "爆炸球/杀伤区域几何错误",
+        "多弹命中事件错误地假设独立"
+      ],
+      "papers": 1
+    },
+    {
+      "problem": "2024E",
+      "title": "交通流量管控",
+      "category": "数据预测与经营决策",
+      "mother": "交通状态识别、信号配时、巡游车辆估计与管控评价",
+      "chain": "流量时段划分 -> 单路口模型 -> 路网信号协同 -> 巡游车辆识别 -> 临时措施前后评价",
+      "risks": [
+        "按固定钟点机械分段",
+        "局部绿灯优化导致下游拥堵",
+        "措施前后差异直接当因果效果"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2025A",
+      "title": "烟幕干扰弹的投放策略",
+      "category": "空间、动态与路径",
+      "mother": "多运动体条件下烟幕有效遮蔽时长最大化",
+      "chain": "导弹/无人机/烟幕运动 -> 单弹有效遮蔽判定 -> 单机多弹时序 -> 多机协同 -> 多导弹组合调度",
+      "risks": [
+        "只判断视线穿过云心",
+        "遮蔽时间区间重复累计",
+        "连续变量和离散分配未统一",
+        "忽略投放间隔与运动约束"
+      ],
+      "papers": 1
+    },
+    {
+      "problem": "2025B",
+      "title": "碳化硅外延层厚度的确定",
+      "category": "机理、工程与反演",
+      "mother": "红外干涉机理驱动的厚度反演与多光束诊断",
+      "chain": "单次反射干涉关系 -> 光谱特征与厚度算法 -> 多角度一致性验证 -> 多光束条件识别 -> 修正反演",
+      "risks": [
+        "波数/波长单位混用",
+        "峰间距方法忽略折射率色散",
+        "多光束出现条件没有可检验判据"
+      ],
+      "papers": 3
+    },
+    {
+      "problem": "2025C",
+      "title": "NIPT的时点选择与胎儿异常判定",
+      "category": "识别、时序与风险",
+      "mother": "重复测量下首次达标时间、风险分组与异常分类",
+      "chain": "Y浓度重复测量关系 -> 个体首次达标时间 -> BMI分组检测时点 -> 多因素个体化决策 -> 女胎异常分类",
+      "risks": [
+        "把重复检测当独立样本",
+        "第一次观测达标等同真实首次达标",
+        "先按结局分组造成泄漏",
+        "概率模型与决策阈值混同"
+      ],
+      "papers": 2
+    },
+    {
+      "problem": "2025D",
+      "title": "矿井突水水流漫延模型与逃生方案",
+      "category": "空间、动态与路径",
+      "mother": "时变水流网络中的淹没传播与安全逃生",
+      "chain": "巷道网络与水量守恒 -> 单突水点传播 -> 时变安全边权 -> 工人逃生路径 -> 第二突水点更新与实时改道",
+      "risks": [
+        "静态最短路替代时变可通行性",
+        "节点水位与巷道截面不一致",
+        "第二突水后未更新已走位置"
+      ],
+      "papers": 1
+    },
+    {
+      "problem": "2025E",
+      "title": "立定跳远动作技术分析与训练建议",
+      "category": "识别、时序与风险",
+      "mother": "视频姿态序列的动作评价、干预效果与个体化迁移",
+      "chain": "关键点校验与平滑 -> 动作阶段分割 -> 角度/速度/协同特征 -> 训练前后效果 -> 运动者11诊断与建议",
+      "risks": [
+        "像素距离直接当实际距离",
+        "不同帧率/尺度未归一",
+        "同一运动者样本泄漏",
+        "相关动作特征直接解释为训练因果"
+      ],
+      "papers": 1
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "01",
+      "problem": "2020A",
+      "title": "基于一维热传导方程的回焊炉炉温模型",
+      "source_name": "2020_A195_官方论文展示.pdf",
+      "pages": 43,
+      "card_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2020A\\papers\\01_2020_A195_官方论文展示\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "02",
+      "problem": "2020C",
+      "title": "针对中小微企业最优信贷决策研究",
+      "source_name": "2020_C170_官方论文展示.pdf",
+      "pages": 40,
+      "card_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\gallery.html",
+      "visual_pages": 29
+    },
+    {
+      "paper_id": "03",
+      "problem": "2020C",
+      "title": "银行对中小微企业的信贷决策分析",
+      "source_name": "2020_C227_国一论文.pdf",
+      "pages": 35,
+      "card_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\paper_card.md",
+      "gallery_path": "problems\\2020C\\papers\\03_2020_C227_国一论文\\gallery.html",
+      "visual_pages": 18
+    },
+    {
+      "paper_id": "04",
+      "problem": "2021A",
+      "title": "“FAST”主动反射面调节模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A028）.pdf",
+      "pages": 38,
+      "card_path": "problems\\2021A\\papers\\04_A028\\paper_card.md",
+      "gallery_path": "problems\\2021A\\papers\\04_A028\\gallery.html",
+      "visual_pages": 10
+    },
+    {
+      "paper_id": "05",
+      "problem": "2021A",
+      "title": "基于目标优化的“FAST”主动反射面形状调节研究",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A115）.pdf",
+      "pages": 35,
+      "card_path": "problems\\2021A\\papers\\05_A115\\paper_card.md",
+      "gallery_path": "problems\\2021A\\papers\\05_A115\\gallery.html",
+      "visual_pages": 18
+    },
+    {
+      "paper_id": "06",
+      "problem": "2021A",
+      "title": "\"FAST\"工作抛物面的优化设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A217）.pdf",
+      "pages": 59,
+      "card_path": "problems\\2021A\\papers\\06_A217\\paper_card.md",
+      "gallery_path": "problems\\2021A\\papers\\06_A217\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "07",
+      "problem": "2021B",
+      "title": "04 烯烃制备分析与试验设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B007）.pdf",
+      "pages": 45,
+      "card_path": "problems\\2021B\\papers\\07_B007\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\07_B007\\gallery.html",
+      "visual_pages": 24
+    },
+    {
+      "paper_id": "08",
+      "problem": "2021B",
+      "title": "基于双因素方差分析的乙醇制备 04 烯烃的研究",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B026）.pdf",
+      "pages": 26,
+      "card_path": "problems\\2021B\\papers\\08_B026\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\08_B026\\gallery.html",
+      "visual_pages": 22
+    },
+    {
+      "paper_id": "09",
+      "problem": "2021B",
+      "title": "乙醇偶合制备 C4 烯烃的多元回归与神经网络模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B050）.pdf",
+      "pages": 59,
+      "card_path": "problems\\2021B\\papers\\09_B050\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\09_B050\\gallery.html",
+      "visual_pages": 23
+    },
+    {
+      "paper_id": "10",
+      "problem": "2021B",
+      "title": "乙醇制备 C4 烯烃催化剂组合的分析与设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B160）.pdf",
+      "pages": 28,
+      "card_path": "problems\\2021B\\papers\\10_B160\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\10_B160\\gallery.html",
+      "visual_pages": 24
+    },
+    {
+      "paper_id": "11",
+      "problem": "2021C",
+      "title": "生产企业原材料订购与运输的评价与规划模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C066）.pdf",
+      "pages": 60,
+      "card_path": "problems\\2021C\\papers\\11_C066\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\11_C066\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "12",
+      "problem": "2021C",
+      "title": "基于双层和随机规划的原材料订购与运输问题",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C085）.pdf",
+      "pages": 56,
+      "card_path": "problems\\2021C\\papers\\12_C085\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\12_C085\\gallery.html",
+      "visual_pages": 19
+    },
+    {
+      "paper_id": "13",
+      "problem": "2021C",
+      "title": "基于优化算法的企业原材料订购与运输规划模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C169）.pdf",
+      "pages": 51,
+      "card_path": "problems\\2021C\\papers\\13_C169\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\13_C169\\gallery.html",
+      "visual_pages": 20
+    },
+    {
+      "paper_id": "14",
+      "problem": "2021C",
+      "title": "双目标贪心优化下的企业原料订购运输方案",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C283）.pdf",
+      "pages": 58,
+      "card_path": "problems\\2021C\\papers\\14_C283\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\14_C283\\gallery.html",
+      "visual_pages": 22
+    },
+    {
+      "paper_id": "15",
+      "problem": "2021D",
+      "title": "连铸切割的在线优化模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛D题论文展示（D017）.pdf",
+      "pages": 21,
+      "card_path": "problems\\2021D\\papers\\15_D017\\paper_card.md",
+      "gallery_path": "problems\\2021D\\papers\\15_D017\\gallery.html",
+      "visual_pages": 19
+    },
+    {
+      "paper_id": "16",
+      "problem": "2021D",
+      "title": "连铸切割的在线优化",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛D题论文展示（D026）.pdf",
+      "pages": 36,
+      "card_path": "problems\\2021D\\papers\\16_D026\\paper_card.md",
+      "gallery_path": "problems\\2021D\\papers\\16_D026\\gallery.html",
+      "visual_pages": 18
+    },
+    {
+      "paper_id": "17",
+      "problem": "2021D",
+      "title": "7                  习     忆",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛D题论文展示（D034）.pdf",
+      "pages": 30,
+      "card_path": "problems\\2021D\\papers\\17_D034\\paper_card.md",
+      "gallery_path": "problems\\2021D\\papers\\17_D034\\gallery.html",
+      "visual_pages": 18
+    },
+    {
+      "paper_id": "18",
+      "problem": "2021E",
+      "title": "基于机器学习的中药材类别与产地鉴别",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛E题论文展示（E014）.pdf",
+      "pages": 51,
+      "card_path": "problems\\2021E\\papers\\18_E014\\paper_card.md",
+      "gallery_path": "problems\\2021E\\papers\\18_E014\\gallery.html",
+      "visual_pages": 19
+    },
+    {
+      "paper_id": "19",
+      "problem": "2021E",
+      "title": "中药材的鉴别",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛E题论文展示（E025）.pdf",
+      "pages": 39,
+      "card_path": "problems\\2021E\\papers\\19_E025\\paper_card.md",
+      "gallery_path": "problems\\2021E\\papers\\19_E025\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "20",
+      "problem": "2021E",
+      "title": "基于红外光谱法的中药材鉴别",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛E题论文展示（E037）.pdf",
+      "pages": 37,
+      "card_path": "problems\\2021E\\papers\\20_E037\\paper_card.md",
+      "gallery_path": "problems\\2021E\\papers\\20_E037\\gallery.html",
+      "visual_pages": 26
+    },
+    {
+      "paper_id": "21",
+      "problem": "2022C",
+      "title": "基于成分数据的古代玻璃制品的成分分析与鉴别",
+      "source_name": "2022_2022高教社杯全国大学生数学建模竞赛C题论文展示（C155）.pdf",
+      "pages": 41,
+      "card_path": "problems\\2022C\\papers\\21_C155\\paper_card.md",
+      "gallery_path": "problems\\2022C\\papers\\21_C155\\gallery.html",
+      "visual_pages": 30
+    },
+    {
+      "paper_id": "22",
+      "problem": "2022C",
+      "title": "基于成分数据分析的玻璃制品分析与分类",
+      "source_name": "2022_2022高教社杯全国大学生数学建模竞赛C题论文展示（C229）.pdf",
+      "pages": 26,
+      "card_path": "problems\\2022C\\papers\\22_C229\\paper_card.md",
+      "gallery_path": "problems\\2022C\\papers\\22_C229\\gallery.html",
+      "visual_pages": 22
+    },
+    {
+      "paper_id": "23",
+      "problem": "2023A",
+      "title": "定日镜场的输出功率优化",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛A题论文展示（A0127）.pdf",
+      "pages": 58,
+      "card_path": "problems\\2023A\\papers\\23_A0127\\paper_card.md",
+      "gallery_path": "problems\\2023A\\papers\\23_A0127\\gallery.html",
+      "visual_pages": 30
+    },
+    {
+      "paper_id": "24",
+      "problem": "2023A",
+      "title": "基于机理分析法的定日镜场优化设计模型",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛A题论文展示（A0165）.pdf",
+      "pages": 45,
+      "card_path": "problems\\2023A\\papers\\24_A0165\\paper_card.md",
+      "gallery_path": "problems\\2023A\\papers\\24_A0165\\gallery.html",
+      "visual_pages": 19
+    },
+    {
+      "paper_id": "25",
+      "problem": "2023A",
+      "title": "定日镜场的优化设计",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛A题论文展示（A092）.pdf",
+      "pages": 53,
+      "card_path": "problems\\2023A\\papers\\25_A092\\paper_card.md",
+      "gallery_path": "problems\\2023A\\papers\\25_A092\\gallery.html",
+      "visual_pages": 29
+    },
+    {
+      "paper_id": "26",
+      "problem": "2023B",
+      "title": "多波来测线布设",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B226）.pdf",
+      "pages": 51,
+      "card_path": "problems\\2023B\\papers\\26_B226\\paper_card.md",
+      "gallery_path": "problems\\2023B\\papers\\26_B226\\gallery.html",
+      "visual_pages": 39
+    },
+    {
+      "paper_id": "27",
+      "problem": "2023B",
+      "title": "基于主要目标法的测线设计问题",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B311）.pdf",
+      "pages": 34,
+      "card_path": "problems\\2023B\\papers\\27_B311\\paper_card.md",
+      "gallery_path": "problems\\2023B\\papers\\27_B311\\gallery.html",
+      "visual_pages": 17
+    },
+    {
+      "paper_id": "28",
+      "problem": "2023B",
+      "title": "多波束测深合理探测方案的设计及效果分析",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B477）.pdf",
+      "pages": 50,
+      "card_path": "problems\\2023B\\papers\\28_B477\\paper_card.md",
+      "gallery_path": "problems\\2023B\\papers\\28_B477\\gallery.html",
+      "visual_pages": 21
+    },
+    {
+      "paper_id": "29",
+      "problem": "2023C",
+      "title": "某商超芯菜类商品动态定价与补贷决策研究",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛C题论文展示（C050）.pdf",
+      "pages": 44,
+      "card_path": "problems\\2023C\\papers\\29_C050\\paper_card.md",
+      "gallery_path": "problems\\2023C\\papers\\29_C050\\gallery.html",
+      "visual_pages": 29
+    },
+    {
+      "paper_id": "30",
+      "problem": "2023C",
+      "title": "商超共菜销售数据的统计分析及建模",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛C题论文展示（C126）.pdf",
+      "pages": 74,
+      "card_path": "problems\\2023C\\papers\\30_C126\\paper_card.md",
+      "gallery_path": "problems\\2023C\\papers\\30_C126\\gallery.html",
+      "visual_pages": 20
+    },
+    {
+      "paper_id": "31",
+      "problem": "2023C",
+      "title": "基于价格弹性的蔬菜类商品自动定价与补货决策",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛C题论文展示（C228）.pdf",
+      "pages": 70,
+      "card_path": "problems\\2023C\\papers\\31_C228\\paper_card.md",
+      "gallery_path": "problems\\2023C\\papers\\31_C228\\gallery.html",
+      "visual_pages": 26
+    },
+    {
+      "paper_id": "32",
+      "problem": "2023D",
+      "title": "圈养湖羊空间利用率的优化问题",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛D题论文展示（D039）.pdf",
+      "pages": 31,
+      "card_path": "problems\\2023D\\papers\\32_D039\\paper_card.md",
+      "gallery_path": "problems\\2023D\\papers\\32_D039\\gallery.html",
+      "visual_pages": 11
+    },
+    {
+      "paper_id": "33",
+      "problem": "2023E",
+      "title": "基于时间序列分析预测的黄河水沙监测模型",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛E题论文展示（E032）.pdf",
+      "pages": 53,
+      "card_path": "problems\\2023E\\papers\\33_E032\\paper_card.md",
+      "gallery_path": "problems\\2023E\\papers\\33_E032\\gallery.html",
+      "visual_pages": 38
+    },
+    {
+      "paper_id": "34",
+      "problem": "2023E",
+      "title": "若于小波变换和肖包模型的小浪底水库最优监测方案研究",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛E题论文展示（E176）.pdf",
+      "pages": 56,
+      "card_path": "problems\\2023E\\papers\\34_E176\\paper_card.md",
+      "gallery_path": "problems\\2023E\\papers\\34_E176\\gallery.html",
+      "visual_pages": 13
+    },
+    {
+      "paper_id": "35",
+      "problem": "2024A",
+      "title": "基于几何模型的舞龙队位置和速度分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A016）.pdf",
+      "pages": 59,
+      "card_path": "problems\\2024A\\papers\\35_A016\\paper_card.md",
+      "gallery_path": "problems\\2024A\\papers\\35_A016\\gallery.html",
+      "visual_pages": 36
+    },
+    {
+      "paper_id": "36",
+      "problem": "2024A",
+      "title": "基于目标优化的板芭龙形态调节",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A053）.pdf",
+      "pages": 62,
+      "card_path": "problems\\2024A\\papers\\36_A053\\paper_card.md",
+      "gallery_path": "problems\\2024A\\papers\\36_A053\\gallery.html",
+      "visual_pages": 41
+    },
+    {
+      "paper_id": "37",
+      "problem": "2024A",
+      "title": "基于几何模型的板吏龙运动路径问题",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A163）.pdf",
+      "pages": 45,
+      "card_path": "problems\\2024A\\papers\\37_A163\\paper_card.md",
+      "gallery_path": "problems\\2024A\\papers\\37_A163\\gallery.html",
+      "visual_pages": 29
+    },
+    {
+      "paper_id": "38",
+      "problem": "2024A",
+      "title": "“板革龙\"，亦条作“香龙\"在浙江与视建地区广为流传，作为一各传统的民俗文",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A178）.pdf",
+      "pages": 48,
+      "card_path": "problems\\2024A\\papers\\38_A178\\paper_card.md",
+      "gallery_path": "problems\\2024A\\papers\\38_A178\\gallery.html",
+      "visual_pages": 20
+    },
+    {
+      "paper_id": "39",
+      "problem": "2024A",
+      "title": "基于动态搜索的“板守龙”运动状态及路线研究",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A242）.pdf",
+      "pages": 58,
+      "card_path": "problems\\2024A\\papers\\39_A242\\paper_card.md",
+      "gallery_path": "problems\\2024A\\papers\\39_A242\\gallery.html",
+      "visual_pages": 34
+    },
+    {
+      "paper_id": "40",
+      "problem": "2024B",
+      "title": "生产过程中的次策优化设计",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛B题论文展示（B159）.pdf",
+      "pages": 37,
+      "card_path": "problems\\2024B\\papers\\40_B159\\paper_card.md",
+      "gallery_path": "problems\\2024B\\papers\\40_B159\\gallery.html",
+      "visual_pages": 14
+    },
+    {
+      "paper_id": "41",
+      "problem": "2024B",
+      "title": "基于多阶段模拟仿真的生产决策问题",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛B题论文展示（B195）.pdf",
+      "pages": 70,
+      "card_path": "problems\\2024B\\papers\\41_B195\\paper_card.md",
+      "gallery_path": "problems\\2024B\\papers\\41_B195\\gallery.html",
+      "visual_pages": 18
+    },
+    {
+      "paper_id": "42",
+      "problem": "2024B",
+      "title": "基于明群算法与透传算法优化的蒙特卡洛模拟在生产决策优化",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛B题论文展示（B196）.pdf",
+      "pages": 28,
+      "card_path": "problems\\2024B\\papers\\42_B196\\paper_card.md",
+      "gallery_path": "problems\\2024B\\papers\\42_B196\\gallery.html",
+      "visual_pages": 21
+    },
+    {
+      "paper_id": "43",
+      "problem": "2024C",
+      "title": "基于差分遗传算法的农作物种植策略优化",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C038）.pdf",
+      "pages": 61,
+      "card_path": "problems\\2024C\\papers\\43_C038\\paper_card.md",
+      "gallery_path": "problems\\2024C\\papers\\43_C038\\gallery.html",
+      "visual_pages": 49
+    },
+    {
+      "paper_id": "44",
+      "problem": "2024C",
+      "title": "基于优化算法的农作物最优种植模型",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C063）.pdf",
+      "pages": 49,
+      "card_path": "problems\\2024C\\papers\\44_C063\\paper_card.md",
+      "gallery_path": "problems\\2024C\\papers\\44_C063\\gallery.html",
+      "visual_pages": 25
+    },
+    {
+      "paper_id": "45",
+      "problem": "2024C",
+      "title": "基于随机优化的农作物种植策略模型",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C094）.pdf",
+      "pages": 58,
+      "card_path": "problems\\2024C\\papers\\45_C094\\paper_card.md",
+      "gallery_path": "problems\\2024C\\papers\\45_C094\\gallery.html",
+      "visual_pages": 12
+    },
+    {
+      "paper_id": "46",
+      "problem": "2024C",
+      "title": "基于址传算法的最优种植策略",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C234）.pdf",
+      "pages": 45,
+      "card_path": "problems\\2024C\\papers\\46_C234\\paper_card.md",
+      "gallery_path": "problems\\2024C\\papers\\46_C234\\gallery.html",
+      "visual_pages": 21
+    },
+    {
+      "paper_id": "47",
+      "problem": "2024D",
+      "title": "反洪航空深弹命中概率的优化问题",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛D题论文展示（D033）.pdf",
+      "pages": 55,
+      "card_path": "problems\\2024D\\papers\\47_D033\\paper_card.md",
+      "gallery_path": "problems\\2024D\\papers\\47_D033\\gallery.html",
+      "visual_pages": 22
+    },
+    {
+      "paper_id": "48",
+      "problem": "2024E",
+      "title": "交通流量管控",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E010）.pdf",
+      "pages": 39,
+      "card_path": "problems\\2024E\\papers\\48_E010\\paper_card.md",
+      "gallery_path": "problems\\2024E\\papers\\48_E010\\gallery.html",
+      "visual_pages": 26
+    },
+    {
+      "paper_id": "49",
+      "problem": "2024E",
+      "title": "基于多目标优化的交通管理评估分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E061）.pdf",
+      "pages": 32,
+      "card_path": "problems\\2024E\\papers\\49_E061\\paper_card.md",
+      "gallery_path": "problems\\2024E\\papers\\49_E061\\gallery.html",
+      "visual_pages": 21
+    },
+    {
+      "paper_id": "50",
+      "problem": "2024E",
+      "title": "基于 Python 语言的交通流量管控与预测分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛E题论文展示（E218）.pdf",
+      "pages": 62,
+      "card_path": "problems\\2024E\\papers\\50_E218\\paper_card.md",
+      "gallery_path": "problems\\2024E\\papers\\50_E218\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "51",
+      "problem": "2025A",
+      "title": "多情形下无人机烟幕这项策略的建模与优化研究",
+      "source_name": "2025_A196_官方论文展示.pdf",
+      "pages": 98,
+      "card_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "52",
+      "problem": "2025B",
+      "title": "基于联合物理色散模型与先进信号处理方法测定碳化硅外延层厚度",
+      "source_name": "2025_B_国一论文.pdf",
+      "pages": 38,
+      "card_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\paper_card.md",
+      "gallery_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\gallery.html",
+      "visual_pages": 30
+    },
+    {
+      "paper_id": "53",
+      "problem": "2025B",
+      "title": "红外干涉法测量外延层厚度的建模分析",
+      "source_name": "2025_B060_官方论文展示.pdf",
+      "pages": 72,
+      "card_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\gallery.html",
+      "visual_pages": 34
+    },
+    {
+      "paper_id": "54",
+      "problem": "2025B",
+      "title": "碳化硅外延层厚度的双光束和多光束干涉法测量研究",
+      "source_name": "2025_B157_官方论文展示.pdf",
+      "pages": 67,
+      "card_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\gallery.html",
+      "visual_pages": 28
+    },
+    {
+      "paper_id": "55",
+      "problem": "2025C",
+      "title": "基于禄合效应横型的 NIPT 时点优化与取儿噶常判定",
+      "source_name": "2025_C023_官方论文展示.pdf",
+      "pages": 122,
+      "card_path": "problems\\2025C\\papers\\55_2025_C023_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025C\\papers\\55_2025_C023_官方论文展示\\gallery.html",
+      "visual_pages": 50
+    },
+    {
+      "paper_id": "56",
+      "problem": "2025C",
+      "title": "基于统计建模与元学习的 NIPT 检测决策优化与异常识别",
+      "source_name": "2025_C132_官方论文展示.pdf",
+      "pages": 65,
+      "card_path": "problems\\2025C\\papers\\56_2025_C132_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025C\\papers\\56_2025_C132_官方论文展示\\gallery.html",
+      "visual_pages": 44
+    },
+    {
+      "paper_id": "57",
+      "problem": "2025D",
+      "title": "矿井突水水流漫延模型与逃生方案问题",
+      "source_name": "2025_D037_官方论文展示.pdf",
+      "pages": 37,
+      "card_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025D\\papers\\57_2025_D037_官方论文展示\\gallery.html",
+      "visual_pages": 24
+    },
+    {
+      "paper_id": "58",
+      "problem": "2025E",
+      "title": "基于姿态识别的 AI 辅助智能体测研究",
+      "source_name": "2025_E030_官方论文展示.pdf",
+      "pages": 36,
+      "card_path": "problems\\2025E\\papers\\58_2025_E030_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025E\\papers\\58_2025_E030_官方论文展示\\gallery.html",
+      "visual_pages": 30
+    }
+  ],
+  "counts": {
+    "problems": 23,
+    "papers": 58,
+    "paper_pages": 2876,
+    "statement_pages": 47,
+    "attachments": 97,
+    "visual_hint_pages": 1494
+  },
+  "link_stats": {
+    "hardlink": 3135
+  },
+  "knowledge_mode": "compact",
+  "raw_evidence_external": true
+}

@@ -1,0 +1,454 @@
+{
+  "problem": "2025A",
+  "title": "烟幕干扰弹的投放策略",
+  "category": "空间、动态与路径",
+  "mother_problem": "多运动体条件下烟幕有效遮蔽时长最大化",
+  "question_chain": "导弹/无人机/烟幕运动 -> 单弹有效遮蔽判定 -> 单机多弹时序 -> 多机协同 -> 多导弹组合调度",
+  "misreading_risks": [
+    "只判断视线穿过云心",
+    "遮蔽时间区间重复累计",
+    "连续变量和离散分配未统一",
+    "忽略投放间隔与运动约束"
+  ],
+  "questions": [
+    "问题 1 利用无人机 FY1 投放 1 枚烟幕干扰弹实施对 M1 的干扰，若 FY1 以 120 m/s 的 速度朝向假目标方向飞行，受领任务 1.5 s 后即投放 1 枚烟幕干扰弹，间隔 3.6 s 后起爆。请 给出烟幕干扰弹对 M1 的有效遮蔽时长。",
+    "问题 2 利用无人机 FY1 投放 1 枚烟幕干扰弹实施对 M1 的干扰，确定 FY1 的飞行方 向、飞行速度、烟幕干扰弹投放点、烟幕干扰弹起爆点，使得遮蔽时间尽可能长。",
+    "问题 3 利用无人机 FY1 投放 3 枚烟幕干扰弹，实施对 M1 的干扰。请给出烟幕干扰弹 的投放策略，并将结果保存到文件 result1.xlsx 中（模板文件见附件）。",
+    "问题 4 利用 FY1、FY2、FY3 等 3 架无人机，各投放 1 枚烟幕干扰弹，实施对 M1 的 干扰。请给出烟幕干扰弹的投放策略，并将结果保存到文件 result2.xlsx 中（模板文件见附 件）。",
+    "问题 5 利用 5 架无人机，每架无人机至多投放 3 枚烟幕干扰弹，实施对 M1、M2、M3 等 3 枚来袭导弹的干扰。请给出烟幕干扰弹的投放策略，并将结果保存到文件 result3.xlsx 中 （模板文件见附件）。"
+  ],
+  "attachments": [
+    {
+      "name": "result1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025A\\attachments\\result1.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 6,
+          "cols": 10,
+          "preview": [
+            [
+              "无人机运动方向",
+              "无人机运动速度 (m/s)",
+              "烟幕干扰弹编号",
+              "烟幕干扰弹投放点的x坐标 (m)",
+              "烟幕干扰弹投放点的y坐标 (m)",
+              "烟幕干扰弹投放点的z坐标 (m)",
+              "烟幕干扰弹起爆点的x坐标 (m)",
+              "烟幕干扰弹起爆点的y坐标 (m)",
+              "烟幕干扰弹起爆点的z坐标 (m)",
+              "有效干扰时长 (s)"
+            ],
+            [
+              null,
+              null,
+              1,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              3,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025A\\attachments\\result2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 6,
+          "cols": 10,
+          "preview": [
+            [
+              "无人机编号",
+              "无人机运动方向",
+              "无人机运动速度 (m/s)",
+              "烟幕干扰弹投放点的x坐标 (m)",
+              "烟幕干扰弹投放点的y坐标 (m)",
+              "烟幕干扰弹投放点的z坐标 (m)",
+              "烟幕干扰弹起爆点的x坐标 (m)",
+              "烟幕干扰弹起爆点的y坐标 (m)",
+              "烟幕干扰弹起爆点的z坐标 (m)",
+              "有效干扰时长 (s)"
+            ],
+            [
+              "FY1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "FY2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "FY3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result3.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2025A\\attachments\\result3.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 18,
+          "cols": 12,
+          "preview": [
+            [
+              "无人机编号",
+              "无人机运动方向",
+              "无人机运动速度 (m/s)",
+              "烟幕干扰弹编号",
+              "烟幕干扰弹投放点的x坐标 (m)",
+              "烟幕干扰弹投放点的y坐标 (m)",
+              "烟幕干扰弹投放点的z坐标 (m)",
+              "烟幕干扰弹起爆点的x坐标 (m)",
+              "烟幕干扰弹起爆点的y坐标 (m)",
+              "烟幕干扰弹起爆点的z坐标 (m)",
+              "有效干扰时长 (s)",
+              "干扰的导弹编号"
+            ],
+            [
+              "FY1",
+              null,
+              null,
+              1,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "FY1",
+              null,
+              null,
+              2,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "FY1",
+              null,
+              null,
+              3,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "51",
+      "problem": "2025A",
+      "title": "多情形下无人机烟幕这项策略的建模与优化研究",
+      "source_name": "2025_A196_官方论文展示.pdf",
+      "pages": 98,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-01.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "图 1 现实中的类辜运用"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-02.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [
+            "图二 各问题关系图"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-03.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-04.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "表 1 符号说朋【续)",
+            "图 村 无人机投弹干拓导弹示意图"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-05.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-06.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-07.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-08.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-09.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-10.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-11.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-12.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图 5 导弹视角下观察圆柱 图 全 导弹视角下圆柱体的外轮振",
+            "图7: 圆柱体被车蔽示意淹 图8: 截面 瑚4 示意图"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-13.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-14.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图 全 间题一算法总体流程图",
+            "二分查挝沪的示意图以及具体步螺如下;"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-15.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-16.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-17.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-18.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-19.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-20.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-21.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-22.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图 11: 券分进化算法流程图"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-23.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "表 5 烟得于扣习投居与效能数据"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-24.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-25.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-26.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p26"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-28.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-29.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-30.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [
+            "的壮伟算法进行求解。分析各无人宙与各导弹的初始位置示意图:",
+            "图 12: 各无人机与各导弹的初始位置示意图"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-31.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p31"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-33.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [
+            "图1: 支撑材料日孙",
+            "图 2 问题五详细数据"
+          ],
+          "image_path": "problems\\2025A\\papers\\51_2025_A196_官方论文展示\\pages\\page-34.png",
+          "gallery_anchor": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html#p34"
+        }
+      ],
+      "abstract_extract": "多情形下无人机烟幕这项策略的建模与优化研究\n蔽机\n\n可刘于拓玫能给导弹打击的目标提供有效轩项，破少损失，由于低成本、效用高的\n特点，其在备事上性到了广泛的占用。本文针对无人机地放姻莘最优第赂的研究，首\n先给出了导弹、姻划弹等物体的位置二数，同时对有效思朱的判别式进行了详细的说明\n另外，本文引信了布尔表数来断这持是否有效，全得去达亚加简法易钾、\n\n针对间题一:本条已经给定导弹、无人机与上芋的初始参数，代人术开准备时求\n得的运动学模型绪全这漳定模型,对布尔数在 Ia,sc|] 进行积分即可求得有效这挡时\n长。 在二前，本文首光证胃了有效训蔽时间区各是一自连续的区间及只需类断加性休\n上下两个底面加冉是否被完全过蔽，即可判定更个图桂体是否裤完全茂这瑞个结论，\n太大二烟了来角效训 之后通过二分在投法进行直角李得总璋对 M1 的有效计天时长\n为 1.391643s。 此外，本文通过在国周上取不同数最离散点进行匆语度分析，发现当取\n0 个点时，合各菜鼎未解的准刚性和效率\n\n针对问题二: 在无人机以及烟落璋参数不知道的情况下，本同基于回题一的分析，\n建立了以无人机航向、违度，烟帮习投放，爆件时间四个大数为决策变量，最天化有效\n奸挡时间的单机单强情况下的优化模型。洒过多起点变步搜索算法求出了 FY1 于拓\nMI 的最优投放策略，印 PY1 以 136 3663m/s 向 5.16g\" 方向匀演飞行，在受信全务\n8977s 后投放一玫姻落弹，季隐 0.0497s 后起爆，此方案下有效衣时长为45873s。\n此外，本间用术科和法重新求解村型进行验证，发现两个算法的相对误差人为 0l名，\n说明我们的算法能有效求解本问的优化模型\n\n针对问题三，本条拓展至单无人机元二朱旨情形，建立了优化机型。用部进化么\n法对三枚烟幕强的投放与起爆点进行了优化, 求儿出最大有效轩持时间是 6.03580s， 该\n第咯下的其余数据见用件 resultt xlsxv\n\n针对问题四: 不同于单无人机多于拓弹，多无人机单于护理不才要考虑投之间\n的时间闻阴，但需要考虑三改导姑在时室上的协问，同洋建立了以最大化有效导挡时\n长为目标的优化模型，计算时通过分村导弹和目标视线的几何关系，提出了基于预测\n拉夫点的协同优化算法，次 1 维决策空间降纵处理，显著提升未解效率，并通过局\n部风格搜索进行本组优化。最次求出最大有效串的时间为 11.125936x，其余数据见附\n件 result2.zlax。 最后，和用半分进化算法进行验证求解得到总最大有效计上时间是\n6t5260s，丙者差殉不大。\n\n针对问题五;首先建立了多无人机多二拓多来导弹情形下的化化模型，但决策\n变量维度太大，不能直接求解，观察初状态下无人机和和导弹的位置分布，产生了进行\n分展次全化的算法，即先分本任务再优化参数。求部时，先对任务分本先行了说明，之\n后把间是分成了三个子问题: 分别对导码ML,M2M3 的最长有效造贡时间进行求，然\n后再对这三个子间大得到的三个有效入茧时间区间取交类，最丝求得的上最大有效迪上\n时间为 31.07708。基他的数据星附件 reaulr3.xlaxs\n半健词: 烟幕划芒 ”二分查撤法” 元起点变旧长搜索 差分进化算法 。 分民次优做\n\n1",
+      "chapter_navigation": "- 第 1083 行：10.23 模型求解（模型求解）",
+      "model_terms": "- 差分进化：2 次\n- 敏感性分析：2 次\n- 时间序列：2 次\n- 插值：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题一是基础情况，机求计算在给定估数下烟大干扰弹对导弹 M1 的有效近蔽对\n- 长,首先可以和征古目始定的大数竺出谓训弹起焊时训姻划弹和导弹的位置作为后六梳\n- 系，最后就可以根据初值和该几何关系从起爆守刻进生变步长搜索找出满足有效这尘的\n- 问题一不同于问题一在给定的参数了求解，而是需要丰用问是一的分析，把无人机\n- 目标耿数建立单单阐情况下的荣咯优化模型，在滑足一些物理约率、运动学的素、边\n- 问题三划于问题二的优化模型，需协请多必烟这强的投放与起爆对序，坦多时间重\n- 问题四是多机单弹尖戴辐一目标的情况，与问题三的单机多弹模式不同，问题四的\n- 六、 ”问题一模型建立及求解\n- 问题一震要关断向真目标国柱体上任意一点的视线线段是理与半径为10 米的萝\n- 七、 问题二模型建立及求解\n- 癌题一在问题一于立的数学辽型基础上，从国定参数计算提升到才雪的优化，这\n- Step 1 初脸化与全局采样，为蕉多人局部最优，我们首先在可个避和空间\n- 点。 最后，洒过比较这 X 个页的目标表数值，选到其中最大者，即为最络求得的全局\n- 八、 问题三模型建立及求解\n- 问题三在问题二的基础上，从单加无人机投放一怕卉区弹提升到了单可无人仙投放\n- 思、 ”问题四模型建立及求解\n- 问题四要求和用 FY1、FY2、FY3 三架无人机各投放一枚角草以干扰来胡的 NM\n- 同问题三一天，问是四的目标也是最大化有效造时间，因此在肛式上，癌是四的\n- 视线路径上，因此，最吉科高效的投放策略就是迎着导弄来的方向飞过去，然后将姻奖\n- 其次,联立X钠和YY 轩方和,可能出无人机为在时刻!到达目标水平位置Cswtthahuft))\n- 们采用差分浊人入法对问题四进和独立对比求名。基分进化和法能名在条的科间",
+      "paths": {
+        "card": "problems/2025A/papers/51_2025_A196_官方论文展示/paper_card.md",
+        "gallery": "problems/2025A/papers/51_2025_A196_官方论文展示/gallery.html",
+        "visual_contact": "problems/2025A/papers/51_2025_A196_官方论文展示/visual_contact.html",
+        "source_pdf": "problems/2025A/papers/51_2025_A196_官方论文展示/source.pdf",
+        "full_ocr": "problems/2025A/papers/51_2025_A196_官方论文展示/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2025A/papers/51_2025_A196_官方论文展示/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

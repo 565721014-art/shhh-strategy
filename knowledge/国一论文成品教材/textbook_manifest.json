@@ -1,0 +1,422 @@
+{
+  "title": "全国大学生数学建模竞赛国一论文成品教材",
+  "problems": 23,
+  "papers": 58,
+  "chapters": [
+    {
+      "title": "炉温曲线",
+      "source_problem_id": "2020A",
+      "category": "机理、工程与反演",
+      "chapter": "chapters/01_炉温曲线.md",
+      "paper_ids": [
+        "01"
+      ],
+      "paper_titles": [
+        "基于一维热传导方程的回焊炉炉温模型"
+      ],
+      "statement_pages": 3,
+      "attachments": 2,
+      "visual_evidence_pages": 32
+    },
+    {
+      "title": "中小微企业的信贷决策",
+      "source_problem_id": "2020C",
+      "category": "数据预测与经营决策",
+      "chapter": "chapters/02_中小微企业的信贷决策.md",
+      "paper_ids": [
+        "02",
+        "03"
+      ],
+      "paper_titles": [
+        "针对中小微企业最优信贷决策研究",
+        "银行对中小微企业的信贷决策分析"
+      ],
+      "statement_pages": 2,
+      "attachments": 3,
+      "visual_evidence_pages": 47
+    },
+    {
+      "title": "FAST主动反射面的形状调节",
+      "source_problem_id": "2021A",
+      "category": "机理、工程与反演",
+      "chapter": "chapters/03_FAST主动反射面的形状调节.md",
+      "paper_ids": [
+        "04",
+        "05",
+        "06"
+      ],
+      "paper_titles": [
+        "“FAST”主动反射面调节模型",
+        "基于目标优化的“FAST”主动反射面形状调节研究",
+        "\"FAST\"工作抛物面的优化设计"
+      ],
+      "statement_pages": 3,
+      "attachments": 4,
+      "visual_evidence_pages": 60
+    },
+    {
+      "title": "乙醇偶合制备C4烯烃",
+      "source_problem_id": "2021B",
+      "category": "实验响应与实验设计",
+      "chapter": "chapters/04_乙醇偶合制备C4烯烃.md",
+      "paper_ids": [
+        "07",
+        "08",
+        "09",
+        "10"
+      ],
+      "paper_titles": [
+        "C4烯烃制备分析与试验设计",
+        "基于双因素方差分析的乙醇制备C4烯烃的研究",
+        "乙醇偶合制备 C4 烯烃的多元回归与神经网络模型",
+        "乙醇制备 C4 烯烃催化剂组合的分析与设计"
+      ],
+      "statement_pages": 2,
+      "attachments": 2,
+      "visual_evidence_pages": 93
+    },
+    {
+      "title": "生产企业原材料的订购与运输",
+      "source_problem_id": "2021C",
+      "category": "多期资源配置与鲁棒规划",
+      "chapter": "chapters/05_生产企业原材料的订购与运输.md",
+      "paper_ids": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "paper_titles": [
+        "生产企业原材料订购与运输的评价与规划模型",
+        "基于双层和随机规划的原材料订购与运输问题",
+        "基于优化算法的企业原材料订购与运输规划模型",
+        "双目标贪心优化下的企业原料订购运输方案"
+      ],
+      "statement_pages": 2,
+      "attachments": 4,
+      "visual_evidence_pages": 93
+    },
+    {
+      "title": "连铸切割的在线优化",
+      "source_problem_id": "2021D",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/06_连铸切割的在线优化.md",
+      "paper_ids": [
+        "15",
+        "16",
+        "17"
+      ],
+      "paper_titles": [
+        "连铸切割的在线优化模型",
+        "连铸切割的在线优化",
+        "连铸切割的在线优化"
+      ],
+      "statement_pages": 2,
+      "attachments": 0,
+      "visual_evidence_pages": 55
+    },
+    {
+      "title": "中药材的鉴别",
+      "source_problem_id": "2021E",
+      "category": "识别、时序与风险",
+      "chapter": "chapters/07_中药材的鉴别.md",
+      "paper_ids": [
+        "18",
+        "19",
+        "20"
+      ],
+      "paper_titles": [
+        "基于机器学习的中药材类别与产地鉴别",
+        "中药材的鉴别",
+        "基于红外光谱法的中药材鉴别"
+      ],
+      "statement_pages": 3,
+      "attachments": 4,
+      "visual_evidence_pages": 77
+    },
+    {
+      "title": "古代玻璃制品的成分分析与鉴别",
+      "source_problem_id": "2022C",
+      "category": "识别、时序与风险",
+      "chapter": "chapters/08_古代玻璃制品的成分分析与鉴别.md",
+      "paper_ids": [
+        "21",
+        "22"
+      ],
+      "paper_titles": [
+        "基于成分数据的古代玻璃制品的成分分析与鉴别",
+        "基于成分数据分析的玻璃制品分析与分类"
+      ],
+      "statement_pages": 2,
+      "attachments": 1,
+      "visual_evidence_pages": 52
+    },
+    {
+      "title": "定日镜场的优化设计",
+      "source_problem_id": "2023A",
+      "category": "机理、工程与反演",
+      "chapter": "chapters/09_定日镜场的优化设计.md",
+      "paper_ids": [
+        "23",
+        "24",
+        "25"
+      ],
+      "paper_titles": [
+        "定日镜场的输出功率优化",
+        "基于机理分析法的定日镜场优化设计模型",
+        "定日镜场的优化设计"
+      ],
+      "statement_pages": 4,
+      "attachments": 3,
+      "visual_evidence_pages": 78
+    },
+    {
+      "title": "多波束测线问题",
+      "source_problem_id": "2023B",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/10_多波束测线问题.md",
+      "paper_ids": [
+        "26",
+        "27",
+        "28"
+      ],
+      "paper_titles": [
+        "多波束测线布设",
+        "基于主要目标法的测线设计问题",
+        "多波束测深合理探测方案的设计及效果分析"
+      ],
+      "statement_pages": 3,
+      "attachments": 3,
+      "visual_evidence_pages": 77
+    },
+    {
+      "title": "蔬菜类商品的自动定价与补货决策",
+      "source_problem_id": "2023C",
+      "category": "数据预测与经营决策",
+      "chapter": "chapters/11_蔬菜类商品的自动定价与补货决策.md",
+      "paper_ids": [
+        "29",
+        "30",
+        "31"
+      ],
+      "paper_titles": [
+        "某商超蔬菜类商品动态定价与补货决策研究",
+        "商超蔬菜销售数据的统计分析及建模",
+        "基于价格弹性的蔬菜类商品自动定价与补货决策"
+      ],
+      "statement_pages": 1,
+      "attachments": 4,
+      "visual_evidence_pages": 75
+    },
+    {
+      "title": "圈养湖羊的空间利用率",
+      "source_problem_id": "2023D",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/12_圈养湖羊的空间利用率.md",
+      "paper_ids": [
+        "32"
+      ],
+      "paper_titles": [
+        "圈养湖羊空间利用率的优化问题"
+      ],
+      "statement_pages": 2,
+      "attachments": 0,
+      "visual_evidence_pages": 11
+    },
+    {
+      "title": "黄河水沙监测数据分析",
+      "source_problem_id": "2023E",
+      "category": "识别、时序与风险",
+      "chapter": "chapters/13_黄河水沙监测数据分析.md",
+      "paper_ids": [
+        "33",
+        "34"
+      ],
+      "paper_titles": [
+        "基于时间序列分析预测的黄河水沙监测模型",
+        "基于小波变换和背包模型的小浪底水库最优监测方案研究"
+      ],
+      "statement_pages": 1,
+      "attachments": 3,
+      "visual_evidence_pages": 51
+    },
+    {
+      "title": "板凳龙闹元宵",
+      "source_problem_id": "2024A",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/14_板凳龙闹元宵.md",
+      "paper_ids": [
+        "35",
+        "36",
+        "37",
+        "38",
+        "39"
+      ],
+      "paper_titles": [
+        "基于几何模型的舞龙队位置和速度分析",
+        "基于目标优化的板凳龙形态调节",
+        "基于几何模型的板凳龙运动路径问题",
+        "“板凳龙”运动路径与速度控制研究（A178，原首页未单列题名）",
+        "基于动态搜索的“板凳龙”运动状态及路线研究"
+      ],
+      "statement_pages": 3,
+      "attachments": 3,
+      "visual_evidence_pages": 160
+    },
+    {
+      "title": "生产过程中的决策问题",
+      "source_problem_id": "2024B",
+      "category": "数据预测与经营决策",
+      "chapter": "chapters/15_生产过程中的决策问题.md",
+      "paper_ids": [
+        "40",
+        "41",
+        "42"
+      ],
+      "paper_titles": [
+        "生产过程中的决策优化设计",
+        "基于多阶段模拟仿真的生产决策问题",
+        "基于蚁群算法与遗传算法优化的蒙特卡洛模拟在生产决策优化中的应用研究"
+      ],
+      "statement_pages": 2,
+      "attachments": 0,
+      "visual_evidence_pages": 53
+    },
+    {
+      "title": "农作物的种植策略",
+      "source_problem_id": "2024C",
+      "category": "多期资源配置与鲁棒规划",
+      "chapter": "chapters/16_农作物的种植策略.md",
+      "paper_ids": [
+        "43",
+        "44",
+        "45",
+        "46"
+      ],
+      "paper_titles": [
+        "基于差分遗传算法的农作物种植策略优化",
+        "基于优化算法的农作物最优种植模型",
+        "基于随机优化的农作物种植策略模型",
+        "基于遗传算法的最优种植策略"
+      ],
+      "statement_pages": 1,
+      "attachments": 5,
+      "visual_evidence_pages": 107
+    },
+    {
+      "title": "反潜航空深弹命中概率问题",
+      "source_problem_id": "2024D",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/17_反潜航空深弹命中概率问题.md",
+      "paper_ids": [
+        "47"
+      ],
+      "paper_titles": [
+        "反潜航空深弹命中概率的优化问题"
+      ],
+      "statement_pages": 2,
+      "attachments": 0,
+      "visual_evidence_pages": 22
+    },
+    {
+      "title": "交通流量管控",
+      "source_problem_id": "2024E",
+      "category": "数据预测与经营决策",
+      "chapter": "chapters/18_交通流量管控.md",
+      "paper_ids": [
+        "48",
+        "49",
+        "50"
+      ],
+      "paper_titles": [
+        "交通流量管控",
+        "基于多目标优化的交通管理评估分析",
+        "基于 Python 语言的交通流量管控与预测分析"
+      ],
+      "statement_pages": 1,
+      "attachments": 2,
+      "visual_evidence_pages": 79
+    },
+    {
+      "title": "烟幕干扰弹的投放策略",
+      "source_problem_id": "2025A",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/19_烟幕干扰弹的投放策略.md",
+      "paper_ids": [
+        "51"
+      ],
+      "paper_titles": [
+        "多情形下无人机烟幕遮蔽策略的建模与优化研究"
+      ],
+      "statement_pages": 1,
+      "attachments": 3,
+      "visual_evidence_pages": 32
+    },
+    {
+      "title": "碳化硅外延层厚度的确定",
+      "source_problem_id": "2025B",
+      "category": "机理、工程与反演",
+      "chapter": "chapters/20_碳化硅外延层厚度的确定.md",
+      "paper_ids": [
+        "52",
+        "53",
+        "54"
+      ],
+      "paper_titles": [
+        "基于联合物理色散模型与先进信号处理方法测定碳化硅外延层厚度",
+        "红外干涉法测量外延层厚度的建模分析",
+        "碳化硅外延层厚度的双光束和多光束干涉法测量研究"
+      ],
+      "statement_pages": 2,
+      "attachments": 4,
+      "visual_evidence_pages": 92
+    },
+    {
+      "title": "NIPT的时点选择与胎儿异常判定",
+      "source_problem_id": "2025C",
+      "category": "识别、时序与风险",
+      "chapter": "chapters/21_NIPT的时点选择与胎儿异常判定.md",
+      "paper_ids": [
+        "55",
+        "56"
+      ],
+      "paper_titles": [
+        "基于混合效应模型的NIPT时点优化与胎儿异常判定",
+        "基于统计建模与元学习的 NIPT 检测决策优化与异常识别"
+      ],
+      "statement_pages": 2,
+      "attachments": 1,
+      "visual_evidence_pages": 94
+    },
+    {
+      "title": "矿井突水水流漫延模型与逃生方案",
+      "source_problem_id": "2025D",
+      "category": "空间、动态与路径",
+      "chapter": "chapters/22_矿井突水水流漫延模型与逃生方案.md",
+      "paper_ids": [
+        "57"
+      ],
+      "paper_titles": [
+        "矿井突水水流漫延模型与逃生方案问题"
+      ],
+      "statement_pages": 2,
+      "attachments": 10,
+      "visual_evidence_pages": 24
+    },
+    {
+      "title": "立定跳远动作技术分析与训练建议",
+      "source_problem_id": "2025E",
+      "category": "识别、时序与风险",
+      "chapter": "chapters/23_立定跳远动作技术分析与训练建议.md",
+      "paper_ids": [
+        "58"
+      ],
+      "paper_titles": [
+        "基于姿态识别的 AI 辅助智能体测研究"
+      ],
+      "statement_pages": 1,
+      "attachments": 36,
+      "visual_evidence_pages": 30
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "expected": {
+    "chapters": 23,
+    "papers": 58,
+    "statement_images": 47,
+    "visual_evidence_pages": 1494,
+    "attachments": 97
+  },
+  "actual": {
+    "chapters": 23,
+    "manifest_chapters": 23,
+    "paper_sections": 58,
+    "unique_paper_ids": 58,
+    "paper_id_min": 1,
+    "paper_id_max": 58,
+    "statement_images": 47,
+    "visual_evidence_pages": 1494,
+    "attachment_links": 97,
+    "source_pdf_links": 58,
+    "full_ocr_links": 58,
+    "combined_paper_sections": 58,
+    "checked_local_links": 3879,
+    "source_parity": {
+      "statement_text": 23,
+      "paper_abstract": 58,
+      "paper_logic_evidence": 58,
+      "paper_full_analysis_excerpt": 58,
+      "visual_page_paths": 1494,
+      "attachment_names": 97
+    }
+  },
+  "missing_sections_or_mismatches": [],
+  "bad_primary_titles": [],
+  "combined_titles_missing": [],
+  "missing_local_links": [],
+  "passed": true
+}

@@ -1,0 +1,182 @@
+{
+  "problem": "2021B",
+  "title": "乙醇偶合制备C4烯烃",
+  "category": "实验响应与实验设计",
+  "mother": "催化剂组合、温度与产率之间的响应关系及实验优化",
+  "chain": "实验结构审计 -> 因素与交互作用 -> 温度响应曲线 -> 收率优化 -> 新实验点设计",
+  "risks": [
+    "非正交实验直接做标准方差分析",
+    "选择性与收率混同",
+    "插值最优点缺少外推风险说明"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 2,
+  "questions": [],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件1.xlsx",
+      "size_bytes": 20897,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "性能数据表",
+          "rows": 115,
+          "cols": 11,
+          "preview": [
+            [
+              "催化剂组合编号",
+              "催化剂组合",
+              "温度",
+              "乙醇转化率(%)",
+              "乙烯选择性（%）",
+              "C4烯烃选择性(%)",
+              "乙醛选择性(%)",
+              "碳数为4-12脂肪醇         选择性(%)",
+              "甲基苯甲醛和甲基苯甲醇选择性(%)",
+              "其他生成物的选择性(%)",
+              null
+            ],
+            [
+              "A1",
+              "200mg 1wt%Co/SiO2- 200mg HAP-乙醇浓度1.68ml/min",
+              250,
+              2.06716944958221,
+              1.17,
+              34.05,
+              2.41,
+              52.59,
+              0,
+              9.78,
+              null
+            ],
+            [
+              null,
+              null,
+              275,
+              5.8517209865374,
+              1.63,
+              37.43,
+              1.42,
+              53.21,
+              0,
+              6.31,
+              null
+            ],
+            [
+              null,
+              null,
+              300,
+              14.9688914921879,
+              3.02,
+              46.94,
+              4.71,
+              35.16,
+              1,
+              9.17,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021B\\attachments\\附件1.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件2.xlsx",
+      "size_bytes": 11200,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "稳定性测试",
+          "rows": 10,
+          "cols": 8,
+          "preview": [
+            [
+              "350度时给定的某种催化剂组合的测试数据",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "时间（min）",
+              "乙醇转化率(%)",
+              "选择性(%)",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              "乙烯选择性",
+              "C4烯烃选择性",
+              "乙醛选择性",
+              "碳数为4-12脂肪醇         ",
+              "甲基苯甲醛和甲基苯甲醇",
+              "其他"
+            ],
+            [
+              20,
+              43.5473885704829,
+              4.23,
+              39.9,
+              5.17,
+              39.7,
+              2.58,
+              8.42
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021B\\attachments\\附件2.xlsx"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "07",
+      "problem": "2021B",
+      "title": "04 烯烃制备分析与试验设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B007）.pdf",
+      "pages": 45,
+      "card_path": "problems\\2021B\\papers\\07_B007\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\07_B007\\gallery.html",
+      "visual_pages": 24
+    },
+    {
+      "paper_id": "08",
+      "problem": "2021B",
+      "title": "基于双因素方差分析的乙醇制备 04 烯烃的研究",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B026）.pdf",
+      "pages": 26,
+      "card_path": "problems\\2021B\\papers\\08_B026\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\08_B026\\gallery.html",
+      "visual_pages": 22
+    },
+    {
+      "paper_id": "09",
+      "problem": "2021B",
+      "title": "乙醇偶合制备 C4 烯烃的多元回归与神经网络模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B050）.pdf",
+      "pages": 59,
+      "card_path": "problems\\2021B\\papers\\09_B050\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\09_B050\\gallery.html",
+      "visual_pages": 23
+    },
+    {
+      "paper_id": "10",
+      "problem": "2021B",
+      "title": "乙醇制备 C4 烯烃催化剂组合的分析与设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B160）.pdf",
+      "pages": 28,
+      "card_path": "problems\\2021B\\papers\\10_B160\\paper_card.md",
+      "gallery_path": "problems\\2021B\\papers\\10_B160\\gallery.html",
+      "visual_pages": 24
+    }
+  ]
+}

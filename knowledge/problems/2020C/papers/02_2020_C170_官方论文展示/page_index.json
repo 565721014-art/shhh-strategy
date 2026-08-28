@@ -1,0 +1,416 @@
+[
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 1,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-01.png",
+    "image_name": "page-01.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 2,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-02.png",
+    "image_name": "page-02.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 3,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-03.png",
+    "image_name": "page-03.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 4,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-04.png",
+    "image_name": "page-04.png",
+    "captions": [
+      "图 2.1 总体思路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 5,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-05.png",
+    "image_name": "page-05.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 6,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-06.png",
+    "image_name": "page-06.png",
+    "captions": [
+      "图 5.1 信用等级分布图 单位: 个)",
+      "图52 运营时长分布图 (单位 月)",
+      "图5.3 利润分布图 (单位: 个)"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 7,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-07.png",
+    "image_name": "page-07.png",
+    "captions": [
+      "图一=一国",
+      "图 5.4 销项价税总额分布图〈单位: 个)",
+      "图 5.5 进项金额变异系数分布图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 8,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-08.png",
+    "image_name": "page-08.png",
+    "captions": [
+      "图 5.6 联系上游企业分布图单位: 个)"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 9,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-09.png",
+    "image_name": "page-09.png",
+    "captions": [
+      "图 6.1 第一问思路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 10,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-10.png",
+    "image_name": "page-10.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 11,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-11.png",
+    "image_name": "page-11.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 12,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-12.png",
+    "image_name": "page-12.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 13,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-13.png",
+    "image_name": "page-13.png",
+    "captions": [
+      "表6.1 评级转化表",
+      "图 6.2 企业信贷风险指标体系图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 14,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-14.png",
+    "image_name": "page-14.png",
+    "captions": [
+      "表 6.2 指标权重表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 15,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-15.png",
+    "image_name": "page-15.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 16,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-16.png",
+    "image_name": "page-16.png",
+    "captions": [
+      "表 63 各企业信贷风险表",
+      "图 6.3 信贷评级与总评序列图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 17,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-17.png",
+    "image_name": "page-17.png",
+    "captions": [
+      "表6.4 剔除贷款企业表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 18,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-18.png",
+    "image_name": "page-18.png",
+    "captions": [
+      "表 6.5 贷款利率表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 19,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-19.png",
+    "image_name": "page-19.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 20,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-20.png",
+    "image_name": "page-20.png",
+    "captions": [
+      "表 6.6 贷款额度表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 21,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-21.png",
+    "image_name": "page-21.png",
+    "captions": [
+      "图 6.4 问题二思路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 22,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-22.png",
+    "image_name": "page-22.png",
+    "captions": [
+      "表 6.7 Logit 回归准确度表",
+      "表 6.8 违约概率预测结果"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 23,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-23.png",
+    "image_name": "page-23.png",
+    "captions": [
+      "局 图 6.S BP 神经网络传播图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 24,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-24.png",
+    "image_name": "page-24.png",
+    "captions": [
+      "表 69 信用等级预测结果"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 25,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-25.png",
+    "image_name": "page-25.png",
+    "captions": [
+      "图 6.6 BP 神经网络精度检验",
+      "表 6.10 信贷风险量化结果"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 26,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-26.png",
+    "image_name": "page-26.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 27,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-27.png",
+    "image_name": "page-27.png",
+    "captions": [
+      "表6.12 贷款阁度计算结果"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 28,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-28.png",
+    "image_name": "page-28.png",
+    "captions": [
+      "图 6.7 第三问思路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 29,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-29.png",
+    "image_name": "page-29.png",
+    "captions": [
+      "表 6.13 突发事件影响级别表",
+      "表 6.14 固定因子表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 30,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-30.png",
+    "image_name": "page-30.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 31,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-31.png",
+    "image_name": "page-31.png",
+    "captions": [
+      "表 6.15 变量突发事件因子表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 32,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-32.png",
+    "image_name": "page-32.png",
+    "captions": [
+      "表6.12 基于新冠疫情的贷款利率结果",
+      "表 6.13 基于新冠疫情的贷款利率结果"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 33,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-33.png",
+    "image_name": "page-33.png",
+    "captions": [
+      "图 6.8 第三问思路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 34,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-34.png",
+    "image_name": "page-34.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 35,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-35.png",
+    "image_name": "page-35.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 36,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-36.png",
+    "image_name": "page-36.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 37,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-37.png",
+    "image_name": "page-37.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 38,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-38.png",
+    "image_name": "page-38.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 39,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-39.png",
+    "image_name": "page-39.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "02",
+    "problem": "2020C",
+    "page": 40,
+    "image_path": "problems\\2020C\\papers\\02_2020_C170_官方论文展示\\pages\\page-40.png",
+    "image_name": "page-40.png",
+    "captions": [],
+    "visual_hint": 0
+  }
+]

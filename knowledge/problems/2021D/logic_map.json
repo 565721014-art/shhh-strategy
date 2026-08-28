@@ -1,0 +1,525 @@
+{
+  "problem": "2021D",
+  "title": "连铸切割的在线优化",
+  "category": "空间、动态与路径",
+  "mother_problem": "优先级和长度约束下的在线切割与异常重排",
+  "question_chain": "尾坯长度与订单组合 -> 字典序目标 -> 静态切割 -> 异常事件更新 -> 多流实时推广",
+  "misreading_risks": [
+    "多个目标简单加权破坏优先级",
+    "异常后沿用旧计划",
+    "实时性只停留在算法名称"
+  ],
+  "questions": [
+    "问题 1 在满足基本要求和正常要求的条件下，依据尾坯长度制定出最优的 切割方案。假定用户目标值为 9.5 米，目标范围为 9.0~10.0 米，对以下尾坯长 度：109.0、93.4、80.9、72.0、62.7、52.5、44.9、42.7、31.6、22.7、14.5 和 13.7（单位：米），按“尾坯长度、切割方案、切割损失”等内容列表给出具 体的最优切割方案。",
+    "问题 2 在结晶器出现异常时，给出实时的最优切割方案：(1)在钢坯第 1 次出现报废段时，给出此段钢坯的切割方案；(2)在出现新的报废段后（如图 2）， 给出新一段钢坯的切割方案和当前段钢坯切割的调整方案，或声明不作调整。 假设结晶器出现异常的时刻在 0.0、45.6、98.6、131.5、190.8、233.3、 266.0、270.7 和 327.9（单位：分钟），用户目标值是 9.5 米，目标范围是 9.0~10.0 米。在满足基本要求和正常要求的条件下，按“初始切割方案、调整后的切割方 案、切割损失”等内容列表给出这些时刻具体的最优切割方案。",
+    "问题 3 假设实时最优切割方案和结晶器出现异常的时刻均与问题 2 相同， 在满足基本要求和正常要求的条件下，对（1）用户目标值是 8.5 米，目标范围 是 8.0~9.0 米,（2）用户目标值是 11.1 米，目标范围是 10.6~11.6 米两种情况 分别按“初始切割方案、调整后的切割方案、切割损失”等内容给出具体的最优 切割方案。 附录：参数与要求 工艺参数：切割机切断一块钢坯的时间为 3 分钟，切割后，返回到工作起点 的时间为 1 分钟。从结晶器中心到切割机工作起点处钢坯的长度是 60.0 米，连 铸拉坯的速度为 1.0 米/分钟。当结晶器出现异常时，报废段的长度是 0.8 米。 基本要求：切割后的钢坯长度必须在 4.8~12.6 米之间，否则无法运走，阻 碍生产。下道工序能够接受的钢坯长度是 8.0~11.6 米，如果不在此范围内，可 以将钢坯运走进行二次离线切割，但切割下的部分报废，从而产生损失。例如， 12.6 米的钢坯切掉 1.0 米变成 11.6 米，切下来的 1.0 米报废；而小于 8.0 米的 钢坯只能全部报废。 正常要求：正常切割是按照用户要求的长度进行切割。用户要求包含目标值 和目标范围，钢坯的切割长度应尽量满足目标值，而在目标范围内的长度也是可 以接受的。例如，目标值是 9.5 米，目标范围是 9.0~10.0 米，则切割长度尽量 是 9.5 米，而在 9.0~10.0 米之间的长度是允许的。当钢坯长度不在目标范围内 时，会产生损失。例如，钢坯长度是 11.6 米，多出来的 1.6 米报废。 2"
+  ],
+  "attachments": [],
+  "papers": [
+    {
+      "paper_id": "15",
+      "problem": "2021D",
+      "title": "连铸切割的在线优化模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛D题论文展示（D017）.pdf",
+      "pages": 21,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "1 连铸工艺的示意图",
+            "2 钢坯出现报废段的示意图"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p3"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表1 不同属坯长度的最小损失值对比表"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "《注: 表 2 中尾坯长度等于 13. 7 米时，切割损失为 13. ? 米，用户满意信差不存在》",
+            "图3 “尾坯H.8米刻坏”的情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图4 “部分长度诬还+尾十40 8 米废还”的情况",
+            "图5 “尾坯 110.8 米废还+尾未 2+0.8米废十”的情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图s 在线切到 图7 离线切到"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "表5 钢坯第 4次出现报废段的最优切割方案",
+            "表6 钢坯第 5 次出现报废段的最优雪害方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "表8 钢坯第 7 次出现报废段的最优切割方案",
+            "表9 钢坯第 8 次出现报废段的最优雪割方案",
+            "表10 钢坯第 9 次出现报废段的最优切割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表 19。",
+            "表 11 钢坯第 1 次出现报废段的最优切割方案",
+            "表 12 钢坯第 2 次出现报废段的最优切割方案",
+            "表 13 钢坯第 3 次出现报废段的最优切割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表 14 钢坯第 4 次出现报废段的最优切割方案",
+            "表15 钢坯第 5 次出现报废段的最优切割方案",
+            "表16 钢坯第 6 次出现报废段的最优切割方案",
+            "表 17 钢坯第 7 次出现报废段的最优切割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "表18 钢坯第 8 次出现报废段的最优切割方案",
+            "表 19 钢坯第 9 次出现报废段的最优切割方案",
+            "表 20 切割总损失最小值函数函数7(Z) 的分段表达式"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "表 21-表29。",
+            "表21 钢坯第 1 次出现报废段的最优雪割方案",
+            "表 22 钢坯第 : 次出现报废段的最优切割方案",
+            "表23 钢坯第 3 次出现报废段的最优切割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "表24 钢坯第 4 次出现报废段的最优切割方案",
+            "表25 钢坯第 5 次出现报废段的最优雪割方案",
+            "表 26 钢坯第 6 次出现报废段的最优雪害方案",
+            "表 27 钢坯第 7 次出现报废段的最优切割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "表28 钢坯第 8 次出现报废段的最优切割方案",
+            "表 29 钢坯第 9 次出现报废段的最优雪割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\15_D017\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021D/papers/15_D017/gallery.html#p20"
+        }
+      ],
+      "abstract_extract": "连铸是将钢水变成钢坯的生产过程，而优化切割是连铸的关键技术之一，直接影响\n了钢坯的利用率和用户的满意度。本文从尾坯切割损失、满足用户目标值两方面研究连\n铸的最优切割方案，并制定了出现异常情况下的实时最优切制方案。\n\n问题 1: 在满足基本要求和正常要求的前提下，首先，证明了关于尾坏长度和用户\n目标范围实现切割损失为 0 的充要条件。考虑实际生产和测量都建立在一定精度之上，\n取定精度为 0.1 米，将48 米-12.6 米划分为 79 种长度规格;根据参数与要求、用户目\n标值范围等条件，建立基于 79 种长度规格的切割损失最小整线性规划模型。进一步，\n给出了切割总损失最小值函数P(Z)关于尾坯长度卫的函数解析表达式。其次,将整线性\n规划模型所求的切割损失最小值固定，构造平均绝对偏差来刻画满足用户目标值，在切\n划损和失最小的前提下，建立了最小平均绝对偏差模型并最终求得最优切割方案。结果表\n明，在切割损失最小的前提下，问题 1 中给出的 12 个尾坯最优切割方案的平均绝对偏\n差在 0.16-0.5 米之间。\n\n问题 2: 考虑结晶器异常会出现报废段，基于问题 1 的模型和结果，本文分“尾坏\n+0.8 米废坏”、“部分长度(和0.8 米)废坏+尾坏+0.8 米废坏”、“尾坏 1+0.8 米废坏+\n尾坯 2+0.8 米废坯”等三种讨论了实时初始最优切割方案和调整后最优切割方案。结果\n表明，9 段异常时刻初始切割方案总共调整了 8 次，声明不做调整 0 次; 总的切割损失\n为16.6米。\n\n问题3， 结晶器出现异党的时刻都与问题 2 相同的条件下，分别求出了用户目标值\n为8.5米和11.1 米的实时初始最优切割方案和调整后最优切割方案。用户目标值为 8.5\n米初始切割方案总共调整了 8 次，声明不做调整 0 次，总的切审损失为 8.8 米: 用户目\n标值为 11.1 米初始切割方案总共调整了 8 次,声明不做调整 0 次, 总的切割损失为 17.1\n米。",
+      "chapter_navigation": "- 第 36 行：关键词 : 连链切审 切割损失 整线性规划 平均绝对偏差 最优方案（关键词）\n- 第 91 行：二.模型假设（模型假设）\n- 第 99 行：三.符号说明（符号说明）\n- 第 109 行：四.问题分析（问题分析）\n- 第 131 行：五.模型建立与求解（模型建立）",
+      "model_terms": "- 线性规划：8 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 接着在二冷段拉环，最后被切割机切割。\n- 二冷段 | 切制人成切割，然后 1 分钟返回工作起点，等待\n- 在最优切割方案中，首先必须保证切割损失(报废钢环的长度)最小，其次尽可能满\n- 足用户要求。建立数学模型或设计算法，解决以下问题;\n- 针对问题 1，要给出尾坯的最优切割方案，首先对已知报废长度进行规律探索，初\n- 步推论出理论切割总损失最小值与尾坯长度的关系。接着，建立两阶段模型求出尾坯切\n- 足用户目标值的切割方案。 最后, 发现实际最小切割损失与理沦最小切割损失完全相同，\n- 针对问题 ?2，在两段报废段之间的正常钢坯可视为问题 1 中的“尾坯”。由于结晶\n- 针对问题3，在假设实时最优切割方案和结晶器出现异党的时刻都与问题 2 相同的\n- 尽可能的小,首先讨论钢坯报废长度为0的条件。疫尾未长度为了,用户目标范围为La,，\n- 信; 因此，本文将分别建立两阶段模型，第一阶段模型，根据参数与要求、用户目标值\n- 范围等条件建立切割损失最小模型，第二阶段模型，在切割损失达到最小值的前提下，\n- 寻找尽可能满足用户目标值的切审方案，建立满足用户目标值最优模型。\n- 基于以上分析，我们建立以下切割损失最小的整线性规划模型，",
+      "paths": {
+        "card": "problems/2021D/papers/15_D017/paper_card.md",
+        "gallery": "problems/2021D/papers/15_D017/gallery.html",
+        "visual_contact": "problems/2021D/papers/15_D017/visual_contact.html",
+        "source_pdf": "problems/2021D/papers/15_D017/source.pdf",
+        "full_ocr": "problems/2021D/papers/15_D017/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021D/papers/15_D017/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "16",
+      "problem": "2021D",
+      "title": "连铸切割的在线优化",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛D题论文展示（D026）.pdf",
+      "pages": 36,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [
+            "表 2，在此基础上，将 0.8 米报废段附着于 4.8 米的最小损失段一起切除,给出具体切割"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p2"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表 1: 这 12 种长度的尾坏的最优切割方案和切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p6"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图1: 第2个时间窗口导致的方案调整",
+            "图2: 第8个时间窗口导致的方案调整",
+            "表2:，44.8 米长度钢坯的切割方案和切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "表3:，45.6米长度钢坯的最优切割方案和切割损失情况",
+            "表 4: 105.6米和 109.6 米长度钢坯的最优切割方案和切割损失情况",
+            "表 5 所示。"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "表4中每个时间单元的最优切制方案制定实时的最优切割方案,如表 6 所示《〔表中时间",
+            "表 6，钢坏的实时最优切审方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "表7: 当前7个时间段钢坯的初始切割方案情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表 8: 当前7个时间段钢坯的调整后的切审方案情况",
+            "表 9: 方法二当前7个时间段钢坯的初始切割方案情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表 10: 当前7个时间段钢坯的初始切割方案、调整后的切割方案及切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p14"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "表 11: 出现新的报废有时 8 个时间单元的最优切割方案和切割损失情况",
+            "表 14;， 当前7个时间段钢坯的初始切割方案、调整后的切割方案及切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "表 18: 当前7个时间段钢坯的初始切割方案、调整后的切割方案及切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "表 19: 优化前和优化后的具体切审方案情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "表 20: 优化前和优化后的切割损失情况对比",
+            "[1] 【连铸 国外党用和连铸结构工艺流程图_搜狐网】思"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p21"
+        },
+        {
+          "page": 33,
+          "captions": [
+            "表 12: 7个时间段分别加上该时间段之前每个时间单元的切割方案"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-33.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [
+            "表 13: 7个实口之前所有时间单元的切割方案之和"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-34.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p34"
+        },
+        {
+          "page": 35,
+          "captions": [
+            "表 15: 满足用卢目标信是 11.1 米条件的最优切割方案和切割损失情况",
+            "表 16: 满足用户目标值是 11.1 米条件的初始切割方案和切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-35.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p35"
+        },
+        {
+          "page": 36,
+          "captions": [
+            "表 17: 满足用户目标值是 11.1 米条件的调整后的切割方案和切割损失情况"
+          ],
+          "image_path": "problems\\2021D\\papers\\16_D026\\pages\\page-36.png",
+          "gallery_anchor": "problems/2021D/papers/16_D026/gallery.html#p36"
+        }
+      ],
+      "abstract_extract": "本文主要针对连铸切割的问题，基于附录给出的参数、钢坯长度的要求以及用户的\n不同目标伪，建立数学模型以制定具体的最优切割方案。\n\n针对问题一，首先以尾坯的切割损失最小、切割长度为9.5米的根数最多以及切割\n长度为9.0-10.0米的根数最多建立多目标规划模型。然后，通过序贯解法，以切割损失\n最小为目标函数、以尾坯长度为约束求解最优，将得到的最优解看做约束条件放入第\n二个目标《〈即切割长度为9.5米的根数最多) 求解最优。接着，将前两个目标的最优解\n看做约束条件一并放入第三个目标求解最优，得到多目标规划模型的最优解。最后\n将12个尾坯长度分别带入模型，利用 matu解得不同尾坯的最优切割方案和切割可\n失，见表1。\n\n针对问题二，对于第一小问，首先以钢坯的切割损失最小、切割长度为 9.5 米的根\n数最多以及切割长度为 9.0-10.0 米的根数最多三个目标建立多目标规划模型。然后，对\n除去 0.8 米的报废段剩下的 44.8 米的钢坯进行分析，利用zatap给出具体切割方案，见\n表 2，在此基础上，将 0.8 米报废段附着于 4.8 米的最小损失段一起切除,给出具体切割\n方案,，见表 3。 最后，将报废段之前还存在 60.0 米或 64.0 米长度的钢坯与所需的切割长\n度〈45.6米) 结合，得出最终的最优切审方案，见表 4。\n\n对于第二小问，首先利用问题二的模型，得到在出现新的报废段后，新一段钢坯的\n切割方案，见表 5。基于此方案与相关的工艺参数，进一步得到实时的最优切割方案，\n见表 6。然后，为了得到当前段钢坪切割的更优调整方案，采用两种方法求解初始切割\n方案。方法一: 假定第z个时间窗口(zz>3)，仅第2-1个时间窗口无异常，其他时间窗\n口均有异常。得到从第 3-9 个窗口中每个窗口均往前 2 个异常时刻，除去 0.8 米报废段\n后的具体切割方案,再将7个时间段的切割方案分别加上该时间段之前每个时间单元的\n切割方案，得到初始切割方案，见表 7。方法二: 假定所有时间窗口均无异常，分别求\n出后 7个窗口之前所有时间单元的切割方案之和即得到初始切割方案，见表 9。最后\n通过对比分析发现方法一所得出的切割方案更贴近调整后的切割方案。据此，将方法一\n得到的初始切割方案与调整后的切割方案以及切割损失情况进行整合得到所有时刻具\n体的最优切割方案，见表 10。\n\n针对问题三，首先根据用户要求，以钢坯的切割损失最小、切割长度为 8.5 米的根\n数最多以及切割长度为 8.0-9.0 米的根数最多三个目标建立多目标规划模型。然后利用\n问题二得出的更优方法〈即方法一)，得到初始切割方案与调整后的切割方案以及最终\n切割方案并计算出切割损失，见表 14。同理得用户目标值是 11.1 米、目标范围是\n10.6-11.6 米的最优切割方案，见表 18。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 45 行：关键词: 连甸切割; 多目标规划模型，对比分析: zaatap（关键词）\n- 第 52 行：一、问题重述（问题重述）\n- 第 86 行：二、问题分析（问题分析）\n- 第 161 行：三、符号说明（符号说明）\n- 第 170 行：四、模型假设（模型假设）\n- 第 174 行：五、模型建立与求解（模型建立）\n- 第 176 行：5.1.1 模型建立（模型建立）\n- 第 873 行：七、模型评价与推广（模型评价）\n- 第 894 行：八、参考文献（参考文献）",
+      "model_terms": "- 线性规划：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 规划模型，通过序贯解法，将目标按其重要程度不同优先等级，依次转化为多个线性规\n- 再以钢坯长度为 9.5 米的根数最多作为目标得出进一步的切割方案，最后以钢坯长度范\n- 首先要得到钢坯第一次出现报废段时，此段钢坯的切割方案，可以考虑到当结晶器\n- 的 44.8 米的钢坯,可以建立多元目标规划模型得出具体切割方案, 如果具体切割方案中\n- 在最长段一起切审，然后再通过离线的二次切割将其与满足要求的钢坯分离。另外，当\n- 或 64.0 米长度的钢坯，然后通过模型求出 60.0 米和 64.0 米钢坯的具体切审方案，再将\n- 其次，要得到出现新的报废段后，新一段钢坯的切割方案，同理于求解钢坯第一次\n- 出现报废段时，此段钢坯的切割方案所建立的模型，考虑将 0.8 米的报废段附着在其他\n- 个时刻点中某些时刻从无异常到有异常所导致的，可以采用两种方法进行求解，首先定\n- 再根据问题二中求解钢坯第 1 次出现报废段时钢坯的切割方案所建立的模型求出其最\n- 优切割方案。然后，将 7个时间段的切割方案分别加上该时间段之前每个时间单元的切\n- 和。然后根据建立的模型分别求出方法一方法二的初始切割方案和调整后的切割方案\n- 最后通过对比得出当前段钢坯的调整方案。\n- 最后，要给出结唱器出现异常时的实时最优切审方案，由于结晶器从 0.0 时刻出现\n- 结晶器中心到切割机工作起点处长度为 60.0 米的钢坯进行切割，然后根据后面每个时\n- 要在实时最优切割方案和结晶器出现异常的时刻均与问题二相同，且满足基本要求\n- 题同理于问题二求解用户目标信是 9.5 米，目标范围是 9.0-10 米的具体最优切割方案所\n- 建立的模型。首先根据用户要求，以钢坯的切割损失最小、切割长度为 8.5 米的根数最\n- 多以及切割长度为 8.0-9.0 米的根数最多三个目标建立多目标规划模型。然后利用问题\n- 二得出的更优方法,根据所建立的模型解得初始切割方案与调整后的切割方案并计算出",
+      "paths": {
+        "card": "problems/2021D/papers/16_D026/paper_card.md",
+        "gallery": "problems/2021D/papers/16_D026/gallery.html",
+        "visual_contact": "problems/2021D/papers/16_D026/visual_contact.html",
+        "source_pdf": "problems/2021D/papers/16_D026/source.pdf",
+        "full_ocr": "problems/2021D/papers/16_D026/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021D/papers/16_D026/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "17",
+      "problem": "2021D",
+      "title": "7                  习     忆",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛D题论文展示（D034）.pdf",
+      "pages": 30,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [
+            "剑料，为最优切割方案。结合基本要求分各种情况，给出了最优方案切关流程图，并利用 Dev-C+t+ 编写程序求解，并且"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "5.1.2 流程图建立",
+            "由此以Imin 为条件建立最优切割方案的分类流程图如下:"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "以此远辑可推得当Imins0 时的计算流程图"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "依据流程图我们运用 DevCr+ 编程软件以上 语言建立了一套程序 (具体程序内容见附录,依次输入各给定尾还长度，",
+            "图1《〈尾坯长度为 109.0 时的输出结果)",
+            "图2《尾坯长度为 93.4 时的输出结果)",
+            "图3《〈尾坯长度为 80.9 时的输出结果)"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图4【尾坯长度为 72.0 时的输出结果》",
+            "图5《尾坏长度为 62.7 时的输出结果》",
+            "图6《尾坯长度为 52.5 时的输出结果》"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图7《尾坯长度为 44.9 时的输出结果)",
+            "图 8《尾坯长度为 42.7 时的输出结果7",
+            "图9《尾坯长度为 31.6 时的输出结果)"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图10《〈尾还长度为22.7 时的输出结果)",
+            "图 11《〈尾坯长度为14.5时的输出结果)",
+            "图 12《尾未长度为 13.7 时的输出结果)"
+          ],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p13"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p16"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021D\\papers\\17_D034\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021D/papers/17_D034/gallery.html#p20"
+        }
+      ],
+      "abstract_extract": "7                  习     忆\n连鲜切割的在\n全         加               一\n连铸切割是将钢水变成钢坯的过程，具体的工艺流程可以概括为，钢水浇铸 ->产生钢坯〈或报废段) ->\n切割机切割《在线切割) ~> 二次离线切割。本文根据题目要求，在满足切割的正常要求和基本要求的前提下，以优\n先考虑减少切割损失，其次考虑用户要求为原则，对连铸切割的在线切割过程优化，设计连铸切割的最优切割方案\n的算法，并利用 Dev-C++ 编程软件进行求解，利用 Excel 统计数据后将方案具体体现在表格中。\n针对问题一，先建立“尾坯长度” 和“用户要求”之间的关系，并初步计算出损失范围，由此确定“最小损失\n例如钢坯长度为 S= 109 米, 用户目标值为 N = 9.5 米, 切割出最多 9.5 米的方案: 切割出 9.5 米的尾坏段数为 F= 图\n109\n=  5  =11段。切割为11 段10米需要 110 米尾坯 109-10*11= -1 米。 切割为 11+1 段9 米需要 108 米， 此时损失1米。\n因|\n切割为 11 段 10 米需要 110 米尾坯调整为: 其中 05 二2 段保持9.5 米不变，其祭 11-2-9 段调整为每段 10 米，此时无\n剑料，为最优切割方案。结合基本要求分各种情况，给出了最优方案切关流程图，并利用 Dev-C+t+ 编写程序求解，并且\n针对问题二，在合理假设钢坯实时长度后，利用问题一的黎法畏助计咎出第一次出现报废段时的切割方案;\n当新的报废段出现后，设计出“左侧报废段长度+钢坯长度+右侧报废段长度”的初始切害方案，研究出优先“左侧\n钢坯损失长度+报废段长度+右侧钢坯损失长度”的调整方案，比较后确定最优切割方案并据此设计此题算法。并且\n使用 Dev-C++软件编写了程序，运行程序得出了最优切割方案。\n针对间题三，算法设计与问题二相同，利用问题二中编号的程序，调整参数范围，运行程序，得出了最优切\n割方案。\n杰文最后指出了算法的优点和不足，并提出了比较明确的可继续改善模型的方向。总体上，本文思路清晰，\n分析细致，带辑严诺，所建寞型通用性和实用性较强。",
+      "chapter_navigation": "- 第 29 行：关键词: 连铸切割、优化、Dev-Ct+、筑法设计、最优切割方案（关键词）\n- 第 35 行：一、问题重述（问题重述）\n- 第 80 行：二、问题分析（问题分析）\n- 第 141 行：四、符号说明（符号说明）\n- 第 616 行：七、参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 际和揽杂的情景。根据题目中所给的参数和要求，首先明确钢坯切割长度是 4.8*12.6 米，而且切割下来的钢坯还可\n- 首先在这个问题的情景里面，我们暂时不需要考虑报废段和变动的用户需求对算法的影响，而且尾坯长度和用\n- 在这个问题的情景中，要考虑的是产生了第一段报废段对算法的影响，对于问题所给的结晶器异常时刻，首先\n- 问题二 (1) 得出的切割方案算法辅助求币。当我们明确了第二次出现的的报废段对切割方案的影响后，我们再\n- 路是将每一段的钢坯和报废段都当成一个整体单独切审, 运用在问题二(1) 的数学算法求解得出一个初始切剂方案\n- 钢坯《不含报废段) 的切割损失，有了这些切割损失的数据后，然后尽量让相邻两段的切割损失可以和固定损失的\n- 在这个情景中我们还要考虑的是变动的用户要求，问题三的本质是对问题二的进价，所以在用户目标值和目标\n- 范围发生改变时，我们还可以利用在问题二中得出的最优切割数学算法畏助求解。",
+      "paths": {
+        "card": "problems/2021D/papers/17_D034/paper_card.md",
+        "gallery": "problems/2021D/papers/17_D034/gallery.html",
+        "visual_contact": "problems/2021D/papers/17_D034/visual_contact.html",
+        "source_pdf": "problems/2021D/papers/17_D034/source.pdf",
+        "full_ocr": "problems/2021D/papers/17_D034/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021D/papers/17_D034/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

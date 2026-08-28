@@ -1,0 +1,522 @@
+[
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 1,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-01.png",
+    "image_name": "page-01.png",
+    "captions": [
+      "表1和衣2。"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 2,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-02.png",
+    "image_name": "page-02.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 3,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-03.png",
+    "image_name": "page-03.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 4,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-04.png",
+    "image_name": "page-04.png",
+    "captions": [
+      "图1 问题一党程图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 5,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-05.png",
+    "image_name": "page-05.png",
+    "captions": [
+      "图3 太阳赤弹在一年中的变化曲线"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 6,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-06.png",
+    "image_name": "page-06.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 7,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-07.png",
+    "image_name": "page-07.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 8,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-08.png",
+    "image_name": "page-08.png",
+    "captions": [
+      "图6 余弦效率计算的示意图",
+      "图 7 蚂收卉与集热吉的影子长度"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 9,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-09.png",
+    "image_name": "page-09.png",
+    "captions": [
+      "图?求解入对这挡区域的流程图",
+      "图in 锁符标系示意图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 10,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-10.png",
+    "image_name": "page-10.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 11,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-11.png",
+    "image_name": "page-11.png",
+    "captions": [
+      "图11 定日镜卫对定日镜A 的入射焉挡区域"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 12,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-12.png",
+    "image_name": "page-12.png",
+    "captions": [
+      "烙，示意图如图 13 所示，总计TX了个高攻点，对于其中任音一个离散点户，其在定"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 13,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-13.png",
+    "image_name": "page-13.png",
+    "captions": [
+      "图14 所示，"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 14,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-14.png",
+    "image_name": "page-14.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 15,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-15.png",
+    "image_name": "page-15.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 16,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-16.png",
+    "image_name": "page-16.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 17,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-17.png",
+    "image_name": "page-17.png",
+    "captions": [
+      "表2 问题一年平均光学效率及1 功率表_",
+      "图 16 各个月份的平均光学效率"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 18,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-18.png",
+    "image_name": "page-18.png",
+    "captions": [
+      "图17 每定日匀的年平均光学效率"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 19,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-19.png",
+    "image_name": "page-19.png",
+    "captions": [
+      "图 20 年平均输出功率与定日镜宽度的关系，"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 20,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-20.png",
+    "image_name": "page-20.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 21,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-21.png",
+    "image_name": "page-21.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 22,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-22.png",
+    "image_name": "page-22.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 23,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-23.png",
+    "image_name": "page-23.png",
+    "captions": [
+      "表3 问题-设计乡委表"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 24,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-24.png",
+    "image_name": "page-24.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 25,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-25.png",
+    "image_name": "page-25.png",
+    "captions": [
+      "图 25 问题二中不同定日昼的年平均光学效率",
+      "图26春分日3 月31 日 10 点时所有定匀的生平的光学名束",
+      "图27 问题一与上题一年均光学数率的对比"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 26,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-26.png",
+    "image_name": "page-26.png",
+    "captions": [
+      "图29 上是三流种图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 27,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-27.png",
+    "image_name": "page-27.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 28,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-28.png",
+    "image_name": "page-28.png",
+    "captions": [
+      "表7 站题三等月31 日平均光学效率及输出功率."
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 29,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-29.png",
+    "image_name": "page-29.png",
+    "captions": [
+      "图30 问题三中定日镜在定日镜场中的分布"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 30,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-30.png",
+    "image_name": "page-30.png",
+    "captions": [
+      "图2 三甸月 目平光学",
+      "图34 间隔三帮分日3朋31 日 10 点时丽有汪昌年天站"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 31,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-31.png",
+    "image_name": "page-31.png",
+    "captions": [
+      "图35 问题一、问题二问题三年学李的对比",
+      "图36 随机生成的 100办可秆与最优表的区"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 32,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-32.png",
+    "image_name": "page-32.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 33,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-33.png",
+    "image_name": "page-33.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 34,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-34.png",
+    "image_name": "page-34.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 35,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-35.png",
+    "image_name": "page-35.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 36,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-36.png",
+    "image_name": "page-36.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 37,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-37.png",
+    "image_name": "page-37.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 38,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-38.png",
+    "image_name": "page-38.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 39,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-39.png",
+    "image_name": "page-39.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 40,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-40.png",
+    "image_name": "page-40.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 41,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-41.png",
+    "image_name": "page-41.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 42,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-42.png",
+    "image_name": "page-42.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 43,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-43.png",
+    "image_name": "page-43.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 44,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-44.png",
+    "image_name": "page-44.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 45,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-45.png",
+    "image_name": "page-45.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 46,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-46.png",
+    "image_name": "page-46.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 47,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-47.png",
+    "image_name": "page-47.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 48,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-48.png",
+    "image_name": "page-48.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 49,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-49.png",
+    "image_name": "page-49.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 50,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-50.png",
+    "image_name": "page-50.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 51,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-51.png",
+    "image_name": "page-51.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 52,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-52.png",
+    "image_name": "page-52.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "25",
+    "problem": "2023A",
+    "page": 53,
+    "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-53.png",
+    "image_name": "page-53.png",
+    "captions": [],
+    "visual_hint": 0
+  }
+]

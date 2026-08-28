@@ -1,0 +1,1301 @@
+{
+  "problem": "2021C",
+  "title": "生产企业原材料的订购与运输",
+  "category": "多期资源配置与鲁棒规划",
+  "mother_problem": "供应商、订货、运输和库存耦合的多阶段资源配置",
+  "question_chain": "供货能力评价 -> 最少供应商集合 -> 周度订货计划 -> 转运分配 -> 成本/损耗/库存改进",
+  "misreading_risks": [
+    "供应商评价与最终决策重复计权",
+    "以均值替代供货不确定性",
+    "跨期库存守恒遗漏"
+  ],
+  "questions": [],
+  "attachments": [
+    {
+      "name": "附件1_近5年402家供应商的相关数据.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021C\\attachments\\附件1_近5年402家供应商的相关数据.xlsx",
+      "sheets": [
+        {
+          "name": "企业的订货量（m³）",
+          "rows": 405,
+          "cols": 242,
+          "preview": [
+            [
+              "供应商ID",
+              "材料分类",
+              "W001",
+              "W002",
+              "W003",
+              "W004",
+              "W005",
+              "W006",
+              "W007",
+              "W008",
+              "W009",
+              "W010"
+            ],
+            [
+              "S001",
+              "B",
+              0,
+              0,
+              0,
+              43,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              "S002",
+              "A",
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              "S003",
+              "C",
+              7,
+              1,
+              0,
+              0,
+              0,
+              1,
+              4,
+              50,
+              130,
+              170
+            ]
+          ]
+        },
+        {
+          "name": "供应商的供货量（m³）",
+          "rows": 403,
+          "cols": 242,
+          "preview": [
+            [
+              "供应商ID",
+              "材料分类",
+              "W001",
+              "W002",
+              "W003",
+              "W004",
+              "W005",
+              "W006",
+              "W007",
+              "W008",
+              "W009",
+              "W010"
+            ],
+            [
+              "S001",
+              "B",
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              "S002",
+              "A",
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              "S003",
+              "C",
+              8,
+              1,
+              0,
+              0,
+              0,
+              1,
+              5,
+              58,
+              110,
+              173
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2_近5年8家转运商的相关数据.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021C\\attachments\\附件2_近5年8家转运商的相关数据.xlsx",
+      "sheets": [
+        {
+          "name": "运输损耗率（%）",
+          "rows": 9,
+          "cols": 241,
+          "preview": [
+            [
+              "转运商ID",
+              "W001",
+              "W002",
+              "W003",
+              "W004",
+              "W005",
+              "W006",
+              "W007",
+              "W008",
+              "W009",
+              "W010",
+              "W011"
+            ],
+            [
+              "T1",
+              1.5539,
+              1.639,
+              0.8124,
+              1.2233,
+              1.1194,
+              1.1572,
+              1.0769,
+              1.1194,
+              1.9129,
+              2.8528,
+              2.6025
+            ],
+            [
+              "T2",
+              0.7092,
+              1.2411,
+              0.3546,
+              1.5957,
+              1.0638,
+              0.7092,
+              0.5319,
+              1.0638,
+              1.4184,
+              0.8865,
+              0.8865
+            ],
+            [
+              "T3",
+              0,
+              0,
+              0.0971,
+              0,
+              0.1295,
+              0,
+              0.0324,
+              0,
+              0,
+              0,
+              0.0647
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件A_订购方案数据结果.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021C\\attachments\\附件A_订购方案数据结果.xlsx",
+      "sheets": [
+        {
+          "name": "问题2的订购方案结果",
+          "rows": 409,
+          "cols": 25,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.仅在表中浅蓝色区域填写订货量数据，没有订货为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3.数据中及左右不要有空格和其他任何符号。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题3的订购方案结果",
+          "rows": 409,
+          "cols": 25,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在表中浅红色区域填写订货量数据，没有订货为空白，单位为立方米；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3.数据中及左右不要有空格和其他任何符号。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题4的订购方案结果",
+          "rows": 409,
+          "cols": 25,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在表中浅绿色区域填写订货量数据，没有订货为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3.数据中及左右不要有空格和其他任何符号。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件B_转运方案数据结果.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021C\\attachments\\附件B_转运方案数据结果.xlsx",
+      "sheets": [
+        {
+          "name": "问题2的转运方案结果",
+          "rows": 409,
+          "cols": 194,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在浅蓝色区域填写转运量数据（数据中及左右不要有空格或其他符号），没有转运为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "供应商ID",
+              "第01周",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              "第02周",
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题3的转运方案结果",
+          "rows": 409,
+          "cols": 194,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在浅红色区域填写转运量数据（数据中及左右不要有空格或其他符号），没有转运为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "供应商ID",
+              "第01周",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              "第02周",
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题4的转运方案结果",
+          "rows": 409,
+          "cols": 194,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在浅绿色区域填写转运量数据（数据中及左右不要有空格或其他符号），没有转运为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "供应商ID",
+              "第01周",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              "第02周",
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "11",
+      "problem": "2021C",
+      "title": "生产企业原材料订购与运输的评价与规划模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C066）.pdf",
+      "pages": 60,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "表 1 对附件 1数掺的统计性分析表."
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "表 2。 供食商的志人情况统计"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图 1: 问题一多指标评价模型"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "表 3 殿货庆续性评价体系指标权重",
+            "表 4 TOPSIS 多指标评价模型指标权卫"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "表 5 和0家最重要的供货商"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图2。问题的允有标规划入型"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p11"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图 3，问题二订货方案模型的过传算法冰解过程",
+            "表 6 第选模型所得的 39 家重要供货商"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 43，以 24 于为周期的历史供货情况〔S980 为(3j、S282 为(Dj)、S329 为(c))"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p19"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 6 24 局末购方案库存变化图",
+            "图 7，34周订朋方案各类原材料上比"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "图 8，24 周转远方案转二损耗产量占周最大产量的比人",
+            "图 9， 第3 周各原村料供货项供货占比"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图 1o，供俩南 S139 的历史供货数据 以24周为一周期",
+            "图 11，第 13 周各原材料供货商供偶比例"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p23"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图 12，24 周三种原材料订货量比例图"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图 13: 24 周订货方案调整量",
+            "图 14，新方案 24 周成本缩减比例"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-26.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p26"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "图 15: 未来24周预计最大产能"
+          ],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-28.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-29.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-30.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-31.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p31"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-35.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p35"
+        },
+        {
+          "page": 43,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-43.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p43"
+        },
+        {
+          "page": 46,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-46.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p46"
+        },
+        {
+          "page": 50,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-50.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p50"
+        },
+        {
+          "page": 57,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\11_C066\\pages\\page-57.png",
+          "gallery_anchor": "problems/2021C/papers/11_C066/gallery.html#p57"
+        }
+      ],
+      "abstract_extract": "权文针对现有的生产企业原材料订购与运生方案的制定问题，通过历史订\n贷和供货殖据，针对供贷商过立反聊了其重要性的多指标评价模型，对次型闹\n选得出的重要供货商，建立原村料订购与运输方案的多目标规划愤型，分别尝\n试以保障生产称定性、原材料订购结构优化和产能混逢为化目标，通过中传\n算法对和栈型进行解，得到基于三种优化目标最佳的订购方案与运验方案。\n本是的将据较多，在建立站前首先对数提进行预处理，发现用件效据\n不存在明显的错误和拱失。在比较附件 1 的历史订货数据与供货数据的仿关\n后，发现存在供侦质量枚低的 33 家供优商，将这类明显的低质量供我商员除，\n不纳入后纺的研究与分析。\n研究供俩商的历史致据，量化分析供货商的供货团征，首先通过对附件\n数据进行分析，建立了6 个能有效反映供货商供贷能力和供货风险的指标。 这\n6个指标分别为供食次数、平均殿货量、单六最大供疏最、供售移定性、人铁贫\n致性和合理供蓉比例。通过 TOPSIS 法，结售6个指标，建立多指标评价模\n型，对每个供货商的重要性程度进行评价。林于模型的评价技果，本文菠选出\n了 30 家最重要的供货商，其中得分最高三家的恬食商分别为S140，S229，\nS361，这三家傣介商的得分分别为 09435，118755 和 08401。\n以保际生产的稳定性为目标，建立最经济的订购方案与损基最小的运输\n方案。 针对问题一机型所得的 30 家最重要供筑商，以殿货商数目最小和供货能\n力能满足最大产能为目标，建立革于多目标关划的迟选阶型，通过址传算法孙\n解，发现于少需坚 39 家园定的殿间商供货，才能恰好满足最大产能需求。针对\n这39 家供贫商，以最小化成本为目标，生产稳定性为约束建立动去规划席型，\n通过遗传算法进行求解，得到了最经济的订昌方案。革对每周的订则方案，以\n运统禹为做化目标，建立运输方案的规划并型，通过程序模拟近代对便型进\n行求解，得到了损耗最小的转运方案。通过检验库存的变化和估计本率，对\n订购方案和转运方案进行评估，发现本文所得结果是合理且有效的-\n通过优化原村料订购结构，对成本进一步压蓟。 对问题二中的订风方案\n模型进行分析，发现由于各项成本的数量级差异，叶致模型对原硅料订购结构\n并不和壤，进再使等原材料订购结构无法达到最优。以问题二模型结果为起始\n点，请加对原村料订购结构的强约束，通过遗传算法对模型进行示解，得齐渐\n订购方案与转运方案。相比巴问题二中的订则方案，斩的订购方案优化了原村\n幸的订购结松，合每由的订则成本平均久碱0956%6，最大可玉减 4847q0。\n考虑生产企业产能提开的深力，结会殿货商和转运商的实奈情况，更新负\n定订聊方案与运输方案。供贫商和转运商的能力决定了企业产能提和的次力，\n在问题二慌开的基础上，基于生产背景对模型进行收改，以转运凋的技运能力\n为企业产能提升的上中，放抵对供食凑供货项量的要求。通过直传算法对柄型\n进行求刨，得到了基的订购方案和转运方案，发现在下有的供贵链中，该生产\n全业的产能还可提高 L38 万立方米左右。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 46 行：关键词，TOPSIS，评价咎型，直传算法，才目标规划境型（关键词）\n- 第 52 行：一、问题重述（问题重述）\n- 第 76 行：二、问题分析（问题分析）\n- 第 158 行：四、数据预处理（数据预处理）\n- 第 488 行：61.4模型求解（模型求解）\n- 第 1096 行：十、参考文献（参考文献）\n- 第 1135 行：数据预处理后届除的 33 家极低夺量供贫商（数据预处理）",
+      "model_terms": "- TOPSIS：11 次\n- 遗传算法：4 次\n- 回归：2 次\n- 动态规划：1 次\n- 多目标优化：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 的供信商。首先。对附件1 的数据进行预处型，确保预处更后的数据不存在错\n- 问题二要求甘于问题一，夭渤出至少多少家供信南供货阴消是疆周的最大\n- 本文通过在建立简这模型时，直要在消足最大产能原材料需求的前党下，考起\n- 商订货与代食数据的周基性，基于此建立各个供筑毅供亿能力的周期性模型-\n- 对于问题三，本文考虑基于问题二所构建的顷型，通过囊加对原村料的从\n- 行量化，对弛问题二和间题三的亲种方案的成本差异\n- 对于问题四，同样沿用问题二的思路和沸型，对目标忆盘商与的素条件进\n- 产能的因素转变为转运商每周的总转运量。据此问题二的订几方案中的目标和",
+      "paths": {
+        "card": "problems/2021C/papers/11_C066/paper_card.md",
+        "gallery": "problems/2021C/papers/11_C066/gallery.html",
+        "visual_contact": "problems/2021C/papers/11_C066/visual_contact.html",
+        "source_pdf": "problems/2021C/papers/11_C066/source.pdf",
+        "full_ocr": "problems/2021C/papers/11_C066/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021C/papers/11_C066/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "12",
+      "problem": "2021C",
+      "title": "基于双层和随机规划的原材料订购与运输问题",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C085）.pdf",
+      "pages": 56,
+      "visual_pages": [
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "逼近于青想解的排序结合起来的一种评价模型。其兵全运用流程图叫如下"
+          ],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图9 简0家供三种和此"
+          ],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p9"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p13"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p16"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "表 7，产能提高这",
+            "图 14， 提前或起时补全产能从比例"
+          ],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图15。 局时考上时与下时补当产能地加比例"
+          ],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p23"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\12_C085\\pages\\page-37.png",
+          "gallery_anchor": "problems/2021C/papers/12_C085/gallery.html#p37"
+        }
+      ],
+      "abstract_extract": "本文主要建立双层苑机规划异型、区有偏差变重的随机规划模型、随机整数规划嵌\n型间通过基于动态权重的高艇化刘心和动态坑划算法、二分答案算法为企业解决原材料\n的订购与运纺问题。\n\n首先对附件数据进行也处理，判断各家供应商供货量具有局期性《存在淡季与王\n季) 、夹变性，部分愉有泊检分布特性=\n\n对于问古一，局用平均供货经度、完成率、订单束和风险作为指标根据炳权法\n-TOPSIS 对供应商的更要性进行评尖，得出权重后计算出每家供应商的得分，按得分排\n名，找出排名前 30 家的供应商，半时为 5229、S361、S140、5108 等 50 家供应商.\n\n对于问题二，首先以未来 24 周所选择的供应商为决策变最，以最小化企业未来 24\n周的不重复供应酝个青为优化目标建立供应商和择业型, 其次以最小化每周运转可不为\n上层规划的优化目标，以最小化每周原材料订购成本为下层规划的优化目标建立双层院\n机规划模型，最后利用动态权重的信心和动态规划算法解决最少供应商选择问题， 针对\n答迹中的供应商使用离艇化信心规划算法解决原村畦订交方案问题，使用 1 背包动态\n规划和舍心再处理的方法以每个恩运而期望杭耗率为标准全心处理,制定根磋最少的多\n志方案。最终确证应盏少选择 229、S361、5140、S330、S108 等 27 窜供应商供应区\n材料才可能注是生产,此时扎油的 A.B.G 材料的平均辟重分别为 70765ms、47043ms、\n688Smz ，期记换靳量占比为 0.532%。分析附件数据发现有产能不足情况，本文取采购\n成本与声能的比值作为判断指标，未来 24 周的平均采购成本为07215 小于之前5年的\n已知量0.7220，说明订隐方案实旋歼果优秀.\n\n对于问题三，以采师和类和 类诛村料、恩运商的转运栅率为优化目标建立带有\n信关变量的随机规划模型。在定性分析村料购买忆先级后，对所有供应商信用襄天化使\n心规划第法解次床材料订购方案问题，再以第二问规划转运方案的方法，得出具体转运\n方案.此时 24 周里订购 .BC 村料的平均总最分别为933.3mz.667773m7 .3682.9m8\nAc 平均总最占比分别为 归%6>36%6>20%6，服从 A>B>C 的从先级。24 周期训要\n棋最古尼为4.S22%，对比第二问的损耕量占比 0.5329i，在措耗量方面更加优秀,\n\n对于问题四，以未来 24 周的产能为决策变星，以最大化未来 24 于的产能提高率均\n信为饮化目标寺立随机整数规划模型. 在确定产能如窜应满足每周产能达成和两周提前\n村料供应的规则后，使用二分管案第法进行求解，效每小足规则的最高产能对应仁，最\n和终仅考虑材料订购和生产得出最高产能为 31781ma，考虑转运换耗则期和最高产能为\n31344ma，平均增加比例为 12.7%，此时 24 周里亲购和A，B、C 村料的平均总重分别为\n932.3ma、4945 Sm3、7968Tm3，24 周期望横胡量占比为 0.57696",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 46 行：关键词， 类权法 -TOPSIS、丰层随机规划贷型、基于动态友重的离散化信心算法，动坊（关键词）\n- 第 52 行：一、问题重述（问题重述）\n- 第 86 行：二、问题分析（问题分析）\n- 第 137 行：四、符号说明（符号说明）\n- 第 828 行：七、参考文献（参考文献）",
+      "model_terms": "- 随机规划：11 次\n- 动态规划：6 次\n- TOPSIS：5 次\n- 整数规划：4 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 首先对附件数据得行预处理, 关听各家供应商供贷量具有周期性, 存在淡季与王季,，\n- 首先以未来 24 周所选择的供应贾为决策变量，以报小化企业未来 24 周的不重复供\n- 应商个监为怖化目标建立供应测选择寞型- 其次为规划成本最小的订购沪型与损耗最少\n- 下层规划的忧化目标建立双层随机规划模型注意一家转运商可能不够的情况。最后利\n- 基于问题二的决策变量，以较多采购 A 类、较少采购 5 类原材料和减少转运商的转\n- 意一家二可能多傅况, 最后利用于翅相的机化人心和规划押法祥\n- 机整数规划异型。注意一家转运商可能不够的情况。 最后利用二分答案算法求解并分析",
+      "paths": {
+        "card": "problems/2021C/papers/12_C085/paper_card.md",
+        "gallery": "problems/2021C/papers/12_C085/gallery.html",
+        "visual_contact": "problems/2021C/papers/12_C085/visual_contact.html",
+        "source_pdf": "problems/2021C/papers/12_C085/source.pdf",
+        "full_ocr": "problems/2021C/papers/12_C085/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021C/papers/12_C085/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "13",
+      "problem": "2021C",
+      "title": "基于优化算法的企业原材料订购与运输规划模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C169）.pdf",
+      "pages": 51,
+      "visual_pages": [
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "表 1 入遇"
+          ],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p6"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p9"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "表 3 5 家最重要供应调和分"
+          ],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p12"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p14"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p18"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p20"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p23"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-30.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-31.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-32.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p32"
+        },
+        {
+          "page": 50,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\13_C169\\pages\\page-50.png",
+          "gallery_anchor": "problems/2021C/papers/13_C169/gallery.html#p50"
+        }
+      ],
+      "abstract_extract": "为保际生产全业特欠克定发展，林文建立了综合评价模型新助企业简介高质重合\n作供应商，并根据企业生产需求和供应商、 转运商实际情况侧定未来半年的订购和运\n答计划。同时展包未来，对相同原村料刷场下企业产能最大化混册见解-\n\n针对间题一，通过对 402 家供应商的供化特征进行量化分析，本文确定了供货水\n平、订单完成水平和耕村档供应类别三个一级指标，进而继化为每周最大供货量、近\n5年订货频次。平均订供假差售、以及单位产品消耗各类原村料的综合成本等八个二\n级指标。 建立革于投影寻中法的供货能力评从异型，用加速叶传优化算法求出最住投\n影方向o=10.414 0310 0.566 0235 0.377 (31 0007 008引作为各指标权重，给和\n家供应商打分，排名前 50 的作为最重要快应商,，\n\n针对间题二，首先以供应商总数最小为目标本效，每家供应认为一个决策变最，\n综合考中牧定供俱能力，供给需求关系，视丰率，库存最与产能的关系，座存到余生\n的选代关系和初库存笠余量等约束条件建立0-1 整数对划模重求解访绩型，得到\n该企业应至少计择 24 家供应商供应原村料才可能消足生产的需求。其次，在该可型\n的结果下，挝择成本最氏为上标寻至，在上述约来条件下过立线性规划并型，和到该\n企业最经济的订购方案,同时东得平均! 立方类原材料只党花费 1.092 的采风单价。\n最后根据以上个横电的结果，以措帮时低为目标半数，综全考虑苇运拟失率，总承\n按量, 总供筑量等约束条件建立起性规划借型， 求解该并里得到避耗最低的运方案,\n平拘报杰率为0.21438。\n\n针对间题三，仅考虑重要性排名前 50 的供应商，在问题二和上，加入订购A、C\n原材料数量关最大这一目标起效，综合考虑各类原材料的益订俱乱、供给需求关系和\n库存科作量的千代关系等约束条件，奸立多目标说划异型。应用多目标总子群算法求\n解该筑弄以得到企业订赂方案，求解出 24 周 A 类原村料和 C 半原村机的平均订购重\n在避原村翌平均订购量中的占弛分别为 79.98%和 2.35，与两关村料在问题二中的占\n比 57.69%和有和 15.79W相比贡显亚优。 最终崩问题二一样，以宽村率最低为昌标数，\n在相同约束条件下构建性观划人型每新的转运方案\n\n革对问题加，通过分析得知该企业每周的产能可以提高多少取决于每周收到的原\n村料的等效产能，故以沪等效产能最大为目标时效，综全考虑运纺总节，供人最，前\n后周俱信量的相互影响等约来条件，直立线性规划光型。术型求解引果显示委周运给\n总量部约为最大运给重，邵凌全业产能的提姑主要各到现有忽运实际情况的隐钊，\n最终得到该企业平均最大原村料等歼产蓄为 73944 立方米，所以该企业产能可以提开\n的474立方米\n关键局， 投影寻踪法 加束的传代化算法 线性规划 多且标规划 选代关系约来",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 50 行：一、问题重述（问题重述）\n- 第 85 行：二、问题分析（问题分析）\n- 第 142 行：三、模型假设（模型假设）\n- 第 163 行：四、符号说明（符号说明）\n- 第 996 行：十、参考文献（参考文献）",
+      "model_terms": "- 线性规划：24 次\n- 整数规划：3 次\n- 粒子群：2 次\n- 遗传算法：2 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题二要\"至少\"选择多少家供应商供应原村料才“可能*消是\"生产的需求<，相\n- 少的数量《有标苗数)。为此，本文将问题一中的 50 家供应商作为研究对象集合，刀\n- 建立多目标地划异型，求解出新的订购方案。招此，再次运用问题二中求解转运方案\n- 要考虑沪企业每计的产能可以提高多少,首先间考虑企业丝周要贫量时高为多",
+      "paths": {
+        "card": "problems/2021C/papers/13_C169/paper_card.md",
+        "gallery": "problems/2021C/papers/13_C169/gallery.html",
+        "visual_contact": "problems/2021C/papers/13_C169/visual_contact.html",
+        "source_pdf": "problems/2021C/papers/13_C169/source.pdf",
+        "full_ocr": "problems/2021C/papers/13_C169/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021C/papers/13_C169/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "14",
+      "problem": "2021C",
+      "title": "双目标贪心优化下的企业原料订购运输方案",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C283）.pdf",
+      "pages": 58,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p6"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p8"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p14"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p18"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p20"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-24.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p25"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-27.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-28.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p28"
+        },
+        {
+          "page": 44,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-44.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p44"
+        },
+        {
+          "page": 47,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-47.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p47"
+        },
+        {
+          "page": 55,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-55.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p55"
+        },
+        {
+          "page": 56,
+          "captions": [],
+          "image_path": "problems\\2021C\\papers\\14_C283\\pages\\page-56.png",
+          "gallery_anchor": "problems/2021C/papers/14_C283/gallery.html#p56"
+        }
+      ],
+      "abstract_extract": "双目标贪心优化下的企业原料订购运输方案\n\n下层汪过和，肯全\n夫人与和从，只史作息于\n极目人人型，对人企业过 38 风打委江太.，\n\n一，对站 1 了。对攻打，汪历史\n人全，旭让 1 家失调，划可术的让休有，浊和\n人和了，其上关内信和、信和太夫和人\n和和和，人”和有区村对和人正: 项和人三革[人人工\n到本，志和人基性用人人类于，加时过了攻人\n1 家志和人间，才 b 衣有代和文昌，半生人 的可\nas，\n\n全间是二-六 家央了目本末近代\n5 所避和和昌，基虽分李惠企业\n化 在个了本 有有，风色-\n了利和。有和守节代主持对人和和\n人和，和天人人证于。拓加舌寺代和，本\n攻关和，过到做和术理。这和儿科为 2ptss 间/由，\n到入 B sy 人/间作家天的为 家，在下对和宜兰\n机，信守，并提防，天了\n3\n\n后三，了K本四扩对二守信，玫汪人\n拓直化和人了入人 “尽和和A类日，尖当红-。 于拓失，对和 到 下放交计\n全半了: 和 天 105, 半身08， 人于系下代用 姑人\n天生有人，得 类卫人手度具有新装色得 关1C 项\n了时比为 734， 平和为2 单/届，闪证了失方的下于并六上了内人人\n天下员和\n\n交加，所遇人化，人 和有\n于，企业于不全。人人有有。和，由刘和与明\n直方表明了下所竹。 对的产衣和提出 人外这末人红 产维\n所人可和当时了和产检，有进化，活月和民企业 吉庆\n了下了在上利和，相关此定妆十从方月了全基业 林芝\n音叉人区 9 居，本产下了S3，34\n万开了27\nRE\n\n1",
+      "chapter_navigation": "- 第 129 行：3 符号说明（符号说明）",
+      "model_terms": "- 多目标优化：2 次\n- 层次分析：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 和村，以达到洒风上本乳化、转运村最小化的目标 最后戏流方案进行突吉朵的分析-\n- 一本的商家建机，奸村首先分析存下模亚了基本属性，下其庆套人目标刘中作为于分.\n- 戎量计算公式的让择，惟下周公趟进和各求解，对比分析得出可行方案，在最后的效果分煌中，\n- 最后对实验结果的 A，C 次家比例，靳方案的运铀冰量进行展示及分析肖-",
+      "paths": {
+        "card": "problems/2021C/papers/14_C283/paper_card.md",
+        "gallery": "problems/2021C/papers/14_C283/gallery.html",
+        "visual_contact": "problems/2021C/papers/14_C283/visual_contact.html",
+        "source_pdf": "problems/2021C/papers/14_C283/source.pdf",
+        "full_ocr": "problems/2021C/papers/14_C283/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021C/papers/14_C283/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

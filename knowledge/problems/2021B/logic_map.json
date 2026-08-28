@@ -1,0 +1,838 @@
+{
+  "problem": "2021B",
+  "title": "乙醇偶合制备C4烯烃",
+  "category": "实验响应与实验设计",
+  "mother_problem": "催化剂组合、温度与产率之间的响应关系及实验优化",
+  "question_chain": "实验结构审计 -> 因素与交互作用 -> 温度响应曲线 -> 收率优化 -> 新实验点设计",
+  "misreading_risks": [
+    "非正交实验直接做标准方差分析",
+    "选择性与收率混同",
+    "插值最优点缺少外推风险说明"
+  ],
+  "questions": [],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021B\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "性能数据表",
+          "rows": 115,
+          "cols": 11,
+          "preview": [
+            [
+              "催化剂组合编号",
+              "催化剂组合",
+              "温度",
+              "乙醇转化率(%)",
+              "乙烯选择性（%）",
+              "C4烯烃选择性(%)",
+              "乙醛选择性(%)",
+              "碳数为4-12脂肪醇         选择性(%)",
+              "甲基苯甲醛和甲基苯甲醇选择性(%)",
+              "其他生成物的选择性(%)",
+              null
+            ],
+            [
+              "A1",
+              "200mg 1wt%Co/SiO2- 200mg HAP-乙醇浓度1.68ml/min",
+              250,
+              2.06716944958221,
+              1.17,
+              34.05,
+              2.41,
+              52.59,
+              0,
+              9.78,
+              null
+            ],
+            [
+              null,
+              null,
+              275,
+              5.8517209865374,
+              1.63,
+              37.43,
+              1.42,
+              53.21,
+              0,
+              6.31,
+              null
+            ],
+            [
+              null,
+              null,
+              300,
+              14.9688914921879,
+              3.02,
+              46.94,
+              4.71,
+              35.16,
+              1,
+              9.17,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021B\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "稳定性测试",
+          "rows": 10,
+          "cols": 8,
+          "preview": [
+            [
+              "350度时给定的某种催化剂组合的测试数据",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "时间（min）",
+              "乙醇转化率(%)",
+              "选择性(%)",
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              "乙烯选择性",
+              "C4烯烃选择性",
+              "乙醛选择性",
+              "碳数为4-12脂肪醇         ",
+              "甲基苯甲醛和甲基苯甲醇",
+              "其他"
+            ],
+            [
+              20,
+              43.5473885704829,
+              4.23,
+              39.9,
+              5.17,
+              39.7,
+              2.58,
+              8.42
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "07",
+      "problem": "2021B",
+      "title": "04 烯烃制备分析与试验设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B007）.pdf",
+      "pages": 45,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图4所示)。"
+          ],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p8"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p14"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p17"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p19"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "表2i。 已 与 办 的亲设计全用胡"
+          ],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-24.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-26.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p26"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-28.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p28"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-40.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p40"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\07_B007\\pages\\page-41.png",
+          "gallery_anchor": "problems/2021B/papers/07_B007/gallery.html#p41"
+        }
+      ],
+      "abstract_extract": ",烯烃可用于化学工业生产与医药制造, 是电要的基础化工原料,是石池化\n工产业的革础。 近些年，随着国内化工产业的不断进步，C:声烃的综合利用越来\n起受到重视，乙醉俊化锡合制备 C:姑烃逐渐进入人们的视旦。因此，选择合适\n的舱化生产工艺实现稳定、商效生产的目标，将有助于相关企业经济效益的提\n乔，同时也能促进我太的化工产业的发展-\n\n计对问题一，首先, 经过皮尔通相关系数分析，计算和种能化剂组全下乙本\n转化事、C4 糊烃选择性与沽大的相关性，塘据计算结果所得的相关性系数表可\n知数所之问存在铁强的相关性。以乙本转化率、C4 燃经让择性为因变量温度\n作为自变量进行非线性回自拟合， 所有组全的相关人性系至瑟的均角在 人%%以上，\n满足二项式非线性回归组获形式。再画出己酝车信以及刀烃和择性与岂度的图\n像，对可像进行指述。其次对于第二小问, 同时通过潍类分析对歼据进行降维处\n避, 将5个附加产物变量降维成 2组, 在给定温度和沁化剂组合下对结果进行了\n定量分析,发现随着时间的堵加,在一定注度和相同供化齐下,随着时间的二加,，\n反应物乙队转化率持续下降, 逐老和于稳定，C4 类烃选择性增加, 并趋于稳定,，\n与时间显现出弱负相关人性\n\n计对问题二,根据附件 1 中数据分析， 得出“石英砂*对乙醉转化束以及 C4\n姑烃违反性的影响可以忽略, 因此避除相关读数据, 同时利用辣电一中的到类情\n涡，对附件一中的数据进行降维。利用多元圳性回归建异，并且通过全最小二科\n回归建民完善改进多元线性回归建村无法分析因次量之间的关系的负点,得到两\n和磺列对应的由半平方和部在 10 左右波动，因此两刚型差异很小，得出乙本转\n化率、C4 燃烃造择性这阿个因变量之间旺现低相关性。并且得出浊度在解释这\n两个因变量时，具有极为重要的作用，菜胖比的解和蓄力均为一般。\n\n寻对问题三, 探究多个自变量与在相同的实验条作下, 如何组全从而使得 ct\n录放的收率最大。通过电中所给的 C4 包烃收率计算式，瑟出莫码单明标最优化\n模型，同时求出 Cd 烯烃收率的多元司归函数对重型进行优炒，引入方莽分析芋\n究允自变量之间的交互作用，从而更好地拟合数据最丝求得语度在 460C时 C4\n姑烃的最大收率为47.]吕。当温度限他在 350忆时 C 燃炮的最大收率汶28.26-\n\n寺对问题四，为了能够在5次实验内更加充分的了解如何提高 C4 场烃的收\n事， 本文采取均多设计释法，以至少的实验次数获到更多的信息,本文根据问\n题二全最小二科模型所得相关系数天断各个俊化剂组台各组分与24妈妈收率的\n英系，以此素设置各因素水平及撞除相关性极低可祝为和重的因天旺，消足均匀\n设计5 此实验对自变量的要求，并根据参歼水平表设置尖玫方案。 为了化学实验\n欣作安全,本文昌除了均匀设计全用表的最后一行，并以问题三所得最伐结果代\n彰，最终，根据均匀设计实验法措列出了再增加的5 次实验",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 48 行：关键词 多元回归寞型 信服小二科回归分析 最优化 方差分析 均匀设计（关键词）\n- 第 84 行：2 问题分析（问题分析）\n- 第 137 行：3 模型假设（模型假设）\n- 第 170 行：5 模型建立（模型建立）\n- 第 348 行：5.2.1 数据预处理（数据预处理）\n- 第 366 行：5.2.2 模型建立及误差分析（模型建立）\n- 第 836 行：8 参考文献（参考文献）",
+      "model_terms": "- 回归：44 次\n- 方差分析：9 次\n- 主成分：1 次\n- 聚类：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 能化关组合条件下确切的影响关系。 其次，我们进行了第二部分对附件二中的\n- 小的影响。 在问题一的莫耐上,我人发现光所之间部具有六强的和关性。 不妨对\n- 问题四要开再增加 5 组实鸡灯探过各个自刘禾《生化齐务组分》 与因奉重\n- 量与因变且之间的关系, 本文采到均匀设计实欠法.本文根括问题二从最小二冬\n- 柳型所得结条首先风除了与因变量相关性极低的自玫重, 以江足均匀设计 5次实\n- 全化学反应过于出济避至外险发生的组合,并以问题三所得晤佳用全结果代普.",
+      "paths": {
+        "card": "problems/2021B/papers/07_B007/paper_card.md",
+        "gallery": "problems/2021B/papers/07_B007/gallery.html",
+        "visual_contact": "problems/2021B/papers/07_B007/visual_contact.html",
+        "source_pdf": "problems/2021B/papers/07_B007/source.pdf",
+        "full_ocr": "problems/2021B/papers/07_B007/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021B/papers/07_B007/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "08",
+      "problem": "2021B",
+      "title": "基于双因素方差分析的乙醇制备 04 烯烃的研究",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B026）.pdf",
+      "pages": 26,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图 4乙本化与 cd 人册上图"
+          ],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "表 1天寿拓人",
+            "表 9下辣昌隐，休化种基的本化于/cl 才寻人"
+          ],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p9"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "表 14 催化剂组合对烯烃收率的影响力大小",
+            "图 6 乙醇转化率与 C4 收率折线图"
+          ],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 7 Al12 与 B1 对比图",
+            "图8 Ag与8B5 对比图"
+          ],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p21"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-24.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\08_B026\\pages\\page-26.png",
+          "gallery_anchor": "problems/2021B/papers/08_B026/gallery.html#p26"
+        }
+      ],
+      "abstract_extract": "未文研究的是乙醇介人制备 C4 声烃过程中，俊化剂组合与温度对乙配转化\n率和 C4 饰烃的选择性的影响，通过建立双因素方差分析醒型和优化柄登，求解\n得到最促的淮化剂组合与温度，获竺最高的 Cd 燃烃收率。\n\n首先采用三次样条播值法对已知数据进行播佐补全，为模型建立提供数据其\n醒-\n\n针对问题一:本文分别对每个装料方式 | 、]巡立两个回归模型，首先针对\n附件 ! 中不同能化齐组会，提出建立Logistic 增长模型，撕述乙本转化率随浊\n度开高而增加。后趋于平生的关系;建立一次线性、二次晶线回归模型，搞述\n吕 顽既转化率答期认陵齐座升高而增加的关系。 其次，基于附件二要据败点图\n可知,C4燃烃选择性在 368一41%间波动,乙本转化率隐时间增加而降低,在 29. 95\n处耻于平稳。\n\n针对间电二，本文建立了双因素方差分析异型，双因素分别为温座和不同俯\n化剂组合，通过方差分析本类，诅度和不同众化剂组台对己除转化率和C4糊烃\n选择性的影叶孝显著，温度的影响力大于不同健化剂组合的影响力。\n\n通过多重比较检验可知，分析的数据中温度越高，乙本转化率和 C4 燃烃的\n选择性起高，胆吃力起大，400时乙本转化率和 C4 场烃的造择性达到最大 将\n不同催化剂组合对乙醇转化率和 (4 顽烃选择性的影响力排序, 对于乙醒转化率，\n能化放组合量优为 A7 组，最差为 B3 组，对于 [4 精烃选择性，人外化剂组合最估\n为AL 组，最差为A11 组。\n\n针对间题三: 本距需要挝择仍化剂组合与温度，以获得最大的 [4 声烃收率。，\n仿收束为国变性，将俱化剂中四个组成因素与肖度作为5个自变芍，用 Matlah\n软件拟全得到五元二次方程，热后建立优化模型，以 5 个自变量为决策变最，以\n共取从这围为约束条件，从而得到 4 精烃收率最大值为 5719，最优代化剂组合\n为: 167. 625ag 1.96wt%CoySi02-200agHAP-乙醇浓度 0.85nl/min,浊度为 400IC:\n同理，得出温度低于 350习时收闵最大信为 4648，最忧催化剂组合为。 200mg\n1 67wtACoysi02- 200ng HAP-乙醇浓度 1 5Tml/nin，温度为 349忆，\n\n针对问题四;本题提出 5 沈实验设计，在问题三的基础上，在最忧优化剂组\n合和最侍温度的附近，进行寻优实验! 在收率方关分析求得的最代借化剂组合与\n壕度进行实验验证:对比装料方式【和上控制其他变量相同，增加实验以确定\n半料方式优委，根据内件 2 数握，增加采样对齐|，找出使乙本转化率最大的时间\n点，求出 c4 类既的收率。从补充龟失宇验的角度出发，对于忻 ! 中没有进行的\n实验作出补充，",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 49 行：关键词，乙隆，[C4 丧烃;Logistic 增长模型，双因素方差分析， 使化模型（关键词）\n- 第 77 行：二、问题分析（问题分析）\n- 第 109 行：三、模型假设（模型假设）\n- 第 113 行：四、符号说明（符号说明）\n- 第 133 行：五、数据预处理（数据预处理）\n- 第 718 行：八、参考文献（参考文献）",
+      "model_terms": "- 方差分析：13 次\n- 回归：5 次\n- 插值：4 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 对于问题一:分别对装料方式| 、昌建立了两个可归模型，首先针对附件 1\n- 对于 c4 堪烃转化率。也根据数据特征可建立回归模型，扒述 c4 燃烃和转化率短期\n- 内随证度开高而增加的关系。其次，莽于附件二数据栈点图可知，Cd 烦烃计择\n- 性在证动性校大，乙本转化率随时间增加而降婚，最后让于平稳， 可用分段盘数\n- 对于问题二, 将衣度分为7 个水平，不同和化剂组合分为 21 个水平， 建立双\n- 对于问题三/ 本途择使等 C4 烃收衬达到最高的俊化剂组合和庙放,我们可\n- 出一个关系式。进而建立优化模型，抠出关系于至的最大值，此时对应的HAP\n- 对于间题加: 本问可以在问题三的基础上，在最忧健化剂组全和最佳沿度的",
+      "paths": {
+        "card": "problems/2021B/papers/08_B026/paper_card.md",
+        "gallery": "problems/2021B/papers/08_B026/gallery.html",
+        "visual_contact": "problems/2021B/papers/08_B026/visual_contact.html",
+        "source_pdf": "problems/2021B/papers/08_B026/source.pdf",
+        "full_ocr": "problems/2021B/papers/08_B026/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021B/papers/08_B026/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "09",
+      "problem": "2021B",
+      "title": "乙醇偶合制备 C4 烯烃的多元回归与神经网络模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B050）.pdf",
+      "pages": 59,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图 1-5 本 组直线所全与指数氢全对比图"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图5.1-6 A0 组三次多项式所人与四次多项式折合对比图"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p7"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图1-7 直线型 图去 1-8 指数型"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图5. 2-1 乙醇转化率随时间呈指数豆减特征",
+            "图5. 2-2 C4 燃烃收率随时间呈指数衰减特征"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图5 3-2， 为融误差条的系数 图5.3-3 六均方根误革的调整历史"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "本5 3-4; 罗带误差条的系数 图 5.3-5 入均方根误差的调整历史",
+            "图5 3-6，交带误基条的系数 图$. 3-7 好均方根误莽的调整历史"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图5.3-8: 基带误关条的系数 图5.3-9 名均方根误兰的调整历史",
+            "图5.3-10: 商带误差条的系数 图 5. 3-11 姑鸭方根误差的调整历史",
+            "图5.3-12， 交带误关条的系救 图 5. 3-13 天均方根误差的调整历史"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p17"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图 5. 4-1: 人工神经网络基本单元的神经模型"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图5 4-2，寺对洪问题的5 个攻入5 个神经元的 gp 神经网络术开"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图5.4-3: 第 493 代时最优说练效果",
+            "图 5.4-和说环数据棉度与均方误差变化图",
+            "图5 4-5。训绷数据的历史残差图"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图47， 温度人于 350 度时各多数图"
+          ],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p23"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-27.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p27"
+        },
+        {
+          "page": 49,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\09_B050\\pages\\page-49.png",
+          "gallery_anchor": "problems/2021B/papers/09_B050/gallery.html#p49"
+        }
+      ],
+      "abstract_extract": "亏本角化偶合是制备 [4 顽烃的重要方法, 本文对乙隐欢化个合由备 C4 业烃\n工艺条件进行研究,建立多元回归模型与 了 神经网络模型,对各问题进行分析\n\n对于问题一第一部分，首先画出各催化章组合乙本转北率和 C4 燃运冯性\n与汰度艇让图，结他相关文献综合分析识差后，初步判断出变化起势。之后，利\n用指数报合、线性报合得出乙本转化刘与痊度的关系: 利用三次多项式拟合得出\nqd 十烃选择性与温度的关系。利用 tlab 和 Origin 求解出具体方吏，并在附\n录中给出具体报售图。 最终根据线性型、指数型，多项式峰值情况分为5 类进行\n分析，给出了 21 种健化章组合具体5 种分类情况，\n\n世于问题一第二部分, 我们首先在附件一基础上分析得出乙杯储化偶合钢备\n所烃的问体反应过程，明确了各指标同的关系，之后，针对附件 2 各指标进\n行分析，利用 Matlab 拟售出随时间变化图像，发现乙醇转化率和 54 关既收率随\n时间的扒克呈更指数型训减牧征，并每出在 197min-273min 时间服内生成 C4 关\n地的主反应逐渐达到平和，其他一反应有一定滞后性等相关结论。\n\n对于问题二,我们在定性分析的基础上,进行定量分析,确定多元回明方程\n并对影响程坦进行分析-首先通过对比分析得出两和装料方式对重要指标无项显\n影响, 其次将傣化剂组合及肖庶等综合性变重转换成数估型户变量与因变量, 利\n用乏步线性置归法与主成分分析法建立多元区归模型; 之后进行初步检骏, 在此\n革础上进行了大线性变量处理、增加交互项处更、委一化处理等优化处更，求解\n出多元回归方程。最终得到结论: 对于乙本的转化率， 温度的影响最大，其次是\n忆隘浓度，对于 C4 烟烃选择性，主要由由注度影响，同时也吹证了第一问选取\n的狼合簿数具有合理性-\n\n对于问题三，先经过综全分析，我们从纲有数据集具有非线性特征切入 结\n合B 捉经网络具有非线性陵射能力等优点，和利用 邢 神经网络进行建并及求解。\n通过笛试分析当隐基神经元个数为 5，痪型训练方法为由叶斯正则化时求角歼条\n较好。在祖阿实哈条件下， 最大 c4 类烃收率为51.31%+ 催化齐组合为 200mg\n.5wtxCo/siO2- 200mg HAP-乙酶浓度 0.3mlymin; 温度为 450 度,当温度抵于 350\n度时，最大 c4 燃既收率为38. 4790。 俊化剂组合为 200mg zwtCo/SiO2- 200mg\nHAP.乙阶浓度 21mymin; 温度为350度.\n\n对于问题加，我们从寻找 c 入烃收率在全局次轩具的最优峰值和验证问题\n三中求解出的两组最优信是否符合巴贡信出发，利用欧式中寅建立的广度模型\n以及在神经网阁模型中畏定的各个自变量权重建立模型，最终设计出具体的\n次父允，400mB 1wtxCoysio2- 400mg HAP-乙蕉浓度 0.3mW nin，400 度; 500mg\n1wtgtCo1sioz- 500mg HAP-乙本浓度 0.9mW min，450 度，600mg 1we%Ce1sio2-\n500mg HAP-乙醇浓度 0.3ml/min，500 度，200mg 0.5wtsGCo15iO2- 200meg HAP-\n乙醉浓度 0.3ml/min，450 应，200mg 2wttCaysiO2- 200mg HAP-乙醉法度\nmWmin，350 太。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 51 行：关键词: 非线性寺数报合， 多元同归。 Bp 神经网络: 5 类经收率（关键词）\n- 第 56 行：一、问题重述（问题重述）\n- 第 82 行：二、问题分析（问题分析）\n- 第 155 行：三、模型假设（模型假设）\n- 第 159 行：四、符号说明及名词定义（符号说明）\n- 第 865 行：七、模型评价（模型评价）\n- 第 888 行：八、参考文献（参考文献）\n- 第 898 行：参考文献（参考文献）",
+      "model_terms": "- 回归：42 次\n- 神经网络：25 次\n- 主成分：8 次\n- 方差分析：1 次\n- 线性规划：1 次\n- 非线性规划：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 物等才角度进行考虑, 在已知的化学背景及原到上建立相应的数学模型，分\n- 和，分时分析乙本畦化率、C4 类烃选抒必与到度的关系. 首先我们分别西出了每\n- 章光实验不同时间薄试结果进行分析。首先我们可在附件一基础上分析得出乙醇\n- 婚于 350 度条件下的基体能化剂组合与温度方案. 我们首先考虑从非线性规划角\n- 放风，基问题二结果进和类但经过检验现此估这光大，结果入不\n- 问题四要求增加 5 次实验给出具体的设计方案，井说顺话网理由。这需要\n- 用于验证问题三中来角出的机最人全圭符合也组，我人在间是三中利用",
+      "paths": {
+        "card": "problems/2021B/papers/09_B050/paper_card.md",
+        "gallery": "problems/2021B/papers/09_B050/gallery.html",
+        "visual_contact": "problems/2021B/papers/09_B050/visual_contact.html",
+        "source_pdf": "problems/2021B/papers/09_B050/source.pdf",
+        "full_ocr": "problems/2021B/papers/09_B050/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021B/papers/09_B050/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "10",
+      "problem": "2021B",
+      "title": "乙醇制备 C4 烯烃催化剂组合的分析与设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛B题论文展示（B160）.pdf",
+      "pages": 28,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [
+            "图1 己机才4 二经针于应机于"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "图2 正突斌加结果分析尝得"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "表2、3 仅展示前两个个催化剂组舍和后两个能化剂组合中的回归系致，具体结"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图6鸭 AL组 国6罗 A2A4诅",
+            "国6加BiH8B5组 图6全 B2-B7组"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "吕 herrHEoniini 表 1 |"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图10 只改变Ca'siD2 和 LAP 的质量和对 B1-B2-B3-B4-B6 组mw及四随I变化灼执"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图12i)A9.85组 图120AI281组",
+            "图 12 只改变过料方式时不同组au 及eu 瑚工变化执扫"
+          ],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p13"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p17"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p20"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-24.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-26.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2021B\\papers\\10_B160\\pages\\page-27.png",
+          "gallery_anchor": "problems/2021B/papers/10_B160/gallery.html#p27"
+        }
+      ],
+      "abstract_extract": "中 Curve Finting 工具箱的 pelyfO甘数对法科型进行求解，得到回归系获，进而\n通过分析所得曲线的变化规律得到结论: 在一定范围内随着流度升商，乙阶的转\n中人2 阶肪阶参与了乙栈的生成，乙醇转化率随者时间增大逐桨减小，C4 炊糙造\n择性随时间变化的趋势铵为平稳，随着反应时间增加, 各产物的选择性部趋于平\n稳，即化学反应达到平窗状态 。\n\n计对问题二，需分析不同舱化剂组台及温惠对乙本转化岸以及 C4 烯烃选\n过定性分析得到相应续论。然后，在 330*C下不考虑因素同的交互作用时，继台\n正交试验并对附件 工中数据进行分析, 得到: Co 所较量对 C4 焕炮选择性的形哈\n用的多元多项式回归模型,并利用 Matlab 中 stcpwise[)申敬求解得到: Co 负钦量\n选择性影响最大。\n中的 quadprog{)函星对该寞型求解，得到，C4 场烃最锯收率为 56.3%。再改变温\n度约束条件， 使得最高温度不超过 330 度，得到此时 C4婚烃最优收率为 2 8\n\n针对问旺四，结台前三问的分析结论, 为更好探究傣化剂等因素对反应的影\n唤，可增加五次实验设计* 第一次进行 Al 组在 400妆时的实验， 第二次进行 A&4\n组在 450辫时的实验;第三、四次分别选取问题二中正交试验的最优因素组台进\n\n 路 四国大学入在线",
+      "chapter_navigation": "- 第 33 行：一、问题重述（问题重述）\n- 第 71 行：二、问题分析（问题分析）\n- 第 159 行：三、模型假设（模型假设）\n- 第 162 行：四、符号说明（符号说明）\n- 第 168 行：五、模型建立及求解（模型建立）\n- 第 359 行：1模型建立（模型建立）\n- 第 515 行：六、模型评价及推广（模型评价）\n- 第 535 行：参考文献（参考文献）",
+      "model_terms": "- 回归：47 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 针对问题一，对前件工中每催化刑组合，分别对乙本转化率与酒度、C4\n- 针对问题二，用多种方法进行分析。 首先，通过控别变革的方法，每次控制\n- 最后，由于灾际试验中。各因素问会也相册出，所以考虑交瑟作用。分别建\n- 立 ct 生糙选择性与乙本转化率的多元多项式回归模借。首先，将催化剂组合中\n- 的6各影响因素及演度作为回归因子。然后，对咎因素间的相互肛响进行考虑，\n- 元二次多项式回归方程。最后利用变量代换，将多项式方程人为线性回归方程，\n- 甘对问题三，由于需要通过选择催化剂组全与温度求解全得 C4 类妈收率尽\n- 可能高时的最竺方案， 因此考虑建立优化模型。在问题二模型的基础上将响应变\n- 高，因此将所求标准化回归系数转化为普通最小二乘回归系数，得到C4 类烃实\n- 革对问题四，纤合考虑问题一、二、三，对于附件中没有的改变某个实验条",
+      "paths": {
+        "card": "problems/2021B/papers/10_B160/paper_card.md",
+        "gallery": "problems/2021B/papers/10_B160/gallery.html",
+        "visual_contact": "problems/2021B/papers/10_B160/visual_contact.html",
+        "source_pdf": "problems/2021B/papers/10_B160/source.pdf",
+        "full_ocr": "problems/2021B/papers/10_B160/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021B/papers/10_B160/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

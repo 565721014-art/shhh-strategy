@@ -1,0 +1,215 @@
+{
+  "problem": "2021A",
+  "title": "FAST主动反射面的形状调节",
+  "category": "机理、工程与反演",
+  "mother": "入射方向坐标系下的理想反射面拟合与执行器调整",
+  "chain": "坐标旋转 -> 工作抛物面确定 -> 节点目标位置 -> 促动器位移约束 -> 反射效果验证",
+  "risks": [
+    "球面坐标与工作坐标混用",
+    "只拟合抛物面不检查执行器可达性",
+    "几何误差与光学效果脱节"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 3,
+  "questions": [],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件1.csv",
+      "size_bytes": 75107,
+      "kind": "csv",
+      "encoding": "gb18030",
+      "rows": 2227,
+      "cols": 4,
+      "preview": [
+        [
+          "节点编号",
+          "X坐标（米）",
+          "Y坐标（米）",
+          "Z坐标（米）"
+        ],
+        [
+          "A0",
+          "0.0000",
+          "0.0000",
+          "-300.4000"
+        ],
+        [
+          "B1",
+          "6.1078",
+          "8.4070",
+          "-300.2202"
+        ],
+        [
+          "C1",
+          "9.8827",
+          "-3.2110",
+          "-300.2202"
+        ]
+      ],
+      "linked_path": "problems\\2021A\\attachments\\附件1.csv"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件2.csv",
+      "size_bytes": 137593,
+      "kind": "csv",
+      "encoding": "gb18030",
+      "rows": 2227,
+      "cols": 7,
+      "preview": [
+        [
+          "对应主索节点编号",
+          "下端点X坐标（米）",
+          "下端点Y坐标（米）",
+          "下端点Z坐标（米）",
+          "基准态时上端点X坐标（米）",
+          "基准态时上端点Y坐标（米）",
+          "基准态时上端点Z坐标（米）"
+        ],
+        [
+          "A0",
+          "0.0000",
+          "0.0000",
+          "-304.7218",
+          "0.0000",
+          "0.0000",
+          "-302.7418"
+        ],
+        [
+          "B1",
+          "6.1935",
+          "8.5250",
+          "-304.4318",
+          "6.1532",
+          "8.4696",
+          "-302.4530"
+        ],
+        [
+          "C1",
+          "10.0227",
+          "-3.2560",
+          "-304.4747",
+          "9.9576",
+          "-3.2348",
+          "-302.4959"
+        ]
+      ],
+      "linked_path": "problems\\2021A\\attachments\\附件2.csv"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件3.csv",
+      "size_bytes": 65581,
+      "kind": "csv",
+      "encoding": "gb18030",
+      "rows": 4301,
+      "cols": 3,
+      "preview": [
+        [
+          "主索节点1",
+          "主索节点2",
+          "主索节点3"
+        ],
+        [
+          "A0",
+          "B1",
+          "C1"
+        ],
+        [
+          "A0",
+          "B1",
+          "A1"
+        ],
+        [
+          "A0",
+          "C1",
+          "D1"
+        ]
+      ],
+      "linked_path": "problems\\2021A\\attachments\\附件3.csv"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件4.xlsx",
+      "size_bytes": 10110,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "理想抛物面顶点坐标",
+          "rows": 1,
+          "cols": 6,
+          "preview": [
+            [
+              "X坐标（米）",
+              "Y坐标（米）",
+              "Z坐标（米）",
+              null,
+              null,
+              "注：至少保留3位小数"
+            ]
+          ]
+        },
+        {
+          "name": "调整后主索节点编号及坐标",
+          "rows": 1,
+          "cols": 7,
+          "preview": [
+            [
+              "节点编号",
+              "X坐标（米）",
+              "Y坐标（米）",
+              "Z坐标（米）",
+              null,
+              null,
+              "注：至少保留3位小数"
+            ]
+          ]
+        },
+        {
+          "name": "促动器顶端伸缩量",
+          "rows": 1,
+          "cols": 4,
+          "preview": [
+            [
+              "对应主索节点编号",
+              "伸缩量（米）",
+              null,
+              "注：至少保留3位小数"
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021A\\attachments\\附件4.xlsx"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "04",
+      "problem": "2021A",
+      "title": "“FAST”主动反射面调节模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A028）.pdf",
+      "pages": 38,
+      "card_path": "problems\\2021A\\papers\\04_A028\\paper_card.md",
+      "gallery_path": "problems\\2021A\\papers\\04_A028\\gallery.html",
+      "visual_pages": 10
+    },
+    {
+      "paper_id": "05",
+      "problem": "2021A",
+      "title": "基于目标优化的“FAST”主动反射面形状调节研究",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A115）.pdf",
+      "pages": 35,
+      "card_path": "problems\\2021A\\papers\\05_A115\\paper_card.md",
+      "gallery_path": "problems\\2021A\\papers\\05_A115\\gallery.html",
+      "visual_pages": 18
+    },
+    {
+      "paper_id": "06",
+      "problem": "2021A",
+      "title": "\"FAST\"工作抛物面的优化设计",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛A题论文展示（A217）.pdf",
+      "pages": 59,
+      "card_path": "problems\\2021A\\papers\\06_A217\\paper_card.md",
+      "gallery_path": "problems\\2021A\\papers\\06_A217\\gallery.html",
+      "visual_pages": 32
+    }
+  ]
+}

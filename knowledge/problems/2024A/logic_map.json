@@ -1,0 +1,1512 @@
+{
+  "problem": "2024A",
+  "title": "板凳龙闹元宵",
+  "category": "空间、动态与路径",
+  "mother_problem": "路径约束刚性链的运动、碰撞、调头与速度控制",
+  "question_chain": "龙头路径参数化 -> 后续把手位置/速度递推 -> 首次碰撞 -> 螺距可行性 -> 分段调头路径 -> 速度比例缩放",
+  "misreading_risks": [
+    "把板凳当曲线弧段",
+    "板长与孔距混同",
+    "点距离替代矩形碰撞",
+    "整数秒检测漏掉首次事件"
+  ],
+  "questions": [
+    "问题 1 舞龙队沿螺距为 55 cm 的等距螺线顺时针盘入，各把手中心均位于螺线上。龙 头前把手的行进速度始终保持 1 m/s。初始时，龙头位于螺线第 16 圈 A 点处（见图 4）。请 给出从初始时刻到 300 s 为止，每秒整个舞龙队的位置和速度（指龙头、龙身和龙尾各前把 手及龙尾后把手中心的位置和速度，下同），将结果保存到文件 result1.xlsx 中（模板文件见 附件，其中“龙尾（后） ”表示龙尾后把手，其余的均是前把手，结果保留 6 位小数，下同）。 同时在论文中给出 0 s、60 s、120 s、180 s、240 s、300 s 时，龙头前把手、龙头后面第 1、 51、101、151、201 节龙身前把手和龙尾后把手的位置和速度（格式见表 1 和表 2）。 1 y O A x 图 4 盘入螺线示意图 表 1 论文中位置结果的格式 0s 60 s 120 s 180 s 240 s 300 s 龙头 x (m) 龙头 y (m) 第 1 节龙身 x (m) 第 1 节龙身 y (m) 第 51 节龙身 x (m) 第 51 节龙身 y (m) 第 101 节龙身 x (m) 第 101 节龙身 y (m) 第 151 节龙身 x (m) 第 151 节龙身 y (m) 第 201 节龙身 x (m) 第 201 节龙身 y (m) 龙尾（后）x (m) 龙尾（后）y (m) 表 2 论文中速度结果的格式 0s 60 s 120 s 180 s 240 s 300 s 龙头 (m/s) 第 1 节龙身 (m/s) 第 51 节龙身 (m/s) 第 101 节龙身 (m/s) 第 151 节龙身 (m/s) 第 201 节龙身 (m/s) 龙尾（后）(m/s) 2",
+    "问题 2 舞龙队沿问题 1 设定的螺线盘入，请确定舞龙队盘入的终止时刻，使得板凳之 间不发生碰撞（即舞龙队不能再继续盘入的时间），并给出此时舞龙队的位置和速度，将结 果存放到文件 result2.xlsx 中（模板文件见附件）。同时在论文中给出此时龙头前把手、龙头 后面第 1、51、101、151、201 条龙身前把手和龙尾后把手的位置和速度。",
+    "问题 3 从盘入到盘出，舞龙队将由顺时针盘入调头切换为逆时针盘出，这需要一定的 调头空间。若调头空间是以螺线中心为圆心、直径为 9 m 的圆形区域（见图 5），请确定最 小螺距，使得龙头前把手能够沿着相应的螺线盘入到调头空间的边界。 调头空间 图 5 调头空间示意图",
+    "问题 4 盘入螺线的螺距为 1.7 m，盘出螺线与盘入螺线关于螺线中心呈中心对称，舞 龙队在问题 3 设定的调头空间内完成调头，调头路径是由两段圆弧相切连接而成的 S 形曲 线，前一段圆弧的半径是后一段的 2 倍，它与盘入、盘出螺线均相切。能否调整圆弧，仍保 持各部分相切，使得调头曲线变短？ 龙头前把手的行进速度始终保持 1 m/s。以调头开始时间为零时刻，给出从−100 s 开始 到100 s 为止，每秒舞龙队的位置和速度，将结果存放到文件 result4.xlsx 中（模板文件见附 件） 。同时在论文中给出−100 s、−50 s、0 s、50 s、100 s 时，龙头前把手、龙头后面第 1、 51、101、151、201 节龙身前把手和龙尾后把手的位置和速度。",
+    "问题 5 舞龙队沿问题 4 设定的路径行进，龙头行进速度保持不变，请确定龙头的最大 行进速度，使得舞龙队各把手的速度均不超过 2 m/s。 3"
+  ],
+  "attachments": [
+    {
+      "name": "result1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024A\\attachments\\result1.xlsx",
+      "sheets": [
+        {
+          "name": "位置",
+          "rows": 449,
+          "cols": 302,
+          "preview": [
+            [
+              null,
+              "0 s",
+              "1 s",
+              "2 s",
+              "3 s",
+              "4 s",
+              "5 s",
+              "6 s",
+              "7 s",
+              "8 s",
+              "9 s",
+              "10 s"
+            ],
+            [
+              "龙头x (m)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "龙头y (m)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "第1节龙身x (m)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "速度",
+          "rows": 225,
+          "cols": 302,
+          "preview": [
+            [
+              null,
+              "0 s",
+              "1 s",
+              "2 s",
+              "3 s",
+              "4 s",
+              "5 s",
+              "6 s",
+              "7 s",
+              "8 s",
+              "9 s",
+              "10 s"
+            ],
+            [
+              "龙头 (m/s)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "第1节龙身  (m/s)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "第2节龙身  (m/s)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024A\\attachments\\result2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 225,
+          "cols": 4,
+          "preview": [
+            [
+              null,
+              "横坐标x (m)",
+              "纵坐标y (m)",
+              "速度 (m/s)"
+            ],
+            [
+              "龙头",
+              null,
+              null,
+              null
+            ],
+            [
+              "第1节龙身",
+              null,
+              null,
+              null
+            ],
+            [
+              "第2节龙身",
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result4.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024A\\attachments\\result4.xlsx",
+      "sheets": [
+        {
+          "name": "位置",
+          "rows": 449,
+          "cols": 202,
+          "preview": [
+            [
+              null,
+              "-100 s",
+              "-99 s",
+              "-98 s",
+              "-97 s",
+              "-96 s",
+              "-95 s",
+              "-94 s",
+              "-93 s",
+              "-92 s",
+              "-91 s",
+              "-90 s"
+            ],
+            [
+              "龙头x (m)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "龙头y (m)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "第1节龙身x (m)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "速度",
+          "rows": 225,
+          "cols": 202,
+          "preview": [
+            [
+              null,
+              "-100 s",
+              "-99 s",
+              "-98 s",
+              "-97 s",
+              "-96 s",
+              "-95 s",
+              "-94 s",
+              "-93 s",
+              "-92 s",
+              "-91 s",
+              "-90 s"
+            ],
+            [
+              "龙头 (m/s)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "第1节龙身  (m/s)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "第2节龙身  (m/s)",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "35",
+      "problem": "2024A",
+      "title": "基于几何模型的舞龙队位置和速度分析",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A016）.pdf",
+      "pages": 59,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p8"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "对第他和第1 + 1他把手，夯出示意图便于再角计算:"
+          ],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p11"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "以下示意图所示:",
+            "图7 向量分析图"
+          ],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p14"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "表4 终止时刻部分把手速度",
+            "根据题目信息，我们可以作出龙头板王到达边界的示意图",
+            "图9. 到达调头边界示意国"
+          ],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图1区域分",
+            "为计算出各个时刻龙头前把手的位置，我们给若如下示意图:"
+          ],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图18 .把手位于国移情况分析"
+          ],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "表7 问题四吉分反手速诺"
+          ],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-28.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-29.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-30.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p30"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-32.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-33.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p33"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-41.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p41"
+        },
+        {
+          "page": 42,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-42.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p42"
+        },
+        {
+          "page": 43,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-43.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p43"
+        },
+        {
+          "page": 45,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-45.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p45"
+        },
+        {
+          "page": 46,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-46.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p46"
+        },
+        {
+          "page": 48,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-48.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p48"
+        },
+        {
+          "page": 51,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-51.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p51"
+        },
+        {
+          "page": 56,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\35_A016\\pages\\page-56.png",
+          "gallery_anchor": "problems/2024A/papers/35_A016/gallery.html#p56"
+        }
+      ],
+      "abstract_extract": "柜训龙是一项民俗活动，盘龙时多条板到通过把手首尾相接当时线盘入请头区如并\n欠出。 本文从归吉方再出发，利用几何分析等方法建立计算把手位置和波度的昼型，并\n用各近等方法进行求解.\n\n针对问题一，首先构建等中垦线方程，用从标表示把手的位置。对于位置，结全\n任标长公式，求积分得到运动惠遍，用逐步通近技求解极角，先得到各个时刘龙买明\n把手的位置， 然后分析各把手之间的关系，建立关于把手极角的函数关系式并用通近东\n解，得到菜一时刻各节把手位置的求解方法，将其应用于各个时肇，得到结果。对于过\n度，用向量表示相仁把科志度方向交直等，用余紫定理等几何分析方法得到求解方法并\n人次推导。将结果存入文件resultl xlsx，撒示部分结果在表 1 和表 2.\n\n针对问题一，首先定义碍次，将板交的项点将在其他板酌范围内的情况视为胡氛。\n接着分析得到最窜易发生姨注的点，通过向量分析妈出有帮扩点情况下的表达式，并男\n外考虑特风情况，建立碰失检疯村型。由此姑电在抢个过程中，另衬撞点的是青发生厂\n接，用不同的步长增加时刻，逐步表近政推时刻，得到终止时肇为 412.473838 s。用问\n是一的模型计算该时肇所有把手的位置与迷诬，将结果存入文件resuh2sisx，展示部分\n结果在衣3和表4.\n\n针对问题三,首先痪定絮中上限, 并设定初始步长为 001 m. 按步长还步减小过下\n结合调区域、电下的大小和问题一的械型计算每次帮环到达壹界的最终时刻，然后关\n其整个过程中板蜂之问是理会发生研撞,如果发生碍拓出进回上一个细跑，泪小步长并\n逐步衣近，得到媒下的最小亿为 0.450338 mv，\n\n儿对间是四，开手第一小问，利用相切和比傅条件对调头区域的两和加所进行几何\n美系分析，发现调头曲线长度始终不变，无法变得。对于第一小间，用 2:1 的图弧比例\n进行分析。先用极从标表示圆扳上关键点的位置，技首将殉个语头过程分为西沁区域并\n划分时间让,对于 0s_100s 构建区域、炎多、位置三个短阵，具体分析得到往徐龙头前\n把手的情况，结全调整后的问题一的模型推出篆到每秒所有把手的位置情况。再分情况\n分析计算得到建度结果。将结果存入文件 rasult4.sx，展示部分结果在表6 和表 T。\n\n针对问题五,首先证志一个把手的速度改变时,其他把手的速度会按相同伪素改变，\n接着通过问题四结果得到速度答阵，斤出生了中最大的乏度，将 2 mls 与该建度相除得\n到k比全党数,将该常数与所先的违度 1 mk 相乘,得到龙汰最大行进寻度为 L406276ms",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 44 行：关键词， 等曙如线方程 几何分析 逐步近近法 丙扩检测措型 构建和阵（关键词）\n- 第 49 行：一、问题重述（问题重述）\n- 第 94 行：二、问题分析（问题分析）\n- 第 155 行：四、符号说明（符号说明）\n- 第 600 行：35.3.3 模型求解（模型求解）\n- 第 933 行：6 误差分析（误差分析）\n- 第 999 行：参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题一己拓龙头拒手初给位置、行进寺度和运动康连，要求得到不同时刻不同把手\n- 的位置和述庆。 首先根据题目条件爸建符合谈是的等中曙线方程，用极内人和直角内标\n- 前把手的位置，通过结合龙头行进速度和极坐标弧长公式的方法进行计算。然后考上\n- 并建立关于拒手板区的东效关系式，然后用改变步长过步过近的方法求解， 对于各把王\n- 问题二要求得到舞龙队发生碰撞前的终止时刻，以及流时刻各反手的位置和速庆.\n- 首先定义棚焉，认为如果有板交的顶点玫在其他板革的机国内则判定琵利。根据分析得\n- 到最客易与黄他板可故生磁光点，然后借助向量等坊法得到如果有点洲在权开上情况\n- 移的在转同，乏步进近得到发生科失前的手龙队余止时刻，最后用问题一过立的磺型方\n- 通过泽洒缩小昌距寿是理会发生邦过确定最小刀蛤。 首先比较问题二计算得到的最小\n- 模竺与酒头区域半经的大小来攻动确定寻更的初抬值, 即恕殉上限。然后设十初始步长，\n- 的最终时划可以通过结合问题一模型以及请头区起、电中的大小进行计算。 如果在过程\n- 中发生了确失则进占上一个曙呈然后通过减小步长并再次循环的方法， 到步带近电距\n- 问题四改变了并吉辣更，已知主头路径形状和关头行进速度，要求回答能理通过长\n- 关系进行解。首先确定力切点和国心的位置，用极坐标表示。坟着将整个启头过程\n- 域、天角、位置多个宛隆，先通过具体分析计算得到每秒龙头前把手的情况，然后请玫\n- 间题一模型推出生秒其他所有把手的情况，得到所有位置结果并存放到生降。最后结合\n- 问题五设害了各把手于度的最大秆， 需要得到龙头的最大行进速度,首先证明一个\n- 把手的速度改变时，其他把手 《包括龙头)的速度会按相同舍率改变。接着通过问题四",
+      "paths": {
+        "card": "problems/2024A/papers/35_A016/paper_card.md",
+        "gallery": "problems/2024A/papers/35_A016/gallery.html",
+        "visual_contact": "problems/2024A/papers/35_A016/visual_contact.html",
+        "source_pdf": "problems/2024A/papers/35_A016/source.pdf",
+        "full_ocr": "problems/2024A/papers/35_A016/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024A/papers/35_A016/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "36",
+      "problem": "2024A",
+      "title": "基于目标优化的板芭龙形态调节",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A053）.pdf",
+      "pages": 62,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图13 扫轴疝量的表示"
+          ],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图1 和用分村定理所王失是再人发生"
+          ],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p20"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "图 6 闽入五检型的玫"
+          ],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "图 24 模型检验展示 WE"
+          ],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-28.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-29.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-30.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-31.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-32.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-33.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-34.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p34"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-35.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p35"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-36.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [
+            "STEP3 求出3个临界条件的示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-37.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p37"
+        },
+        {
+          "page": 38,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-38.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p38"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-39.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p39"
+        },
+        {
+          "page": 41,
+          "captions": [
+            "图 27 运动全过程的最大速度与龙头巡度的关系图"
+          ],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-41.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p41"
+        },
+        {
+          "page": 42,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-42.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p42"
+        },
+        {
+          "page": 49,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\36_A053\\pages\\page-49.png",
+          "gallery_anchor": "problems/2024A/papers/36_A053/gallery.html#p49"
+        }
+      ],
+      "abstract_extract": "针对问题一，我们寻立舞龙队前运动状态模型。首先，在极坐标系中用阿基米德\n好三各人过了各拖手站的人置东国。 扩着利用归级长公区表示出龙头抒\n手位置随时间变化的关系，并根据板移间的几何关系，递推出各个时刻下各节龙号以\n及龙尾把手的位置，并将各把手的行进芯长的导数来表示和速度。然后，对时间进行离\n教化处理, 求解出龙头在每一个时刻下的位置, 并过拱出其余把手在对应时刻的位置，\n由每一时间步长下的行进弧长计算出委把手的速度,将位置和速度结果存入指定文件\n 最后，针对各把手的位置和过度特征进行了结果分析和灵敏度分析。\n\n村对间明二我们建立了碰失和弄。间先，我们首先和用技这法让只了欠条\n龙的首次磁推发生在龙头上。 接着，根据几何关系，表示出各板车顶点的坐标以划定\n过界，便于歼搞检测 。基于分离轴定理，将龙头碰接问题转化为极葛所占矩形区域的\n重番问题，并通过建立衫溃检测东数米判断是否发生础挫。然后，我们通过递推法计\n既册终上时为412.478，并求和用止时芭处相关把手的位置 二度最后，我们对\n代目时区本守信况直行了结时分-\n\n针对问题三，我们建立了使龙头可到达调头空间的最小寻距优化模型 首先，将\n此问题转换为求龙头恰好不发生磁控时的位置坐标。接着，以电线螺距最小为目标函\n数，以螺艳范围、问题二中的碰撞检测借型为约东条件，建立以归线蜡距为决策变量\n的单月标优化模型. 然后, 通过变步长遍历法求出符合要求的最小音距为 45.04cmv\n\n针对问题四，首先，我们利用调头曲线的三个相切关系，表示出由大圆半径唯一\n确定的调头轩线长度。 接着, 以调头曲线长度最小作为目标医数建立单晶标优化方程.\n随后，以几条的东与龙头盘旋方向的束作为约束条件，建立以大加国弧闵径为诀策变\n量的单目标优化模型，利用遍历法确定了最小庙头曲线长度为12.5109 cm\n\n随后，我们在问题一的基础之上建立舞龙队的多段路径运动状态寞型。首先我人\n根据龙头速度与曲线就长确定每段运动的恪界时间，接着我们根据极使与路径井线之\n阅的几何关系，确定出各龙把手的位置的临界关系与递推关系。 我们根据艺头的位置\n确定其余各把手的位置，并根据龙头位置关于时间的关系,未推出各把手位置和速度\n关于时间的关系，并将数据保存到目标文件中\n\n针对问题五，我们在问题回的基础上示立最大龙头速度优化问题。 通过问题四中\n各把手的位置和滞度随时间的变化关系，建立以龙头速度最大为目标，以各把手存在\n并上限和把手位置和过这式鸭条件的单目标人化电 并和用粒了各法\n过和未角搜索也清和约束条件的最大龙基建度为 33cmwy。",
+      "chapter_navigation": "- 第 46 行：关键词: 几条关系 ”单日标优化 分高轴定理 变步长遍历法 者子群算法（关键词）\n- 第 53 行：一、问题重述（问题重述）\n- 第 98 行：三、符号说明（符号说明）\n- 第 1383 行：七、参考文献（参考文献）",
+      "model_terms": "- 粒子群：2 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 某条极绩万由 223 块攀构成，首块板区为龙头，最后一决为龙尾，中间吉分为\n- 问题一 舞龙队归时针沼 5gom 地更的等更电线行进,各把手中心雪位于埋绑上。\n- 问题二，在第一问的基耐上，外龙队伍内续盘入下皇板区同从好不发生碰推，求\n- 问题四，俱持大头前抢手带诬站终为 lms，将得入怒线的昌距更改为 LTm，符\n- 间题五，在问题行进器径的基础上，在龙头于度因定的情况下，确定最大龙头\n- 河是一要救人求出所有把手的位置和速度，首先，我们在村和中用阿基\n- 模型。最后，我们基于极限的思想，将权时间皮的平均如让代蔡镁时庶，录角\n- 问题二要求我们在月是一的革大上，维续运鲁直至板和内好不发生珊撞我\n- 拉首先利用抬证法下浮了头条蕊的首次可能区属发生在龙头上。失着，根据几\n- 问题三实质上是一个估头可到达调头空间的最小旭下优化问题。革于问题\n- 直线的交点上。首先，我们以机线妈最小为目标圾数，以到中东围、问题二中\n- 型。 最后，通过变步长历法求出可导龙头前把手洽恕线盘入到订头空间边界的最\n- 问题四在问题三的革硅上，引入了调头昌线的概念，可转化为两个子问题: 他建\n- 对于子问四，首先，我们利用幸率关系和几何关系，将构成调头路和的贺的方程\n- 对于于间罗，基于求得的调头昌线方程，对问题一中的振龙队运动状态模间加以\n- 更改，建立钴龙队调头运动模型，利用送推法求得了各把手的运动状态。\n- 问题五是最大龙头速庆优化问题。 基于问题四中各把季的位置和速度随时间的变\n- 5.1 问题一模型的建立与求解\n- 间题一要求我们求出所有把手的位置和速度。首先，我们在极坐标系中用阿基\n- 模型。最后，我们基于极限的思想，将极蚌时间内的平均速率代苦辑时所度，求解\n- 对于革把王的模从标Mr 99)，可以转化为二维直角党标Mitxu 3\n- 最后红一根据式 《2) 将其转化为一维直角举标系中的些标。",
+      "paths": {
+        "card": "problems/2024A/papers/36_A053/paper_card.md",
+        "gallery": "problems/2024A/papers/36_A053/gallery.html",
+        "visual_contact": "problems/2024A/papers/36_A053/visual_contact.html",
+        "source_pdf": "problems/2024A/papers/36_A053/source.pdf",
+        "full_ocr": "problems/2024A/papers/36_A053/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024A/papers/36_A053/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "37",
+      "problem": "2024A",
+      "title": "基于几何模型的板吏龙运动路径问题",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A163）.pdf",
+      "pages": 45,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [
+            "图 1. 龙头记视娄据图",
+            "图 1. 龙身、才必情视到据图",
+            "图1.3 板本途接方式正视图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [
+            "图 1. 盘入归线示意图",
+            "图 .5 调头室间示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "图 2.G 板棵龙盘和示意图《检色答肛为板交》"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图 2.7: 调头空间(黄色) 内掉头路径示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p5"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图 4.8; 前后把手相对位置示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图4.和 前后把手过度示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "表4.3; 过谋缚黑",
+            "图 41; 板生示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p11"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图42: 盘入终直时记取龙队位置示意 图13; 盘入终止时刻皮龙队位置示意"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图 416: 调头路径示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图 19: 情况四多断角示刘图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 4.22: 情况四示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "图424 情况六示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图 4.25: 速度估代示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图426. 1 2时基龙队位置示意图",
+            "表 4.0: 位置结时"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [
+            "图427: 0 100k内钼龙队所有把和最大速应员时间灾化示间图"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "图 4.答; 龙头进入出螺线的过程中，各节龙身前把手的最大速度",
+            "图 4.29: 龙头进入僵出归线的过程中，第三节世身前把手的迹度"
+          ],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-28.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-29.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p29"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-37.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p37"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\37_A163\\pages\\page-41.png",
+          "gallery_anchor": "problems/2024A/papers/37_A163/gallery.html#p41"
+        }
+      ],
+      "abstract_extract": "“发村龙”是我区浙闻地区的一项元节习俗，村民们将板结尾相过组成长龙，\n万趟在前领头，龙身龙尾相贿盘旋。在侦证短龙队能够自如地瘟入和盆出的情况下，人\n疤所硕杰的面积赵小、行进各应起快，划观当性冲好。本文将盘龙过得疆象为数学模\n型，在各析守雪据已知的条件下研究不同沁更、不同龙头行进如凌时，各时刻下整个和\n末吏网位置和党度，汶本入研究杂估化香所和的本各和生过认得供了有的\n\n针对间题一，舞龙队兴一总拭已知的等更所线听时针盘入，科把手中心严格位于包\n线上。本文将盆入渤线村化为裔坐标方程，采用积分的方法建立起龙头前把手所处位置\n与速度和时间的关系，得到其每个时让的龙头前把手符标。后面本文采用建立位置先代\n公式的方法，由龙头前把手位置，得到和舞龙队各前把手位置。为解站各时刻振龙队各前\n把手速度问题，本文根据得到的位置坐标，建立相针两把手速度迁代公式。结会已的\n龙头前把手恒定速度，本文求解出各个时刻整个和龙队的位置和水度。\n\n针对间题二，在生龙队沿着二线盘入的过如中，随者龙头前拒手到渐接近国心，由\n于吉夺的阳抽，板时之间可能会发生大半。 本文首先分析标个至龙队盘入的过程，必现\n只本龙类与第一节龙生外部加个角点在某一位置不与其他部分发生夺准则后续龙生\n在此处包不会发生于省，自此确定了最时发生荆寺的因个角点。由此确定了可能发生确\n失的四个角点，在问题一中本文确定了各个时剂个舞龙队的伺置，自于向点与其所在\n槐村的把手中心的祖对位置轩宣本文得以确定名点的位置。连而采用几何方法，计第\n多点到其他氏上前后把手中心所在直线的距离，以此列定是吾发生表扒，从而得到了钾\n成队不能再称续盘入的位置，进而计算得不能表维半盘和的时间-\n\n针对间题三，姑龙队员时针僵入等电线后将会闻时针盘出，因此需要一定的调\n头空间。在甸用已知的情况下，结合问题一、问题二的模型本文能名每出在不同的刀\n王情况下才龙队得入的终止位置,因此，本文首先通过请整如中，首先得到必得终止时\n刘龙尖前把竹中心坐标位于调头空间内和请头空间外的两个旭跑，再使用十分法，捕确\n未得全终止时刻龙类前把手中心坚标从好全于语头空间演界的量距，\n\n针对问题四，古目夫定盘入二线的站距、放头空间，且瘟出直线与盘入这线关于让\n线中心旺中心对丈。本文首先通过几何方法证明了无法通过育次有加红务自半径的\n比侦全每启关路径《折两段弧相切连接而成的8形由线，与航入，瓜出线相切) 变\n短。 随后，本文设定一符合题意的调头中径，将该整径按蚌序分为加段折大与三个关键\n节点。与问题一类似，确定语头路径的方得后，可以根据龙头前拒手行进的建度得到其\n各个时齐的举标。在构志位置，违度寺代公式前，本文首先构建了一个判断函数，用以\n根据板区前把手中心的些标判断后把手中心们于中段下线。判顺备数构过完成后，本文\n分七和情况讨沦了槐经前后犯手中心可能所处再一部分新戌，并利用几何方法与关肤\n速度的思想，建立了这七种情况各自的位置、速度迁代公式，从而格问题一的位置、过\n攻关代公式扒广到了于个盘龙中径，即盘入、户头、盘出 由此求和了从调头前一引时\n网开斋头后一县时间内各个时刻交个鲜龙队的位置和泪度，\n\n针对间题五，在产龙队调头过程中，龙头前把手行进度终保持不变，介其余各\n反手的速度会了着位置的变化而发生变化。林文通过分析问题四所得结果，精确测试对\n象，近到了加诬会达到站个么龙队最大人的目标把乎，并分析出在龙涉进入交出蜗线的\n过程中，目标把重的这虚将会达到最大个，进而通过Iython程序求解出在该过程中目标\n把竹达到最大于度时龙蒜前把竹本网位置。最后利用问题四的这庆先代公式，建立起目\n标把手与龙头前把手的下度关系，通过间旬目标把手中心尘度不超过上候，求得龙藉的\n最大行进过度、\n订洒“机放生，李村广和，关了度，位四代， 这上代，庆业\n\n1",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 222 行：3.1 模型假设（模型假设）\n- 第 817 行：参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 对于问题一，已知香入强吉的旭中和起点，本文能名建立该旨线对应的机符标方\n- 的线入是螺线的弦，并且可以利用问题一中所得到的坐标求出每条弦所在直线的解析\n- 对于问题四的第二问，首先有掉头路径如图2.7所示，\n- 两个把手的习置情况，再利用上面的位置推导公式，将问题一中的位置选代公式推广到\n- 当一块斩村的前后两个把手询位于虹线上时，速度的推导公式与问题一中相似; 当\n- 在区个中生中运动时浊席的远代公式。进而，与问题一的思中类似，过过寻度的迁代公\n- 4 问题一机的建立与冰角|\n- 最后，利用前后把手关于板颌的关联速庶建立速度选代公式如下:\n- .2 问题二模型的建立与求角\n- 规设B刘下芷东前拖手中心位置学标为(cjn)，机外为9 ~ 为。根据问题一的位\n- 同时，可以通过问题一所得的结果，得到,时刻下极角8 < [&， + 亚,包二至]的各前\n- 4 3 问题三模型的建立与求解\n- 网 STEP1 对于该螺下4，利用问题二的模型，求解出该屿中下舞龙队的插入终止时\n- 本文首先通过调整曾距4得到两个分别使龙头前把手中心落在调头空间内部和外部\n- 4.4 问题四模型的建立与求解\n- 首先证明不可以通过调整图弧使得调头路答更得:\n- 和问题一的思路类似，由于龙头前把手的行进迷度恒定，本文利用四段弧线的方程\n- 上 当梳旨的本把手中心位于盘入姻线上时，位置迁代公式与问题一相同\n- 4.5 “问题五要型的建立与求解\n- 随着位置的变化而发生变化。 本六先将龙头前把手过度疫为人定lmAs，通过问题四的",
+      "paths": {
+        "card": "problems/2024A/papers/37_A163/paper_card.md",
+        "gallery": "problems/2024A/papers/37_A163/gallery.html",
+        "visual_contact": "problems/2024A/papers/37_A163/visual_contact.html",
+        "source_pdf": "problems/2024A/papers/37_A163/source.pdf",
+        "full_ocr": "problems/2024A/papers/37_A163/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024A/papers/37_A163/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "38",
+      "problem": "2024A",
+      "title": "“板革龙\"，亦条作“香龙\"在浙江与视建地区广为流传，作为一各传统的民俗文",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A178）.pdf",
+      "pages": 48,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p3"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "表3 特殊节点违度结果"
+          ],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p7"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图8 渭头空间示间图"
+          ],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "加9 调头空间内几条关系示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图12 行进速度对最大速度位置的影响"
+          ],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p19"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "oblem2_2py # 计算磋半时蓝，保存数据，综示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p21"
+        },
+        {
+          "page": 38,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-38.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p38"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-40.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p40"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\38_A178\\pages\\page-41.png",
+          "gallery_anchor": "problems/2024A/papers/38_A178/gallery.html#p41"
+        }
+      ],
+      "abstract_extract": "“板革龙\"，亦条作“香龙\"在浙江与视建地区广为流传，作为一各传统的民俗文\n化活动而备受推综。本论文吕在深入探讨并优化“板旨万\"表演的行过路径与速度拉，\n以提升其者注的艺术性和现贡性\n\n话对问题一我们计对“概攻龙”的运动构建了一个数学模型，通过电线轨秋描述\n“板此龙”的行进过程。首先，我们基于日线的极具标方程，确定各把手的运动轨迹-\n接着利用微元愉竺到龙头运动的灿方程。然后基于板奖把手均世于旨线上、枫吕不可\n促长等二设得到各把手位置及沁度的乾推关系，最终，将问题一的参数代入计蒜，利用\n数值方法过解0x-300、 徊各的从节龙身位置与下左，并将 0k、6lx、120k、180k、2i0s、\n300s 时，龙头草把手、龙头后面第1、 31、101、151、201 节龙身前把手和龙尾后把手\n的运动数据记录在表 《2》 与表 《3) 中。\n\n针对间古二，我们首先将“板榴龙” 的急线妆志简化为两个同必四，利用几知关系\n得到姬失的大至时刻。接着建立碳失关电席型，并利用辜法判业点旦否人于三肖形内\n邢，从而判产两紧是否相省。在次型求解时，我和首先根据同心固近似并的模型计算\n出下时间大约为 410 s，然后在400, 刀人东的时间区间内进行变步长搜索，最终确定\n磁拉时间为 412.4739s。 我们将该时刻龙身的位置和于度数帮保存在文件中, 并将龙藉、\n第下、S1、101、1S1、201 节龙身以及龙必的运动数据记录在玫 (4) 与家 《S) 中-\n\n革对问题三，为溢化计算，我们仅考中龙头与第一节龙身的科和情况，并只计算进\n入请头空间前一段时间是否会发生酝疹。接着，采用二分法求解最小把距，通过不断纺\n小才索区间并基时形寺情况，最终得到渍足铺间要玖最小贤旺 .4000m、\n\n针对问题加，首先根所调头空间，我们将运动过各划分为四个阶段，盘入，请关第\n一段加骂，请头第二展加浙，瘟出。寺对每个阶段，分别刀立了“板于龙”的运动方现。\n自于运动针这关于模佣为多信吕数，在求解位置时，对覃向的约束十分复杂，因此我们\n使用单俯数用于龙身位置和于度的求租。此外，我们证天了调头昌线长度不变性。 最\n后, 我们求明了条原芝点的位置和过度,并分析了龙身各节点的运动规律，并将-100s、\nss，0s，sts、100s 时，龙头蓄把手、龙头后面第 1、 S1、101、151，201 他龙身前把\n季和龙尾后把手的运动数据记录在雪 《6) 与雪 7) 中\n\n庄对间题五，我们首先探完了“板妈关” 运动中把手最大过凑的分布襄律，分析此\n率半径、违度与板革方向天角之间的关系，猪外最大速度出殉位置不隐龙头行进度变\n化，出现在第二让小加弧示癌附近。为了必证这一规律我们针对不同的龙头行进速度\n进行了数信计算，并选取了 200 个时间点进行分析。结果表明。最大速度的变化呈现周\n其性，且最大过诬峰信均出现在第 100 至 125 个时间点之间的特关位置冰国内。最终我\n们采用了二分兴对恋时间自行搜索，通过不听迁代允返，得到了龙头的最大行进开\n为 12462mus，误差拉全在QD00lms 之内-\n\n关链词，等距絮织，仿真痢拆。袜元法，二分法",
+      "chapter_navigation": "- 第 7 行：摘要（摘要）\n- 第 126 行：三、模型假设（模型假设）\n- 第 330 行：6.3 模型求解结毕（模型求解）\n- 第 343 行：模型建立（模型建立）\n- 第 350 行：模型求解（模型求解）\n- 第 538 行：9.2 模型建立（模型建立）\n- 第 562 行：十、模型检验（模型检验）\n- 第 602 行：参考文献（参考文献）",
+      "model_terms": "- 微分方程：2 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 针对问题一，模拟“板张龙”河电中为 55 cm 的等距痕线顺时针盘入的过程，给\n- 计双问题二在确侈“思史达* 不生理的情况下，计算能名盘入的最只时划\n- 状计算此时肇龙头及龙身各关键节点《同问题一》的前把手、龙尾后抒手的性置和速\n- 针对问题三，在“板慕龙”表演中，盘入后走本进行调头调头空间为以到线中\n- 30，人530，00s 时，信及万身和关键节点《风问题一) 的总竺、久必后和\n- 系，建立各把手位置的弟推方程组。最后沿才上方向分胡速度，建立各把手泪度的违\n- 身位置和速度数据，我们首先建立了问心图群起近似寞型。访模型将皮革龙的是线遇\n- 针对问题三，由于龙身位置出现的对称性，为简化问题，只考虑龙头与第一节权\n- 并的帮挫情况。最后我们采用二分法求解光足最大速度条件的最小间距，通过韦代调\n- 针对间题四，首先我们分煌了“板甘龙”请头未迹，将其划分为下个阶段，盘\n- 入，误头第一生加所，语头第二段国生，表出，然后讨论调头和线的长度。针对每人\n- 阶段，我们分别建立了相应的运动方程，并革于问题一中位置和这度的违所模型，通\n- 诗对问题五 在深究“上时龙”最大乏庆分布规律时，龙头前把手祛开第二段加\n- 五、问题一模型的建立与求解",
+      "paths": {
+        "card": "problems/2024A/papers/38_A178/paper_card.md",
+        "gallery": "problems/2024A/papers/38_A178/gallery.html",
+        "visual_contact": "problems/2024A/papers/38_A178/visual_contact.html",
+        "source_pdf": "problems/2024A/papers/38_A178/source.pdf",
+        "full_ocr": "problems/2024A/papers/38_A178/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024A/papers/38_A178/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "39",
+      "problem": "2024A",
+      "title": "基于动态搜索的“板守龙”运动状态及路线研究",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛A题论文展示（A242）.pdf",
+      "pages": 58,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "表1 符号说明"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p4"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图 > 相邻把手几何关系示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "秒共身各节把手的位加标以及于度. 表 2各表3中是部分龙身反手的相放求名结果(保"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "表3 部分把手违度随时间变化情况",
+            "图3 上= 至! = 300s 龙头前把手位置"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图4 不时刻下板移志把手的速度情况"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图6 编号为;的板甘几何关系示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图 7 问题二求解流程图",
+            "表4 终止时刻各节龙身坐标和速度"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图8 停止盘人时刻板葡龙碰扩情况",
+            "图9 最内轿板觉的外钉硕点距其他板殴中心线的最短距腐与时间 : 的关系"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图 10 问题三求解流程图"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图 1 粒于人群 (PSO) 算法流程图",
+            "图11是粒子群算法的一般流程图. 在该问题中，我们设置初始参数设为: 粒子数量",
+            "图12 桥s(9 函数图像及最小值 图 13 ”粒子群算法收化过程"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 44 靶小凋距下东头进入调头空间 图45 is的 最小值随曙距了变化图像",
+            "图14是在最小媒距 do 情况下，龙头前把手愉好进入调头空间时弄近的板巧状态"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图16 调头村示意"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图 18极侈下调头路径示喜罗"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "图19 《= -100s大4= 100s之问龙头前把手的位置",
+            "表5 调头过程中各和节龙告坐标陪时间变化情况"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图20 再尖过程中不同时刻板觉龙示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "标纹和的不同时刻怕区也状态示意图，可以发现板全了的招手均术时预定出线秘动，在"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [
+            "图31三分搜索法示意图"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "通过将所有把手最大过度随时间的变化可视化 图22) 后，我们可以发现显拓在"
+          ],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-28.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-29.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p29"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-31.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p31"
+        },
+        {
+          "page": 40,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-40.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p40"
+        },
+        {
+          "page": 44,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-44.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p44"
+        },
+        {
+          "page": 47,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-47.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p47"
+        },
+        {
+          "page": 48,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-48.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p48"
+        },
+        {
+          "page": 54,
+          "captions": [],
+          "image_path": "problems\\2024A\\papers\\39_A242\\pages\\page-54.png",
+          "gallery_anchor": "problems/2024A/papers/39_A242/gallery.html#p54"
+        }
+      ],
+      "abstract_extract": "埠训姜作为浙闻地区的一种传统民俗活动，以鞭高观赏性和多万队的协调配合车\n移。 本文针对板区龙表演的三个阶肪 。 盘人、凋头和盘出，到过分析舞龙队的行进路\n钱及各节怕殉之间的几何关系,建立了运动全型和行进路城优化模型。采用多种优化方\n法，对甸龙队在不同条件下的运动居而以及行进路线进行研究、\n\n针对间题一: 构烛盘入运动重型。首先，根据盘入路乒为等拒晶线的符征，旭立机\n坐标尿。针对龙款位置，下立有关极角的维分方竹，利用给积分及一分法求解蕊头访招\n手的该坐标，继而利用余靶定理，违推求解相争析芝的位置关系，获得各把手的位男\n数。 通过对位置丽数求导，得到相应的速度丽数，最终，将报华标转换为直角华杯，求\n得各把手在各时刻的位置和违度，销果详昂表2，表3和 resalet_xlax-\n\n针对间题二: 掏寺入检油模型。首先，证明最喘发生而撞的区他为最内轩与其外\n全一图的板苑，缩小栓洱范转。随后，哆定碍扒条件为: 内间板项点与外图板张反手\n过线的距离小于板攻宽度的一六 《0Sm]，并通过几何关系午出拭亢函数，刊断该天数\n的最小值是否小于 0sm 以确定三所旦否发生，最后，采用动态搜索第咯，先用意步长\n搜索确定时间苍团，青进行二分汕索确定首次三近的准确时间。 我们得到停止盘人时\n间为 412.473838s，此时各把手的位置和速座详见表 4和| reaul2.xlaxv\n\n作对间是三: 构建最得娜中的单目标优化模型。其中目标西数和交策变和为娜上大\n小.在区束条必方面，基于板苇的几何参数和问题一中的参娄限定如距范围，基于盘入\n运动模型唤定龙前殷插进人酒未空间的时间,，并利用磁拉控油模型和上电进调头室间\n前是理发生得撞，建立相应约束。在优化求解过程中,对比后选用粒子群算法求解板交\n最小本离，并结合变册搜索求得最乌旭为@.450337m\n\n针对问题四; 基于问题一的模型，构建洒关运动本型，首先古田在给定条件下，油\n头曲线长度为训数，无法进一步减小, 防后，将负头路综划分为四个部分，通过几何关\n系束角出各部分的划方答。少用间二一的兵导法，首先束解龙头前把手位置西数，\n再拓过只关系和求导计算其余抬手的位年孟数和速度务数，我们对酒头空间附近的\n弟准进行了详细的分类讨论，并挫出了相应的道推方程。最终，将极坐标转扫为者符\n标，求得各枯移把手在各时记的位置和违底，详见表5，表6和 resulr4-xasx\n\n针对间题五: 在调头运动模型的基础上，构建各把手最大速度的优化模型首先，\n通过比例乱换，兰目标针化为在龙头庆为 lm' 的条件下，求解各把手在所有时刻\n的最大速度。随后，基于问题四的速度规律及物旬规律确定最大速度出现的大致时间范\n图,接着通过大步基和过唤定了最大过度出现的区间为 he15qj。由于男歼在该区间内\n叶童峰性，应用三分搜索短波进一步梢确定位最大未度。 最后，通过比例关系还原龙头\n的最大囊度，得到存头最大丈订的为 1246266mu\n关键字: 本可让”等下媒线动机提党”袜子群算法 “音目标优化\n\n1",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 54 行：一、问题重述（问题重述）\n- 第 932 行：参考文献（参考文献）",
+      "model_terms": "- 粒子群：8 次\n- 模拟退火：3 次\n- 微分方程：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 基于上述青景，要求建立数学模型镍决下列间喇.\n- 问题一: 鲜芷队以螺第 16 图 A 点处为起点，龙头前把手行进速度保持速度为\n- 问题二: 在问题一的条件下，为了各免在不断盘人过程中任意两节怕区发生码扩，\n- 问题三; 舞龙队从质时针执和到过时计盘出需要经过油头过各。给定一个以昌强中\n- 问题四， 在给定的居路径及约束条件下，狮断是否能名优化油头路径，全得观头\n- 问题五; 清着亲题四的再头路秆行进过程中，龙类过度保持不变。 在保证各把手过\n- 局同一中需要确定碍擅安生的判定条件, 根据问题一中的各把手极角变化结兴及出\n- 局是三中需要构建一个优化模型，求解郸下的最小值，首先，需明哆沈化使型的约\n- 关中。在此过程中，还需利用问题二中的和六检江模型，确保在进和油状间前未发生\n- 问题五的目的是建立一个优化使型，承解最大速度。首光震要在问题四的基础上，\n- 计算全过程中各把手的最大速度，其次需要对间题四的结果进行分析，结合物理规律，\n- 纵小现过范围。最后依据囊度最大全了数的特征，采用适当的算法求解最大过廊.\n- 由于题目中给出的坐标系为直角坐标和,因此我们需要将极华标系转化为直角华标",
+      "paths": {
+        "card": "problems/2024A/papers/39_A242/paper_card.md",
+        "gallery": "problems/2024A/papers/39_A242/gallery.html",
+        "visual_contact": "problems/2024A/papers/39_A242/visual_contact.html",
+        "source_pdf": "problems/2024A/papers/39_A242/source.pdf",
+        "full_ocr": "problems/2024A/papers/39_A242/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024A/papers/39_A242/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

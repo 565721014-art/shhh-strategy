@@ -1,0 +1,2311 @@
+{
+  "problem": "2024C",
+  "title": "农作物的种植策略",
+  "category": "多期资源配置与鲁棒规划",
+  "mother_problem": "地块、作物和年份耦合的轮作与风险规划",
+  "question_chain": "确定参数多期种植 -> 滞销/降价情景 -> 产量成本价格不确定性 -> 作物替代互补与相关情景",
+  "misreading_risks": [
+    "轮作约束索引错误",
+    "销量、产量和可售量混同",
+    "独立抽样破坏题设相关性",
+    "情景结果没有风险指标"
+  ],
+  "questions": [
+    "问题 1 假定各种农作物未来的预期销售量、种植成本、亩产量和销售价格相对于 2023 年保持 稳定，每季种植的农作物在当季销售。如果某种作物每季的总产量超过相应的预期销售量，超过部 分不能正常销售。请针对以下两种情况，分别给出该乡村 2024~2030 年农作物的最优种植方案，将 结果分别填入 result1_1.xlsx 和 result1_2.xlsx 中（模板文件见",
+    "问题 2 根据经验，小麦和玉米未来的预期销售量有增长的趋势，平均年增长率介于5%~10% 之间，其他农作物未来每年的预期销售量相对于 2023 年大约有±5%的变化。农作物的亩产量往往会 受气候等因素的影响，每年会有±10%的变化。因受市场条件影响，农作物的种植成本平均每年增长 5%左右。粮食类作物的销售价格基本稳定；蔬菜类作物的销售价格有增长的趋势，平均每年增长5% 左右。食用菌的销售价格稳中有降，大约每年可下降1%~5%，特别是羊肚菌的销售价格每年下降幅 度为5%。 请综合考虑各种农作物的预期销售量、亩产量、种植成本和销售价格的不确定性以及潜在的种 植风险，给出该乡村 2024~2030 年农作物的最优种植方案，将结果填入 result2.xlsx 中（模板文件见",
+    "问题 3 在现实生活中，各种农作物之间可能存在一定的可替代性和互补性，预期销售量与销 售价格、种植成本之间也存在一定的相关性。请在问题 2 的基础上综合考虑相关因素，给出该乡村 2024~2030 年农作物的最优种植策略，通过模拟数据进行求解，并与问题 2 的结果作比较分析。"
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024C\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "乡村的现有耕地",
+          "rows": 55,
+          "cols": 4,
+          "preview": [
+            [
+              "地块名称",
+              "地块类型",
+              "地块面积/亩",
+              "说明 "
+            ],
+            [
+              "A1",
+              "平旱地",
+              80,
+              "(1) 平旱地、梯田和山坡地每年都只能种植一季作物。\n\n(2) 水浇地每年可以种植一季也可以种植两季作物。\n\n(3) 大棚能够在一定程度上起保温作用，每年都可以种植两季作物。\n \n(4) 智慧大棚主要是在冬季利用太阳能自动调节棚内温度，保证作物的正常生长。\n\n\n "
+            ],
+            [
+              "A2",
+              "平旱地",
+              55,
+              null
+            ],
+            [
+              "A3",
+              "平旱地",
+              35,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "乡村种植的农作物",
+          "rows": 46,
+          "cols": 5,
+          "preview": [
+            [
+              "作物编号",
+              "作物名称",
+              "作物类型",
+              "种植耕地",
+              "说明"
+            ],
+            [
+              1,
+              "黄豆",
+              "粮食（豆类）",
+              "平旱地\n\n梯田\n\n山坡地\n",
+              "(1) 平旱地、梯田和山坡地每年适宜单季种植粮食类作物（水稻除外）。\n\n(2) 水浇地每年可以单季种植水稻或两季种植蔬菜作物。\n\n(3) 若在某块水浇地种植两季蔬菜，第一季可种植多种蔬菜（大白菜、白萝卜和红萝卜除外）；第二季只能种植大白菜、白萝卜和红萝卜中的一种（便于管理）。\n\n(4) 根据季节性要求，大白菜、白萝卜和红萝卜只能在水浇地的第二季种植。\n\n(5) 普通大棚每年种植两季作物，第一季可种植多种蔬菜（大白菜、白萝卜和红萝卜除外），第二季只能种植食用菌。\n\n(6) 因食用菌类适应在较低且适宜的温度和湿度环境中生长，所以只能在秋冬季的普通大棚里种植。\n\n(7) 智慧大棚每年都可种植两季蔬菜（大白菜、白萝卜和红萝卜除外）。\n"
+            ],
+            [
+              2,
+              "黑豆",
+              "粮食（豆类）",
+              null,
+              null
+            ],
+            [
+              3,
+              "红豆",
+              "粮食（豆类）",
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024C\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "2023年的农作物种植情况",
+          "rows": 88,
+          "cols": 6,
+          "preview": [
+            [
+              "种植地块",
+              "作物编号",
+              "作物名称",
+              "作物类型",
+              "种植面积/亩",
+              "种植季次"
+            ],
+            [
+              "A1",
+              6,
+              "小麦",
+              "粮食",
+              80,
+              "单季"
+            ],
+            [
+              "A2",
+              7,
+              "玉米",
+              "粮食",
+              55,
+              "单季"
+            ],
+            [
+              "A3",
+              7,
+              "玉米",
+              "粮食",
+              35,
+              "单季"
+            ]
+          ]
+        },
+        {
+          "name": "2023年统计的相关数据",
+          "rows": 111,
+          "cols": 10,
+          "preview": [
+            [
+              "序号",
+              "作物编号",
+              "作物名称",
+              "地块类型",
+              "种植季次",
+              "亩产量/斤",
+              "种植成本/(元/亩)",
+              "销售单价/(元/斤)",
+              null,
+              null
+            ],
+            [
+              1,
+              1,
+              "黄豆",
+              "平旱地",
+              "单季",
+              400,
+              400,
+              "2.50-4.00",
+              null,
+              null
+            ],
+            [
+              2,
+              2,
+              "黑豆",
+              "平旱地",
+              "单季",
+              500,
+              400,
+              "6.50-8.50",
+              null,
+              null
+            ],
+            [
+              3,
+              3,
+              "红豆",
+              "平旱地",
+              "单季",
+              400,
+              350,
+              "7.50-9.00",
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result1_1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024C\\attachments\\result1_1.xlsx",
+      "sheets": [
+        {
+          "name": "2024",
+          "rows": 87,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2026",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2027",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2028",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2029",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2030",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result1_2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024C\\attachments\\result1_2.xlsx",
+      "sheets": [
+        {
+          "name": "2024",
+          "rows": 87,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2026",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2027",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2028",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2029",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2030",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2024C\\attachments\\result2.xlsx",
+      "sheets": [
+        {
+          "name": "2024",
+          "rows": 87,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2025",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2026",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2027",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2028",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2029",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "2030",
+          "rows": 89,
+          "cols": 45,
+          "preview": [
+            [
+              null,
+              "地块名",
+              "黄豆",
+              "黑豆",
+              "红豆",
+              "绿豆",
+              "爬豆",
+              "小麦",
+              "玉米",
+              "谷子",
+              "高粱",
+              "黍子"
+            ],
+            [
+              "第\n一\n季",
+              "A1",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A2",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              "A3",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "43",
+      "problem": "2024C",
+      "title": "基于差分遗传算法的农作物种植策略优化",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C038）.pdf",
+      "pages": 61,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p1"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图3 癌一的归公"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图4 2023 年各类农作物总产量排名"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图5 不同肯地条件下主要要信作物亩产量对比"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图6不同和地条件下主要吉茜作物南产量对比",
+            "图7 2033 年各商家作先平均机条掉名"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p17"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图9 2024 年请请壤下最代入方案"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "图10 2024年 50%降价情境下最饮种他方案"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p27"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-30.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [
+            "图16 考虑不了定放因素的 2024-2030 和种席和折线图"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-31.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [
+            "图 17 考虑不确定性因素的累计利洒收效夯线"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-32.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p32"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-33.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p33"
+        },
+        {
+          "page": 34,
+          "captions": [
+            "图1展示了2024-2030 年期间,各类农作物的种村面积随时间的变化趋势"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-34.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p34"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-35.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p35"
+        },
+        {
+          "page": 36,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-36.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p36"
+        },
+        {
+          "page": 37,
+          "captions": [
+            "图31 祯请各与博信价格、科人成本之间的相关狂热力图"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-37.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p37"
+        },
+        {
+          "page": 38,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-38.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p38"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-39.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p39"
+        },
+        {
+          "page": 41,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-41.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p41"
+        },
+        {
+          "page": 42,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-42.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p42"
+        },
+        {
+          "page": 43,
+          "captions": [
+            "图24 考虑相关因素的各类农作物利和条形图",
+            "图25 考虑相关因素的各类农作物利润条形图"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-43.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p43"
+        },
+        {
+          "page": 44,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-44.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p44"
+        },
+        {
+          "page": 45,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-45.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p45"
+        },
+        {
+          "page": 46,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-46.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p46"
+        },
+        {
+          "page": 47,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-47.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p47"
+        },
+        {
+          "page": 48,
+          "captions": [
+            "图26 2024 年考虑不三因素的最信和村太案"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-48.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p48"
+        },
+        {
+          "page": 49,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-49.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p49"
+        },
+        {
+          "page": 51,
+          "captions": [
+            "图32 2030 年考虑不痪定性因素的最优种柏方案"
+          ],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-51.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p51"
+        },
+        {
+          "page": 55,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-55.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p55"
+        },
+        {
+          "page": 58,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-58.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p58"
+        },
+        {
+          "page": 59,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-59.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p59"
+        },
+        {
+          "page": 60,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\43_C038\\pages\\page-60.png",
+          "gallery_anchor": "problems/2024C/papers/43_C038/gallery.html#p60"
+        }
+      ],
+      "abstract_extract": "随着农业生产的不类发展，优化种村策略以应对复杂的大作条件和坚吊变得尤为\n重要。 为此，本文基于华北山区革乡村的路天和大相许地面积、农作物黎类及种植季\n次，以及 2023 年的种植情况、，诗产量种裕成本和销售单价竺数据，建立数学矿型，\n精准优化种得方案，以提升家业生产效益，为乡村经济的可持续候展提供科学依据，\n\n对于问题一本文首先对乡村大地结构、农作物种植现状及言均利润进行了可视\n化分折，为制定最性和司策咯提供数据支持。蓝后，构如了以七年利渔最大化为目标\n的种迷生略优化模型，上合12 个关键约束条件，旬括地法和儿而积上有限、各地潜农\n作物种卸面积下限、 决策变量的的束关系、 禁止迁续重关种扑、豆类作物的种析要求、\n以及ABC、D、F、F关地决的种江天制和食用商的特效种类要求。此外。模型还竹\n虐了作物种划分散程度的要求, 以及实际产量应尘本消足了预期销售量的约束。 接下来，\n采用基于差分进化的改进壮人算法 (DEGA) ，对请销和 50%6降价出信西和情境进行\n未解，得出了 2024-2030 年的最优和让方案，并通过热力图直观展示了 2024 年的和\n萄方染。最终通过对 2024~2030 年各年度和洞折线图的分析，发现年得洞整体呈现稳\n定的增长趋势。标计利润收化外线进一步雪明，30%降价情境下的七年总利润收仇至\n21S33950.7 元，显若高于江销情境下的 1792S814.6元-\n\n对了问题二，杰六首先定义了预基销售基、言产量、种村成本和销售价格四个不\n确定性因素, 并椅它们夫入问题一的 12 个约束条件中-随后,引入条件风险价值CCVaR)\n忱化方法,构建了一个包舍总利漳最大化和 CVaR 的目标症效，形成了兼三收益最大\n化与风险礼创的 CVaR 种术生略优化模型。入着，利用引入 CYaR 的 DEGA 算法末\n解竺出了适用于所有不确定性情坊的最佳和区方案，并综制了2024 年的种村方案热\n力图. 最后 综别了考虑不确定性因素的 2024-2030 年各年度利光折线图和累计利润\n收仇曲线。结果显示，在考上不确定性的情垣下，每年的年利洞均政抵于未考虑不确\n宣性的情况，且七年僵利润收全至 17498212.4 元，低于问题一中的 1792s814.6 元，\n\n对于问题三本文首先给制和类农作物种村面积的时间趋势图，对农作物种村而\n积的相关关系进行初步分析。然后基于各类农作物种秆面积之间的 Speamman 相关系\n数和相关性热力图，团确了农作物之间的可普代性和互补性关系。 同时，革于也期销\n信任、销售价格和种村成本之间的 Speanman 相关系数和热力图，请确了三者之间的\n相关性。在此基础上，本文在 CVHR 种卸策咯估化模型中侠次引入农作物之癌的可兰\n代性与豆补性约束，以及天期稍售基、销售价格和种村成本的相关性约束，构过了考\n卡相关性因素的 CYaR 种镍策略优化楼模- 利用引入 CVaR 的 DEGA 算法，得出了\n2024-2030 年的最侍种怨方案。最后，本文综制了考虑相关因素的 2024-2030 年各年\n度利测折战图，发现考虑相关性后年利润显车间逢此外，通过各美农作物的利润条\n形图分析得出，小麦和茄子的利润嚼显高于其他作物，最终七年总利润提升至\n1799420.9 元-\n\n最后，针对考虑相关性因素的 CVHR 种村生略优化并型，本文通过重杭优化对禄\n型进行灵敏度分析，考虑所有不确定性因素后的总利润与问题三中的利润半殉概小\n表明模型具有较强的克公性。此外，本文还通过励态调参,发现预区销售县，计产量、\n销售价格和各入成本的流动对总利润影响较小，进一步验证了槛型的搞风险能力。",
+      "chapter_navigation": "- 第 52 行：关键词:农作物种秆策略说化 DEGA 算法 “CVaR Speamman 相关系数（关键词）\n- 第 57 行：一、问题重述（问题重述）\n- 第 1357 行：6.1 问题分析（问题分析）\n- 第 1822 行：参考文献（参考文献）",
+      "model_terms": "- 差分进化：7 次\n- 稳健性：4 次\n- 遗传算法：4 次\n- 时间序列：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 附忻信息，建立数学模型，分析以下问题:\n- 问题一，依据附件 1 和附件 2 的数据，假设未来各和农作物的预期销售量、\n- 间题三: 结合现实情况,在问题 2 的基础上，综合考虑各种农作物的可若代\n- 本节首先通过双重绕图和条形图对乡村亩地结构、农作物种植现状及言均利\n- 全的和和方案 最后， 进一步给人 2024.2030 第和年度利六折线加和累计和亲收\n- 具人而言 林节首先对多村畔结构、农作物和入及调均和酒达行了可\n- 方案在多个约束条件下有效实现了种植收益的最大化。最后，通过绘制\n- 本小节详细介绍了阴件数据的预在过程。 首先通过双重捧图对名地结构",
+      "paths": {
+        "card": "problems/2024C/papers/43_C038/paper_card.md",
+        "gallery": "problems/2024C/papers/43_C038/gallery.html",
+        "visual_contact": "problems/2024C/papers/43_C038/visual_contact.html",
+        "source_pdf": "problems/2024C/papers/43_C038/source.pdf",
+        "full_ocr": "problems/2024C/papers/43_C038/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024C/papers/43_C038/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "44",
+      "problem": "2024C",
+      "title": "基于优化算法的农作物最优种植模型",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C063）.pdf",
+      "pages": 49,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p2"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "表 1 平滑信间从表",
+            "表2 收益情况"
+          ],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图4水浇好、基通大由和和莫大和入和农作物并占比"
+          ],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p8"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图 142”智右大相第二竺种植农作几成本与收入折线图"
+          ],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-12.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p12"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p14"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图 18“妈志与的关系图"
+          ],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-25.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-26.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-27.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-28.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-29.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-30.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p30"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-32.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p32"
+        },
+        {
+          "page": 35,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\44_C063\\pages\\page-35.png",
+          "gallery_anchor": "problems/2024C/papers/44_C063/gallery.html#p35"
+        }
+      ],
+      "abstract_extract": "充分利用有限的埋地这源，发展有机种地产业，对多村经济的可持续发展具有重\n杰的现实意义。本六基于盟目绢定的数据信息针对农作先种村与销售的不同变化史\n势，分别建立到学模型进行分析，为该乡村仙定乐 0242030 年农作物的最饱和将\n案，从而塔如农业生产效益，确保家业家村鸡定发展。\n\n对于问题一，首先，计算出 2023 年农作物种村总下益为 892 余万元，并对数据进\n行可视化展示，分析了各美农产品的产量、种得成本与利洞之间的关系。其次，结合\n各和家产唱和六特性和不同夫地资源的特点，引入不同年份、不同地类上不同作物的\n和入再积为生变量，考虑6 大美约吏条件， 不同地决和村作物种类约束，地潜面积\n的未、同一地决不能法起重状区来、三年至少种帮一次豆类的丈、同一作为引季种检\n地交数量约束和每种作物单个地块和反面各约束，答出两种不同情形下的目标务数，\n构建了最全种植方案筑型。从异型特点出发，利用 LINGO 20. 0 软件进行了求解，结果\n表明，着洛博部分浪费，则 7 年最大收益约为 4530 万元，若超过部分单价销售，则了\n年最大收益约汶 B69 万元。最后，对熏列中的重要大数进行了录放度分析,，\n\n对于问题二，下先，考虑预期销售最、言产量、种范成本和销售价格 4 美因素的\n随机变化，并对其随机变化分别采用均匀分有和正过分进行描述，绽出了训在种攻\n风险前党量挫术。其次，将上述4关因素融入间题一建立的代化模型，将原有的黎态\n模型竺化为将机优化模型。对该异型的求解，采用 4 类随机因素取特志数俱，选取了\n会体和致最亿、最劣、平均侵等 TL 组册型到疾，对牌组数据分别计算地全种值方案和\n了 年最大收益值。为了找到对主机因素具有最强黎定型结果，先对 4 类随机因素生成了\n1000 组服从均久分用的随机数，作为 1000 中环境状态，上述得到的 11 组种邦方案作\n为备和方案，从而构建了风险交和模型，得到了模型的益模值矩阵。分别采用乐观准\n划和果大期电估准则得到最居种村方案。结果表震，在面积占尼不低子 25Y，以超过部\n分半价出售为目标租数的情形下，最优和三方案的 7 年收藏值的为8374 万元\n\n对于问题三在线合考虑作物种兴的可葵代性和可互相性，以及预妇销售量、销\n售价举和各证记本三者之间的相关性，对问题 >中的核电进行进一步修正。首先，振\n问题中提到的可普代性、互补性进行稍单扒述，并针对可种杆在同一类型匀地的不同\n农作物进行种破的可仁代性和互补性进行分析。通过相应到所分析得到天期铺售量、\n销售价想和种村成本的相性相关性。并且通过定义的本营代性系数将相互可营代的农\n作物的种相面积进行关联互补性系数对作物的言产量进行修订，进而得到问题3的\n优化磺型。儿对和模扯数据，利用此模有进行最做种庆方案的求解",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 44 行：关键词，0-1函元、随机抽梯，乐观准则、风险决策模型（关键词）\n- 第 122 行：三、问题分析（问题分析）\n- 第 195 行：1 模型建立（模型建立）\n- 第 1243 行：八、参考文献（参考文献）",
+      "model_terms": "- 线性规划：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 人在问题一的林而上综合考虑家作物巴其销售量、调产量、种福成本以及销售价\n- 格的的不确定性以及滑在和让风险，建立数学模型抽定2024`2030 年农作物最侍种兴\n- 加在问题二的革础上，结台现实生活。考续合考虑农作物预销售县与销他价\n- 大化，关与问题2的结果作比较分析，\n- 问题一是一个由型的资源志化问题，要承在有限的种村面积、农作物种诈特性参\n- 首先，自于不同的作物在不同地坏上的适应性差号绞大，根据各地块的种村条件\n- 其次，衣作物的轮作要求同样重要。根据要求人定约束条件，模型引入抢作约\n- 问题二基于问题一所建立的效学异型，考虑到小麦和玉米的未期也个销量有\n- 根据元种不确定因素的存在我们首先利用生特卡罗绕拟和到多种随机枯态下,\n- 利用问题一中的筑型来竺到各种状态下的最绾方案，并通过此杖赤下的最方案计算\n- 下的最代解的方法，统合评估各各方案。最后把 2024203 年农作物洲在的种培风险，\n- 问题三更贴近讽实生活。是在月题二的基础上综合考虑了各和农作物之间的可区\n- 五，问题一的模型建立与求解\n- 问题一有核心在于如全在有限的种村面积、销售县限册和沦作电求的前提下，合",
+      "paths": {
+        "card": "problems/2024C/papers/44_C063/paper_card.md",
+        "gallery": "problems/2024C/papers/44_C063/gallery.html",
+        "visual_contact": "problems/2024C/papers/44_C063/visual_contact.html",
+        "source_pdf": "problems/2024C/papers/44_C063/source.pdf",
+        "full_ocr": "problems/2024C/papers/44_C063/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024C/papers/44_C063/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "45",
+      "problem": "2024C",
+      "title": "基于随机优化的农作物种植策略模型",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C094）.pdf",
+      "pages": 58,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p1"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "表95"
+          ],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p9"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p15"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p18"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "表 10 因果和"
+          ],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p21"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-31.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p31"
+        },
+        {
+          "page": 33,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-33.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p33"
+        },
+        {
+          "page": 52,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\45_C094\\pages\\page-52.png",
+          "gallery_anchor": "problems/2024C/papers/45_C094/gallery.html#p52"
+        }
+      ],
+      "abstract_extract": "本文研究最大化和用土地这攻, 地立才各第路优化模型，利用信心算法，随机坑动上\n特卡洛、屎级度检玫竺方法求解利学十地管理、超拓出舍、才因素时章法动，农作物名从\n竹。互竹以及相关竹等了是\n\n针对条题一，定义第 /年的第 过度时，在第 ) 湛地种慎第〖 种作条种慎面积为决策\n变熏，构建了以称术经济效益最大化为目标通教，可科科地直面可，实际可千基、过作方\n式、起块及作物栽种等限制为约束的各村生路线村上划区型，为科学管理土地，吕尾种相\n地不家大分散的目标，传人参数 0，分央的每据土地最多入作物数，每种作物最多\n可各地块数重，洗合考虐 9， 尽可能小与收给尽可能大。对晤目失出的数据进行天处理\n统一数据格式便于读取，并院计数据生成本与产量的三堆数据表。最终，使用求解求\n解得:外出部分清销结果为 02H799 20 元，超出部分折价结果为 66325207.78 元1 使用\n信心生来解得: 超出部分沸请针果为 36845378 8 元，超部伯价缚时光 46734871.84\n元,让了得求解方疲各有全起点,求解解竺更优，但未解扣,而介心算计则相反,要\n氢天体需求选择方法，丙种销售情况会导至结果产生金大差虱，原图委结于收益大的作物\n在降价后的可保持高收益，全被高天大面积和村-\n\n针对问题二，考记作物训产量、玛计销量和销售价格的流动因素，为增居风险度对能\n力，以最大化各秆经济效益央为目标天数，设定病委重为该动志下的可生生克对应\n的各术经济履益，增训其人参数的时条维度，在延续上一问的约束条件翅友上，构建了随\n条遇划院型。旭于国过部分省销傅况，使用区特卡法生成 100 组符合正态分布的随机\n参数序列，使用求解在随机序列下求册 100 望种和策略。将分布丁数请区化，可得到和\n组随负序列对应的全举，接着对每种规划第站进行找动- 最交得到 100 组随近动第咯下\n种村经济效冀均人最高的种村规划策略，其中，扩沪动习最可方案的种村经济益均人为\n25166743202。\n\n针对间是三，基于问题枢型，目标二数与下生伙保盾丰变，分析作物相关性以及\n销量-价格 成本相关性对变量的区响。对相关性组且作物志型相同的作特进行千代，比较\n目标数对其葵换程序的灵大度检测其符伐性。最关寺择用小放霓代谷子，表相符代生\n对可补性强的植物过行软的来，使尺可能协同竺种提升效率，如灰关答作可提升总体\n产量，接着,要折销量-从格-记本关系，李所全基扒算合理的成本与价格- 综合考虑上述因\n过后。在隐扫所下求解县估种和方案的种针经济效益均作为: 99302538986，相匀于第二\n问站时更优，符合优化的目标\n\n关外词。仗策咯。求外 区竺卡洛算法 ”随机规划\n\n1",
+      "chapter_navigation": "- 第 389 行：5.1.3 结果分析（结果分析）\n- 第 467 行：5.2.3 结果分析（结果分析）\n- 第 642 行：6.4 结论（结论）\n- 第 647 行：参考文献（参考文献）",
+      "model_terms": "- 随机规划：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 近况。首先，本能所作对总收入的进行和加代，从可家人和和类全及\n- 根据问题一各设，各类人条后坟霄量、和人、从基成本和击产量得绞于 202 年扣失入从，国",
+      "paths": {
+        "card": "problems/2024C/papers/45_C094/paper_card.md",
+        "gallery": "problems/2024C/papers/45_C094/gallery.html",
+        "visual_contact": "problems/2024C/papers/45_C094/visual_contact.html",
+        "source_pdf": "problems/2024C/papers/45_C094/source.pdf",
+        "full_ocr": "problems/2024C/papers/45_C094/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024C/papers/45_C094/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "46",
+      "problem": "2024C",
+      "title": "基于址传算法的最优种植策略",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛C题论文展示（C234）.pdf",
+      "pages": 45,
+      "visual_pages": [
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p3"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p11"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图6 情况3 进化筑图"
+          ],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "根据 53 所绩计的季次对应季节表 1，除单季外，干早主要影响农作物示意图如"
+          ],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p18"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-23.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-24.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p24"
+        },
+        {
+          "page": 39,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-39.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p39"
+        },
+        {
+          "page": 44,
+          "captions": [],
+          "image_path": "problems\\2024C\\papers\\46_C234\\pages\\page-44.png",
+          "gallery_anchor": "problems/2024C/papers/46_C234/gallery.html#p44"
+        }
+      ],
+      "abstract_extract": "山区吝志资源直乏，因此为了提高乡村的经济效益，必须充分利用有限的于地的\n资产，而这择合适的农作物晶种，指定最忧各半生骆是其关键之处，也是本文至竺角\n雇的问题\n\n间题一: 本文以革年某奉志所种某家作物的面积作为决策变旺建立以 2024 年到\n2030 年利润总和为目标了妆的优化模型。访模型消足约束有: 赫地面积限所、种村面\n积不宜太小、各林地不能太分散、轮作甸座、豆类和这要求、各类型大过和年农作物\n类型及出、大白菜、白李卜和红归上的季节性剧和食用对种浊环境要求。为了求解\n该优化春型，本文选择使用于传算法求解，弛终得到情况【一一超过部分水销，造成\n浪费的点和泣为4 292767193 元，梢况 2:一一超过部分按 2023 年销售价检的 5094降价\n出信的点利涧为: 42837286 75 元\n\n问题二: 对于农作物未来共明销售量、亩产唱、种植成本和销售价格的不确定性。\n本文引入满足均分分的不确定因子。再和用对以上4 种指标进行怪正! 对于农作物\n六在的种植风险，综合该乡村地处华北山区，本文考点了华北地区常出现的两种自然\n突韦，分别为于时与湖，其主要昌鸣的为家作物的产量。再根据文机每知两种实害\n对农作物的产量的影响量大小。将形响量刻本为下时因子，守此因于，分别在丙种因\n子情况下对农作物的填产量进行修正，最终在问题一模型的基础上建立以 2024 年到\n2030 年利润总和为目标函数的全化全型再次利用直人算法求解和到方案,然后引入\n了在风险下利涓波动指标得到抗风险能力最强的方案，流方案的总利涧为:\n38732308.4505 元\n\n问题三，对于农作物之辣的车代性，林文对农作物划分了3 类替代品集合，处于\n普代品集合中的衣作物下为普代品，因此它位汗认为一体，随着某家作物价格上天其\n普代品的销售最将增加。对于农作物之问的互补性，本六对农作物划分了 2 类可补品\n集合，处于百补品集合中的农作御互为互牟品，因此它们一薪贷荣、一模俱损，随看\n某农作物价座上升其互相器的销售量将减少，对于预期销售量与销售价阁，种类成本\n的相关性，本文机设前一年销售量作为今年的出场需求旺，再利用侯须关系，得到下\n因霄售重与销售价格负丰关，预革清售量与各沪本负相关。然后通过查同资插对\n这上4和关系进行量化，最终在问题二的基础上，建立以2024 年到2030 年利润总和为\n目盘到的估化并型，模拆数据得到总利润为 37304570.2468 元，与问题二相比来说\n其总利润发生了下降，主要影叶是供需关系，营代性导政买方可能洁择更猎价的家产\n品-\n\n在文章的最后总结了类型的入续，并提出了民型的改进意见",
+      "chapter_navigation": "- 第 45 行：关键词:优化可型 进传委法 均分分布 供重关和（关键词）\n- 第 63 行：1 问题重述（问题重述）\n- 第 84 行：二、问题分析（问题分析）\n- 第 134 行：四、符号说明（符号说明）",
+      "model_terms": "- 线性规划：2 次\n- 遗传算法：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 问题一需要在每年预期销售熏、种植成本、计产品和销售价格周定汶 2023 年的\n- 最优和秆方案。为了得到 2023 年的销售臣，皮设 2023 农作物全部正常作出，然后\n- 最后以革年革埋地所种某农作物的面积作为决策变星，建立以 2024 年到 2030 年和\n- 在问题一的基础上，对于不确定性因素，农作物的未来预期销售量、亩产量有一\n- 综上所述, 结合不确定性因素和潜在的种村风险, 同问题一建立以 2024 年到 2030\n- 和 问题二 引入不册定性和半在风险了",
+      "paths": {
+        "card": "problems/2024C/papers/46_C234/paper_card.md",
+        "gallery": "problems/2024C/papers/46_C234/gallery.html",
+        "visual_contact": "problems/2024C/papers/46_C234/visual_contact.html",
+        "source_pdf": "problems/2024C/papers/46_C234/source.pdf",
+        "full_ocr": "problems/2024C/papers/46_C234/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024C/papers/46_C234/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

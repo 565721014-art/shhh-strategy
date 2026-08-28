@@ -42,7 +42,7 @@ def main() -> int:
     args = parser.parse_args()
 
     env_root = os.environ.get("SHHH_STRATEGY_KNOWLEDGE_ROOT")
-    root = (args.root or (Path(env_root) if env_root else DEFAULT_ROOT)).resolve()
+    root = (args.root or (Path(env_root) if env_root else DEFAULT_ROOT)).expanduser().resolve()
     if not root.exists():
         raise FileNotFoundError(
             f"optional knowledge root not found: {root}; set SHHH_STRATEGY_KNOWLEDGE_ROOT to a compatible archive"
@@ -81,17 +81,26 @@ def main() -> int:
         if not score:
             continue
         chapter = chapters.get(pid, {})
-        paper_cards = [
-            {
+        paper_cards = []
+        for paper in papers_by_problem.get(pid, []):
+            card = root / paper.get("card_path", "")
+            item = {
                 "paper_id": paper.get("paper_id"),
                 "title": curated_paper_titles.get(
                     str(paper.get("paper_id")), paper.get("title")
                 ),
-                "card": str(root / paper.get("card_path", "")),
-                "gallery": str(root / paper.get("gallery_path", "")),
+                "card": str(card),
+                "card_available": card.is_file(),
             }
-            for paper in papers_by_problem.get(pid, [])
-        ]
+            # Gallery pages are intentionally omitted from the compact package.
+            # Expose them only when the selected archive actually contains them.
+            gallery_value = paper.get("gallery_path")
+            if gallery_value:
+                gallery = root / gallery_value
+                item["gallery_available"] = gallery.is_file()
+                if gallery.is_file():
+                    item["gallery"] = str(gallery)
+            paper_cards.append(item)
         iteration = iteration_by_id.get(pid)
         iteration_record = None
         if iteration:

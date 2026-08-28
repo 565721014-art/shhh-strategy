@@ -1,0 +1,770 @@
+{
+  "problem": "2023A",
+  "title": "定日镜场的优化设计",
+  "category": "机理、工程与反演",
+  "mother_problem": "光学效率仿真驱动的定日镜场布局与参数设计",
+  "question_chain": "太阳位置 -> 单镜多层效率 -> 场级时空积分 -> 固定尺寸布局优化 -> 可变尺寸与高度优化",
+  "misreading_risks": [
+    "效率项重复相乘或遗漏",
+    "代表时刻代替全年积分无误差说明",
+    "优化变量不可施工"
+  ],
+  "questions": [
+    "问题 1 若将吸收塔建于该圆形定日镜场中心，定日镜尺寸均为 6 m×6 m，安装高度均为 4 m，且给定所有定日镜中心的位置（以下简称为定日镜位置，相关数据见附件），请计算该定 日镜场的年平均光学效率、年平均输出热功率，以及单位镜面面积年平均输出热功率（光学效 率及输出热功率的定义见附录）。请将结果分别按表 1 和表 2 的格式填入表格。",
+    "问题 2 按设计要求，定日镜场的额定年平均输出热功率（以下简称额定功率）为 60 MW。 若所有定日镜尺寸及安装高度相同，请设计定日镜场的以下参数：吸收塔的位置坐标、定日镜 尺寸、安装高度、定日镜数目、定日镜位置，使得定日镜场在达到额定功率的条件下，单位镜 面面积年平均输出热功率尽量大。请将结果分别按表 1、2、3 的格式填入表格，并将吸收塔 的位置坐标、定日镜尺寸、安装高度、位置坐标按模板规定的格式保存到 result2.xlsx 文件中。",
+    "问题 3 如果定日镜尺寸可以不同，安装高度也可以不同，额定功率设置同问题 2，请重新 设计定日镜场的各个参数，使得定日镜场在达到额定功率的条件下，单位镜面面积年平均输 出热功率尽量大。请将结果分别按表 1、表 2 和表 3 的格式填入表格，并将吸收塔的位置坐 标、各定日镜尺寸、安装高度、位置坐标按模板规定的格式保存到 result3.xlsx 文件中。 表 1 问题 X 每月 21 日平均光学效率及输出功率 日期 平均 平均 平均阴影 平均 单位面积镜面平均输出 光学效率 余弦效率 遮挡效率 截断效率 热功率 (kW/m2) 1 月 21 日 2 月 21 日 3 月 21 日 4 月 21 日 5 月 21 日 6 月 21 日 7 月 21 日 8 月 21 日 9 月 21 日 10 月 21 日 11 月 21 日 12 月 21 日 表 2 问题 X 年平均光学效率及输出功率表 年平均 年平均 年平均阴影 年平均 年平均输出热 单位面积镜面年平均 光学效率 余弦效率 遮挡效率 截断效率 功率 (MW) 输出热功率 (kW/m2) 表 3 问题 X 设计参数表 吸收塔位置坐标 定日镜尺寸 定日镜安装高度 定日镜总面数 定日镜总面积 （宽 × 高） (m) (m2) 注 在表 3 中填入问题 3 的结果时，“定日镜尺寸”及“定日镜安装高度”两栏可空缺 附录 相关计算公式 1. 太阳高度角 𝛼𝑠 [3] sin 𝛼𝑠 = cos 𝛿 cos 𝜑 cos 𝜔 + sin 𝛿 sin 𝜑 太阳方位角 𝛾𝑠 [4] sin 𝛿 − sin 𝛼𝑠 sin 𝜑 cos 𝛾𝑠 = cos 𝛼𝑠 cos 𝜑 其中 𝜑 为当地纬度，北纬为正；𝜔 为太阳时角 𝜋 𝜔= (𝑆𝑇 − 12), 12 其中 𝑆𝑇 为当地时间，𝛿 为太阳赤纬角[5] 2π𝐷 2π sin ( sin 𝛿 = sin 23.45), 365 360 其中 𝐷 为以春分作为第 0 天起算的天数，例如， 若春分是 3 月 21 日， 则 4 月 1 日对应 𝐷 = 11。 2. 法向直接辐射辐照度 DNI（单位：kW/m ）是指地球上垂直于太阳光线的平面单位面积 2 上、单位时间内接收到的太阳辐射能量，可按以下公式近似计算[6] 𝑐 DNI = 𝐺0 [𝑎 + 𝑏 exp (− )] , sin 𝛼𝑠 𝑎 = 0.4237 − 0.00821(6 − 𝐻)2 , 𝑏 = 0.5055 + 0.00595(6.5 − 𝐻)2, 𝑐 = 0.2711 + 0.01858(2.5 − 𝐻)2, 其中 𝐺0 为太阳常数，其值取为 1.366 kW/m2，𝐻 为海拔高度 (单位：km)。 3. 定日镜场的输出热功率 𝐸field 为 𝑁 𝐸field = DNI · ∑ 𝐴𝑖 𝜂𝑖 , 𝑖 其中 DNI 为法向"
+  ],
+  "attachments": [
+    {
+      "name": "result2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023A\\attachments\\result2.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7,
+          "cols": 8,
+          "preview": [
+            [
+              "吸收塔x坐标 (m)",
+              "吸收塔y坐标 (m)",
+              "定日镜序号",
+              "定日镜宽度 (m)",
+              "定日镜高度 (m)",
+              "定日镜x坐标 (m)",
+              "定日镜y坐标 (m)",
+              "定日镜z坐标 (m)"
+            ],
+            [
+              null,
+              null,
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              2,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              3,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "result3.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023A\\attachments\\result3.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7,
+          "cols": 8,
+          "preview": [
+            [
+              "吸收塔x坐标 (m)",
+              "吸收塔y坐标 (m)",
+              "定日镜序号",
+              "定日镜宽度 (m)",
+              "定日镜高度 (m)",
+              "定日镜x坐标 (m)",
+              "定日镜y坐标 (m)",
+              "定日镜z坐标 (m)"
+            ],
+            [
+              null,
+              null,
+              1,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              2,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              3,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2023A\\attachments\\附件.xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 1746,
+          "cols": 2,
+          "preview": [
+            [
+              "x坐标 (m)",
+              "y坐标 (m)"
+            ],
+            [
+              107.25,
+              11.664
+            ],
+            [
+              105.36,
+              23.191
+            ],
+            [
+              102.235,
+              34.447
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "23",
+      "problem": "2023A",
+      "title": "定日镜场的输出功率优化",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛A题论文展示（A0127）.pdf",
+      "pages": 58,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-03.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p3"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "示意图如图?所示"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图和 保有凡示训图(友图 与及朱可示意图人加)",
+            "图5右负为塔持区域的定日包分布情况，位于增 EN"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "位角: am 和 斩 示意图如图6所示"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "玩条光线所包含的太阳枉射能相等，均为巨。馆形光线高散化示意图如图7所示"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "表 3人。。。 间& 4 月21 旧上年90 玫外大(0让玫人结"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图1 区二对人示意国"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-22.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p22"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "最佳取值。结合二分法和变步长搜索法寻找最住的定日镜场参数流程图如图18所示"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-24.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "表 1 问是光华失上[的轴"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-25.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-26.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-28.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-30.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-31.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [
+            "图 22: 离艇光线向量防wy 计算示意蜀"
+          ],
+          "image_path": "problems\\2023A\\papers\\23_A0127\\pages\\page-32.png",
+          "gallery_anchor": "problems/2023A/papers/23_A0127/gallery.html#p32"
+        }
+      ],
+      "abstract_extract": "定日馆场优化方案的设计号提高光热发电效率和推动绿色中国建设的关键。本文\n其优化角应出发. 建立了定日馆平均欠出热功率优化模现，并通过乞历法等方法进行求\n解，为新能源部门把殿了不同建设需求下定日镜场参数的只体规划方案。\n\n竺对间题一， 首先，分别对定日饶馈场各定日镜缤而建立了镜场坐妹系和镜丙坐未\n系，并通过坐你转换旬孟 了 实现坐针系之问的转化。其次，基于反射定律 通过入射光\n线方向二和和反射光线方向加同得到和镑而法岂峡，完成定日镜饶两伙杞的确定。楼着，\n分析得出定日蚀场的笨出热功率是关于定日镜光学效率等参数的函数。然厅，设计区学\n落率隐计算方法。针对阳影加挡效率，将办及车挡损类划分为塔挡损从、阳形损尖和挡\n苑损炎。通过判断定日镑中心是否位于塔按区城内简化计算定日第的典挡钢类: 对定日\n镜镜而离做化处理厅，鬼出无效点判断第略\"关断定日锁馆而各点是理存在因形要类和\n挡光涡估，进而完成定日简阳彤损尖因挡光扣类的计算。人对储热团截早效率， 对第把\n光线离散化处理后，通过贡生运算法则得出离散光头回苹,通过计算元散光关问呈所在\n直线与集热器所在回桂而的交点秘断离茹光斌能否入射到集热器上, 进而完成华热器帮\n人\n镑场的年平均输出热功率为 36.9945MW ;年平均光学效率为0.6051; 证日馆音位而各\n镜责年平均答出热功率为 05888kW /onP，具体求角结果见附承二。\n\n和 abs\n酷，约束吸收典区位置。其次. 所出分区城同心四需划策赂、通过锭条同心四将加峰定\n日馆场划分为多个区域，并殿抠每个区域的特点分别设此定日饶的排布原则。在给定\n有l、觅、届、 下和Po 的前提下。 唯一欧定定日镜场中定日局的总数和各定日傍的坐疆。\n接着，以定日镜年平均答出热功率最大化为日妹，建立定日镜平均条出热功率优化闹\n型。然厅， 通过变步长搜索管法完成最住定日镜才参数的求解。芭知，将定日镜场参数\n代入至阅刘一设计的计余策贱中，完成定日镜场年平均光学效率等物理悚的计算。部分\n求解结轩: 定日镜单位而积镑醒年平均生出热功率为0587JKRW /np; 定日镜场年平均给\n出热马率为 60.1189WW ; 年平均光学效率为06028; 双收红的位置坐标为(0,一79); 定\n日镑尺寸发 55x5.5; 安装训度为275m; 定日镑总乔数为3385。只体求解结录见只焉\n\n针对间题三，首先，提出定日馆规格分区域规划策略;在同一区城内，定日镜规党\nCe\n了 人\n平均策出热功率最大化为日估，建立改进定日馆平均笨出热功率优化入型。然后,通过\n人\n积久而年平均输出热功率为05307kW AP :，定日馆场年焉均条出剖功率为 61.8593MW\n年平均光学效率为05446; 又收落的位置华标为(0,一79); 共采取 7 利不同的安装高座;\n0",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 47 行：关键词; 定日馆下均钵出热功率优化模型; 变步长搜索算法: 分区域同心图规划第咯（关键词）\n- 第 57 行：一、问题重述（问题重述）\n- 第 96 行：二、问题分析（问题分析）\n- 第 156 行：三、模型假设（模型假设）\n- 第 1081 行：十、参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 饥太的确定和定昌匀光学效率的计钵。首先，反便定律 我\n- 其次，计算光学效率的关键在于阳束这挡效率 jh 和集热器雹断效率 jure 计算方\n- 执后，可以从喇下信息、坠承宁得出定日屏总数 帮等参数的具体到依。 最后,将参\n- 对于问题二，它关问是一的反问呈，纷出定日馆场所希杰达到的频定功室，要求我\n- 们设计定日蚀场的参数，并实现定日蚀年王均输出热功率最大化的日妹。首先，恨据大\n- 其次，为快定日镇场中各定日匀平均答出热功率尽可能地大，据出分区城同心图规\n- 对于问题三，它在问是二的基础上降低了对定日偿尺寸、安装育度的约束，要求我\n- 热功率最大化的日款。 首先,为提高定日镜的年平均笨出热功率, 提出\"定日馆需格分区\n- 等物型虽的计算。最后，对结果进行结果分析。",
+      "paths": {
+        "card": "problems/2023A/papers/23_A0127/paper_card.md",
+        "gallery": "problems/2023A/papers/23_A0127/gallery.html",
+        "visual_contact": "problems/2023A/papers/23_A0127/visual_contact.html",
+        "source_pdf": "problems/2023A/papers/23_A0127/source.pdf",
+        "full_ocr": "problems/2023A/papers/23_A0127/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023A/papers/23_A0127/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "24",
+      "problem": "2023A",
+      "title": "基于机理分析法的定日镜场优化设计模型",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛A题论文展示（A0165）.pdf",
+      "pages": 45,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "表1 符哆"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-06.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-10.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p10"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "表2 每月21 日平均光学效率及物出功率 [详见附录 A)",
+            "表3 年平均光学效率及多出功率"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p14"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图7 第法:的图开垦"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "表5 年平均光章效事及生出功",
+            "表6 问题一的参数设计表"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p19"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图9 调节后定日锥场中定日蚀排布图 绕-"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [
+            "表7 部分月数 21 日平均光学效率及第出功率 (详见附录 C)",
+            "表8 年平均光学效率及答出功音",
+            "表9 问题三的参数设计表"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-22.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p22"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-24.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p24"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "表310 问题了每月21 日平均光学效率及锭出功率"
+          ],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-26.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\24_A0165\\pages\\page-28.png",
+          "gallery_anchor": "problems/2023A/papers/24_A0165/gallery.html#p28"
+        }
+      ],
+      "abstract_extract": "本文针对产量声全化设计问题,运用沪学相关定律进行机再分析， 建立单日标量\n人化硕电于于三分查找、生特卡洛方法进行计算机求解，在不同的定晶收盘、位置、\n尺二的多和情形下，解决了瑟日挤场和效率的示角与绽出功训优化问题\n\n对于给定匀场参数情形下的光学才率与办册扫功素东角是, 将定日刍反册集招过\n再划分为太阳光失入册过程、定目针法向请整过得、用旺半朱与集要器失断过程，分出\n进行建红。 太阳光线入笛过程，通过太阴商度击、方公和确定入册关线方秽，定有镇法\n向区过程， 根据证日错与集热加中心他置计算反射交线方向向量，从而计算出各定目\n蚀平面法向量，曙昌这挡与全热可共晰过程，利用空间向县方法刊新光线和时、反针过\n袜中是埋六天他定日代用持，计算针而各点反射从形光二在集热吕表面且成的光班面\n积，从而计算半影沙率、集扫吉机断效率。通过上述分析，奸立呈是志光学效率\n与出拓功办求解模型指定日镜闻举化，求解得到在慰导是结定参下，定日针场\n学区这、余引关奉，阳影适挡效素、夫电站率、办出热蕊率、单位面积人而办出的芒\n事的年平均人分别为04902。人.3565，08955，08078，2404MW，03827kW\n\n对于绩一定日条尺十及安装高度情形下雪场单人面积台面交册热功率《以下东称\n年平均成束) 的各化问题,可利用上一问题型计算年平均功率基进行全化。以县大化\n年和均丰素为优化且标，名声音经、定日久与避载拭离、届而宽高、相名人日信诡\n中心中训的限制为约束条件，于立撞场年平均功训单目标人化型。兴隆放大的解空\n则度，罗定其人变，对入面觉、商等变量单分析，基于三分碍近算法搜索变且的\n人{亲，得到近似最人情形下，吸收堵的平面位置从标为(0-2370240)，定日久澳、训\n均为5467lm， 安装高度均为fm， 定日导数航3249，全声学效率、作效率、团影\n这扫效率、吉用率、铂出热功率、单们面积策面纵出热功率的年平均人分别为0.3787，\n6t4 08946，0g811， 4 TIMW。 0450sEmnt\n\n对于各定日计尺寸及安六认可赤情形下针场年平均功率的优化问题,本问题仅在\n上一问题共确上漳大了解空间维度，故建立代化目标、约束条件与上一问是相同的久场\n年玖功率单目标优化机型。以各排定日针安装高度为次生变重进生生特卡洗磺所\n解，其人参数与上一问题保持一致得到近似最优情形下，镜场光学效率、休小效率、\n捕追持效率、夫灯效率、条出热功率、单位面和镇面给出热功课的年平均全分别为\n.5856，0.3625，08642，08804，4423MW，0.4556KWz，定日鲁数县、各定日入\n二雪装有座、吸收浇位置业杯与上一问题一致\n\n最后，对异型进行检验，并评估模型估钱点，             -    三绕-\n\n                           党苗呈一",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 47 行：关键词，定日他场单目标优化 后格化”三分查找“芝 TH Zn（关键词）\n- 第 136 行：三、模型假设与约定（模型假设）\n- 第 185 行：五、模型建立与求解（模型建立）\n- 第 689 行：参考文献（参考文献）",
+      "model_terms": "未从词表中稳定识别；不代表论文没有模型。",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 最后，为了进行必能评人和笋所从析，所有 “年光” 指的计和时点的为当地时间",
+      "paths": {
+        "card": "problems/2023A/papers/24_A0165/paper_card.md",
+        "gallery": "problems/2023A/papers/24_A0165/gallery.html",
+        "visual_contact": "problems/2023A/papers/24_A0165/visual_contact.html",
+        "source_pdf": "problems/2023A/papers/24_A0165/source.pdf",
+        "full_ocr": "problems/2023A/papers/24_A0165/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023A/papers/24_A0165/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "25",
+      "problem": "2023A",
+      "title": "定日镜场的优化设计",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛A题论文展示（A092）.pdf",
+      "pages": 53,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [
+            "表1和衣2。"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-01.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-02.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "图1 问题一党程图"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-04.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图3 太阳赤弹在一年中的变化曲线"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-05.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p5"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-07.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图6 余弦效率计算的示意图",
+            "图 7 蚂收卉与集热吉的影子长度"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-08.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图?求解入对这挡区域的流程图",
+            "图in 锁符标系示意图"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-09.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p9"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图11 定日镜卫对定日镜A 的入射焉挡区域"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-11.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "烙，示意图如图 13 所示，总计TX了个高攻点，对于其中任音一个离散点户，其在定"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-12.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图14 所示，"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-13.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-14.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-15.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-16.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "表2 问题一年平均光学效率及1 功率表_",
+            "图 16 各个月份的平均光学效率"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-17.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "图17 每定日匀的年平均光学效率"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-18.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图 20 年平均输出功率与定日镜宽度的关系，"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-19.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-20.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-21.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p21"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "表3 问题-设计乡委表"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-23.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-24.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图 25 问题二中不同定日昼的年平均光学效率",
+            "图26春分日3 月31 日 10 点时所有定匀的生平的光学名束",
+            "图27 问题一与上题一年均光学数率的对比"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-25.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "图29 上是三流种图"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-26.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-27.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "表7 站题三等月31 日平均光学效率及输出功率."
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-28.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [
+            "图30 问题三中定日镜在定日镜场中的分布"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-29.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [
+            "图2 三甸月 目平光学",
+            "图34 间隔三帮分日3朋31 日 10 点时丽有汪昌年天站"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-30.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p30"
+        },
+        {
+          "page": 31,
+          "captions": [
+            "图35 问题一、问题二问题三年学李的对比",
+            "图36 随机生成的 100办可秆与最优表的区"
+          ],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-31.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p31"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-32.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p32"
+        },
+        {
+          "page": 34,
+          "captions": [],
+          "image_path": "problems\\2023A\\papers\\25_A092\\pages\\page-34.png",
+          "gallery_anchor": "problems/2023A/papers/25_A092/gallery.html#p34"
+        }
+      ],
+      "abstract_extract": "畔式太阳能光扫发电是一种较为理想的、技术发展相对成总的大规模利用太阳能\n发电的技术，害日镜是其收集太阳能的重要基本组件，通过到学建模对定日镜场的各\n顶参数进行优化设计，使得单位镜面面积年平均条出热功率最大具有重大的现实意义，\n也是我们荔竺解决的问题\n\n针对问题一，我们构建了定日镜场年平均答出状功率模型首先，求朋太卫珊度\n多和太阳方应角来定每一时刻太限所在位置，接着，通过定日钢的工作原理，白某\n\n时刻从射光线和反间洛绕的方向推得定日镜在访时蓝的法启，进调推得其信介角和\n\n方位角，筑后，革于上述信息计算每一决定日名在沪时刻的光健效率，包括锌而反射\n素、大气通射事、余对效率、阿影造持效率以及集扫器截呆效率。其中辐影这持效率\n由投影法求出，华执舌区匠效字由浊特卡洛算法求出:最后，结合法向直接久射限度\n纳及定日镜场输出热功率的计算公式，代入着日人的光学效率等数据牧们来出了定日\n镶场在不同时刻的给出热巧率，进而得到年平均给出热功率以及单位面积镜面年平均\n策出热功率, 最终我们得到了定日镜场的年平均光学效率为0.6275 , 年平均输出类功\n素为38.295MP/ ，单位镜面面积年平均输出热功率为0.6096HWHins ，其余结果详见\n表1和衣2。\n\n针对问题二，我们构建了定日镜场统一优化设计的单目标优化模型。我们以单位\n镜面面积的年平均输出热功率最大为目标竺至，以定日镇场中吸收塔的位置愉标、定\n日视的统一尺寸和统一安装高度、定日名的个数以及定日镜的位置等参数作为决策变\n县，以定日镜声的年平均额定输出功率、相令定日镜之间应清足的距离等要求确定了\n多个芍东条件，建立起单目标优化本型由于决策变盘的臻呈极多，因此我们采用过\n心放法对沪单目标人化模型进行求解,最络求得了单位镜面面积年平均给出热功率最\n大为0.7139KV1mz ，此时年平均物由热功率为60.373MW ，定日镜的分布为一国图\n同心圆，其余放日境场的寺估设计参数详见表 3 及 resaltzxlsxy\n\n针对问题三，我们构建了定日镇场非统一优化设计的单日标优化模型 相绞于问\n题二, 问题三中各个定日锌的尺寸和安装高度井不纺一,决策变量的数量进一步增多，\n为了简化模型，我们参考问题二中求得的结论，认为在间题三中定日镜仍按照网忆国\n的方式进行排有，又因为同心加具有各项同性，所以我们可以贞设每一图同心回上的\n所有定日货的尺寺和安装高度相同，因此攻增的决策变量减少为和一图同心图对应的\n定日错的尺十和安装高度，其余目标务数和的东条件均与第二问相同。 在求明时，我\n们在同心图大布的基而上采用变步长的方式进行志历求解，最阁求得了单位镜面面积\n年平均输出热功率最大为0.7551NWNrn? ，此时年平均条出茹功率为60.359MW ，定\n日纺的整作分布近似为一个拢物面，其余定日蕴场的最优设计惰至详见表 6 及\nent",
+      "chapter_navigation": "- 第 48 行：关键词: 光学效束”过特卡洛算法，单目标优化”过人忧算法 车平均答出热功率（关键词）\n- 第 53 行：一、问题重述（问题重述）\n- 第 99 行：三、符号说明（符号说明）\n- 第 127 行：四、问题分析（问题分析）\n- 第 656 行：结果分析:（结果分析）\n- 第 1067 行：结果分析:（结果分析）\n- 第 1150 行：七、参考文献（参考文献）",
+      "model_terms": "- 回归：3 次\n- 遗传算法：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 顶端，其以热能的形式储存吸收和到的太阳能，然后再进一步将热能转换成电能\n- 问题一，在有而目滩定的的图形定日镜场内，将吸收塔建于该定日镜场的中心, 场\n- 问题二: 根据是目给定的到求，害日镜场的频韦功率为6OQMY ，在定日针尺寸以\n- 问题三，定日镜的额定功率仍为60MW ，但此时每一个定日镜的尺寸和安装高诬\n- 以及单位忆亩面积年平均给出热功率。首先，我们可以通过求解太阳吝度角和太阳方\n- 时刻不同定日名的光学效率求和取平均即可得到年平均光学效率，最后，丙结合法向\n- 问题二要求我们对，恤竺定日扩场的年平均欠出热功率在达到儿定功率60MY 的\n- 胡较于问题二，问题三中各个证日镜的尺寸和安装高度并不统一，这导致了决策\n- 5 1 问题一模型的建立与求解\n- 以及单位镜面面积年平均输出热功率。首先，我们可以通过求钥太阳高度角和太阳方",
+      "paths": {
+        "card": "problems/2023A/papers/25_A092/paper_card.md",
+        "gallery": "problems/2023A/papers/25_A092/gallery.html",
+        "visual_contact": "problems/2023A/papers/25_A092/visual_contact.html",
+        "source_pdf": "problems/2023A/papers/25_A092/source.pdf",
+        "full_ocr": "problems/2023A/papers/25_A092/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2023A/papers/25_A092/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

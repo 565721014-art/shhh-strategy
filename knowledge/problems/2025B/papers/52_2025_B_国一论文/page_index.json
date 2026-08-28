@@ -1,0 +1,378 @@
+[
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 1,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-01.png",
+    "image_name": "page-01.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 2,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-02.png",
+    "image_name": "page-02.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 3,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-03.png",
+    "image_name": "page-03.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 4,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-04.png",
+    "image_name": "page-04.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 5,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-05.png",
+    "image_name": "page-05.png",
+    "captions": [
+      "图 1 双光束干涉光路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 6,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-06.png",
+    "image_name": "page-06.png",
+    "captions": [
+      "图 2 光在介质界面反射折射的基本物理图像"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 7,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-07.png",
+    "image_name": "page-07.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 8,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-08.png",
+    "image_name": "page-08.png",
+    "captions": [
+      "表2 4H-SiC 材料固定的本征光学参数",
+      "题二求解的算法流程图如图 (3)。",
+      "图 3 问题二求解算法流程图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 9,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-09.png",
+    "image_name": "page-09.png",
+    "captions": [
+      "表 3 全光谱范围 (400cm-: to 4000cm-:) 全局同步拟合参数"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 10,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-10.png",
+    "image_name": "page-10.png",
+    "captions": [
+      "图4附件 1 全光谱儿围的全局同步拟合结果 (R2=0.9967)。",
+      "图5 附件 2 全光谱儿围的全局回步拟合结果 (R2=0.9948)。"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 11,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-11.png",
+    "image_name": "page-11.png",
+    "captions": [
+      "图 6 根据最终拟合参数计算得到的外延层与衬底的复折射率谱-",
+      "图 7 全光谱拟合中附件 1 的残差分布图。",
+      "图 8 全光谱拟合中附件 2 的残差分布图。"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 12,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-12.png",
+    "image_name": "page-12.png",
+    "captions": [
+      "图 9 多光东干涉光路图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 13,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-13.png",
+    "image_name": "page-13.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 14,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-14.png",
+    "image_name": "page-14.png",
+    "captions": [
+      "图 10 双光束干涉反射率形貌图 图 11 多光束干涉反射率形貌图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 15,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-15.png",
+    "image_name": "page-15.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 16,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-16.png",
+    "image_name": "page-16.png",
+    "captions": [
+      "表4生附件 3 与附件 4 光谱的精确极值点数据",
+      "图 12 干涉极值法得出的厚度一致性与最优干涉级数确定图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 17,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-17.png",
+    "image_name": "page-17.png",
+    "captions": [
+      "图 13 各级反射光相对光强随波数变化图像"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 18,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-18.png",
+    "image_name": "page-18.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 19,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-19.png",
+    "image_name": "page-19.png",
+    "captions": [
+      "图 14 对于人射角 10\" 和 15? 的 FFT 频谱分析与厚度求解",
+      "图 15 问题二各级反射光相对强度图"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 20,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-20.png",
+    "image_name": "page-20.png",
+    "captions": [
+      "图 16 FFT 竺法的灵敏度与收敛性综合分析"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 21,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-21.png",
+    "image_name": "page-21.png",
+    "captions": [
+      "图 17 FFT 算法在随机噪声下的稳定性检验 (蒙特卡洛模拟结果)",
+      "图 18 基于双光束千涉和洛伦兹-德鲁德模型计算外延层厚度方法在随机嗓声下的稳定性检验 (蒙特卡洛模拟结果)"
+    ],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 22,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-22.png",
+    "image_name": "page-22.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 23,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-23.png",
+    "image_name": "page-23.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 24,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-24.png",
+    "image_name": "page-24.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 25,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-25.png",
+    "image_name": "page-25.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 26,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-26.png",
+    "image_name": "page-26.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 27,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-27.png",
+    "image_name": "page-27.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 28,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-28.png",
+    "image_name": "page-28.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 29,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-29.png",
+    "image_name": "page-29.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 30,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-30.png",
+    "image_name": "page-30.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 31,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-31.png",
+    "image_name": "page-31.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 32,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-32.png",
+    "image_name": "page-32.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 33,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-33.png",
+    "image_name": "page-33.png",
+    "captions": [],
+    "visual_hint": 1
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 34,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-34.png",
+    "image_name": "page-34.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 35,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-35.png",
+    "image_name": "page-35.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 36,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-36.png",
+    "image_name": "page-36.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 37,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-37.png",
+    "image_name": "page-37.png",
+    "captions": [],
+    "visual_hint": 0
+  },
+  {
+    "paper_id": "52",
+    "problem": "2025B",
+    "page": 38,
+    "image_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\pages\\page-38.png",
+    "image_name": "page-38.png",
+    "captions": [],
+    "visual_hint": 0
+  }
+]

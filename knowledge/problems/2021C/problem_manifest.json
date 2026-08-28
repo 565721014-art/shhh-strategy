@@ -1,0 +1,659 @@
+{
+  "problem": "2021C",
+  "title": "生产企业原材料的订购与运输",
+  "category": "多期资源配置与鲁棒规划",
+  "mother": "供应商、订货、运输和库存耦合的多阶段资源配置",
+  "chain": "供货能力评价 -> 最少供应商集合 -> 周度订货计划 -> 转运分配 -> 成本/损耗/库存改进",
+  "risks": [
+    "供应商评价与最终决策重复计权",
+    "以均值替代供货不确定性",
+    "跨期库存守恒遗漏"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 2,
+  "questions": [],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件1 近5年402家供应商的相关数据.xlsx",
+      "size_bytes": 673200,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "企业的订货量（m³）",
+          "rows": 405,
+          "cols": 242,
+          "preview": [
+            [
+              "供应商ID",
+              "材料分类",
+              "W001",
+              "W002",
+              "W003",
+              "W004",
+              "W005",
+              "W006",
+              "W007",
+              "W008",
+              "W009",
+              "W010"
+            ],
+            [
+              "S001",
+              "B",
+              0,
+              0,
+              0,
+              43,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              "S002",
+              "A",
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              "S003",
+              "C",
+              7,
+              1,
+              0,
+              0,
+              0,
+              1,
+              4,
+              50,
+              130,
+              170
+            ]
+          ]
+        },
+        {
+          "name": "供应商的供货量（m³）",
+          "rows": 403,
+          "cols": 242,
+          "preview": [
+            [
+              "供应商ID",
+              "材料分类",
+              "W001",
+              "W002",
+              "W003",
+              "W004",
+              "W005",
+              "W006",
+              "W007",
+              "W008",
+              "W009",
+              "W010"
+            ],
+            [
+              "S001",
+              "B",
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              "S002",
+              "A",
+              1,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              "S003",
+              "C",
+              8,
+              1,
+              0,
+              0,
+              0,
+              1,
+              5,
+              58,
+              110,
+              173
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021C\\attachments\\附件1_近5年402家供应商的相关数据.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件2 近5年8家转运商的相关数据.xlsx",
+      "size_bytes": 22122,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "运输损耗率（%）",
+          "rows": 9,
+          "cols": 241,
+          "preview": [
+            [
+              "转运商ID",
+              "W001",
+              "W002",
+              "W003",
+              "W004",
+              "W005",
+              "W006",
+              "W007",
+              "W008",
+              "W009",
+              "W010",
+              "W011"
+            ],
+            [
+              "T1",
+              1.5539,
+              1.639,
+              0.8124,
+              1.2233,
+              1.1194,
+              1.1572,
+              1.0769,
+              1.1194,
+              1.9129,
+              2.8528,
+              2.6025
+            ],
+            [
+              "T2",
+              0.7092,
+              1.2411,
+              0.3546,
+              1.5957,
+              1.0638,
+              0.7092,
+              0.5319,
+              1.0638,
+              1.4184,
+              0.8865,
+              0.8865
+            ],
+            [
+              "T3",
+              0,
+              0,
+              0.0971,
+              0,
+              0.1295,
+              0,
+              0.0324,
+              0,
+              0,
+              0,
+              0.0647
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021C\\attachments\\附件2_近5年8家转运商的相关数据.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件A 订购方案数据结果.xlsx",
+      "size_bytes": 99251,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "问题2的订购方案结果",
+          "rows": 409,
+          "cols": 25,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.仅在表中浅蓝色区域填写订货量数据，没有订货为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3.数据中及左右不要有空格和其他任何符号。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题3的订购方案结果",
+          "rows": 409,
+          "cols": 25,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在表中浅红色区域填写订货量数据，没有订货为空白，单位为立方米；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3.数据中及左右不要有空格和其他任何符号。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题4的订购方案结果",
+          "rows": 409,
+          "cols": 25,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在表中浅绿色区域填写订货量数据，没有订货为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "3.数据中及左右不要有空格和其他任何符号。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021C\\attachments\\附件A_订购方案数据结果.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件B 转运方案数据结果.xlsx",
+      "size_bytes": 620902,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "问题2的转运方案结果",
+          "rows": 409,
+          "cols": 194,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在浅蓝色区域填写转运量数据（数据中及左右不要有空格或其他符号），没有转运为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "供应商ID",
+              "第01周",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              "第02周",
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题3的转运方案结果",
+          "rows": 409,
+          "cols": 194,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在浅红色区域填写转运量数据（数据中及左右不要有空格或其他符号），没有转运为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "供应商ID",
+              "第01周",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              "第02周",
+              null,
+              null
+            ]
+          ]
+        },
+        {
+          "name": "问题4的转运方案结果",
+          "rows": 409,
+          "cols": 194,
+          "preview": [
+            [
+              "注意：",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "1.请不要修改表格中已有的任何信息；",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "2.请仅在浅绿色区域填写转运量数据（数据中及左右不要有空格或其他符号），没有转运为空白，单位为立方米。",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "供应商ID",
+              "第01周",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              "第02周",
+              null,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2021C\\attachments\\附件B_转运方案数据结果.xlsx"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "11",
+      "problem": "2021C",
+      "title": "生产企业原材料订购与运输的评价与规划模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C066）.pdf",
+      "pages": 60,
+      "card_path": "problems\\2021C\\papers\\11_C066\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\11_C066\\gallery.html",
+      "visual_pages": 32
+    },
+    {
+      "paper_id": "12",
+      "problem": "2021C",
+      "title": "基于双层和随机规划的原材料订购与运输问题",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C085）.pdf",
+      "pages": 56,
+      "card_path": "problems\\2021C\\papers\\12_C085\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\12_C085\\gallery.html",
+      "visual_pages": 19
+    },
+    {
+      "paper_id": "13",
+      "problem": "2021C",
+      "title": "基于优化算法的企业原材料订购与运输规划模型",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C169）.pdf",
+      "pages": 51,
+      "card_path": "problems\\2021C\\papers\\13_C169\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\13_C169\\gallery.html",
+      "visual_pages": 20
+    },
+    {
+      "paper_id": "14",
+      "problem": "2021C",
+      "title": "双目标贪心优化下的企业原料订购运输方案",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛C题论文展示（C283）.pdf",
+      "pages": 58,
+      "card_path": "problems\\2021C\\papers\\14_C283\\paper_card.md",
+      "gallery_path": "problems\\2021C\\papers\\14_C283\\gallery.html",
+      "visual_pages": 22
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": "v27_candidate_ai_era_problem_reader",
+  "status": "promoted_to_v27_formal_problem_reader",
+  "parent": "../v26_post_23_iteration_frozen",
+  "parent_mutated": false,
+  "evidence": {
+    "problems_censused": 29,
+    "previous_training_problems": 23,
+    "previous_national_first_papers": 58,
+    "pilot_problem": "2018B",
+    "heldout_tests": 5,
+    "official_single_problem_reviews_discovered": 24,
+    "without_public_single_problem_review": [
+      "2021A",
+      "2021B",
+      "2021C",
+      "2021D",
+      "2021E"
+    ]
+  },
+  "focus": {
+    "deep": [
+      "A",
+      "B",
+      "C"
+    ],
+    "coarse": [
+      "D",
+      "E"
+    ]
+  },
+  "promotion_gate": "Complete visual audit, pass at least five new blind ABC tests, and regress all 29 existing problems before promotion.",
+  "rules_file": "../../AI时代读题训练/v27_candidate_rules.md",
+  "inheritance": "full_v26_plus_v27_delta",
+  "new_cross_problem_gates": [
+    "hybrid_event_state_gate",
+    "objective_well_posedness_gate",
+    "policy_behavior_feedback_gate",
+    "trajectory_constraint_gate",
+    "exposure_denominator_gate"
+  ],
+  "historical_regression_cases": [
+    "2019A",
+    "2019B",
+    "2019C",
+    "2018A",
+    "2018C"
+  ],
+  "promotion_decision": "GO_operational_release_with_future_prospective_monitoring",
+  "promoted_release": "../v27_formal_problem_reader"
+}

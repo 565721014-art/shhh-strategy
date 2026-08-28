@@ -1,0 +1,178 @@
+{
+  "problem": "2025B",
+  "title": "碳化硅外延层厚度的确定",
+  "category": "机理、工程与反演",
+  "mother": "红外干涉机理驱动的厚度反演与多光束诊断",
+  "chain": "单次反射干涉关系 -> 光谱特征与厚度算法 -> 多角度一致性验证 -> 多光束条件识别 -> 修正反演",
+  "risks": [
+    "波数/波长单位混用",
+    "峰间距方法忽略折射率色散",
+    "多光束出现条件没有可检验判据"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 2,
+  "questions": [
+    "问题 1 如果考虑外延层和衬底界面只有一次反射、透射所产生的干涉条纹的情形（图 1），建立确定外延层厚度的数学模型。",
+    "问题 2 请根据问题 1 的数学模型，设计确定外延层厚度的算法。对",
+    "问题 3 光波可以在外延层界面和衬底界面产生多次反射和透射（图 2），从而产生多光 束干涉。请推导产生多光束干涉的必要条件，以及多光束干涉对外延层厚度计算精度可能产 生的影响。 请根据多光束干涉的必要条件，分析"
+  ],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件1.xlsx",
+      "size_bytes": 187625,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              31.29322924
+            ],
+            [
+              400.639,
+              30.60428036
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2025B\\attachments\\附件1.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件2.xlsx",
+      "size_bytes": 186957,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              36.33668088
+            ],
+            [
+              400.639,
+              35.75208839
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2025B\\attachments\\附件2.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件3.xlsx",
+      "size_bytes": 189278,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              79.8019744
+            ],
+            [
+              400.639,
+              79.41137847
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2025B\\attachments\\附件3.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件4.xlsx",
+      "size_bytes": 189423,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 7470,
+          "cols": 2,
+          "preview": [
+            [
+              "波数 (cm-1)",
+              "反射率 (%)"
+            ],
+            [
+              399.6747,
+              0
+            ],
+            [
+              400.1569,
+              91.48944351
+            ],
+            [
+              400.639,
+              91.23369158
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2025B\\attachments\\附件4.xlsx"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "52",
+      "problem": "2025B",
+      "title": "基于联合物理色散模型与先进信号处理方法测定碳化硅外延层厚度",
+      "source_name": "2025_B_国一论文.pdf",
+      "pages": 38,
+      "card_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\paper_card.md",
+      "gallery_path": "problems\\2025B\\papers\\52_2025_B_国一论文\\gallery.html",
+      "visual_pages": 30
+    },
+    {
+      "paper_id": "53",
+      "problem": "2025B",
+      "title": "红外干涉法测量外延层厚度的建模分析",
+      "source_name": "2025_B060_官方论文展示.pdf",
+      "pages": 72,
+      "card_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025B\\papers\\53_2025_B060_官方论文展示\\gallery.html",
+      "visual_pages": 34
+    },
+    {
+      "paper_id": "54",
+      "problem": "2025B",
+      "title": "碳化硅外延层厚度的双光束和多光束干涉法测量研究",
+      "source_name": "2025_B157_官方论文展示.pdf",
+      "pages": 67,
+      "card_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\paper_card.md",
+      "gallery_path": "problems\\2025B\\papers\\54_2025_B157_官方论文展示\\gallery.html",
+      "visual_pages": 28
+    }
+  ]
+}

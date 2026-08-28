@@ -1,0 +1,193 @@
+{
+  "problem": "2024D",
+  "title": "反潜航空深弹命中概率问题",
+  "category": "空间、动态与路径",
+  "mother_problem": "定位误差下的概率命中区域与投弹参数优化",
+  "question_chain": "二维定位误差命中概率 -> 加入深度误差与引信 -> 单弹参数优化 -> 多弹阵列联合覆盖",
+  "misreading_risks": [
+    "条件概率与联合概率混用",
+    "爆炸球/杀伤区域几何错误",
+    "多弹命中事件错误地假设独立"
+  ],
+  "questions": [
+    "问题 1 投射一枚深弹，潜艇中心位置的深度定位没有误差，两个水平坐标定位均服从 正态分布。分析投弹最大命中概率与投弹落点平面坐标及定深引信引爆深度之间的关系，并 给出使得投弹命中概率最大的投弹方案，及相应的最大命中概率表达式。 针对以下参数值给出最大命中概率：潜艇长 100 m，宽 20 m，高 25 m，潜艇航向方位 角为 90∘，深弹杀伤半径为 20 m，潜艇中心位置的水平定位标准差 𝜎 = 120 m，潜艇中心 位置的深度定位值为 150 m.",
+    "问题 2 仍投射一枚深弹，潜艇中心位置各方向的定位均有误差。请给出投弹命中概率 的表达式。 针对以下参数，设计定深引信引爆深度，使得投弹命中概率最大：潜艇中心位置的深度 定位值为 150 m，标准差 𝜎𝑧 = 40 m，潜艇中心位置实际深度的最小值为 120 m，其他参 数同问题 1。",
+    "问题 3 由于单枚深弹命中率较低，为了增强杀伤效果，通常需要投掷多枚深弹。若一 架反潜飞机可携带 9 枚航空深弹，所有深弹的定深引信引爆深度均相同，投弹落点在平面上 呈阵列形状（见图 2） 。在问题 2 的参数下，请设计投弹方案（包括定深引信引爆深度，以 及投弹落点之间的平面间隔） ，使得投弹命中（指至少一枚深弹命中潜艇）的概率最大。 图 2 多枚投弹落点平面分布示意图"
+  ],
+  "attachments": [],
+  "papers": [
+    {
+      "paper_id": "47",
+      "problem": "2024D",
+      "title": "反洪航空深弹命中概率的优化问题",
+      "source_name": "2024_2024高教社杯全国大学生数学建模竞赛D题论文展示（D033）.pdf",
+      "pages": 55,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-01.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-02.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-03.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-04.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "二开导这度4 位置示意图"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-05.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "弄4 全六一引二主度4位和示意图"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-06.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "图5情形四可命中范围区域品，",
+            "图6定形五可命中范围区并只，"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-07.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-08.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-09.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "医$ 正赤分布示意图"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-10.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图9 旋转后冰坐标系",
+            "图10 失正后新坐标系"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-11.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p11"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-13.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-14.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图12 4 与实际深度最小答! 相对位置本"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-15.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-16.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图16国区域Qe"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-17.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-18.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-19.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "图17 187S.1801内4 的步闪为了 时命中少大的闪与 的关系"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-20.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图19 丸枚炸弹命中兹国相切的请形及炸弹编号"
+          ],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-21.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-22.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p22"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2024D\\papers\\47_D033\\pages\\page-32.png",
+          "gallery_anchor": "problems/2024D/papers/47_D033/gallery.html#p32"
+        }
+      ],
+      "abstract_extract": "应用深水作阐《条区深阐》 反座，兽是二肯时期反海的重要手抽，随大现代军事技\n术的发展，旬雷尝淋普代这漳丰为现代反潜的主要武器。得在海续竺海底地形较为复杂\n的海域，由于从只低等人点，仍有一些国家在研究和使用深漳。本文针对投立全中上训\n大小，以平面标系和认度来建立不同的投关方案，深究全全中性率最大的方案\n\n针对间是一，由条件可知，计昌中心位置评度定位没有涡状，且机水平写位的况和\n相互独立且慑失相的正态分布，可得两水平村矿合概率密度备效。为琳充最大机\n府中梳与搜浊深点平盏村人及定深引入引纤深度4 的关系, 本间以人ks)作为沁\n竹变量，根据庆深引信引塌深度4 与湾和中心位置深度定位信的不同关系分草讨论\n和和情形，得到每和情形的外概率表达式，最络得出报关全中用素与报关洲点从标及引\n这大的一般关系，分析得到当加 -了万<df<A +二可时，才可能有有要刘最大的投得\n芭比时区得投弹最大全中服束与投强东点平面时的革系 Pt,aj。结论，1、投旨全让\n本最大的方守为定深引信引去度4 设定在淫上表面深度和下表面深度之全,投弹\n这点水平标在(0投弹点水平标为“看甩打嚼*，2 投关中展率与半多必向无\n英。 3对于所抬参妆佑运用 Mall由 软件计算得由果大械六OO)= 00837\n\n计对间题一，在问题一的基础上，增加考虑半和中心化置的深度定他深疮问题 因\n为这认方疝误和生水平方向误关相下狼立, 所以问题一中所的全得投毕人中楼率最大\n的投关方案中水平方向“看于条厂” 投方案人成立。接下来。想所深引信引所深度\n4与戎旺中心实际尝度最小人1的相对位置可建立种情形，先以情形(为侧进行具作\n启明，根据汪深度=不同，在问题一的介析基础上，得到情形(9)的人中概检表达式。\n同治，傅次得出共余 4 各捕形全中板表达式，印可缆得完整的投弹全中撤率表达式\nRd。对于所疹基数值通过数估计算得: 当定深引信引既深讶为57 56，投关中\n代训最大，最大谷中概率为00986.\n\n对问题三，在问题一和问题二的基础上,我们得到当a=-5+28.=于+2时，合\n中清太这与的关系式,自 malab 吾序录得当4 =137.30 时汪放衬中的概率最大，\n湾欠中的释大要率为03232\n\n关甸词， 反潜深漳”全中概率，正者分三重积分 僻化算法",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 44 行：一、问题重述（问题重述）\n- 第 89 行：二、问题分析（问题分析）\n- 第 278 行：结论 1 企意的水平投弹基点tf. 使得投天命中酸率最大的机关方案中设定定深（结论）\n- 第 377 行：结论 2: 投弹命中概率最大的投弹方案为，东西方向! = 0南北方向*=收即投着落（结论）",
+      "model_terms": "- 蒙特卡洛：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 间三一，与问题一不同，问题二在潜秀中心的深度方向上也存在误阁，但由于深度\n- 方向的误基与本平方向上的误关相互独立，所以问题一中所得到的水平方向方案仙姑成\n- 问题三，多要深并月时投据，至少有有一收或多优深漳挫芝点在克的水平贾轩内，\n- 参数与问题一、二相同。九枚深漳引介深度相同，攻点平面必标旦阵列分。在旭立相\n- 处理广法与问题一类羽，定深信引埋尝度委虑万法与问题二福近，建出总命中概率怖",
+      "paths": {
+        "card": "problems/2024D/papers/47_D033/paper_card.md",
+        "gallery": "problems/2024D/papers/47_D033/gallery.html",
+        "visual_contact": "problems/2024D/papers/47_D033/visual_contact.html",
+        "source_pdf": "problems/2024D/papers/47_D033/source.pdf",
+        "full_ocr": "problems/2024D/papers/47_D033/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2024D/papers/47_D033/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}

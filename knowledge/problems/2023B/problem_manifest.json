@@ -1,0 +1,252 @@
+{
+  "problem": "2023B",
+  "title": "多波束测线问题",
+  "category": "空间、动态与路径",
+  "mother": "海底地形上的多波束覆盖几何与测线规划",
+  "chain": "二维斜坡覆盖 -> 任意方向三维几何 -> 矩形海域测线设计 -> 实测地形分区与全覆盖规划",
+  "risks": [
+    "水平宽度与坡面宽度混同",
+    "二维公式未经验证直接推广三维",
+    "平均重叠率掩盖局部漏测"
+  ],
+  "statement_pdf": "original/statement.pdf",
+  "statement_text": "original/statement.txt",
+  "statement_pages": 3,
+  "questions": [
+    "问题 1 与测线方向垂直的平面和海底坡面的交线构成一条与水平面夹角为 𝛼 的斜线（图 7），称 𝛼 为坡度。请建立多波束测深的覆盖宽度及相邻条带之间重叠率的数学模型。 图 7 问题 1 的示意图 若多波束换能器的开角为 120∘，坡度为 1.5∘，海域中心点处的海水深度为 70 m，利用上 述模型计算表 1 中所列位置的指标值，将结果以表 1 的格式放在正文中，同时保存到 result1.xlsx 文件中。 表 1 问题 1 的计算结果 测线距中心点 −800 −600 −400 −200 0 200 400 600 800 处的距离/m 海水深度/m 70 覆盖宽度/m 与前一条测线 — 的重叠率/%",
+    "问题 2 考虑一个矩形待测海域（图 8），测线方向与海底坡面的法向在水平面上投影的夹 角为 𝛽，请建立多波束测深覆盖宽度的数学模型。 图 8 问题 2 的示意图 若多波束换能器的开角为 120∘，坡度为 1.5∘，海域中心点处的海水深度为 120 m，利用上 述模型计算表 2 中所列位置多波束测深的覆盖宽度，将结果以表 2 的格式放在正文中，同时保 存到 result2.xlsx 文件中。 表2 问题 2 的计算结果 测量船距海域中心点处的距离/海里 覆盖宽度/m 0 0.3 0.6 0.9 1.2 1.5 1.8 2.1 0 45 测线 90 方向 135 夹角 180 /° 225 270 315",
+    "问题 3 考虑一个南北长 2 海里、东西宽 4 海里的矩形海域内，海域中心点处的海水深度 为 110 m，西深东浅，坡度为 1.5∘ ，多波束换能器的开角为 120∘ 。请设计一组测量长度最短、 可完全覆盖整个待测海域的测线，且相邻条带之间的重叠率满足 10%~20% 的要求。",
+    "问题 4 海水深度数据（附件.xlsx）是若干年前某海域（南北长 5 海里、东西宽 4 海里） 单波束测量的测深数据，现希望利用这组数据为多波束测量船的测量布线提供帮助。在设计测 线时，有如下要求：(1) 沿测线扫描形成的条带尽可能地覆盖整个待测海域；(2) 相邻条带之间 的重叠率尽量控制在 20% 以下；(3) 测线的总长度尽可能短。在设计出具体的测线后，请计算 如下指标：(1) 测线的总长度；(2) 漏测海区占总待测海域面积的百分比；(3) 在重叠区域中， 重叠率超过 20% 部分的总长度。 注 在附件中，横、纵坐标的单位是海里，海水深度的单位是米。1 海里=1852 米。 附件 海水深度数据"
+  ],
+  "attachments": [
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/result1.xlsx",
+      "size_bytes": 9222,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 4,
+          "cols": 10,
+          "preview": [
+            [
+              "测线距中心点处的距离/m",
+              -800,
+              -600,
+              -400,
+              -200,
+              0,
+              200,
+              400,
+              600,
+              800
+            ],
+            [
+              "海水深度/m",
+              null,
+              null,
+              null,
+              null,
+              70,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "覆盖宽度/m",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              "与前一条测线的重叠率/%",
+              "——",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2023B\\attachments\\result1.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/result2.xlsx",
+      "size_bytes": 9445,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 10,
+          "cols": 10,
+          "preview": [
+            [
+              "覆盖宽度/m",
+              null,
+              "测量船距海域中心点处的距离/海里",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              0,
+              0.3,
+              0.6,
+              0.9,
+              1.2,
+              1.5,
+              1.8,
+              2.1
+            ],
+            [
+              "测线方向夹角/°",
+              0,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              45,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2023B\\attachments\\result2.xlsx"
+    },
+    {
+      "path": "EXTERNAL_FULL_ARCHIVE/附件.xlsx",
+      "size_bytes": 313543,
+      "kind": "xlsx",
+      "sheets": [
+        {
+          "name": "Sheet1",
+          "rows": 253,
+          "cols": 203,
+          "preview": [
+            [
+              "海水深度/m",
+              null,
+              "横向坐标/NM（由西向东）",
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null,
+              null
+            ],
+            [
+              null,
+              null,
+              0,
+              0.020000000000000018,
+              0.03999999999999998,
+              0.06,
+              0.08000000000000002,
+              0.09999999999999998,
+              0.12,
+              0.14,
+              0.16000000000000003,
+              0.18
+            ],
+            [
+              "纵向坐标/NM\n（由南向北）",
+              0,
+              24.4,
+              24.12,
+              23.85,
+              23.59,
+              23.34,
+              23.1,
+              22.88,
+              22.67,
+              22.46,
+              22.27
+            ],
+            [
+              null,
+              0.020000000000000018,
+              24.32,
+              24.04,
+              23.77,
+              23.51,
+              23.27,
+              23.03,
+              22.81,
+              22.6,
+              22.39,
+              22.21
+            ]
+          ]
+        }
+      ],
+      "linked_path": "problems\\2023B\\attachments\\附件.xlsx"
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "26",
+      "problem": "2023B",
+      "title": "多波来测线布设",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B226）.pdf",
+      "pages": 51,
+      "card_path": "problems\\2023B\\papers\\26_B226\\paper_card.md",
+      "gallery_path": "problems\\2023B\\papers\\26_B226\\gallery.html",
+      "visual_pages": 39
+    },
+    {
+      "paper_id": "27",
+      "problem": "2023B",
+      "title": "基于主要目标法的测线设计问题",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B311）.pdf",
+      "pages": 34,
+      "card_path": "problems\\2023B\\papers\\27_B311\\paper_card.md",
+      "gallery_path": "problems\\2023B\\papers\\27_B311\\gallery.html",
+      "visual_pages": 17
+    },
+    {
+      "paper_id": "28",
+      "problem": "2023B",
+      "title": "多波束测深合理探测方案的设计及效果分析",
+      "source_name": "2023_2023高教社杯全国大学生数学建模竞赛B题论文展示（B477）.pdf",
+      "pages": 50,
+      "card_path": "problems\\2023B\\papers\\28_B477\\paper_card.md",
+      "gallery_path": "problems\\2023B\\papers\\28_B477\\gallery.html",
+      "visual_pages": 21
+    }
+  ]
+}

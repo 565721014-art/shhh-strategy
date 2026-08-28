@@ -1,0 +1,994 @@
+{
+  "problem": "2021E",
+  "title": "中药材的鉴别",
+  "category": "识别、时序与风险",
+  "mother_problem": "红外光谱预处理、特征提取与种类/产地识别",
+  "question_chain": "光谱校正与平滑 -> 特征/波段提取 -> 种类分类 -> 产地识别 -> 近红外与中红外融合",
+  "misreading_risks": [
+    "同一样本重复光谱跨训练测试集",
+    "预处理在全数据上拟合",
+    "降维图好看但分类验证不足"
+  ],
+  "questions": [
+    "问题 1. 根据",
+    "问题 2. 根据",
+    "问题 3. 根据",
+    "问题 4."
+  ],
+  "attachments": [
+    {
+      "name": "附件1.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021E\\attachments\\附件1.xlsx",
+      "sheets": [
+        {
+          "name": "中红外",
+          "rows": 426,
+          "cols": 3349,
+          "preview": [
+            [
+              "No",
+              652,
+              653,
+              654,
+              655,
+              656,
+              657,
+              658,
+              659,
+              660,
+              661,
+              662
+            ],
+            [
+              1,
+              0.094196,
+              0.094057,
+              0.094057,
+              0.093992,
+              0.093992,
+              0.093986,
+              0.093986,
+              0.094197,
+              0.094197,
+              0.094513,
+              0.094513
+            ],
+            [
+              2,
+              0.106043,
+              0.105832,
+              0.105832,
+              0.105599,
+              0.105599,
+              0.105454,
+              0.105454,
+              0.105452,
+              0.105452,
+              0.105376,
+              0.105376
+            ],
+            [
+              3,
+              0.27243,
+              0.272049,
+              0.272049,
+              0.271811,
+              0.271811,
+              0.271008,
+              0.271008,
+              0.270318,
+              0.270318,
+              0.269205,
+              0.269205
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件2.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021E\\attachments\\附件2.xlsx",
+      "sheets": [
+        {
+          "name": "中红外",
+          "rows": 674,
+          "cols": 3450,
+          "preview": [
+            [
+              "No",
+              "OP",
+              551,
+              "=C1+1",
+              "=D1+1",
+              "=E1+1",
+              "=F1+1",
+              "=G1+1",
+              "=H1+1",
+              "=I1+1",
+              "=J1+1",
+              "=K1+1"
+            ],
+            [
+              1,
+              11,
+              0.338459,
+              0.338459,
+              0.339733,
+              0.339733,
+              0.340814,
+              0.340814,
+              0.342109,
+              0.342109,
+              0.342799,
+              0.342799
+            ],
+            [
+              2,
+              1,
+              0.311826,
+              0.311826,
+              0.312213,
+              0.312213,
+              0.312997,
+              0.312997,
+              0.313481,
+              0.313481,
+              0.313603,
+              0.313603
+            ],
+            [
+              3,
+              null,
+              0.375583,
+              0.375583,
+              0.376209,
+              0.376209,
+              0.377075,
+              0.377075,
+              0.378287,
+              0.378287,
+              0.379636,
+              0.379636
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件3.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021E\\attachments\\附件3.xlsx",
+      "sheets": [
+        {
+          "name": "近红外",
+          "rows": 256,
+          "cols": 5998,
+          "preview": [
+            [
+              "No",
+              "OP",
+              4004,
+              4005,
+              4006,
+              4007,
+              4008,
+              4009,
+              4010,
+              4011,
+              4012,
+              4013
+            ],
+            [
+              1,
+              14,
+              0.869187,
+              0.869187,
+              0.869769,
+              0.869769,
+              0.869769,
+              0.869769,
+              0.869879,
+              0.869879,
+              0.869879,
+              0.869879
+            ],
+            [
+              2,
+              13,
+              0.944521,
+              0.944521,
+              0.944225,
+              0.944225,
+              0.944225,
+              0.944225,
+              0.943621,
+              0.943621,
+              0.943621,
+              0.943621
+            ],
+            [
+              3,
+              17,
+              0.959754,
+              0.959754,
+              0.961532,
+              0.961532,
+              0.961532,
+              0.961532,
+              0.962453,
+              0.962453,
+              0.962453,
+              0.962453
+            ]
+          ]
+        },
+        {
+          "name": "中红外",
+          "rows": 256,
+          "cols": 3450,
+          "preview": [
+            [
+              "No",
+              "OP",
+              552,
+              553,
+              554,
+              555,
+              556,
+              557,
+              558,
+              559,
+              560,
+              561
+            ],
+            [
+              1,
+              14,
+              0.026602,
+              0.031197,
+              0.031197,
+              0.034768,
+              0.034768,
+              0.036226,
+              0.036226,
+              0.037201,
+              0.037201,
+              0.037945
+            ],
+            [
+              "=A2+1",
+              13,
+              0.027282,
+              0.033386,
+              0.033386,
+              0.038157,
+              0.038157,
+              0.040221,
+              0.040221,
+              0.041793,
+              0.041793,
+              0.042951
+            ],
+            [
+              "=A3+1",
+              17,
+              0.019621,
+              0.028953,
+              0.028953,
+              0.036467,
+              0.036467,
+              0.040136,
+              0.040136,
+              0.042997,
+              0.042997,
+              0.045042
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "附件4.xlsx",
+      "kind": "xlsx",
+      "linked_path": "problems\\2021E\\attachments\\附件4.xlsx",
+      "sheets": [
+        {
+          "name": "近红外",
+          "rows": 400,
+          "cols": 5999,
+          "preview": [
+            [
+              "No",
+              "Class",
+              "OP",
+              4004,
+              4005.00016680567,
+              4006.00033361134,
+              4007.00050041701,
+              4008.00066722268,
+              4009.00083402835,
+              4010.00100083402,
+              4011.00116763969,
+              4012.00133444537
+            ],
+            [
+              1,
+              "B",
+              16,
+              0.7419468,
+              0.7418536,
+              0.7418536,
+              0.741782799999999,
+              0.741782799999999,
+              0.7414766,
+              0.7414766,
+              0.740902199999999,
+              0.740902199999999
+            ],
+            [
+              2,
+              "B",
+              null,
+              0.750203799999999,
+              0.749996499999999,
+              0.749996499999999,
+              0.749809199999999,
+              0.749809199999999,
+              0.749671899999999,
+              0.749671899999999,
+              0.749345,
+              0.749345
+            ],
+            [
+              3,
+              null,
+              10,
+              0.6963413,
+              0.6961336,
+              0.6961336,
+              0.695766299999999,
+              0.695766299999999,
+              0.695439699999999,
+              0.695439699999999,
+              0.695172699999999,
+              0.695172699999999
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "papers": [
+    {
+      "paper_id": "18",
+      "problem": "2021E",
+      "title": "基于机器学习的中药材类别与产地鉴别",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛E题论文展示（E014）.pdf",
+      "pages": 51,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p2"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图4 站"
+          ],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图 32 同人 路半才和二PCA特征和之上的主人本",
+            "表 5 几件了壕行 CA后主成人人个儿"
+          ],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "国 17SWy 分类的产地上天虹 。。 图 16 SA 分类"
+          ],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\18_E014\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021E/papers/18_E014/gallery.html#p20"
+        }
+      ],
+      "abstract_extract": "本文通过建立基于机器学习的五和分类种，分析了近中红外数据及其光谱\n图，对药村实现种基与产地的鉴别-\n\n针对间题一，主要解决两个问题，一是需要研究不同种类基村的特征和关中\n性,二是要攻别东村的种类。 鉴于车冶兴谱数据可能会册现直线俱黎重郑，所\n以我们使用SavitkyGolay卷积平滑法与其一阶及二阶平滑导数和标准正志变反\n《SNV) 来对光谱数据进行巴处理。运用主成外分析 (PCA》 对原始交认到据进\n行降级，拍到12个主成分，进行Kmeans聚奖，将药村划分为六类。 对每一类区\n桂进行药村烷征及差异性的分析及SID值的比较，发现第四类药村《只有3个样\n本) 的光详匣明显不同于其他和南开村，而其他种类药材的SID值相互间基异不\n大，扒届除第轩类区村的产地外，其信类药村的产地及生长环境相关不大，\n\n针对问题一，我们提出了相对完整的中药产地和类型神帮龟,得括光谱区\n指巴处理、特征浊取、特征选择、分类宽型构建及性能测试采用了SO下六法\n结合一阶和二阶导数法进行了处再, 用PCA了推提取特征, 使用决策机.-邹反、\n朴素贝时斯和线性到别分析的分类器,对中药光洪致握进行类型半别,结果表枯，\nSG平清结合二阶导数能增加大部分分类各的识别效果,在不同的分类禹中,LDA\n的性能最稳定，最佳训别淮克这为98 3%b， 万分数为198。利用鉴别分类洗可浊\n取对未知样品的鉴别结果为.\nETIESEIIEIIIRIECETONEINTSESNETIRCII\nol ayroeass。nhii。，:i，\n\n针对间题三，利用第二问的识别了莫，我们分别基于近所外光庶数据、中红\n外交漠致据及两考合并的北湛效据分别建立分美学习磺型,结果在产地鉴别效\n中， 近红外交谎不如中红外光谱不如二者合并的综合交谨。其中的LDA识别效\n最好，识别素为98. 4%，万分数为097，对未知产地进行塞列，结果为\n\nFRIIFPDFPIEIICSIEZITIITOR\n一和 9\n\n针对问题四，革于二问中的识别奏架，利用陵件四中的近红外数据对药材类\n型进行鉴别，识别准确素这到100%6，但是对于故别产地时，才果不再恕，于是\n我们建立基于药材类型的产地识唱精开,在识别了药村美弄的基础上， 对不同药\n村的产地建立训别并型，分别提开淮确率达到726%6，8& 9%6与100%6，最终结果\n六\n\nET\n\ncs   四   人   四   加   加\n\nop   5   四   1   了   了   四\n\n本文研究发现交汇数据拓处理、 特征扯取和选择算法可以有效的提高交诺分\n析的准确素。就本古亲题而言SG的一阶导雪预处理，PCA捉取特征、LDA学习\n的准确率最下证",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 56 行：关键词，红外光讲 中药材鉴别 机器学习（关键词）\n- 第 143 行：四、符号说明及名词定义（符号说明）\n- 第 160 行：五、模型建立与求解（模型建立）\n- 第 762 行：六、模型检验（模型检验）\n- 第 785 行：九、参考文献（参考文献）",
+      "model_terms": "- 主成分：23 次\n- 支持向量机：2 次\n- 交叉验证：1 次\n- 回归：1 次\n- 聚类：1 次\n- 贝叶斯：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 建立站学模型，研究解次以下问题。\n- 析深究分类的合理性,最后各过对不同种类药村的光详数据进行作团,适过内度、\n- 然后鉴别出药材的产地，最后对药材进行特征的分析及差异性的比较。\n- 地, 在对队件4 中的近红外光记数据预处理后，我们利用问题二的分类可模型将\n- 5.1 问题一的模型建立与分析",
+      "paths": {
+        "card": "problems/2021E/papers/18_E014/paper_card.md",
+        "gallery": "problems/2021E/papers/18_E014/gallery.html",
+        "visual_contact": "problems/2021E/papers/18_E014/visual_contact.html",
+        "source_pdf": "problems/2021E/papers/18_E014/source.pdf",
+        "full_ocr": "problems/2021E/papers/18_E014/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021E/papers/18_E014/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "19",
+      "problem": "2021E",
+      "title": "中药材的鉴别",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛E题论文展示（E025）.pdf",
+      "pages": 39,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p1"
+        },
+        {
+          "page": 2,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-02.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p2"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [
+            "图 4-1 部分药材的中红外光谱数据示意图",
+            "图 42. 同一波数对应吸光度数据示意图 图 4-3. 不同类别药材光谱数据示意图"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "表 4-1 为不同编号样本的描述性统计分析, 由表 可以看出每个样本有 3348 个数据"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图 4-4.肘部法则确定聚类数 图 4-5.间隔统计量确定聚类数"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [
+            "表 4-2,累积贡献率表",
+            "4-8.有时部法则确定聚类数 图 4-9.间了肾统计量确定聚类数",
+            "图 4-10.平均轮廓法确定聚类数 图 4-11.K-means 聚类结果图",
+            "图 4-9 是由间隔统计量法得到的区 值, 当K=3 时，Gap() 取得局部最大值, 根据图4-10"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图 4-12.肘部法则确定聚类数 图 4-13.间隔统计量确定聚类数",
+            "图 4-14,平均轮廊法确定聚类数 图 4-15.K-means 聚类结果图",
+            "图 4-12 是由肘部法则得到的氏值，在 K=3 时，畸变程度得到大幅改善，可以选取",
+            "图4-16、图 4-17、4-18、4-19 是以窗口长度为 50 的平滑处理提取均值、标准差、",
+            "图 4-16.有时部法则确定聚类数 图 4-17.间隔统计量确定聚类数"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "岁 4-18 平均轮廓法确定聚类数 图 4-19.K-means 聚关结果图",
+            "图 4-18 可以得出，在 K=3 时，畸变程度得到大幅改善，Gap() 取得局部最大值，并且",
+            "表 4-3.基于 PCA 和特征提取 (20) 的 K-means 聚类的结果"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "图 4-20.Ward 聚类谱系图",
+            "图 4-21. PCA 降维后的 Ward 聚类谱系图",
+            "图 4-21 是经过PCA 降维后选取前三个主成分后进行 Ward 聚类分析后的结果，对",
+            "图 4-22 是以窗口长度为 20 的平滑处理提取药材的均值、标准差、下四分位数、中"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图422.窗口长度 20 的特征提取后的 Ward 聚类谱系图",
+            "图4-23 是以窗口长度为 20 的平滑处理提取药材的均值、标准莽、下四分位数、中"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "图 4-24 不同种类药材光详数据均值曲线 几 4-25 不同种类药材光谱数据标准差曲线",
+            "表 4-4 分波段方才分析表",
+            "表 4-4 为不同种类药材中红外光谱的方差分析结果，结果显示，在大多数波段不同",
+            "表 4-5 不同波段方差分析表"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [
+            "图 5-1 不同产地药材光谱数据均值曲线 图 $-2 不同产地药材光谱数据标准差曲线",
+            "表 5-1 分波段方差分析秀",
+            "表 5-2 为不同产地药材中红外光谱的方差分析结果，结果显示，在某些波段不同产",
+            "表 5-2 不同波段方差分析表"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "表 5-3 基于机器学习方法的药材产地鉴别模型比较"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图5-1 原始数据集宣型比较"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图5-2 波段.20 数据集模型比较"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [
+            "表 5-5 未知药材产地鉴别结果",
+            "表 6-1 基于机器学习的近红外光谱数据的中药材产地鉴别模型比较"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "表 6-2 基于机器学习的中红外光谱数据的中药材产地鉴别异型比较"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [
+            "表 6-3 基于机器学习的近、中红外光谱数据的中药材产地鉴别模型"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [
+            "图 6-1 原始数据模型比较",
+            "图6-2 淫段-20 数据模型比较"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [
+            "表 6-4 鲸鱼优化后LightGBM 模型分类准确率",
+            "表 6-5 特征重要性排序"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [
+            "表 6-6 未知药材产地鉴别结果"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-24.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [
+            "图 7-1 近红外光谱数据中不同产地对应类别的示意图",
+            "表 7-1 基于原始光谱特征的机器学习方法模型比较结果"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p25"
+        },
+        {
+          "page": 26,
+          "captions": [
+            "表 7-2 特征融合的机器学习方法的两阶段中药材鉴别模型比较结果"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-26.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p26"
+        },
+        {
+          "page": 27,
+          "captions": [
+            "表 7-3 目标中药材样本类别和产地分类预测结果"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-27.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p27"
+        },
+        {
+          "page": 28,
+          "captions": [
+            "表1.肘部法则"
+          ],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-28.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p28"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-29.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p29"
+        },
+        {
+          "page": 30,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-30.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p30"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-32.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p32"
+        },
+        {
+          "page": 37,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\19_E025\\pages\\page-37.png",
+          "gallery_anchor": "problems/2021E/papers/19_E025/gallery.html#p37"
+        }
+      ],
+      "abstract_extract": "科学准确地鉴别中药材类别与产地，对于智慧中药产业具有重要的作用。本文构建\n了基于智能优化和机器学习结合的中药材鉴别模型，有效浊高了中药材的鉴别类别与产\n地的精度，主要解决以下问题\n针对问题一，首先，对附件 1 数据进行数据预处理，并将样本进行描述性统计和可\n视化分析， 其次，分别将原始数据、主成分分析降维后数据、提取不同波段长度的特征\n作为属性数据，通过肘部法则、平均轮廓法和间隔统计量法确定最优聚类数。利用\nKK-means 和 Ward 方法对中药材进行聚类分析, 将不同类别的药材数据进行差异性分析。\n针对问题二，将 11 个不同产地药材的中红外光谱数据进行统计分析，绘制出每个\n产地对应光谱数据的均值曲线和方差曲线, 将原始数据进行了降维和分波段计算特征处\n理，形成了包括原始数据在内的五类不同数据集，分别利用 LightGBM、极端梯度增强\n〈CXGBoost) 、支持向量机〈SVM) 、随机森林 〈RF) 、梯度提升决策树〈GBDT) 和\n多层感知机 (MLP) 六种机器学习算法进行分类，采用交叉验证计算四个评价指标对分\n类结果进行评价。最后，利用不同机器学习方法给出药材产地。鉴别结果详见下表。\nNo  名   14  38  了48  3S8  缠  79  86  89  110 134 152 227 331 618\nop6 1 4146106 9 3 1419 ”5 3\n针对问题三，基于鲸鱼优化和机器学习的药材产地鉴别模型。首先，提取不同区间\n波段特征属性，分别将 13 个不同产地药材的近红外光谱数据进行特征分析，分别利用\nLightGBM 等 6 种算法对药材产地进行分类识别, 并科选出有利于产地识别的重要特征\n其次，利用中红外光谱数据提取不同区间泪段特征属性，利用上述 6 种算法对药材产地\n进行分类识别; 利用上述两个方案组成产地识别的特征集，利用不同机器学习方法选定\n最佳模型， 最后，提出基于鲸鱼优化和 LightGBM 方法结合的药材产地识别模型，并对\n药材产地进行识别。鉴别结果详见下表。\nNo    四    15    22    30    34    45    74 14 170 209\nOP  17  11  1   2  16  3   4  10  9  14\n针对问题四, 将附件 4 近红外数据进行统计分析并提取特征, 参照问题三建寞思路，\n利用不同机器学习算法对中药材的类别和产地进行分类预测; 通过构建中药材类别预测\n模型，为未知的中药材样本类别进行预测和标记，再对中药材产地建模。同理，通过构\n建中药材产地预测模型，为未知的中药材样本产地进行预测和标记，对中药材类别构建\n类别预测模型。充分挖掘不同演段对药材类别和产地分类效果差异性,构建基于机器学\n习的两阶段药材类别与产地识别模型，鉴别结果详见下表。\nNo      94     109     140     278     308     330     347\nClass     从      A      友      滞      于      有      了\nOP      SS      区       1       1       莹      才      1]1\n本文创新之处: 采用主成分分析对数据进行降维，利用动态 K-means 实现中药材聚类并\n进行差异性分析。提出鲸鱼优化和机器学习结合的中药材类别与产地识别模型，该模型\n识别效果好、精度高， 对葡萄酒分类、精准医疗、故障诊断等领域具有重要的参考价值。",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 45 行：关键词， 中药材鉴别 K-means 聚类”鲸鱼优化”机器学习 评价指标（关键词）\n- 第 129 行：4.1 数据预处理（数据预处理）\n- 第 131 行：数据预处理在数据分析中起到非常重要的作用。对数据进行预处理，从而提高数据（数据预处理）\n- 第 213 行：数据预处理后的数据进行聚类分析，首先是对聚类数目开值即药材的种类数目的确定，（数据预处理）",
+      "model_terms": "- 聚类：83 次\n- 主成分：17 次\n- 支持向量机：12 次\n- 方差分析：11 次\n- 随机森林：11 次\n- 交叉验证：6 次\n- 决策树：5 次\n- LSTM：2 次\n- 回归：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 类: 最后，将不同类别的中药材数据进行特征提取和差异性分析。\n- 并鉴别药材的产地。 首先，分别将 11 个不同产地药材的中红外光谱数据进行综合汇总，\n- Precision、Recall、F1-score 以及 Accuracy。最后，用不同机器学习方法给出文中所给编\n- 构建基于机器学习的药材产地鉴别模型。 首先，利用近红外光谱数据提取不同区间\n- 习算法对药材产地进行分类识别，并筛选出有利于产地识别的重要特征， 其次，利用中\n- 选后组成产地识别的特征集，利用不同机器学习方法选定最佳模型: 最后，提出基于鲸\n- 四、 问题一模型的建立与求解\n- 对光谱数据进行主成分分析，需要首先对数据进行标准化处理，将原始数据经过处\n- 通过聚类分析鉴别药材种类要首先确定久值，即药材种类数。确定 K-means 的 玉\n- 问题一在中红外光谱的照射下,对应波段光谱照射下的不同药材的吸光度不同来进\n- 行分类,将具有相似性的数据认定为同一种类。针对问题一，利用K-means 聚类方法对\n- 数据预处理后的数据进行聚类分析，首先是对聚类数目开值即药材的种类数目的确定，\n- 主成分分析〈PCA) 是一种常见的数据降维方法，针对问题一，由于附件 1 中样本\n- 针对问题一，对处理之后的数据利用 Ward 聚类方法进行聚类分析，结果如图 4-20\n- 针对问题一，对数据进行主成分分析，对选取前三个主成分的数据再进行 Ward 聚\n- 五、 问题二模型的建立与求解\n- c.然后对每棵决策树都用随机变量来预测结果, 并记录所有预测的结果, 就可以从姓\n- 六、 问题三模型的建立与求解\n- 区别较为明显，因此，如问题二构建的仅仅依据中红外光谱数据鉴别中医药种类的分类\n- 首先利用支持向量机《SVM) 、随机森林 (REF) 、极端梯度增强 〈XGBoost) 、榜\n- 七、 问题四模型的建立与求解\n- 在问题四中, 需要使用所提供的几种药材近红外光谱数据, 鉴别药材的类别与产地。\n- 入产地或类别预测寞型中具有重要意义。因此, 可以通过首先构建中药材类别预测模型，\n- 同理，通过首先构建中药材产地预测模型，为未知的中药材样本产地进行预出和标记，\n- 在构建分类模型中, 仍可以考虑采用问题二和问题三的横型构建思路和求解策略。 不过，\n- 己知信息能够为分类预测旨升一定的性能。在问题四给定的附件数据中，能够清晰发现\n- 此，在本场景下，在分类预测中药材类别时融入产地特征，首先通过构建中药材类别预",
+      "paths": {
+        "card": "problems/2021E/papers/19_E025/paper_card.md",
+        "gallery": "problems/2021E/papers/19_E025/gallery.html",
+        "visual_contact": "problems/2021E/papers/19_E025/visual_contact.html",
+        "source_pdf": "problems/2021E/papers/19_E025/source.pdf",
+        "full_ocr": "problems/2021E/papers/19_E025/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021E/papers/19_E025/problem_analysis_excerpt.txt"
+      }
+    },
+    {
+      "paper_id": "20",
+      "problem": "2021E",
+      "title": "基于红外光谱法的中药材鉴别",
+      "source_name": "2021_2021高教社杯全国大学生数学建模竞赛E题论文展示（E037）.pdf",
+      "pages": 37,
+      "visual_pages": [
+        {
+          "page": 1,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-01.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p1"
+        },
+        {
+          "page": 3,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-03.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p3"
+        },
+        {
+          "page": 4,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-04.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p4"
+        },
+        {
+          "page": 5,
+          "captions": [
+            "图2 附件 1删除原始数据后的图"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-05.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p5"
+        },
+        {
+          "page": 6,
+          "captions": [
+            "图3 提取特征向量后的图形"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-06.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p6"
+        },
+        {
+          "page": 7,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-07.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p7"
+        },
+        {
+          "page": 8,
+          "captions": [
+            "图4 K-means 聚类轮订系数"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-08.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p8"
+        },
+        {
+          "page": 9,
+          "captions": [
+            "图5 附件 1 分类后光谱曲线图",
+            "表3 附件 2 数据锚述性统计结果"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-09.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p9"
+        },
+        {
+          "page": 10,
+          "captions": [
+            "表 3。",
+            "表 4 药材产地计煞统计"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-10.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p10"
+        },
+        {
+          "page": 11,
+          "captions": [
+            "图7 附件 2 做一阶平滑处理后数据图"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-11.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p11"
+        },
+        {
+          "page": 12,
+          "captions": [
+            "表 5 未分类记录与已分类记录间的距离矩阵"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-12.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p12"
+        },
+        {
+          "page": 13,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-13.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p13"
+        },
+        {
+          "page": 14,
+          "captions": [
+            "图8 附件 3 中红外近红外合并数据",
+            "图9 附件 3 中红外原始数据"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-14.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p14"
+        },
+        {
+          "page": 15,
+          "captions": [
+            "图 10 附件 3近红外原始数据"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-15.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p15"
+        },
+        {
+          "page": 16,
+          "captions": [
+            "图 11 附件 4 按不同类别若色的数据图"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-16.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p16"
+        },
+        {
+          "page": 17,
+          "captions": [
+            "图 13 附件 4中 BC 类数据及未分类数据图"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-17.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p17"
+        },
+        {
+          "page": 18,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-18.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p18"
+        },
+        {
+          "page": 19,
+          "captions": [
+            "图 15 附件 4 做平滑处理后的数据图"
+          ],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-19.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p19"
+        },
+        {
+          "page": 20,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-20.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p20"
+        },
+        {
+          "page": 21,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-21.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p21"
+        },
+        {
+          "page": 22,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-22.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p22"
+        },
+        {
+          "page": 23,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-23.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p23"
+        },
+        {
+          "page": 24,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-24.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p24"
+        },
+        {
+          "page": 25,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-25.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p25"
+        },
+        {
+          "page": 29,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-29.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p29"
+        },
+        {
+          "page": 32,
+          "captions": [],
+          "image_path": "problems\\2021E\\papers\\20_E037\\pages\\page-32.png",
+          "gallery_anchor": "problems/2021E/papers/20_E037/gallery.html#p32"
+        }
+      ],
+      "abstract_extract": "本文对附件中的数据进行了统计分析, 对不同的问题分别建立了聚类和分类\n模型，通过红外光谱数据实现了对中药材的鉴别。首先对附件 1*4 的所有数据进\n行了预处理，通过作图发现部分波长的数据差距很小，于是利用极差，将差异不\n明显的波长数据剔除，再对所有的数据进行降维处理, 将数据量压缩到适当范围\n内。最后对不同题目的聚类和分类模型进行求解。\n\n间题一，通过对附件 1 的中红外光谱数据进行探索性分析，发现了其中有 3\n组数据〈第 64、136、201 号) 属于异常值，将其剔除。然后利用极差，吻除掉\n极差小于均值的数据，使得数据从原始的 3348 维降到了 1331 维。在此基础上，\n通过比较研究发现非线性降维算法比线性降维算法效果更佳,于是采用非线性的\n等距离映射算法(lsomap)，将数据维度降至 3 维。最后建立了聚类模型，选择了\nK-means 算法进行聚类，通过其轮廓系数的计算，发现聚为 3 类最为恰当。剔除\n3 组数据后，余下 422 种药材，被聚为 3 类，每类分别有 96,137,189 组数据。\n\n问题二，采用了与问题一完全相同的数据预处理方式，特征提取、非线性降\n维，然后建立了分类模型。利用支持向量机进行模型求解，将已知数据分为训练\n集和测试集，通过反复调参，使得模型训练集的正确率达到 98%，测试集上的正\n确率达到 93.9%。最后代入未知数据得到如下结果;\nETEIEIEIEIEIEIEIEEIEEOEESEE9E二EEEIT\nLop 16|11417110|6|6|21314|19|121518 13 |\n\n问题三，比问题二多出了近红外 5997 组数据，本文采用了特征提取，非线\n性降维等与问题二类似的方法进行数据预处理。研究发现有些中药材的近红外区\n别比较明显, 另一些则在中红外区别比较明显,通过支持向量机及从未知数据到\n己知数据的最短欧式距离的计算发现, 在近红外、中红外及合并数据上的结果不\n完全相同，本文选择重复率较高的产地做为最终结论，\n[ie | 4 2 aa三|\nLoanalail2 65113141Ia|19|14\n\n问题四，通过作图发现, 不同药材类别区分度较大，可以直接将 A 类药材与\nBC 类药材区分开。再研究 BC 类药材，通过先特征提取、LLE 局部线性降维方法\n建立分类模型。进而用支持向量机，得到了比较明确的分类, 不论是训练集还是\n测试集都达到了 100%的准确率。这说明不同种类的中药材的光谱区别是比较明\n显的。最后，采用问题三完全相同的方法求得药材的产地。结果如下，\nERROREZINEEZIIREIIIREIRERRECI\n| alass |  | A |   | A |   | A | ec |   四3   | ec |   加\nLo ls la aa aa | aa",
+      "chapter_navigation": "- 第 8 行：摘要（摘要）\n- 第 47 行：关键词:lsomap 非线性降维，K-means 聚类;分类模型; 支持向量机:，LLE 算法（关键词）\n- 第 54 行：一、问题重述（问题重述）\n- 第 84 行：二、问题分析（问题分析）\n- 第 111 行：模型求解, 再用另一个数据表及合并两个表格同时对鉴别结果进行矫正和互相验（模型求解）\n- 第 119 行：三、模型假设（模型假设）\n- 第 132 行：四、符号说明（符号说明）\n- 第 139 行：五、模型建立与求解（模型建立）\n- 第 141 行：5.1.1 数据预处理（数据预处理）\n- 第 302 行：5.2.1 数据预处理（数据预处理）\n- 第 665 行：六、模型评价与推广（模型评价）\n- 第 694 行：七、参考文献（参考文献）",
+      "model_terms": "- 聚类：31 次\n- 支持向量机：12 次\n- 最短路：1 次\n- 随机森林：1 次",
+      "logic_evidence": "以下句子从“问题分析/摘要/模型准备”区域提取，用于快速恢复作者的推理顺序；正式评价时仍需回看对应页图像。\n\n- 上不同种药材的差异性都很明显, 因此首先可以将不同种药材上差异性较高的光\n- 分为训练集和测试集。调整参数建立合适的模型进行求解。\n- 表去除，那么和问题二没有区别。由于有些中药材的近红外区别比较明显，而另\n- 附件 4中, 除了有产地还有类别，可以认为是在问题二只需要鉴别产地的基\n- 者缺失值后，再分别对产地和种类建立分类模型，最后将两个模型分别求解。",
+      "paths": {
+        "card": "problems/2021E/papers/20_E037/paper_card.md",
+        "gallery": "problems/2021E/papers/20_E037/gallery.html",
+        "visual_contact": "problems/2021E/papers/20_E037/visual_contact.html",
+        "source_pdf": "problems/2021E/papers/20_E037/source.pdf",
+        "full_ocr": "problems/2021E/papers/20_E037/full_ocr.txt",
+        "problem_analysis_excerpt": "problems/2021E/papers/20_E037/problem_analysis_excerpt.txt"
+      }
+    }
+  ]
+}
