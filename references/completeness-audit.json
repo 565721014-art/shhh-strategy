@@ -1,12 +1,12 @@
 {
   "skill": "shhh-strategy",
-  "audit_date": "2026-08-28",
+  "audit_date": "2026-08-29",
   "status": "PASS",
   "packaging": {
     "skill_entry_files": 1,
     "ui_metadata_files": 1,
-    "reference_files": 10,
-    "script_files": 3,
+    "reference_files": 11,
+    "script_files": 5,
     "progressive_disclosure": true,
     "standalone_core_operational_without_external_archive": true,
     "exact_historical_evidence_requires_mapped_archive": true
@@ -42,13 +42,15 @@
     "uncertainty_robustness_and_evidence_closure",
     "complexity_admission_fair_baseline_and_hard_stopping",
     "quality_states_checkpoints_and_output_modes",
-    "pre_comparison_freeze_and_post_freeze_paper_audit"
+    "independent_freeze_and_explicit_opt_in_historical_audit"
   ],
   "tests": {
     "system_quick_validate": "PASS",
     "knowledge_manifest_and_hash_validation": "PASS",
+    "compact_regeneration_equivalence_except_timestamp": true,
     "all_23_chapters_exist": true,
-    "all_58_paper_cards_and_galleries_exist": true,
+    "all_58_paper_cards_exist": true,
+    "raw_galleries_external_by_design": true,
     "historical_34_case_index_exact_match": true,
     "historical_34_source_matrix_row_count": 34,
     "knowledge_query_smoke_test": "PASS",
@@ -56,20 +58,23 @@
     "python_syntax_check": "PASS"
   },
   "internal_sha256": {
-    "SKILL.md": "BB0D48BD613B1545C5682D4822EC282601622F1F2B72C930A952153DCC51CC8D",
+    "SKILL.md": "AAE750FC0E94CC6DBFF634D3002A6075BC9648A39CEF55C39B10687B65EE14FA",
     "agents/openai.yaml": "EC36B615E704D0DF4EFF346E37AB373AAF0B9DA90D60E058FA71CC27D90866FE",
-    "references/core-protocol.md": "410CD9764BFDFE2F678C25D30948DDC3F3B0C4CB988B44A5AE4C6AC076CDD909",
+    "references/core-protocol.md": "FB8A942A69B89B56AC386447A13612FEF08EBE86B8CEBFDEF01BECFA5787251A",
     "references/input-visual-integrity.md": "024F786B4EC16C62C4F24C679666C5E86D40B0D87DDB1092EFCA18C143B95CBD",
     "references/structural-gates.md": "0914D0A365119217F985A30C713164FE46DAEA9DCD6831EC957C44932299E97C",
     "references/complexity-stop-gates.md": "B4DECC073D2211D7C32B483F90288EBDF77EAE45BD04CEF48DF5DFF5C85FCBE7",
     "references/historical-transfer-index.md": "5C7BD002AC8C6CD2F5D4403E183FFCD4216EC9AA62F45E61C02B768DE1B7AFC3",
-    "references/knowledge-source-map.md": "C7D8B51E4D41F8E31103DDC0FCAE6B05D7CB3E12D7BB0FE66AB37BCAF72886F7",
-    "references/output-modes.md": "C7FE8075EF8B81A59519109A4EE49ED936510B05354A1C3E1CA8D7BBD9E91EFD",
-    "references/paper-comparison.md": "5A8F5B78047E6A989AA8D8D7E2E4FA4D2AF3A46C27C20A0A05CAFB14CE4A6A09",
-    "references/version.json": "C715AA5C2412658D9D8EF7F34F1971BC32F110AE84C1A9CEE5D5315D67A23D3C",
-    "scripts/freeze_analysis.py": "D1278B614CAE44B8C926C6A3CEF3EDB97F3F84EDE67BFB0417EA4ACC22449138",
-    "scripts/query_knowledge.py": "BD1E16DCF4185CE48D37C04ABDFB81CED8EBC5695A60C20A78CA32087825BCEB",
-    "scripts/validate_skill.py": "F30CF595F4B1CD83318C3D9374C4C067B13FE5FB3F6EE444801AB869858F9FCE"
+    "references/knowledge-source-map.md": "6C3B0AB30B75039912F8D2105CA713C5FD36F76559A1DA5C037009281DB608EB",
+    "references/output-modes.md": "EE52FDBDA05576E5DA68C0B821971A9B193BD096234E3EE7175BEF15452A7232",
+    "references/paper-comparison.md": "64F69ADEB497188C3EA1BCE76C3B7469B9026B5A35605B0BC64C09C969AB2A6F",
+    "references/post-route-stress-reread.md": "CF206FA2900135A986BEB5FDB6705998828D2C8184437CD8C3777AA5C267BDDC",
+    "references/version.json": "47B78557450E1E06812F9353CBAF3FAD0D2B9377030E54FB3BDF1716890AEFB7",
+    "scripts/build_compact_knowledge.py": "A9496E936317D6DD590DB01EF7EC9EBA65B719F4B4D8C166D6ED30EAD075C4C3",
+    "scripts/freeze_analysis.py": "FCE1B61DD93EC16BA8DC0BBDDA1A2B8681CF54E364C66A1193BB0C1BEA64E550",
+    "scripts/query_knowledge.py": "2EFA08CE8B9A3A3876C75EB6F2B08908F662950E72B470E758FF1D5419CB4B4C",
+    "scripts/refresh_compact_manifest.py": "C431C474D3F3C9C2C9AD612B4AAC52A3DBE158C805C5CF571A25BA38787F4E0F",
+    "scripts/validate_skill.py": "463F53E8170DF265C81749766498C0C50AF0FA071005B7757D0FCEFFF96A0BB8"
   },
   "boundaries": {
     "other_local_mathematical_modeling_skills_used": false,

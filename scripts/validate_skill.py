@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 
@@ -45,6 +46,7 @@ def main() -> int:
 
     errors: list[str] = []
     warnings: list[str] = []
+    notes: list[str] = []
 
     required_skill_files = [
         "SKILL.md",
@@ -56,6 +58,7 @@ def main() -> int:
         "references/historical-transfer-index.md",
         "references/output-modes.md",
         "references/paper-comparison.md",
+        "references/post-route-stress-reread.md",
         "references/knowledge-source-map.md",
         "references/version.json",
         "references/completeness-audit.json",
@@ -79,6 +82,35 @@ def main() -> int:
         target = match.group(1)
         if "://" not in target and not (skill_dir / target).exists():
             errors.append(f"broken SKILL.md link: {target}")
+
+    audit_path = skill_dir / "references" / "completeness-audit.json"
+    if audit_path.is_file():
+        audit = load_json(audit_path)
+        packaging = audit.get("packaging", {})
+        actual_reference_files = sum(
+            1 for path in (skill_dir / "references").iterdir() if path.is_file()
+        )
+        actual_script_files = sum(
+            1
+            for path in (skill_dir / "scripts").iterdir()
+            if path.is_file() and path.suffix == ".py"
+        )
+        if packaging.get("reference_files") != actual_reference_files:
+            errors.append(
+                "completeness audit reference count mismatch: "
+                f"{packaging.get('reference_files')} != {actual_reference_files}"
+            )
+        if packaging.get("script_files") != actual_script_files:
+            errors.append(
+                "completeness audit script count mismatch: "
+                f"{packaging.get('script_files')} != {actual_script_files}"
+            )
+        for relative, expected_hash in audit.get("internal_sha256", {}).items():
+            path = skill_dir / relative
+            if not path.is_file():
+                errors.append(f"completeness audit missing hashed file: {relative}")
+            elif sha256(path) != str(expected_hash).upper():
+                errors.append(f"completeness audit hash mismatch: {relative}")
 
     history_index = (
         skill_dir / "references" / "historical-transfer-index.md"
@@ -196,7 +228,49 @@ def main() -> int:
                     errors.append("compact manifest format mismatch")
                 if compact.get("knowledge_mode") != "compact":
                     errors.append("compact manifest knowledge_mode mismatch")
-                warnings.append(
+                included = compact.get("included", {})
+                actual_files = sorted(
+                    path
+                    for path in root.rglob("*")
+                    if path.is_file() and path != compact_manifest_path
+                )
+                actual_relative = [
+                    str(path.relative_to(root)).replace("\\", "/")
+                    for path in actual_files
+                ]
+                expected_hashes = included.get("sha256", {})
+                expected_names = set(expected_hashes)
+                actual_names = set(actual_relative)
+                if expected_names != actual_names:
+                    errors.append(
+                        "compact manifest file list mismatch; "
+                        f"missing={sorted(expected_names - actual_names)}, "
+                        f"extra={sorted(actual_names - expected_names)}"
+                    )
+                if included.get("files") != len(actual_files):
+                    errors.append(
+                        f"compact manifest file count mismatch: {included.get('files')} != {len(actual_files)}"
+                    )
+                actual_bytes = sum(path.stat().st_size for path in actual_files)
+                if included.get("bytes") != actual_bytes:
+                    errors.append(
+                        f"compact manifest byte count mismatch: {included.get('bytes')} != {actual_bytes}"
+                    )
+                actual_suffixes = dict(
+                    sorted(
+                        Counter(
+                            path.suffix.lower() or "[no extension]"
+                            for path in actual_files
+                        ).items()
+                    )
+                )
+                if included.get("suffix_counts") != actual_suffixes:
+                    errors.append("compact manifest suffix counts mismatch")
+                for relative in sorted(expected_names & actual_names):
+                    actual_hash = sha256(root / relative).lower()
+                    if actual_hash != str(expected_hashes[relative]).lower():
+                        errors.append(f"compact manifest hash mismatch: {relative}")
+                notes.append(
                     "compact knowledge mode: raw PDFs, spreadsheets, images and full OCR remain external"
                 )
             else:
@@ -240,6 +314,7 @@ def main() -> int:
         "knowledge_root": str(root),
         "errors": errors,
         "warnings": warnings,
+        "notes": notes,
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 1 if errors else 0

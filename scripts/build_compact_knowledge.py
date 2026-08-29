@@ -20,6 +20,14 @@ from pathlib import Path
 
 
 TEXT_EXTENSIONS = {".md", ".json", ".txt"}
+EXCLUDED_DIR_NAMES = {
+    ".git",
+    ".pytest_cache",
+    ".venv",
+    "__pycache__",
+    "node_modules",
+    "video_deps",
+}
 ROOT_FILES = {
     "data_structure.md",
     "国一赛题分析思考手册.md",
@@ -39,11 +47,21 @@ PROBLEM_FILES = {
 PAPER_FILES = {"paper_card.md", "problem_analysis_excerpt.txt", "page_index.json"}
 
 
+def normalize_lf(path: Path) -> None:
+    """Keep compact text deterministic across Windows, macOS and Linux."""
+    data = path.read_bytes()
+    normalized = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    if normalized != data:
+        path.write_bytes(normalized)
+
+
 def copy_one(source: Path, destination: Path, selected: list[Path]) -> None:
     if not source.is_file():
         return
     destination.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, destination)
+    if destination.suffix.lower() in TEXT_EXTENSIONS:
+        normalize_lf(destination)
     selected.append(destination)
 
 
@@ -55,7 +73,7 @@ def copy_text_tree(
 ) -> None:
     if not source.is_dir():
         return
-    excluded_dirs = excluded_dirs or set()
+    excluded_dirs = EXCLUDED_DIR_NAMES | (excluded_dirs or set())
     for path in sorted(source.rglob("*")):
         relative_parts = set(path.relative_to(source).parts)
         if relative_parts & excluded_dirs:
@@ -71,7 +89,9 @@ def load_json(path: Path) -> object:
 def write_json(path: Path, value: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
-        json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(value, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
 
 

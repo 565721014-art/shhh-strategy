@@ -33,6 +33,12 @@ SHHH_STRATEGY_KNOWLEDGE_ROOT=<archive-root>
 
 环境变量指定的路径优先于仓库内轻量层。原始知识库不会由本技能删除或覆盖，也不会随仓库自动公开上传。
 
+### 轻量层的完整性
+
+仓库内轻量层完整保留23道题目卡、23份逻辑图、58篇论文卡与对应分析摘录、23章教材、迭代记录、盲测记录和检索索引。为了可移植读取，只排除原始PDF、表格附件、逐页图片、完整OCR、完整论文正文、缓存和临时产物；这些精确证据通过外接档案按需核对，不属于可公开分发的Skill运行核心。
+
+轻量层使用 `compact_manifest.json` 登记全部文件、字节数和SHA-256。构建脚本统一使用LF换行，验证脚本会逐文件检查清单和哈希，避免格式优化后发生内容漂移。
+
 ## 使用边界
 
 本技能输出的是独立读题、建模策略和验证路线，不自动保证竞赛奖项，也不替代数值实现、完整论文排版或投稿合规审查。历史论文比较是明确请求后才启用的独立回顾模式。
@@ -49,7 +55,7 @@ python <path-to-skill-creator>/scripts/quick_validate.py .
 python scripts/query_knowledge.py "你的机制词" --limit 5
 ```
 
-`validate_skill.py` 会识别轻量模式和完整外接模式：轻量模式检查结构化层与卡片可用性，完整模式才检查逐页视觉证据和来源哈希。若要从新的完整档案重新生成轻量层：
+`validate_skill.py` 会识别轻量模式和完整外接模式：轻量模式逐文件检查结构化层、卡片和清单哈希，完整模式再检查逐页视觉证据和来源哈希。若要从新的完整档案重新生成轻量层：
 
 ```bash
 python scripts/build_compact_knowledge.py --source <full-knowledge> --destination <new-knowledge>

@@ -10,6 +10,13 @@ from collections import Counter
 from pathlib import Path
 
 
+def normalize_lf(path: Path) -> None:
+    data = path.read_bytes()
+    normalized = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    if normalized != data:
+        path.write_bytes(normalized)
+
+
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -28,7 +35,11 @@ def main() -> int:
     files = sorted(
         path for path in root.rglob("*") if path.is_file() and path != manifest_path
     )
-    relative = [str(path.relative_to(root)).replace("\\", "/") for path in files]
+    for path in files:
+        normalize_lf(path)
+    relative = sorted(
+        str(path.relative_to(root)).replace("\\", "/") for path in files
+    )
     manifest.setdefault("included", {})["files"] = len(files)
     manifest["included"]["bytes"] = sum(path.stat().st_size for path in files)
     manifest["included"]["suffix_counts"] = dict(
@@ -38,7 +49,9 @@ def main() -> int:
         name: sha256(root / name) for name in relative
     }
     manifest_path.write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+        newline="\n",
     )
     print(
         json.dumps(

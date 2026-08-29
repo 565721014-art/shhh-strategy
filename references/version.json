@@ -1,7 +1,8 @@
 {
   "skill": "shhh-strategy",
   "engine_version": "v27.1_complexity_guarded",
-  "built_on": "2026-08-28",
+  "built_on": "2026-08-29",
+  "package_revision": "2026-08-29.1",
   "knowledge_root_default": "knowledge",
   "knowledge_mode": "compact_with_optional_external_full_archive",
   "compact_knowledge_included": true,
