@@ -10,6 +10,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from analysis_state import load_json as load_state_json
+from analysis_state import validate_structure as validate_analysis_state
+
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
@@ -67,6 +70,7 @@ def main() -> int:
     parser.add_argument("--case-id", required=True)
     parser.add_argument("--analysis", required=True, type=Path)
     parser.add_argument("--source", action="append", required=True, type=Path)
+    parser.add_argument("--ledger", type=Path)
     parser.add_argument("--output-dir", type=Path, default=Path.cwd() / "shhh-freezes")
     parser.add_argument(
         "--state",
@@ -90,17 +94,33 @@ def main() -> int:
     if missing:
         raise FileNotFoundError("missing source(s): " + "; ".join(missing))
 
+    ledger_record = None
+    if args.ledger is not None:
+        ledger_path = args.ledger.resolve()
+        if not ledger_path.is_file():
+            raise FileNotFoundError(f"ledger file not found: {ledger_path}")
+        ledger = load_state_json(ledger_path)
+        ledger_errors = validate_analysis_state(ledger, require_current_event=True)
+        if ledger_errors:
+            raise ValueError("invalid analysis ledger: " + "; ".join(ledger_errors))
+        if ledger.get("quality_state") != args.state:
+            raise ValueError(
+                f"ledger quality state {ledger.get('quality_state')} != requested freeze state {args.state}"
+            )
+        ledger_record = source_record(ledger_path)
+
     case_id = safe_case_id(args.case_id)
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / f"{case_id}_freeze.json"
 
     payload = {
-        "protocol": "problem_and_attachments_plus_independent_analysis_before_same_problem_comparison",
+        "protocol": "v27.2_problem_sources_inventory_ledger_and_independent_analysis_before_same_problem_comparison",
         "case_id": args.case_id,
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "quality_state": args.state,
         "analysis": source_record(analysis),
+        "analysis_ledger": ledger_record,
         "sources": [source_record(path) for path in source_paths],
         "limitations": [
             "A freeze proves file integrity and ordering, not analytical correctness.",

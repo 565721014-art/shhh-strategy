@@ -2,6 +2,8 @@
 
 Read this reference whenever the problem arrives as files or includes non-text evidence.
 
+For local files, begin with `python scripts/inventory_problem.py scan --source <path> --output <source-inventory.json>`. The inventory records every file and SHA-256 plus machine-readable metadata. It deliberately remains `pending_review` until every required text, visual, data, formula, and schema inspection is explicitly marked complete. A valid hash proves file identity, not that the content was understood.
+
 ## Complete-reading gate
 
 Do not analyze from a title, abstract, OCR excerpt, or copied question list when full files are available. Inventory and inspect:
@@ -15,6 +17,8 @@ Do not analyze from a title, abstract, OCR excerpt, or copied question list when
 - attachment relationships and whether IDs align across files.
 
 For visually important files, render pages or sheets and inspect the images; text extraction alone is insufficient. Preserve a textual statement of each figure's modeling consequences so the reasoning remains searchable.
+
+After inspection, use the inventory `mark` command with a concrete note. Do not mark a required inspection complete merely because a parser opened the file. Run `inventory_problem.py validate --require-complete` before claiming complete source coverage.
 
 ## Data identity gate
 

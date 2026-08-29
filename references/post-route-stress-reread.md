@@ -4,7 +4,7 @@ Use this pass after the first executable strategy exists. Its purpose is to fals
 
 ## 1. Preserve the pre-test route
 
-Record the current quality state, locked interpretations, selected route, rejected alternatives, and source hashes when local files are available. The stress test may correct the route, but it must not erase what changed or why.
+Record the current quality state, locked interpretations, selected route, rejected alternatives, and source hashes when local files are available. When a state ledger exists, validate and seal it before the stress test. The stress test may correct the route, but it must not erase what changed or why; reopen or supersede affected locks and append a change event.
 
 ## 2. Reread the source of truth
 
@@ -60,4 +60,4 @@ If a stress-test finding cannot affect a required output, feasibility, identifia
 
 ## 6. Exit state
 
-End with a short change ledger: what survived, what was corrected, what remains unresolved, and why no further change is currently justified. The route returns to `route_executable` only after the regression checks pass. Numerical results are still absent unless the user separately requested solving.
+End with a short change ledger: what survived, what was corrected, what remains unresolved, and why no further change is currently justified. Rescan the 18-gate router, read any newly triggered detail, then validate and seal the state ledger. The route returns to `route_executable` only after these regression checks pass. Numerical results are still absent unless the user separately requested solving.

@@ -2,6 +2,8 @@
 
 Select the smallest mode that satisfies the user. Do not inflate a strategy request into a full paper.
 
+The analysis ledger may be structured for consistency, but user-facing prose remains problem-shaped and need not expose every ledger field. Report only the evidence and decision needed at the current checkpoint.
+
 ## Mode A: strategy only
 
 Use when the user asks for thinking, reading analysis, or a plan but not numerical solving.

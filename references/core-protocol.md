@@ -89,6 +89,7 @@ The final candidate must be recomputed with the same legal information, constrai
 
 ## 7. Quality states
 
+- `draft`: source coverage, locks, or routes are incomplete.
 - `understanding_locked`: deliverables and interpretations are locked; no final model yet.
 - `audit_complete`: risks and candidate routes are known; not yet executable.
 - `route_executable`: variables, mathematics, constraints, algorithm, output, and validation are complete; no numerical result is implied.
@@ -96,6 +97,8 @@ The final candidate must be recomputed with the same legal information, constrai
 - `solved_and_validated`: reproducible result and required checks exist.
 
 Never infer a later state from a detailed audit. If the user asks only for ideas, stop at `route_executable` and say that numerical solution remains.
+
+For local-file, multi-checkpoint, or multi-session work, maintain the ledger defined in `state-ledger.md`. A state name in prose does not count unless the current ledger validates and all transition gates pass.
 
 ## 8. Freeze and stop at the requested mode
 

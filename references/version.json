@@ -1,8 +1,8 @@
 {
   "skill": "shhh-strategy",
-  "engine_version": "v27.1_complexity_guarded",
+  "engine_version": "v27.2_stability_guarded",
   "built_on": "2026-08-29",
-  "package_revision": "2026-08-29.1",
+  "package_revision": "2026-08-29.2",
   "knowledge_root_default": "knowledge",
   "knowledge_mode": "compact_with_optional_external_full_archive",
   "compact_knowledge_included": true,
@@ -28,6 +28,15 @@
     "textbook_manifest": "8970741347A94D9BF20F0E48C39E3ABDA0CDEC5BD61941B972402866305DB206",
     "iteration_manifest": "AF5FCEE48E59DE0B6454BF00162FF4DBCA467DA78D0672AD45E58A0AFED42A69",
     "corpus_manifest": "2FFD88126AFCEC1E17D54201148CD000B7F4F89103307A8A7DF45BEF315E5DA8"
+  },
+  "stability_assurance": {
+    "analysis_state_schema": "1.0",
+    "source_inventory_schema": "1.0",
+    "hash_algorithm": "SHA-256",
+    "progressive_structural_gate_groups": 5,
+    "structural_gates_preserved": 18,
+    "behavior_regression_dimensions": 8,
+    "metamorphic_relations_documented": 9
   },
   "boundaries": {
     "other_local_math_modeling_skills_allowed": false,

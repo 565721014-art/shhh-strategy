@@ -53,7 +53,16 @@ def main() -> int:
         "agents/openai.yaml",
         "references/core-protocol.md",
         "references/structural-gates.md",
+        "references/gates/task-semantics.md",
+        "references/gates/identification-dynamics.md",
+        "references/gates/data-claims.md",
+        "references/gates/policy-global.md",
+        "references/gates/validation-uncertainty.md",
         "references/input-visual-integrity.md",
+        "references/state-ledger.md",
+        "references/analysis-state.schema.json",
+        "references/behavior-regression.md",
+        "references/regression-observation.schema.json",
         "references/complexity-stop-gates.md",
         "references/historical-transfer-index.md",
         "references/output-modes.md",
@@ -63,6 +72,10 @@ def main() -> int:
         "references/version.json",
         "references/completeness-audit.json",
         "scripts/freeze_analysis.py",
+        "scripts/analysis_state.py",
+        "scripts/inventory_problem.py",
+        "scripts/evaluate_regression.py",
+        "scripts/stability_self_test.py",
         "scripts/query_knowledge.py",
         "scripts/build_compact_knowledge.py",
         "scripts/refresh_compact_manifest.py",
@@ -77,18 +90,44 @@ def main() -> int:
         errors.append("SKILL.md still contains TODO")
     if "name: shhh-strategy" not in skill_text:
         errors.append("SKILL.md name mismatch")
+    if version.get("engine_version") != "v27.2_stability_guarded":
+        errors.append("engine version is not v27.2_stability_guarded")
 
-    for match in re.finditer(r"\]\(([^)]+)\)", skill_text):
-        target = match.group(1)
-        if "://" not in target and not (skill_dir / target).exists():
-            errors.append(f"broken SKILL.md link: {target}")
+    markdown_files = [skill_dir / "SKILL.md"] + sorted((skill_dir / "references").rglob("*.md"))
+    for markdown_path in markdown_files:
+        markdown_text = markdown_path.read_text(encoding="utf-8")
+        for match in re.finditer(r"\]\(([^)#]+)(?:#[^)]*)?\)", markdown_text):
+            target = match.group(1)
+            if "://" in target:
+                continue
+            base = skill_dir if markdown_path == skill_dir / "SKILL.md" else markdown_path.parent
+            if not (base / target).exists():
+                errors.append(
+                    f"broken markdown link in {markdown_path.relative_to(skill_dir)}: {target}"
+                )
+
+    gate_numbers = []
+    for gate_path in sorted((skill_dir / "references" / "gates").glob("*.md")):
+        gate_numbers.extend(
+            int(value)
+            for value in re.findall(
+                r"^## (\d+)\.", gate_path.read_text(encoding="utf-8"), re.M
+            )
+        )
+    if sorted(gate_numbers) != list(range(1, 19)):
+        errors.append(f"structural gate coverage mismatch: {sorted(gate_numbers)}")
+
+    for schema_name in ["analysis-state.schema.json", "regression-observation.schema.json"]:
+        schema = load_json(skill_dir / "references" / schema_name)
+        if schema.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
+            errors.append(f"schema draft mismatch: {schema_name}")
 
     audit_path = skill_dir / "references" / "completeness-audit.json"
     if audit_path.is_file():
         audit = load_json(audit_path)
         packaging = audit.get("packaging", {})
         actual_reference_files = sum(
-            1 for path in (skill_dir / "references").iterdir() if path.is_file()
+            1 for path in (skill_dir / "references").rglob("*") if path.is_file()
         )
         actual_script_files = sum(
             1

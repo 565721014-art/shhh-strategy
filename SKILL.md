@@ -9,7 +9,7 @@ description: Analyze unfamiliar mathematical-modeling contest problems from the 
 
 Turn an unfamiliar contest problem into a defensible, executable modeling strategy without copying a historical answer or accumulating models for appearance. Preserve necessary complexity, reject unsupported complexity, and state honestly whether the work is only an audit, an executable route, or a solved and validated result.
 
-This skill encapsulates the user's V27.1 strategy engine and its 34-problem anti-overpruning regression. It does not train model weights and does not guarantee an award.
+This skill encapsulates the user's V27.2 stability-guarded strategy engine, the V27.1 reasoning core, and its 34-problem anti-overpruning regression. It does not train model weights and does not guarantee an award.
 
 ## Absolute Boundary
 
@@ -18,13 +18,14 @@ Do not read, invoke, cite, or rely on any other locally installed mathematical-m
 ## Always Read
 
 1. [references/core-protocol.md](references/core-protocol.md) for the problem lock and route workflow.
-2. [references/structural-gates.md](references/structural-gates.md) to activate only the gates supported by the current statement.
+2. [references/structural-gates.md](references/structural-gates.md) as the low-cost trigger router; then read every detailed gate group it activates.
 3. [references/complexity-stop-gates.md](references/complexity-stop-gates.md) before selecting or comparing models.
 4. [references/output-modes.md](references/output-modes.md) to match the user's requested stopping point.
 
 ## Read Only When Triggered
 
 - Read [references/input-visual-integrity.md](references/input-visual-integrity.md) whenever the input contains PDFs, Word files, spreadsheets, figures, formulas, templates, or multiple attachments.
+- Read [references/state-ledger.md](references/state-ledger.md) when the problem has local attachments, more than one material confirmation, more than one working session, or an auditable freeze.
 - Read [references/post-route-stress-reread.md](references/post-route-stress-reread.md) after a route first reaches `route_executable`, or whenever the user asks to test, reread, strengthen, or optimize an established strategy. Perform this pass before numerical solving unless the user explicitly changes the order.
 - Read [references/historical-transfer-index.md](references/historical-transfer-index.md) only when the user explicitly requests retrospective training from past problems after an independent route exists.
 - Read [references/paper-comparison.md](references/paper-comparison.md) only when the user explicitly requests retrospective comparison with prior papers, expert reviews, or official commentary. A problem being old or previously published is not enough.
@@ -40,6 +41,8 @@ Do not read, invoke, cite, or rely on any other locally installed mathematical-m
 - Audit findings are not a solution. A route without variables, relations, constraints, algorithm exit, output schema, and validation remains a route draft.
 - Label high-value claims internally as descriptive, predictive, or causal and never upgrade their wording beyond the available evidence.
 - Treat confirmation as part of the analysis, not as a final courtesy: do not silently settle a material ambiguity, preference, assumption, route fork, complexity upgrade, or claim boundary on the user's behalf.
+- For a ledger-triggering task, a quality-state claim is valid only when the current ledger passes `scripts/analysis_state.py validate`. Preserve superseded locks and rejected routes instead of rewriting history.
+- File inventory completeness and semantic understanding are different claims. Hashes prove identity; machine metadata proves indexing; required text, visual, formula, data, and schema inspections prove coverage only after they are explicitly completed.
 
 ## Mandatory Confirmation Contract
 
@@ -83,16 +86,18 @@ When the current request is complete and no decision remains, write `无需确�
 
 ## Default Workflow
 
-1. Inventory every page, attachment, figure, table, formula, note, unit, field, and output template.
-2. Build the per-subquestion lock: object, input, available information, state, decision, hard constraints, objective, output, and dependency.
-3. Replay one representative object's lifecycle and all relevant clocks, modes, abnormal states, and terminal conditions.
-4. Attack the first interpretation with at least one alternative reading, boundary case, and fatal counterexample.
-5. Establish a credible baseline, identify its concrete defect, and admit only upgrades that pass the complexity gates.
-6. Provide executable mathematics and validation interfaces; mark the current quality state honestly.
-7. Pressure-test the executable route, reread the complete statement and attachments, and revise only findings supported by source evidence, mathematics, or a reproduced counterexample.
-8. Freeze the strengthened independent analysis and source hashes when an auditable record is useful, then stop at the user's requested output mode.
-9. Only under an explicit retrospective-training request, separately audit problem understanding and solution method; promote only cross-problem mechanisms, never a memorized answer.
+1. Inventory every page, attachment, figure, table, formula, note, unit, field, and output template. For local files, use `scripts/inventory_problem.py`; do not call the inventory complete while a required inspection remains pending or blocked.
+2. When the state-ledger trigger applies, initialize or resume one ledger and validate it before relying on previous locks.
+3. Build the per-subquestion lock: object, input, available information, state, decision, hard constraints, objective, output, and dependency.
+4. Scan the structural gate router, record exact triggers, and read only the detailed gate groups supported by current evidence.
+5. Replay one representative object's lifecycle and all relevant clocks, modes, abnormal states, and terminal conditions.
+6. Attack the first interpretation with at least one alternative reading, boundary case, and fatal counterexample.
+7. Establish a credible baseline, identify its concrete defect, and admit only upgrades that pass the complexity gates.
+8. Provide executable mathematics and validation interfaces; scan all 18 gate names, read any newly triggered group, and mark the current quality state honestly.
+9. Pressure-test the executable route, reread the complete statement and attachments, and revise only findings supported by source evidence, mathematics, or a reproduced counterexample.
+10. Validate and seal the ledger, freeze the strengthened independent analysis and source hashes when an auditable record is useful, then stop at the user's requested output mode.
+11. Only under an explicit retrospective-training request, separately audit problem understanding and solution method; promote only cross-problem mechanisms, never a memorized answer.
 
 Apply the Mandatory Confirmation Contract at every material dependency boundary in this workflow. A numbered step is not automatically a checkpoint; a decision that can change downstream reasoning is.
 
-Use the scripts in `scripts/` when an auditable freeze or archive check is needed.
+Use the scripts in `scripts/` for deterministic inventory, state, freeze, regression, and archive checks. Read [references/behavior-regression.md](references/behavior-regression.md) only when maintaining or promoting the skill; never expose its case expectations as a substitute for independent analysis.

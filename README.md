@@ -2,6 +2,8 @@
 
 一个面向数学建模竞赛新题的独立读题与建模策略技能。它从完整题面和附件出发，锁定分问交付物、信息边界、变量与约束，建立有证据触发的模型路线，检查可辨识性与验证方式，并设置停止加模型的门槛。
 
+当前版本为 `V27.2 stability-guarded`。它在 V27.1 推理核心上增加来源清单、跨轮状态账本、渐进式结构门路由和可复用行为回归协议，不改变“先独立分析、历史比较仅按明确请求启用”的边界。
+
 ## 主要能力
 
 - 完整读取题面、表格、图片和附件后再建模；
@@ -9,6 +11,9 @@
 - 对逆问题检查可辨识性、对优化问题检查可行性与目标闭合；
 - 允许必要的分支、上下界、独立核验和多阶段路线，但拒绝没有题面触发的复杂度；
 - 在形成可执行路线后进行压力测试、完整回读和最小修正；
+- 对本地文件生成逐文件 SHA-256、机器元数据和待完成的文本/视觉/公式/数据/结构检查；
+- 对长任务保存可校验的题意锁、歧义、路线、质量状态和哈希链，防止跨轮漂移；
+- 先读取18项结构门的触发索引，只加载被当前题面证据触发的详细专题，并在路线完成前做全门复扫；
 - 默认独立分析新题，不自动搜索或推荐往年获奖论文。
 
 ## 安装
@@ -43,6 +48,28 @@ SHHH_STRATEGY_KNOWLEDGE_ROOT=<archive-root>
 
 本技能输出的是独立读题、建模策略和验证路线，不自动保证竞赛奖项，也不替代数值实现、完整论文排版或投稿合规审查。历史论文比较是明确请求后才启用的独立回顾模式。
 
+## V27.2 稳定性工具
+
+本地题面和附件先建立来源清单：
+
+```bash
+python scripts/inventory_problem.py scan --source <problem-path> --output source-inventory.json
+python scripts/inventory_problem.py summary source-inventory.json
+python scripts/inventory_problem.py mark source-inventory.json --file-id <id> --inspection visual --status complete --note "已逐页检查图、轴、图例和方向"
+python scripts/inventory_problem.py validate source-inventory.json --require-complete
+```
+
+多附件、多确认点或跨会话任务建立状态账本：
+
+```bash
+python scripts/analysis_state.py init --case-id <id> --inventory source-inventory.json --output analysis-state.json
+python scripts/analysis_state.py seal analysis-state.json --reason "记录本轮已核对的题意和路线"
+python scripts/analysis_state.py transition analysis-state.json --to route_executable --reason "所有分问已有数学产生器和验证接口"
+python scripts/analysis_state.py validate analysis-state.json
+```
+
+状态文件由模型或使用者按 `references/analysis-state.schema.json` 填充。`seal` 只封存当前语义状态并追加哈希事件，不替代人工或模型判断。维护技能版本时，使用 `references/behavior-regression.md` 与 `scripts/evaluate_regression.py`；开发用例不得冒充盲测证据。
+
 ## License
 
 MIT License，详见 [`LICENSE`](LICENSE)。
@@ -53,6 +80,7 @@ MIT License，详见 [`LICENSE`](LICENSE)。
 python scripts/validate_skill.py
 python <path-to-skill-creator>/scripts/quick_validate.py .
 python scripts/query_knowledge.py "你的机制词" --limit 5
+python scripts/stability_self_test.py
 ```
 
 `validate_skill.py` 会识别轻量模式和完整外接模式：轻量模式逐文件检查结构化层、卡片和清单哈希，完整模式再检查逐页视觉证据和来源哈希。若要从新的完整档案重新生成轻量层：
