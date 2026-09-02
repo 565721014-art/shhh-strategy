@@ -19,15 +19,19 @@
           "mechanism_family": {"type": "string", "minLength": 1},
           "scores": {
             "type": "object",
-            "required": ["source_integrity", "problem_lock", "trigger_fidelity", "route_executability", "complexity_discipline", "claim_boundary", "confirmation_discipline", "state_continuity"],
+            "required": ["source_integrity", "problem_lock", "trigger_fidelity", "route_executability", "complexity_discipline", "validation_strength", "excellence_delta_integrity", "claim_boundary", "confirmation_discipline", "human_decision_review", "strategy_scope_discipline", "state_continuity"],
             "properties": {
               "source_integrity": {"type": "integer", "minimum": 0, "maximum": 4},
               "problem_lock": {"type": "integer", "minimum": 0, "maximum": 4},
               "trigger_fidelity": {"type": "integer", "minimum": 0, "maximum": 4},
               "route_executability": {"type": "integer", "minimum": 0, "maximum": 4},
               "complexity_discipline": {"type": "integer", "minimum": 0, "maximum": 4},
+              "validation_strength": {"type": "integer", "minimum": 0, "maximum": 4},
+              "excellence_delta_integrity": {"type": "integer", "minimum": 0, "maximum": 4},
               "claim_boundary": {"type": "integer", "minimum": 0, "maximum": 4},
               "confirmation_discipline": {"type": "integer", "minimum": 0, "maximum": 4},
+              "human_decision_review": {"type": "integer", "minimum": 0, "maximum": 4},
+              "strategy_scope_discipline": {"type": "integer", "minimum": 0, "maximum": 4},
               "state_continuity": {"type": "integer", "minimum": 0, "maximum": 4}
             },
             "additionalProperties": false

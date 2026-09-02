@@ -1,12 +1,12 @@
 # Output Modes and Checkpoints
 
-Select the smallest mode that satisfies the user. Do not inflate a strategy request into a full paper.
+Select the smallest mode that satisfies the user, but do not treat a conceptual outline as a finished strategy. For a substantive new-problem request with no narrower stopping instruction, Mode B is the default. This skill ends at an approved executable strategy and never performs numerical solving or a full paper.
 
 The analysis ledger may be structured for consistency, but user-facing prose remains problem-shaped and need not expose every ledger field. Report only the evidence and decision needed at the current checkpoint.
 
-## Mode A: strategy only
+## Mode A: explicitly limited audit or brief strategy
 
-Use when the user asks for thinking, reading analysis, or a plan but not numerical solving.
+Use only when the user explicitly asks for a quick reading, candidate ideas, risk audit, or an early checkpoint rather than a complete code-ready strategy.
 
 Return:
 
@@ -16,22 +16,29 @@ Return:
 4. necessary route(s), their roles, and the exact trigger for each;
 5. variables, relationships, constraints, algorithm exit, and expected output;
 6. fatal counterexample and validation gate;
-7. current state: normally `route_executable`, not solved.
+7. current state: normally `audit_complete`, not `route_executable` and not solved.
 
 Use the Mandatory Confirmation Contract from `SKILL.md`: pause at every material interpretation, assumption, route, complexity, or claim-boundary decision that requires user judgment. Do not wait until the end of the mode to surface it.
 
-## Mode B: executable route
+## Mode B: executable route — default for a new problem
 
 Use when the user wants a complete modeling specification ready for code.
 
 Add:
 
-- full symbol and unit table;
-- equations/recurrences and boundary conditions;
-- solver or algorithm sequence with termination and tolerances to determine;
-- input-to-output schema;
-- validation and robustness tests;
-- explicit unresolved parameters that code must not invent.
+- full symbol, domain, index, unit and information-time table;
+- assumptions with evidence status and critical labels;
+- equations/recurrences, objective, constraints and boundary/initial conditions;
+- data-quality, missingness, duplicate, outlier, lineage, leakage and split-unit handling when data exist;
+- ordered solver or algorithm sequence with initialization, interfaces, termination and tolerances to determine;
+- counterexample, boundary, identifiability, feasibility, robustness and simpler-route tests, with repairs recorded;
+- abnormal-input, infeasibility, non-convergence and unsupported-extrapolation handling as applicable;
+- input-to-output file schema, units, precision and consistency checks;
+- validation baseline, evaluator, metric, pass criterion and downgrade rule;
+- explicit unresolved parameters that code must not invent;
+- a stop certificate showing why no triggered defect or justified upgrade remains.
+
+The first complete-looking route is not the exit. Run the autonomous route-deepening loop, post-route reread, competition-readiness pass, and supra-reference excellence audit; store the concise iteration record, stop certificate, verified deltas and ablations, then present the frozen detailed artifact for final human review. Only explicit approval permits the ledger transition to `route_executable`; immediately report completion after the transition.
 
 ## Mode C: explicit retrospective historical comparison
 
@@ -44,9 +51,9 @@ After an independent freeze, separately score:
 
 Classify each difference as independent omission, paper omission, genuine ambiguity, or optional method choice. A prestigious paper is evidence, not ground truth.
 
-## Mode D: full solve requested
+## Mode D: out-of-scope computation request
 
-The strategy skill may prepare the complete route and continue solving only when the user explicitly requests it and the available tools/data make it possible. Do not claim completion until results are reproduced and validated. Full paper drafting, formatting, and submission compliance remain outside this skill's default scope.
+This strategy skill still prepares only the complete route. A request to run code, solve numerically, fit models, generate computed result tables, or validate observed outputs belongs to a separate workflow and must not add execution states to this skill. Do not ask the user whether to start that work when Mode B completes. Full paper drafting, formatting, and submission compliance are also outside this skill.
 
 ## Internal claim labels
 
@@ -78,4 +85,4 @@ For long tasks, deliver the smallest complete unit that exposes the next consequ
 4. the recommended option and reason;
 5. the exact approval or correction requested.
 
-After approval, do not repeatedly ask about the same locked point. Every response still ends with the required compact status block from `SKILL.md`.
+After approval, do not repeatedly ask about the same locked point. Before `route_executable`, obtain one final review of the exact complete route artifact even if earlier forks were approved. After that approval, report completion directly instead of asking what to do next. Every response still ends with the required compact status block from `SKILL.md`.

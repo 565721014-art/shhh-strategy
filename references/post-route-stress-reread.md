@@ -1,6 +1,6 @@
 # Post-Route Stress Test and Source Reread
 
-Use this pass after the first executable strategy exists. Its purpose is to falsify and repair the route before numerical solving, not to add sophistication for appearance. Completing this pass does not trigger or justify a same-problem historical comparison; that is a separate explicit retrospective-training request.
+Use this pass after the first full route draft exists. The draft is not yet `route_executable`; this pass falsifies, repairs, simplifies and regresses it before final human review and state promotion. Completing this pass does not trigger or justify computation or a same-problem historical comparison; those are outside this strategy run unless separately scoped elsewhere.
 
 ## 1. Preserve the pre-test route
 
@@ -32,6 +32,8 @@ For each active modeling component, attempt at least one failure test that could
 5. a replay with information, constraints, or attachments isolated exactly as the statement requires;
 6. a simpler route that produces the same deliverable, or a missing component forced by the source.
 
+When data exist, also test schema/type violations, missingness mechanisms, duplicated independent units, inconsistent IDs, impossible values, outliers or distribution shift that can change the conclusion, target/temporal/group leakage, preprocessing outside folds, and rows created by a prior action policy. When an algorithm exists, test invalid input, empty/degenerate data, infeasibility, non-convergence, unstable initialization, numerical overflow/underflow, and unsupported extrapolation as triggered.
+
 Do not activate every possible test mechanically. Select tests whose triggers are present in the current source or mathematics.
 
 ## 4. Classify each finding
@@ -60,4 +62,4 @@ If a stress-test finding cannot affect a required output, feasibility, identifia
 
 ## 6. Exit state
 
-End with a short change ledger: what survived, what was corrected, what remains unresolved, and why no further change is currently justified. Rescan the 18-gate router, read any newly triggered detail, then validate and seal the state ledger. The route returns to `route_executable` only after these regression checks pass. Numerical results are still absent unless the user separately requested solving.
+Append a short iteration entry after every material test/repair cycle: test, finding, smallest change, evidence, affected dependencies and resulting state. End with what survived, what was corrected, what remains unresolved, and why no further change is currently justified. Rescan the 18-gate router, read any newly triggered detail, apply the complete executable checklist, then present the exact frozen artifact for final human review. Promote to `route_executable` only after these regression checks and explicit approval pass. Numerical results remain outside this skill.

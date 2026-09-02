@@ -2,7 +2,7 @@
 
 一个面向数学建模竞赛新题的独立读题与建模策略技能。它从完整题面和附件出发，锁定分问交付物、信息边界、变量与约束，建立有证据触发的模型路线，检查可辨识性与验证方式，并设置停止加模型的门槛。
 
-当前版本为 `V27.2 stability-guarded`。它在 V27.1 推理核心上增加来源清单、跨轮状态账本、渐进式结构门路由和可复用行为回归协议，不改变“先独立分析、历史比较仅按明确请求启用”的边界。
+当前版本为 `V27.6 human-reviewed strategy-only`。它保留 V27.5 的强参考线、七维卓越审计和可验证增量，以及 V27.4 的两轮完整复审、九维竞赛就绪审计、八项国一经验通用检查与停止证书；新增“重要抉择必须给出证据、选项、后果和推荐后及时请用户审阅”“完整路线必须经最终人工批准”“批准后直接报告完成”的硬门。该 Skill 的终点固定为 `route_executable`，不运行建模程序或数值求解，也不以堆模型代替创新。
 
 ## 主要能力
 
@@ -15,6 +15,15 @@
 - 对长任务保存可校验的题意锁、歧义、路线、质量状态和哈希链，防止跨轮漂移；
 - 先读取18项结构门的触发索引，只加载被当前题面证据触发的详细专题，并在路线完成前做全门复扫；
 - 默认独立分析新题，不自动搜索或推荐往年获奖论文。
+- 实际处理新题时创建或确认一个桌面项目目录，统一保存审计、策略、代码、结果、图表和论文材料；
+- 初步路线之后继续自主测试和修正，直到变量、数学、数据流程、算法、验证、异常处理、输出和停止条件均可直接实施；
+- 非关键选择采用可逆、可检验的默认值并登记，关键假设仍在依赖边界前请用户确认。
+- 初稿后至少执行“来源触发的反证测试”和“竞赛就绪复审”两类完整检查；发现缺陷后修正并回归到固定点；
+- 把国一经验落实为机制优先、时钟与信息集、理想/可实现/真实评价、上下界与独立复算、全局耦合和最小性证明等跨题责任，不迁移旧题常数和答案。
+- 相对强参考线至少验证两项不同类别的真实增量，其中一项必须提升数学正确性或验证强度；删除增量后若责任不变，则不得称为创新。
+- 默认只能声称达到或超过“历史学习形成的通用过程与证据标准”；同题比较或盲测优越必须有独立证据，永不保证奖项。
+- 重要解释、目标、偏好、路线、复杂度、验证或结论边界在依赖点及时请用户审阅，每次附明确推荐；可逆的非关键选择不打断。
+- 完整详细路线经用户审阅后直接通知“完整落地版建模方案已完成”，不再询问是否需要计算或运行程序。
 
 ## 安装
 
@@ -46,9 +55,15 @@ SHHH_STRATEGY_KNOWLEDGE_ROOT=<archive-root>
 
 ## 使用边界
 
-本技能输出的是独立读题、建模策略和验证路线，不自动保证竞赛奖项，也不替代数值实现、完整论文排版或投稿合规审查。历史论文比较是明确请求后才启用的独立回顾模式。
+本技能输出的是独立读题、建模策略和验证路线，不运行拟合、优化、仿真、数值求解或结果制图，不自动保证竞赛奖项，也不替代数值实现、完整论文排版或投稿合规审查。历史论文比较是明确请求后才启用的独立回顾模式。
 
-## V27.2 稳定性工具
+## V27.6 人工审阅、策略边界与稳定性工具
+
+每道实际新题先创建或确认项目目录：
+
+```bash
+python scripts/init_project.py --case-id <id> --source <problem-path>
+```
 
 本地题面和附件先建立来源清单：
 
@@ -62,9 +77,9 @@ python scripts/inventory_problem.py validate source-inventory.json --require-com
 多附件、多确认点或跨会话任务建立状态账本：
 
 ```bash
-python scripts/analysis_state.py init --case-id <id> --inventory source-inventory.json --output analysis-state.json
+python scripts/analysis_state.py init --case-id <id> --project-manifest project.json --inventory source-inventory.json --output analysis-state.json
 python scripts/analysis_state.py seal analysis-state.json --reason "记录本轮已核对的题意和路线"
-python scripts/analysis_state.py transition analysis-state.json --to route_executable --reason "所有分问已有数学产生器和验证接口"
+python scripts/analysis_state.py transition analysis-state.json --to route_executable --reason "执行字段、竞赛就绪门、卓越增量、重要抉择和最终路线人工审阅均已通过"
 python scripts/analysis_state.py validate analysis-state.json
 ```
 

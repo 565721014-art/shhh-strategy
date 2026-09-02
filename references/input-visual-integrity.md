@@ -2,6 +2,8 @@
 
 Read this reference whenever the problem arrives as files or includes non-text evidence.
 
+Store the inventory, inspection notes, extracted schemas, rendered checks and data-quality reports under the current case folder. Keep original files in place unless copying is useful and authorized; the inventory may point to their absolute paths and hashes.
+
 For local files, begin with `python scripts/inventory_problem.py scan --source <path> --output <source-inventory.json>`. The inventory records every file and SHA-256 plus machine-readable metadata. It deliberately remains `pending_review` until every required text, visual, data, formula, and schema inspection is explicitly marked complete. A valid hash proves file identity, not that the content was understood.
 
 ## Complete-reading gate
@@ -33,6 +35,10 @@ Determine the independent unit before counting samples. Separate:
 - action assigned by an old policy versus pre-action covariate.
 
 Do not split repeated views, adjacent frames, augmented copies, spectra from the same specimen, or multiple time points of the same individual across training and evaluation unless the target deployment genuinely predicts another view of the same known object.
+
+## Data-quality gate
+
+Before selecting or fitting a data-driven route, produce a reproducible profile of fields, types, units, ranges, missingness, unique identities, duplicate rows/objects, impossible values, inconsistent categories, monotonic/time-order violations, target support and group/time coverage. Distinguish a suspicious value from an error; do not delete, impute or winsorize it without a rule, impact check and retained audit trail. Compare raw and cleaned counts and show how each material repair affects the required output.
 
 ## Time and information gate
 

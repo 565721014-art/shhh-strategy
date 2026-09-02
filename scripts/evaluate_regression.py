@@ -15,8 +15,12 @@ DIMENSIONS = [
     "trigger_fidelity",
     "route_executability",
     "complexity_discipline",
+    "validation_strength",
+    "excellence_delta_integrity",
     "claim_boundary",
     "confirmation_discipline",
+    "human_decision_review",
+    "strategy_scope_discipline",
     "state_continuity",
 ]
 NON_REGRESSION_DIMENSIONS = {
@@ -24,11 +28,15 @@ NON_REGRESSION_DIMENSIONS = {
     "problem_lock",
     "trigger_fidelity",
     "claim_boundary",
+    "confirmation_discipline",
+    "human_decision_review",
+    "strategy_scope_discipline",
 }
 TARGETED_STABILITY_DIMENSIONS = {
-    "source_integrity",
-    "trigger_fidelity",
-    "state_continuity",
+    "validation_strength",
+    "excellence_delta_integrity",
+    "human_decision_review",
+    "strategy_scope_discipline",
 }
 
 
@@ -105,7 +113,9 @@ def compare(baseline: dict, candidate: dict) -> dict:
         errors.append(f"candidate has critical failures: {critical_failures}")
 
     regressions = []
-    improved_families = set()
+    improved_families_by_dimension = {
+        dimension: set() for dimension in TARGETED_STABILITY_DIMENSIONS
+    }
     details = []
     for case_id in sorted(baseline_cases):
         base = baseline_cases[case_id]
@@ -114,8 +124,9 @@ def compare(baseline: dict, candidate: dict) -> dict:
         for dimension in NON_REGRESSION_DIMENSIONS:
             if delta[dimension] < 0:
                 regressions.append(f"{case_id}:{dimension}:{delta[dimension]}")
-        if any(delta[dimension] > 0 for dimension in TARGETED_STABILITY_DIMENSIONS):
-            improved_families.add(cand["mechanism_family"])
+        for dimension in TARGETED_STABILITY_DIMENSIONS:
+            if delta[dimension] > 0:
+                improved_families_by_dimension[dimension].add(cand["mechanism_family"])
         details.append({"case_id": case_id, "mechanism_family": cand["mechanism_family"], "delta": delta})
     if regressions:
         errors.append(f"critical-dimension regressions: {regressions}")
@@ -124,10 +135,11 @@ def compare(baseline: dict, candidate: dict) -> dict:
     candidate_total = total_score(candidate)
     if candidate_total < baseline_total:
         errors.append(f"total score regressed: {candidate_total} < {baseline_total}")
-    if len(improved_families) < 2:
-        errors.append(
-            "targeted stability improvement was not demonstrated on two structurally different mechanism families"
-        )
+    for dimension, families in improved_families_by_dimension.items():
+        if len(families) < 2:
+            errors.append(
+                f"{dimension} improvement was not demonstrated on two structurally different mechanism families"
+            )
     if baseline.get("evaluation_status") != candidate.get("evaluation_status"):
         errors.append("baseline and candidate evaluation_status differ")
     if candidate.get("evaluation_status") == "contaminated":
@@ -141,7 +153,10 @@ def compare(baseline: dict, candidate: dict) -> dict:
         "evaluation_status": candidate.get("evaluation_status"),
         "baseline_total": baseline_total,
         "candidate_total": candidate_total,
-        "improved_mechanism_families": sorted(improved_families),
+        "improved_mechanism_families": {
+            dimension: sorted(families)
+            for dimension, families in sorted(improved_families_by_dimension.items())
+        },
         "details": details,
         "errors": errors,
     }

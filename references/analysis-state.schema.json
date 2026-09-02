@@ -9,6 +9,13 @@
     "created_utc",
     "updated_utc",
     "quality_state",
+    "project_workspace",
+    "scope_contract",
+    "instruction_sources",
+    "human_review",
+    "final_gate_rescan",
+    "competition_readiness",
+    "excellence_assurance",
     "source_inventory",
     "subquestions",
     "activated_gates",
@@ -18,15 +25,239 @@
     "validation_items",
     "claim_boundaries",
     "results",
+    "iterations",
     "events"
   ],
   "properties": {
-    "schema_version": {"const": "1.0"},
+    "schema_version": {"const": "1.4"},
     "case_id": {"type": "string", "minLength": 1},
     "created_utc": {"type": "string", "format": "date-time"},
     "updated_utc": {"type": "string", "format": "date-time"},
     "quality_state": {
-      "enum": ["draft", "understanding_locked", "audit_complete", "route_executable", "solved_unvalidated", "solved_and_validated"]
+      "enum": ["draft", "understanding_locked", "audit_complete", "route_executable"]
+    },
+    "project_workspace": {
+      "type": "object",
+      "required": ["root", "manifest", "status"],
+      "properties": {
+        "root": {"type": ["string", "null"]},
+        "manifest": {"type": ["string", "null"]},
+        "status": {"enum": ["uninitialized", "confirmed", "blocked"]}
+      },
+      "additionalProperties": false
+    },
+    "scope_contract": {
+      "type": "object",
+      "required": ["mode", "program_execution", "numerical_solving", "completion_state"],
+      "properties": {
+        "mode": {"const": "strategy_only"},
+        "program_execution": {"const": false},
+        "numerical_solving": {"const": false},
+        "completion_state": {"const": "route_executable"}
+      },
+      "additionalProperties": false
+    },
+    "instruction_sources": {
+      "type": "object",
+      "required": ["user_directives", "statement_requirements", "attachment_requirements", "embedded_commands", "conflicts"],
+      "properties": {
+        "user_directives": {"type": "array", "items": {"type": "string"}},
+        "statement_requirements": {"type": "array", "items": {"type": "string"}},
+        "attachment_requirements": {"type": "array", "items": {"type": "string"}},
+        "embedded_commands": {"type": "array", "items": {"type": "string"}},
+        "conflicts": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "human_review": {
+      "type": "object",
+      "required": ["status", "decision_points", "final_route_review"],
+      "properties": {
+        "status": {"enum": ["pending", "approved", "blocked"]},
+        "decision_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "kind", "summary", "options", "recommendation", "consequences", "evidence", "dependencies", "status", "resolution"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "kind": {"enum": ["interpretation", "objective", "preference", "route", "complexity", "validation", "claim_boundary"]},
+              "summary": {"type": "string", "minLength": 1},
+              "options": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}},
+              "recommendation": {"type": "string", "minLength": 1},
+              "consequences": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}},
+              "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+              "dependencies": {"type": "array", "items": {"type": "string", "minLength": 1}},
+              "status": {"enum": ["pending", "user_confirmed", "reopened", "superseded"]},
+              "resolution": {"type": ["string", "null"]}
+            },
+            "additionalProperties": false
+          }
+        },
+        "final_route_review": {
+          "type": "object",
+          "required": ["status", "reviewed_artifact", "recommendation", "evidence"],
+          "properties": {
+            "status": {"enum": ["pending", "user_approved", "revision_requested"]},
+            "reviewed_artifact": {"type": ["string", "null"]},
+            "recommendation": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "final_gate_rescan": {
+      "type": "object",
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": {"enum": ["pending", "complete", "blocked"]},
+        "evidence": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "competition_readiness": {
+      "type": "object",
+      "required": ["status", "audit_passes", "pass_records", "dimensions", "experience_checks", "stop_certificate"],
+      "properties": {
+        "status": {"enum": ["pending", "ready", "blocked"]},
+        "audit_passes": {"type": "integer", "minimum": 0},
+        "pass_records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "kind", "status", "scope", "evidence"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "kind": {"enum": ["source_falsification", "competition_readiness", "repair_regression"]},
+              "status": {"enum": ["complete", "blocked"]},
+              "scope": {"type": "string", "minLength": 1},
+              "evidence": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "dimensions": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "items": {
+            "type": "object",
+            "required": ["id", "status", "method", "evidence"],
+            "properties": {
+              "id": {"enum": ["source_and_deliverable_closure", "mechanism_state_information_fidelity", "mathematical_identifiability_closure", "necessary_complexity_and_proof_roles", "data_algorithm_operationality", "falsification_validation_and_independence", "dependency_uncertainty_and_error_propagation", "output_reproducibility_and_claim_consistency", "contest_narrative_and_resource_feasibility"]},
+              "status": {"enum": ["pending", "pass", "blocked"]},
+              "method": {"type": "string"},
+              "evidence": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "experience_checks": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["id", "status", "evidence"],
+            "properties": {
+              "id": {"enum": ["mechanism_before_model_name", "information_clock_and_nonanticipativity", "ideal_realizable_true_evaluator", "candidate_bound_corroboration_roles", "global_objective_and_coupling", "minimum_from_smallest_case", "solver_complexity_separate_from_model_complexity", "evidence_ceiling_and_no_old_answer_transfer"]},
+              "status": {"enum": ["pending", "pass", "blocked", "not_applicable"]},
+              "evidence": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": false
+          }
+        },
+        "stop_certificate": {
+          "type": "object",
+          "required": ["retained_route_roles", "covered_outputs", "unresolved_limits", "no_further_complexity_reason", "conclusion_ceiling", "handoff_artifacts"],
+          "properties": {
+            "retained_route_roles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["route_id", "responsibility"],
+                "properties": {
+                  "route_id": {"type": "string", "minLength": 1},
+                  "responsibility": {"type": "string", "minLength": 1}
+                },
+                "additionalProperties": false
+              }
+            },
+            "covered_outputs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["subquestion_id", "output", "producer_route_id"],
+                "properties": {
+                  "subquestion_id": {"type": "string", "minLength": 1},
+                  "output": {"type": "string", "minLength": 1},
+                  "producer_route_id": {"type": "string", "minLength": 1}
+                },
+                "additionalProperties": false
+              }
+            },
+            "unresolved_limits": {"type": "array", "items": {"type": "string"}},
+            "no_further_complexity_reason": {"type": "string"},
+            "conclusion_ceiling": {"type": "string"},
+            "handoff_artifacts": {"type": "array", "items": {"type": "string"}}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "excellence_assurance": {
+      "type": "object",
+      "required": ["status", "benchmark_basis", "claim_scope", "award_guarantee", "dimensions", "advances", "external_evidence"],
+      "properties": {
+        "status": {"enum": ["pending", "ready", "blocked"]},
+        "benchmark_basis": {"enum": ["generalized_historical_process", "same_problem_opt_in", "blind_external_evaluation"]},
+        "claim_scope": {"enum": ["generalized_process_standard", "same_problem_comparative", "blind_external_validated"]},
+        "award_guarantee": {"const": false},
+        "dimensions": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "required": ["id", "reference_bar", "route_evidence", "delta", "method", "status"],
+            "properties": {
+              "id": {"enum": ["interpretation_precision", "mechanism_fidelity", "mathematical_rigor", "computational_reliability", "validation_and_falsification", "uncertainty_and_decision_value", "reproducibility_and_communication"]},
+              "reference_bar": {"type": "string"},
+              "route_evidence": {"type": "array", "items": {"type": "string"}},
+              "delta": {"type": "string"},
+              "method": {"type": "string"},
+              "status": {"enum": ["pending", "meets_reference", "exceeds_reference", "below_reference", "not_comparable"]}
+            },
+            "additionalProperties": false
+          }
+        },
+        "advances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "dimension_id", "category", "trigger", "reference_limit", "improvement", "ablation", "verification", "evidence", "cost", "status"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "dimension_id": {"enum": ["interpretation_precision", "mechanism_fidelity", "mathematical_rigor", "computational_reliability", "validation_and_falsification", "uncertainty_and_decision_value", "reproducibility_and_communication"]},
+              "category": {"enum": ["correctness", "validation", "decision_value", "robustness", "efficiency", "reproducibility", "interpretability"]},
+              "trigger": {"type": "string"},
+              "reference_limit": {"type": "string"},
+              "improvement": {"type": "string"},
+              "ablation": {"type": "string"},
+              "verification": {"type": "string"},
+              "evidence": {"type": "array", "items": {"type": "string"}},
+              "cost": {"type": "string"},
+              "status": {"enum": ["planned", "verified", "failed", "blocked"]}
+            },
+            "additionalProperties": false
+          }
+        },
+        "external_evidence": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
     },
     "source_inventory": {
       "type": "object",
@@ -104,7 +335,7 @@
           "kind": {"enum": ["interpretation", "assumption", "preference", "route", "complexity", "claim_boundary"]},
           "statement": {"type": "string", "minLength": 1},
           "evidence": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-          "confirmation": {"enum": ["source_fixed", "user_confirmed", "provisional", "reopened"]},
+          "confirmation": {"enum": ["source_fixed", "user_confirmed", "agent_default", "provisional", "reopened"]},
           "dependencies": {"type": "array", "items": {"type": "string"}},
           "supersedes": {"type": ["string", "null"]}
         },
@@ -121,7 +352,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["id", "role", "status", "trigger", "baseline_defect_or_distinct_role", "variables", "relations", "constraints", "algorithm_exit", "output_schema", "validation", "rejection_condition"],
+            "required": ["id", "role", "status", "trigger", "baseline_defect_or_distinct_role", "variables", "assumptions", "relations", "constraints", "data_pipeline", "algorithm_steps", "algorithm_exit", "stress_tests", "validation", "failure_handling", "output_schema", "stopping_conditions", "rejection_condition"],
             "properties": {
               "id": {"type": "string", "minLength": 1},
               "role": {"enum": ["baseline", "candidate", "branch", "bound", "corroboration"]},
@@ -129,11 +360,30 @@
               "trigger": {"type": "array", "items": {"type": "string"}},
               "baseline_defect_or_distinct_role": {"type": "string"},
               "variables": {"type": "array", "items": {"type": "string"}},
+              "assumptions": {"type": "array", "items": {"type": "string"}},
               "relations": {"type": "array", "items": {"type": "string"}},
               "constraints": {"type": "array", "items": {"type": "string"}},
+              "data_pipeline": {"type": "array", "items": {"type": "string"}},
+              "algorithm_steps": {"type": "array", "items": {"type": "string"}},
               "algorithm_exit": {"type": "string"},
-              "output_schema": {"type": "array", "items": {"type": "string"}},
+              "stress_tests": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["category", "status", "method", "evidence"],
+                  "properties": {
+                    "category": {"enum": ["counterexample", "boundary", "data_quality", "leakage", "duplicate_unit", "identifiability", "feasibility", "robustness", "simplification", "abnormal_execution"]},
+                    "status": {"enum": ["pass", "fail", "blocked", "not_applicable"]},
+                    "method": {"type": "string", "minLength": 1},
+                    "evidence": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+                  },
+                  "additionalProperties": false
+                }
+              },
               "validation": {"type": "array", "items": {"type": "string"}},
+              "failure_handling": {"type": "array", "items": {"type": "string"}},
+              "output_schema": {"type": "array", "items": {"type": "string"}},
+              "stopping_conditions": {"type": "array", "items": {"type": "string"}},
               "rejection_condition": {"type": "string"}
             },
             "additionalProperties": false
@@ -183,6 +433,24 @@
           "producer_route_id": {"type": "string", "minLength": 1},
           "status": {"enum": ["computed", "reproduced", "validated"]},
           "evidence": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "iterations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "cycle", "phases", "test", "finding", "change", "evidence", "status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "cycle": {"type": "integer", "minimum": 1},
+          "phases": {"type": "array", "items": {"enum": ["concretize", "operationalize", "attack", "repair", "regress"]}, "minItems": 1, "uniqueItems": true},
+          "test": {"type": "string", "minLength": 1},
+          "finding": {"type": "string", "minLength": 1},
+          "change": {"type": "string"},
+          "evidence": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "status": {"enum": ["confirmed", "corrected", "blocked"]}
         },
         "additionalProperties": false
       }

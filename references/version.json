@@ -1,8 +1,8 @@
 {
   "skill": "shhh-strategy",
-  "engine_version": "v27.2_stability_guarded",
-  "built_on": "2026-08-29",
-  "package_revision": "2026-08-29.2",
+  "engine_version": "v27.6_human_reviewed_strategy_only",
+  "built_on": "2026-09-03",
+  "package_revision": "2026-09-03.1",
   "knowledge_root_default": "knowledge",
   "knowledge_mode": "compact_with_optional_external_full_archive",
   "compact_knowledge_included": true,
@@ -30,18 +30,35 @@
     "corpus_manifest": "2FFD88126AFCEC1E17D54201148CD000B7F4F89103307A8A7DF45BEF315E5DA8"
   },
   "stability_assurance": {
-    "analysis_state_schema": "1.0",
+    "analysis_state_schema": "1.4",
     "source_inventory_schema": "1.0",
     "hash_algorithm": "SHA-256",
     "progressive_structural_gate_groups": 5,
     "structural_gates_preserved": 18,
-    "behavior_regression_dimensions": 8,
-    "metamorphic_relations_documented": 9
+    "behavior_regression_dimensions": 12,
+    "metamorphic_relations_documented": 32,
+    "strict_route_execution_fields": 13,
+    "desktop_project_workspace": true,
+    "autonomous_attack_repair_loop": true,
+    "competition_readiness_dimensions": 9,
+    "generalized_national_prize_experience_checks": 8,
+    "minimum_full_audit_passes": 2,
+    "competition_stop_certificate": true,
+    "excellence_dimensions": 7,
+    "minimum_verified_excellence_advances": 2,
+    "excellence_requires_correctness_or_validation": true,
+    "award_guarantee_prohibited": true,
+    "recommendation_backed_human_decision_gate": true,
+    "final_route_human_approval_required": true,
+    "strategy_only_terminal_state": "route_executable",
+    "problem_program_execution_prohibited": true,
+    "direct_completion_notification": true
   },
   "boundaries": {
     "other_local_math_modeling_skills_allowed": false,
     "award_guarantee": false,
     "automatic_numerical_solution": false,
+    "problem_program_execution": false,
     "historical_answers_as_templates": false
   }
 }

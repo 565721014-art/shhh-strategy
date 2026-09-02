@@ -78,8 +78,6 @@ def main() -> int:
             "understanding_locked",
             "audit_complete",
             "route_executable",
-            "solved_unvalidated",
-            "solved_and_validated",
         ],
         default="route_executable",
     )
@@ -115,7 +113,7 @@ def main() -> int:
     output_path = output_dir / f"{case_id}_freeze.json"
 
     payload = {
-        "protocol": "v27.2_problem_sources_inventory_ledger_and_independent_analysis_before_same_problem_comparison",
+        "protocol": "v27.6_strategy_only_human_reviewed_route_before_same_problem_comparison",
         "case_id": args.case_id,
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "quality_state": args.state,
@@ -124,6 +122,7 @@ def main() -> int:
         "sources": [source_record(path) for path in source_paths],
         "limitations": [
             "A freeze proves file integrity and ordering, not analytical correctness.",
+            "The frozen route is a strategy specification; no proposed computation was executed.",
             "Historical public problems may still exist in model pretraining data.",
         ],
     }

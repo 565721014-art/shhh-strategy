@@ -4,6 +4,8 @@
 
 Identify the independent experimental unit before splitting. Technical repeats estimate measurement error; they do not increase treatment replication or degrees of freedom. Keep subjects, specimens, batches, augmented copies, adjacent frames, repeated spectra, and longitudinal observations grouped as required by deployment.
 
+Profile schema, types, units, missingness, unique IDs, duplicate rows and objects, impossible ranges, inconsistent categories, time ordering, group coverage, target support and suspicious outliers before modeling. Record raw-to-cleaned row/object counts and the rule, evidence, sensitivity and reversal condition for every material repair. Do not convert an anomaly into deletion or imputation merely because it is inconvenient.
+
 Fit scaling, smoothing, imputation, feature selection, dimensionality reduction, label propagation, and hyperparameters inside the training fold. Trace derived features: RGB/HSV, ratios/totals, cumulative/daily, labels/scores, and multiple modalities may share the same evidence source.
 
 Separate accuracy, precision, resolution, calibration, discrimination, and extrapolation range.

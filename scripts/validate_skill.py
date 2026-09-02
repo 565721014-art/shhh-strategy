@@ -52,6 +52,10 @@ def main() -> int:
         "SKILL.md",
         "agents/openai.yaml",
         "references/core-protocol.md",
+        "references/project-workspace-and-execution-loop.md",
+        "references/human-review-and-strategy-only.md",
+        "references/competition-readiness.md",
+        "references/excellence-assurance.md",
         "references/structural-gates.md",
         "references/gates/task-semantics.md",
         "references/gates/identification-dynamics.md",
@@ -72,6 +76,7 @@ def main() -> int:
         "references/version.json",
         "references/completeness-audit.json",
         "scripts/freeze_analysis.py",
+        "scripts/init_project.py",
         "scripts/analysis_state.py",
         "scripts/inventory_problem.py",
         "scripts/evaluate_regression.py",
@@ -90,8 +95,12 @@ def main() -> int:
         errors.append("SKILL.md still contains TODO")
     if "name: shhh-strategy" not in skill_text:
         errors.append("SKILL.md name mismatch")
-    if version.get("engine_version") != "v27.2_stability_guarded":
-        errors.append("engine version is not v27.2_stability_guarded")
+    if "references/competition-readiness.md" not in skill_text:
+        errors.append("SKILL.md does not require the competition-readiness protocol")
+    if "references/human-review-and-strategy-only.md" not in skill_text:
+        errors.append("SKILL.md does not require the human-review strategy-only protocol")
+    if version.get("engine_version") != "v27.6_human_reviewed_strategy_only":
+        errors.append("engine version is not v27.6_human_reviewed_strategy_only")
 
     markdown_files = [skill_dir / "SKILL.md"] + sorted((skill_dir / "references").rglob("*.md"))
     for markdown_path in markdown_files:
@@ -121,6 +130,98 @@ def main() -> int:
         schema = load_json(skill_dir / "references" / schema_name)
         if schema.get("$schema") != "https://json-schema.org/draft/2020-12/schema":
             errors.append(f"schema draft mismatch: {schema_name}")
+    analysis_schema = load_json(skill_dir / "references" / "analysis-state.schema.json")
+    if analysis_schema.get("properties", {}).get("schema_version", {}).get("const") != version.get(
+        "stability_assurance", {}
+    ).get("analysis_state_schema"):
+        errors.append("analysis-state schema version and version metadata disagree")
+    readiness_schema = analysis_schema.get("properties", {}).get("competition_readiness", {})
+    readiness_properties = readiness_schema.get("properties", {})
+    dimension_ids = (
+        readiness_properties.get("dimensions", {})
+        .get("items", {})
+        .get("properties", {})
+        .get("id", {})
+        .get("enum", [])
+    )
+    experience_ids = (
+        readiness_properties.get("experience_checks", {})
+        .get("items", {})
+        .get("properties", {})
+        .get("id", {})
+        .get("enum", [])
+    )
+    assurance = version.get("stability_assurance", {})
+    if len(dimension_ids) != assurance.get("competition_readiness_dimensions"):
+        errors.append("competition readiness dimension count and version metadata disagree")
+    if len(experience_ids) != assurance.get("generalized_national_prize_experience_checks"):
+        errors.append("experience-check count and version metadata disagree")
+    if "pass_records" not in readiness_schema.get("required", []):
+        errors.append("competition readiness schema does not require structured pass records")
+    if assurance.get("minimum_full_audit_passes") != 2:
+        errors.append("minimum full audit pass metadata is not 2")
+    excellence_schema = analysis_schema.get("properties", {}).get("excellence_assurance", {})
+    excellence_properties = excellence_schema.get("properties", {})
+    excellence_ids = (
+        excellence_properties.get("dimensions", {})
+        .get("items", {})
+        .get("properties", {})
+        .get("id", {})
+        .get("enum", [])
+    )
+    if len(excellence_ids) != assurance.get("excellence_dimensions"):
+        errors.append("excellence dimension count and version metadata disagree")
+    if assurance.get("minimum_verified_excellence_advances") != 2:
+        errors.append("minimum verified excellence advance metadata is not 2")
+    if excellence_properties.get("award_guarantee", {}).get("const") is not False:
+        errors.append("excellence schema does not prohibit award guarantees")
+    quality_states = analysis_schema.get("properties", {}).get("quality_state", {}).get("enum", [])
+    if quality_states != ["draft", "understanding_locked", "audit_complete", "route_executable"]:
+        errors.append("analysis-state quality states do not end at route_executable")
+    scope_properties = (
+        analysis_schema.get("properties", {}).get("scope_contract", {}).get("properties", {})
+    )
+    expected_scope = {
+        "mode": "strategy_only",
+        "program_execution": False,
+        "numerical_solving": False,
+        "completion_state": "route_executable",
+    }
+    for field, expected in expected_scope.items():
+        if scope_properties.get(field, {}).get("const") != expected:
+            errors.append(f"strategy-only scope schema mismatch: {field}")
+    human_review_schema = analysis_schema.get("properties", {}).get("human_review", {})
+    if set(human_review_schema.get("required", [])) != {
+        "status",
+        "decision_points",
+        "final_route_review",
+    }:
+        errors.append("analysis-state schema does not require the full human-review record")
+    if assurance.get("final_route_human_approval_required") is not True:
+        errors.append("version metadata does not require final human route approval")
+    if assurance.get("problem_program_execution_prohibited") is not True:
+        errors.append("version metadata does not prohibit problem program execution")
+    regression_schema = load_json(
+        skill_dir / "references" / "regression-observation.schema.json"
+    )
+    regression_dimensions = (
+        regression_schema.get("properties", {})
+        .get("cases", {})
+        .get("items", {})
+        .get("properties", {})
+        .get("scores", {})
+        .get("required", [])
+    )
+    if len(regression_dimensions) != assurance.get("behavior_regression_dimensions"):
+        errors.append("behavior regression dimension count and version metadata disagree")
+    for dimension in [
+        "validation_strength",
+        "excellence_delta_integrity",
+        "human_decision_review",
+        "strategy_scope_discipline",
+    ]:
+        if dimension not in regression_dimensions:
+            errors.append(f"behavior regression schema lacks {dimension}")
 
     audit_path = skill_dir / "references" / "completeness-audit.json"
     if audit_path.is_file():

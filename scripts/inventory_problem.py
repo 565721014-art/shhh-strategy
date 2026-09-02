@@ -239,7 +239,7 @@ def inspection_template(path: Path, metadata: dict) -> dict:
         "schema": {"required": suffix in {".csv", ".tsv", ".xlsx", ".xls", ".json"}, "status": "pending", "note": ""},
     }
     if suffix in {".txt", ".md", ".yaml", ".yml"} and metadata.get("status") == "indexed":
-        inspections["text"] = {"required": True, "status": "complete", "note": "machine-readable text indexed; semantic reading still belongs in analysis"}
+        inspections["text"] = {"required": True, "status": "pending", "note": "machine-readable text indexed; explicit semantic review is still required"}
     if suffix in {".csv", ".tsv"} and metadata.get("status") == "indexed":
         inspections["text"] = {"required": True, "status": "complete", "note": "delimited text decoded"}
     for value in inspections.values():

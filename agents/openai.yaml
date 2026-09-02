@@ -1,6 +1,6 @@
 interface:
   display_name: "Shhh Strategy"
-  short_description: "完整读取新赛题，稳定锁定题意、路线、复杂度与停止条件"
-  default_prompt: "Use $shhh-strategy to inventory the complete problem, preserve a validated analysis state when needed, independently design the route, and stop at the next user-verifiable checkpoint."
+  short_description: "人工把关关键抉择，持续攻防到可直接落地的策略"
+  default_prompt: "Use $shhh-strategy to produce a strategy-only executable contest route, ask me promptly at consequential forks with a recommendation, obtain my final route approval, and report completion without running programs or numerical solving."
 policy:
   allow_implicit_invocation: true
